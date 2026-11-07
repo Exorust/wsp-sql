@@ -1,0 +1,15 @@
+['chats_attn.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'gen_1.jsonl', 'gen_1_acts', 'notes.md', 'req2.json', 'req3.json', 'req4.json', 'req4_edited.json', 'req4_items.json', 'setA.json', 'setB.json', 'splits.json']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_1.done.json 519
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_2 ['mlp_down_in_L9.npy', 'hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'hidden_L22.npy', 'mlp_down_in_L8.npy', 'attn_L19_text1.npy', 'hidden_L20.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_2.done.json 3225
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_3 ['topk_logprobs.npy', 'token_logprobs.npy', 'topk_ids.npy', 'meta.json']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_3.done.json 365
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_4 ['topk_logprobs.npy', 'token_logprobs.npy', 'topk_ids.npy', 'meta.json']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_4.done.json 619
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_5 ['topk_logprobs.npy', 'token_logprobs.npy', 'topk_ids.npy', 'meta.json']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_5.done.json 617
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_1.jsonl 3670475
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_1_acts ['resid_last_prompt.npy', 'resid_answer_mean.npy', 'index.json', 'mlp_down_in_answer_mean.npy']
+['model.language_model.layers.11.self_attn.o_proj.weight', 'model.language_model.layers.15.self_attn.o_proj.weight', 'model.language_model.layers.19.self_attn.o_proj.weight', 'model.language_model.layers.23.self_attn.o_proj.weight']
+
+[0.1 s]

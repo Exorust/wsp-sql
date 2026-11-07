@@ -1,0 +1,63 @@
+semi id 26 ';'
+    k                                     line    rep     lp_nl    lp_semi nl_top1      nxt    lp_nxt   lp_fence       st_top2  st_top2lp
+0   0                                           False -0.000364        NaN      \n   SELECT -0.064727        NaN          WITH  -3.064727
+1   0               SELECT \n    architect.id,  False -0.388740        NaN      \n          -0.000010        NaN            \n -12.625010
+2   0                          architect.name,  False -0.000887        NaN      \n          -0.000017        NaN            \n -11.812517
+3   0                         architect.gender  False -0.077412        NaN      \n     FROM -0.003226        NaN         WHERE  -6.128226
+4   0                     FROM \n    architect  False -0.731933        NaN      \n     JOIN -0.342181        NaN          LEFT  -1.842181
+5   0    ON architect.id = bridge.architect_id  False -0.028789  -8.028790      \n     JOIN -0.132271        NaN         WHERE  -2.632271
+6   0   ll ON architect.id = mill.architect_id  False -0.035684  -3.660684      \n    WHERE -0.076743        NaN         GROUP  -2.826743
+7   0   IS NULL OR bridge.length_feet IS NULL)  False -0.830320        NaN      \n      NaN       NaN  -2.268644           ```  -2.268644
+8   1                                           False -0.000228        NaN      \n   SELECT -0.074913        NaN          WITH  -2.699913
+9   1       SELECT DISTINCT a.policy_type_code  False -0.488864        NaN      \n     FROM -0.000959        NaN                -8.250958
+10  1                FROM Available_Policies a  False -0.024927  -9.774927      \n     JOIN -0.144868        NaN         INNER  -2.769868
+11  1   .policy_type_code = c.policy_type_code  False -0.031952  -7.531952      \n     JOIN -0.439473        NaN         WHERE  -1.814473
+12  1   s c2 ON c2.Customer_ID = c.Customer_ID  False -0.025661  -5.150661      \n    WHERE -0.997076        NaN         GROUP  -1.122076
+13  1                 WHERE c2.Customer_ID = (  False -0.583737        NaN      \n          -0.098895        NaN                -2.598895
+14  1               SELECT MAX(c2.Customer_ID)  False -0.055528        NaN      \n          -0.015885        NaN             )  -4.640885
+15  1               FROM Customers_Policies c2  False -0.053008        NaN      \n          -0.645344        NaN             )  -1.020344
+16  1                 WHERE c2.Customer_ID = (   True -0.234420        NaN      \n          -0.008596        NaN                -5.633596
+17  1               SELECT MAX(c2.Customer_ID)   True -0.017689        NaN      \n          -0.000934        NaN                -7.625934
+18  1                        FROM Customers c2  False -0.034451        NaN      \n          -0.129099        NaN                -2.129099
+19  1                 WHERE c2.Customer_ID = (   True -0.045213        NaN      \n      NaN       NaN        NaN                -5.512869
+20  2                                           False -0.000638        NaN      \n   SELECT -0.121839        NaN          WITH  -2.246839
+21  2                 SELECT DISTINCT p.Player  False -1.137009        NaN      \n     FROM -0.012023        NaN         WHERE  -5.262022
+22  2                            FROM player p  False -0.020777  -7.458277      \n     JOIN -0.373210        NaN         WHERE  -1.623210
+23  2   tails sd ON p.School_ID = sd.School_ID  False -0.029794  -4.029794      \n     JOIN -0.854886  -6.604886         WHERE  -0.979886
+24  2   school s ON sd.School_ID = s.School_ID  False -0.042002  -3.792002      \n    WHERE -0.359339  -6.296839         GROUP  -1.984339
+25  2               WHERE sd.Class = 'Class_A'  False -0.546304        NaN      \n      AND -0.925317  -3.175317                -1.675317
+26  2                AND sd.Class = 'Class_AA'  False -0.021036  -8.271035      \n      AND -0.304503  -4.054502         ORDER  -2.179503
+27  2                 AND sd.Class = 'Class_B'  False -0.041841        NaN      \n      AND -0.144132  -5.019132         ORDER  -2.769132
+28  2                 AND sd.Class = 'Class_C'  False -0.014459  -8.139459      \n      AND -0.161479  -5.036479         ORDER  -2.786479
+29  2                 AND sd.Class = 'Class_D'  False -0.008414  -8.008414      \n      AND -0.133619  -5.508619         ORDER  -3.133619
+30  2                 AND sd.Class = 'Class_E'  False -0.006857  -7.506857      \n      AND -0.120984  -5.620984         ORDER  -3.370984
+31  2                 AND sd.Class = 'Class_F'  False -0.004218  -8.504218      \n      AND -0.091820  -6.216820         WHERE  -3.466820
+32  2                 AND sd.Class = 'Class_G'  False -0.002586  -9.877586      \n      AND -0.039117  -7.414117         WHERE  -4.039117
+33  2                 AND sd.Class = 'Class_H'  False -0.003773  -9.878774      \n      AND -0.075329  -6.825329         WHERE  -3.325329
+34  2                 AND sd.Class = 'Class_I'  False -0.002324  -9.502323      \n      AND -0.075744  -7.200744         WHERE  -3.075744
+35  2                 AND sd.Class = 'Class_J'  False -0.002454 -10.002455      \n      AND -0.074738  -7.324738         WHERE  -3.074738
+36  2                 AND sd.Class = 'Class_K'  False -0.002134  -9.877134      \n      AND -0.054032  -7.804032         WHERE  -3.304032
+37  2                 AND sd.Class = 'Class_L'  False -0.001775  -9.751775      \n      NaN       NaN  -7.677846         WHERE  -3.302847
+38  3                                           False -0.000290        NaN      \n   SELECT -0.027582        NaN          WITH  -3.777582
+39  3     SELECT \n    s.date_of_latest_logon,  False -0.092071        NaN      \n          -0.000165 -12.187665            \n  -9.375165
+40  3                  s.date_of_registration,  False -0.002365        NaN      \n          -0.000185 -13.375185            \n  -8.875185
+41  3                  s.date_of_latest_logon,  False -0.002521        NaN      \n          -0.000561 -10.563061            \n  -7.875561
+42  3                  s.date_of_latest_logon,   True -0.001373        NaN      \n          -0.000831  -9.125831            \n  -7.625831
+43  3                  s.date_of_latest_logon,   True -0.000562        NaN      \n          -0.000881  -8.875881            \n  -7.500881
+44  3                  s.date_of_latest_logon,   True -0.000180        NaN      \n      NaN       NaN  -8.500722            \n  -7.875722
+45  4                                           False -0.000423        NaN      \n   SELECT -0.091336        NaN          WITH  -2.591336
+46  5                                           False -0.000405        NaN      \n   SELECT -0.071207        NaN          WITH  -2.946207
+47  5             SELECT DISTINCT a.id, a.name  False -0.201838  -9.826838      \n     FROM -0.001486        NaN         WHERE  -7.251486
+48  5                         FROM architect a  False -0.016051 -10.453551      \n     JOIN -0.139783        NaN          LEFT  -2.514782
+49  5   JOIN bridge b ON a.id = b.architect_id  False -0.004520  -7.879520      \n     JOIN -0.044366        NaN         WHERE  -3.919366
+50  5     JOIN mill m ON a.id = m.architect_id  False -0.025546  -6.150546      \n    WHERE -0.173418        NaN         GROUP  -1.923419
+51  5   ngth_meters >= 3 OR b.length_feet >= 3  False -0.483253  -2.233253      \n          -1.689445  -2.439445                -1.689445
+52  5   ngth_meters >= 3 OR m.length_feet >= 3  False -0.537478  -0.912478      \n          -1.019610  -2.644609         GROUP  -1.394610
+53  5   ngth_meters >= 3 OR m.length_feet >= 3   True -0.502195  -1.002195      \n          -0.907292  -2.407292         GROUP  -1.907292
+54  5   ngth_meters >= 3 OR m.length_feet >= 3   True -0.298861  -1.423861      \n          -0.731994  -2.856994         WHERE  -1.481994
+55  5   ngth_meters >= 3 OR m.length_feet >= 3   True -0.212164  -1.712164      \n          -0.656498  -3.281497         WHERE  -1.281498
+56  5   ngth_meters >= 3 OR m.length_feet >= 3   True -0.150683  -2.025683      \n      NaN       NaN  -3.542401         WHERE  -1.292401
+57  6                                           False -0.000589        NaN      \n   SELECT -0.063571        NaN          WITH  -2.938571
+58  6   Ref_Colors \nWHERE color_code NOT IN (  False -0.322332        NaN      \n          -0.080336        NaN                -2.705336
+
+[0.0 s]

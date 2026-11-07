@@ -1,0 +1,6 @@
+think-first 128 / 128
+longest acc 0.28125 cut 8 Counter({'no_such_column': 21, 'wrong_result': 20, 'correct': 18, 'other_error': 4, 'misuse': 1})
+random acc 0.265625 cut 7 Counter({'wrong_result': 22, 'no_such_column': 18, 'correct': 17, 'other_error': 5, 'misuse': 2})
+
+[0.0 s]
+[code runs used: 200/300]

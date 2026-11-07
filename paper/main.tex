@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,booktabs,amsmath,xcolor,hyperref,caption,float}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\think}{\texttt{</think>}}
+\newcommand{\Qwen}{Qwen3.5-0.8B}
+
+\title{A Bypass, Not a Repair:\\An Independent Test of Weight-Space Programming on a Text-to-SQL Loop}
+\author{Chandrahas Aroori\\\small\texttt{chandrahas.aroori@gmail.com}}
+\date{November 2026 \quad (draft v0.1)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+``Weight-space programming'' is the claim that a frontier language model, given a small model's weights and a budget of forward passes, can locate the cause of a behaviour and remove it by writing a direct weight edit, with no training.
+The only published success is a loop fix in \Qwen{} on math.
+We test the claim in a new domain the editor had never seen: text-to-SQL, where the same model with thinking enabled loops on 91\% of questions.
+A Claude Fable 5.1 editor, given 25 forward passes and 300 code runs, produced three edits.
+The first two were built from measured, specific mechanistic hypotheses (induction heads; digit-suppressing neurons in the last layer) and failed on held-out generation: the loop rate stayed at 100\%.
+The third succeeded: four neurons that fire only at the first thinking token, nudged by 4,083 weight entries toward the \think{} read-out direction, make the model close its thinking at once.
+On the held-out BIRD Mini-Dev benchmark the edit cuts the loop rate from 90.7\% to 26.0\% and raises execution accuracy from 0.7\% to 6.0\%; five random-location edits of the same size do nothing.
+But the same model with thinking disabled through its chat template scores 7.3\%.
+The method found a real lever and pulled it; what it found was a bypass of the looping mode, not a repair of it, and the two attempts at a repair were confidently wrong.
+We release the edit, all 328 turns, the harness and the evaluation.
+\todo{update numbers when the gradient baseline, the second Fable run, the GPT-6 Astra runs and the ablation map are in}
+\end{abstract}
+
+\section{Introduction}
+
+Takehi et al.\ \cite{wsp} report that GPT-6 Astra, given a Python kernel over the weights of \Qwen{} and a budget of forward passes, raised the model's MATH-500 score from 7.9\% to 48.1\% by subtracting a ``loop direction'' from 130,188 entries in two MLP down-projection matrices.
+They call the method weight-space programming.
+The result is striking because no gradient was involved: the editor read activations, formed a hypothesis about why the model repeated itself, and wrote the fix by hand.
+The authors' own follow-up on Gemma 3 270M, a model that does not loop, gained nothing, and they conclude that editing ``could remove an obstacle that hid an ability, but it could not add an ability the model lacked.''
+
+This paper asks a narrower question than ``does it work'': \emph{what does the method actually produce when it works?}
+Two readings of the math result are open.
+In the first, the editor understood a mechanism and repaired it.
+In the second, the editor found some small set of weights whose change happens to stop the loop, and the mechanistic story is decoration.
+The two readings predict different things for a new domain: a repair found by understanding should look like the explanation that produced it; a lever found by search need not.
+
+We set up an independent instance of the method with a different editor, a different task and a held-out benchmark the editor never saw, and record every hypothesis the editor stated, every edit it made, and whether the edit did what the hypothesis predicted.
+Our contributions:
+\begin{enumerate}
+\item A re-implementation of the harness (sandboxed kernel, forward-pass service with generation and teacher-forced modes, handoff protocol) that runs on one laptop.
+\item A new arena, text-to-SQL, where \Qwen{} with thinking enabled loops on 91\% of questions and the authors' released math edit does not transfer (cut rate 98.7\% to 87.3\%).
+\item A full session trace in which a frontier editor stated three mechanistic hypotheses, tested three edits, and succeeded only with the third.
+\item Controls that separate the claim into parts: a template-flag control (what skipping thinking is worth), random-location edits of the same footprint (whether the neuron choice mattered), and a same-footprint gradient baseline (whether an optimiser finds the same solution). \todo{plus repeat runs and an ablation map}
+\end{enumerate}
+
+\section{Setup}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.78\textwidth]{fig/f1_setup.pdf}
+\caption{The harness. The editor model has no tools of its own; it writes Python blocks that run in a sandboxed kernel over the weights, and forward blocks that run the target model. Generation passes are graded by executing the produced SQL against the database; teacher-forced passes return log-probabilities, hidden states, MLP activations and attention. The held-out benchmark is never shown to the editor.}
+\label{fig:setup}
+\end{figure}
+
+\paragraph{Target model.} \Qwen{} \cite{qwen35}: 24 layers, width 1,024, MLP width 3,584, vocabulary 248,320, tied embeddings. Six layers (3, 7, 11, 15, 19, 23) use full attention; the others use gated linear attention. Weights are bfloat16 safetensors; the editor reads and writes them as float32 NumPy arrays and the harness casts edits back to bfloat16.
+
+\paragraph{Task and obstacle.} Text-to-SQL: the user message gives a SQLite schema and a question; the answer is graded by executing the produced query and comparing result sets with the gold query. With thinking enabled through the chat template, \Qwen{} writes ``Thinking Process: 1.\ Analyze the Request \ldots\ 2.\ Analyze the Schema \ldots'' and then repeats schema bullets until the 8,192-token limit. On 150 evenly spaced BIRD Mini-Dev questions \cite{bird}, greedy decoding: 0.7\% correct, 98.7\% cut at the limit, 90.7\% with a visible repetition (a loop score of 5 or more repeated lines). This is the same failure class the report fixes on math, in a domain where the report's edit mostly does not transfer (Table~\ref{tab:main}).
+
+\paragraph{Practice and test.} The editor sees practice questions only: 6,997 from Spider train \cite{spider}, with gold SQL and databases. The held-out test is BIRD Mini-Dev (500 questions over 11 databases); thinking-mode evaluations use 150 evenly spaced questions because each looping answer costs 8,192 tokens.
+
+\paragraph{Budgets and rules.} These follow the report: 25 forward passes, 300 code runs, a handoff every 40 turns in which the conversation restarts with the task, the editor's notes file and its current edit list, and a final answer when the passes are spent. A generation pass answers up to 128 practice questions (64 per model in a paired ``both'' request) with greedy decoding and 8,192 new tokens; a teacher-forced pass reads up to 1,024 texts. Gradient descent, running the model inside the kernel, and edits to the final norm, the embeddings, or whole-tensor rescaling are refused. The kernel is sandboxed (no network; writes only inside the run directory).
+
+\paragraph{Editor.} Claude Fable 5.1, called headless with tools, user settings and memory disabled, reasoning effort at its highest setting, one conversation per handoff. The report used GPT-6 Astra; we keep that path for the editor-dependence runs. \todo{Astra runs}
+
+\paragraph{Evaluation after the session.} The submitted edit replaces the original tensors; the model is run with mlx-lm, greedy, 8,192 new tokens, thinking enabled, on the same 150 BIRD questions as the baseline. We report execution accuracy, the share of answers cut at the token limit, the loop share, and paired wrong-to-right and right-to-wrong counts against the base model on the same questions.
+
+\section{The session}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[height=0.62\textheight]{fig/f2_session.pdf}
+\caption{The 25-pass session: three hypotheses, three edits, one success. Pass numbers refer to the forward-pass budget; code runs and handoffs are omitted. Numbers inside the boxes are the editor's own measurements on practice questions.}
+\label{fig:session}
+\end{figure}
+
+The session ran 9.8 hours on one laptop (328 turns, 299 code runs, 25 passes, 9 handoffs; 493k output tokens from the editor). Figure~\ref{fig:session} summarises it; the editor's notes file and all turns are released.
+
+\paragraph{Attempt 1: induction heads.} After one diagnostic generation pass (1.6\% correct, 99\% cut, 95\% looping), the editor teacher-forced two loop transcripts with attention saved at the six full-attention layers. In the loop region it found heads that put attention mass one period back, the signature of induction heads \cite{induction}: layer 15 head 7 at 0.26 mass, then layer 11 head 1, layer 23 head 5 and layer 19 head 5. It also measured that the loop is ``soft'': at each bullet start the copied token leads the best alternative by a median 1.6 nats, and greedy decoding always takes the copy. Its edit zeroed the output-projection columns of the four heads. Paired generation on 40 fresh problems: original 2.5\%, edited 0.0\%, both 100\% cut. The editor dropped the edit. Layer 15 head 7 is, as it happens, the head the report's p25c run zeroed for math; here it did nothing.
+
+\paragraph{Attempt 2: digit-suppressing neurons.} The editor then teacher-forced six of the model's own loop transcripts with hidden states and MLP activations in layers 16 to 23, and asked a sharper question: at each blank line the model chooses between ``indent and add another bullet'' and ``write the next section number''. It found seven neurons in the last layer's MLP that fire when a digit is about to be predicted and push that exact digit down by about 3 nats (n580 for `3', n598 for `5', n564 for `4', n557 for `1', n485 for `2', n669 for `6', n639 for `7'), plus three neurons that move the newline decision. Its edit zeroed the seven columns and rescaled four others in layers 22 and 23. Paired generation on 48 fresh problems: original 0.0\%, edited 2.1\%, both 100\% cut. Dropped. The editor's note at this point reads: ``The looping is distributed and not fixable at one site.''
+
+\paragraph{Attempt 3: the start-of-thinking switch.} The editor changed the question from ``why does the loop continue'' to ``why does the model enter this mode at all''. At the first thinking position, right after the \texttt{<think>} tag and newline, \think{} is already a plausible continuation (log-probability $-6.9$, rank 6 to 8), and direct logit attribution shows the MLPs of layers 16 to 23 pushing against it diffusely, by about 9 nats in total. It then searched for neurons selective to that position and found four, one each in layers 17 to 20 (n537, n628, n2424, n1235), with activations 1.2 to 2.7 there and a 99.9th-percentile magnitude elsewhere of 0.3 to 0.7. The edit adds to each neuron's down-projection column a multiple $\alpha$ of the unit vector $u = \mathrm{unit}(\gamma \odot E[\think])$, where $\gamma$ is the final norm gain and $E$ the tied unembedding, with $\alpha = 0.20, 0.20, 0.25, 0.15$ (Figure~\ref{fig:mechanism}). 4,083 entries change; the largest change is 0.039.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/f3_mechanism.pdf}
+\caption{The successful edit. Four MLP neurons that fire only at the first thinking token are made to write the \think{} read-out direction; the model closes its thinking at once and writes SQL.}
+\label{fig:mechanism}
+\end{figure}
+
+Teacher-forced, the log-probability of \think{} at the first position rose from $-6.9$ to between $-0.11$ and $-0.24$, including on a 4,196-token prompt and on BIRD-style prompts with a hint line. The editor then spent its remaining passes on confirmation: seven paired sets of 64 fresh practice problems, 448 in total, original 1.1\% and edited 28.1\%, a gain of 26.8 points with every set between 18.8 and 31.3 points and 3 to 5 standard errors above zero; 122 problems went wrong to right and 2 right to wrong; cut answers fell from about 100\% to 3 to 16\%. A variant that wrote the direction of the token `Okay' instead, to start free-form thinking rather than close it, scored 3.1\% with 98\% cut, and was dropped.
+
+\section{Held-out results and controls}
+
+\begin{table}[tbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Condition & Entries & $n$ & Acc.\ \% & Cut \% & Loop \% & W$\to$R / R$\to$W \\
+\midrule
+Base, thinking on & 0 & 150 & 0.7 & 98.7 & 90.7 & \\
+Base, thinking off via template, 8,192 tokens & 0 & 150 & 7.3 & 12.0 & 11.3 & \\
+Base, thinking off, 1,024 tokens, all questions & 0 & 500 & 7.0 & 14.0 & 9.0 & \\
+Authors' math edit \cite{wsp}, thinking on & 130,188 & 150 & 3.3 & 87.3 & 82.0 & 5 / 1 \\
+\midrule
+Fable edit C (this work), thinking on & 4,083 & 150 & \textbf{6.0} & 27.3 & 26.0 & 9 / 1 \\
+Random location, same footprint, 5 draws & 4,083 & 5$\times$50 & 0.0 to 2.0 & 100 & 90 to 98 & \\
+Gradient on the same 4,083 entries & 4,083 & 150 & \todo{} & \todo{} & \todo{} & \\
+\midrule
+Fable edit A (induction heads), practice & \todo{} & 40 & 0.0 & 100 & 100 & \\
+Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
+\bottomrule
+\end{tabular}}
+\caption{BIRD Mini-Dev, greedy, 8,192 new tokens unless stated, the same 150 evenly spaced questions in every 150-question row. ``Cut'' is the share of answers that hit the token limit; ``Loop'' the share with a visible repetition. The last column is the paired count of questions that changed outcome against the base model on the same questions. Edits A and B were only evaluated on practice questions inside the session. \todo{second Fable run and two Astra runs as further rows}}
+\label{tab:main}
+\end{table}
+
+\paragraph{The edit transfers.} On BIRD, which the editor never saw and whose prompts are longer and carry a hint line, edit C removes the thinking loop: cut answers fall from 98.7\% to 27.3\% and loops from 90.7\% to 26.0\%. Accuracy rises from 0.7\% to 6.0\%, with 9 questions wrong to right and 1 right to wrong. The remaining cuts are loops inside the SQL itself (errors such as ``too many FROM clause terms''), which the base model also produces with thinking off.
+
+\paragraph{The neuron choice mattered.} Five edits that apply the same four change vectors to randomly chosen neurons in the same four layers leave the model where it was: 0 to 2\% correct, 100\% cut, 90 to 98\% looping. The editor picked four neurons out of 14,336 candidates in those layers and the pick was not interchangeable.
+
+\paragraph{The edit is worth one template flag.} The base model with thinking disabled through the chat template, same 150 questions and token limit, scores 7.3\% with 12.0\% cut and 11.3\% looping. The edit lands slightly below that on all three measures. Mechanistically this is expected: the chat template with thinking off inserts an empty \texttt{<think></think>} block, and the edit makes the model emit the closing tag itself. The edit reproduces the template flag in the weights.
+
+\paragraph{Gradient baseline.} \todo{125 Adam steps on the same 4,083 entries, target = \think{} then gold SQL, 500 practice questions. Report whether it reaches the same accuracy and whether its change vector aligns with $u$.}
+
+\section{What the trace says about the method}
+
+\paragraph{Understanding versus finding a lever.} The session contains three mechanistic claims of the form ``these components cause the loop; changing them will stop it''. Each was specific, each was backed by a measurement the editor made, and each was turned into a precise edit and tested on held-out generation. The first two were false in the sense that matters: the predicted effect did not occur. The third was true, but it is not a claim about why the loop continues; it is a claim about where the model decides to enter the mode that loops, and the edit prevents entry. The method's output here is a bypass, which the editor itself described accurately in its final answer: ``skip the degenerate Thinking Process loop and answer directly''.
+
+\paragraph{Calibration.} \todo{table of every stated prediction with its outcome, from the turn logs: predicted direction, predicted size where given, observed.}
+
+\paragraph{What the method did well.} Finding four position-selective neurons among 14,336, choosing a direction in the residual stream that the output layer reads as one token, and setting four scalars so that the token wins by 2 nats without side effects on the SQL that follows, is a non-trivial search, and the random-location control shows it was not luck of the layer. The confirmation protocol the editor chose on its own, seven independent paired sets, is stronger than the report's.
+
+\paragraph{What it did not do.} It did not repair the loop. Whether a repair exists at all in this model is an open question that the ablation map will answer: if no single head or 64-column MLP block reduces the loop rate when switched off, the editor took the only road available. \todo{ablation map} It also did not find the authors' loop direction, and the authors' edit did not find this switch; the two edits are in different layers and act on different decisions.
+
+\paragraph{Cost.} At list prices the session used 17.3M cached input tokens and 493k output tokens, about \$800; 9.8 hours of wall clock, of which about 6 were the laptop running forward passes. The equivalent template flag costs nothing.
+
+\section{Related work}
+
+Weight-space programming \cite{wsp} is the direct subject. Model editing with ROME and MEMIT \cite{rome} locates and rewrites factual associations with a closed-form update; activation steering \cite{steering} adds a direction to the residual stream at inference time rather than in the weights. Edit C is a weight-space form of steering at a single position, gated by neurons that detect that position. The induction-head hypothesis the editor tried first follows \cite{induction}; direct logit attribution follows the logit lens \cite{lens}. The evaluation of thinking-mode loops in small reasoning models, and the finding that ``no-think'' modes often match or beat them on small models, is documented in \cite{qwen35} and \todo{cite}.
+
+\section{Limitations}
+
+One editor, one run, one domain. \todo{remove after the repeat runs.} The held-out set is 150 questions, so accuracy differences of a few points are within noise; the loop and cut rates are not. Greedy decoding differs from the report's sampling protocol; we chose it so that paired comparisons are exact. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the session; the trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
+
+\section{Conclusion}
+
+A frontier editor given weights, activations and 25 forward passes removed a thinking loop in \Qwen{} on text-to-SQL by editing 4,083 entries, and the edit transfers to a held-out benchmark. Its two attempts at a mechanistic repair, each stated with specifics and tested, failed. What succeeded is a bypass equal in effect to disabling thinking in the chat template. The method finds levers; whether it finds mechanisms is, on this evidence, not yet shown. The same question applies to the published math result and can be asked with the same controls.
+
+\section*{Reproduction}
+
+Edit files, the 328 turn logs, the editor's notes, the harness and the evaluation scripts are at \todo{repository URL}. The edit is four \texttt{.npy} files totalling 16~KB; applying it to the public checkpoint and running \texttt{eval\_sql.py} on BIRD Mini-Dev reproduces Table~\ref{tab:main} in about 20 minutes on an Apple M-series laptop.
+
+\begin{thebibliography}{9}
+\bibitem{wsp} R.\ Takehi, J.\ Teoh, Y.\ Zhang, O.\ Khattab. Sparks of Weight-Space Programming: LLMs can understand and write neural network weights. MIT CSAIL, 2 November 2026. \todo{URL}
+\bibitem{qwen35} Qwen Team. Qwen3.5 technical report, 2026. \todo{exact reference}
+\bibitem{bird} J.\ Li et al. Can LLM already serve as a database interface? A big bench for large-scale database grounded text-to-SQLs. NeurIPS 2023.
+\bibitem{spider} T.\ Yu et al. Spider: a large-scale human-labeled dataset for complex and cross-domain semantic parsing and text-to-SQL task. EMNLP 2018.
+\bibitem{induction} C.\ Olsson et al. In-context learning and induction heads. Transformer Circuits Thread, 2022.
+\bibitem{lens} nostalgebraist. Interpreting GPT: the logit lens. 2020.
+\bibitem{rome} K.\ Meng, D.\ Bau, A.\ Andonian, Y.\ Belinkov. Locating and editing factual associations in GPT. NeurIPS 2022.
+\bibitem{steering} A.\ Turner et al. Activation addition: steering language models without optimization. 2023.
+\end{thebibliography}
+
+\appendix
+\section{The edit}
+For layer $\ell \in \{17, 18, 19, 20\}$ with neuron $j_\ell \in \{537, 628, 2424, 1235\}$ and $\alpha_\ell \in \{0.20, 0.20, 0.25, 0.15\}$:
+\[
+W^{\mathrm{down}}_{\ell}[:, j_\ell] \leftarrow W^{\mathrm{down}}_{\ell}[:, j_\ell] + \alpha_\ell \, u, \qquad u = \frac{\gamma \odot E[\think]}{\lVert \gamma \odot E[\think] \rVert},
+\]
+with $\gamma$ the final RMSNorm gain and $E$ the tied embedding matrix. Entries whose bfloat16 value did not change after the cast are not counted; 4,083 of the 4,096 entries changed.
+
+\section{Session statistics}
+Started 2026-11-06 18:13, ended 2026-11-07 04:03 local time. 328 turns, 299 of 300 code runs, 25 of 25 passes, 9 handoffs. Ten forward requests were rejected by the harness without counting against the budget (eight that tried to reference a file instead of inline JSON, two with invalid JSON). The editor recorded pass 3, a 6-text teacher-forced read, as wasted. The kernel restarts at every handoff by design, so the editor recovered its state from its notes file nine times; its edit files persist across restarts.
+
+\end{document}

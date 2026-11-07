@@ -1,0 +1,5 @@
+Consistent with earlier confirmations (+26.6 ± 5.6 pts, 17 wrong→right, 0 right→wrong). Next fresh set (confirmD1), pass 23.
+
+```forward
+{"type": "generate", "model": "both", "problems": ["sp4161", "sp301", "sp5394", "sp380", "sp227", "sp6138", "sp3865", "sp3843", "sp376", "sp3402", "sp2323", "sp5806", "sp1442", "sp2200", "sp2828", "sp1574", "sp3096", "sp3178", "sp2241", "sp6003", "sp6839", "sp6084", "sp1661", "sp4826", "sp1479", "sp4510", "sp4099", "sp6144", "sp4302", "sp691", "sp3676", "sp2422", "sp6732", "sp5373", "sp2772", "sp5463", "sp4400", "sp3455", "sp4815", "sp824", "sp2004", "sp6006", "sp992", "sp3519", "sp4170", "sp2594", "sp5178", "sp5988", "sp4016", "sp3653", "sp3609", "sp6466", "sp15", "sp1525", "sp2427", "sp3379", "sp1662", "sp778", "sp6331", "sp5078", "sp2102", "sp4446", "sp4521", "sp1801"], "max_tokens": 8192}
+```

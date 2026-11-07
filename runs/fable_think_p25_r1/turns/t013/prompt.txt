@@ -1,0 +1,5 @@
+<class 'dict'> ['layers', 'files', 'shape_note', 'samples']
+['resid_last_prompt.npy', 'resid_answer_mean.npy', 'index.json', 'mlp_down_in_answer_mean.npy']
+[(13, '.'), (198, '\n'), (262, '   '), (348, ' *'), (256, '  '), (561, ' The'), (1510, ' `'), (35, 'D'), (483, 'orm'), (63, '`'), (1898, ' table'), (682, ' has'), (1510, ' `'), (12596, 'gender'), (27653, '`.'), (271, '\n\n'), (18, '3'), (13, '.'), (220, ' '), (2972, ' **'), (1774, 'Form'), (6134, 'ulate')]
+
+[0.0 s]

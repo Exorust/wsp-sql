@@ -1,0 +1,6 @@
+<class 'list'> 200 ['id', 'text']
+'<|im_start|>assistant\n<think>\n\n</think>\n\n```sql\nSELECT count(*) FROM Flight\n```<'
+8017 [138, 141, 174, 154, 150, 178, 189, 176, 193, 193, 169, 206]
+18147
+
+[0.0 s]

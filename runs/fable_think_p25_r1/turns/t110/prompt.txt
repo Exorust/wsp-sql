@@ -1,0 +1,37 @@
+{
+ "pass_id": 7,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 6,
+ "lengths": [
+  1566,
+  1600,
+  1600,
+  1600,
+  1317,
+  1298
+ ],
+ "max_len": 1600,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L8.npy [N,T,1024] float16",
+  "hidden_L12.npy [N,T,1024] float16",
+  "hidden_L16.npy [N,T,1024] float16",
+  "hidden_L20.npy [N,T,1024] float16",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "mlp_down_in_L16.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L17.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L18.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L19.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L20.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L21.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L22.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_7",
+ "seconds": 11
+}
+[forward passes used: 7/25]

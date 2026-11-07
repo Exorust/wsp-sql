@@ -1,0 +1,12 @@
+[('</think>\n\n', 64)]
+ntok quantiles [16.5  30.75 47.5  62.25 94.1 ]
+=== sp4188 correct 13 | sql: 'SELECT COUNT(*) FROM Roles'
+</think>\n\n```sql\nSELECT COUNT(*) FROM Roles;\n```
+=== sp4345 correct 25 | sql: 'SELECT COUNT(DISTINCT role_code) AS distinct_role_count\nFROM Project_Staff'
+</think>\n\n```sql\nSELECT COUNT(DISTINCT role_code) AS distinct_role_count\nFROM Project_Staff;\n```
+=== sp6888 correct 45 | sql: 'SELECT o.order_id, c.customer_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nORDER BY o.date_order_p'
+</think>\n\n```sql\nSELECT o.order_id, c.customer_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nORDER BY o.date_order_placed ASC\nLIMIT 1;\n```
+=== sp2937 correct 20 | sql: "SELECT COUNT(*) \nFROM address \nWHERE district = 'California'"
+</think>\n\n```sql\nSELECT COUNT(*) \nFROM address \nWHERE district = 'California';\n```
+
+[0.0 s]

@@ -1,0 +1,87 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.07333333333333333,
+ "cut_share": 0.12,
+ "loop_share": 0.10666666666666667,
+ "classes": {
+  "no_such_column": 0.44,
+  "wrong_result": 0.28,
+  "syntax": 0.08,
+  "correct": 0.07333333333333333,
+  "other_error": 0.06666666666666667,
+  "ambiguous": 0.02,
+  "timeout": 0.013333333333333334,
+  "no_such_table": 0.013333333333333334,
+  "misuse": 0.006666666666666667,
+  "no_such_function": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   6
+  ],
+  [
+   "OperationalError: no such column: EXAMINATION.EXAMINATION_DA",
+   3
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   2
+  ],
+  [
+   "OperationalError: interrupted",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.name",
+   2
+  ],
+  [
+   "OperationalError: ambiguous column name: sp.power_name",
+   2
+  ],
+  [
+   "OperationalError: near \"set\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   2
+  ],
+  [
+   "OperationalError: no such column: b.element",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.Consumption",
+   1
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: cs.Country",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 45, in _run
+  File "<cell>", line 3, in <module>
+NameError: name 'T15' is not defined
+
+[0.0 s]
+[code runs used: 280/300]

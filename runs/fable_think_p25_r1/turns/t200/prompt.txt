@@ -1,0 +1,80 @@
+=== WR sp2856 | q: Find the name of route that has the highest number of deliveries.
+    pred: SELECT route_name FROM Delivery_Routes GROUP BY route_name ORDER BY COUNT(*) DESC LIMIT 1
+    gold: SELECT t1.route_name FROM Delivery_Routes AS t1 JOIN Delivery_Route_Locations AS t2 ON t1.route_id  =  t2.route_id GROUP BY t1.route_id ORDER BY count(*) DESC L
+=== WR sp5978 | q: What are the names of all video games that are collectible cards?
+    pred: SELECT GName FROM Video_Games WHERE GType = 'Collectible Card'
+    gold: SELECT gname FROM Video_games WHERE gtype  =  "Collectible card game"
+=== WR sp4539 | q: Find the number of users in each role.
+    pred: SELECT COUNT(*) AS user_count FROM Users u JOIN Roles r ON u.role_code = r.role_code
+    gold: SELECT count(*) ,  role_code FROM users GROUP BY role_code
+=== WR sp6479 | q: Find the name of project that continues for the longest time.
+    pred: SELECT p.Name FROM Projects p JOIN AssignedTo a ON p.Code = a.Project JOIN Scientists s ON a.Scientist = s.SSN GROUP BY p.Code ORDER BY p.Hours DESC LIMIT 1
+    gold: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+=== WR sp2371 | q: What degrees were conferred in San Francisco State University in the year 2001?
+    pred: SELECT DISTINCT d.Degrees FROM degrees d JOIN campuses c ON d.Campus = c.Id WHERE c.Location = 'San Francisco State University'   AND c.Year = 2001
+    gold: SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "San Francisco State University" AND t2.year  =  2001
+=== WR sp3672 | q: For each year, return the year and the number of times the team Boston Red Stockings won i
+    pred: SELECT year, COUNT(*) AS postseason_wins FROM postseason WHERE team_id_winner = 'Boston Red Stockings' GROUP BY year
+    gold: SELECT count(*) ,  T1.year FROM postseason AS T1 JOIN team AS T2 ON T1.team_id_winner  =  T2.team_id_br WHERE T2.name  =  'Boston Red Stockings' GROUP BY T1.yea
+=== WR sp421 | q: Show ids for all employees who don't have a certificate.
+    pred: SELECT e.eid FROM employee e JOIN certificate c ON e.eid = c.eid WHERE c.aid IS NULL
+    gold: SELECT eid FROM Employee EXCEPT SELECT eid FROM Certificate
+=== WR sp3380 | q: What are the names of all players that got more than the average number of points?
+    pred: SELECT DISTINCT p.name FROM player p JOIN club c ON p.Club_ID = c.Club_ID JOIN club_rank cr ON p.Club_ID = cr.Club_ID WHERE p.Apps > (SELECT AVG(Points) FROM pl
+    gold: SELECT name FROM player WHERE points  >  (SELECT avg(points) FROM player)
+=== WR sp452 | q: How many animal type allergies exist?
+    pred: SELECT COUNT(*) FROM Allergy_Type
+    gold: SELECT count(*) FROM Allergy_type WHERE allergytype  =  "animal"
+=== WR sp4685 | q: Find the first name and last name of the instructor of course that has course name
+    pred: SELECT F.Fname, F.Lname FROM Faculty F JOIN Course C ON F.FacID = C.Instructor WHERE C.CName = 'Course Name' ORDER BY F.Fname, F.Lname
+    gold: SELECT T2.Fname ,  T2.Lname FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID WHERE T1.CName  =  "COMPUTER LITERACY"
+=== WR sp3082 | q: Find the average credit score of the customers who have some loan.
+    pred: SELECT AVG(c.credit_score) AS average_credit_score FROM customer c JOIN loan l ON c.cust_ID = l.cust_ID WHERE l.loan_type IS NOT NULL
+    gold: SELECT avg(credit_score) FROM customer WHERE cust_id IN (SELECT cust_id FROM loan)
+=== WR sp1862 | q: Show times of elimination of wrestlers with days held more than 50.
+    pred: SELECT e.Time, e.Wrestler_ID, e.Team, e.Eliminated_By, e.Elimination_Move, e.Time FROM "Elimination" e JOIN "wrestler" w ON e.Wrestler_ID = w.Wrestler_ID WHERE 
+    gold: SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID WHERE T2.Days_held  >  50
+=== WR sp2041 | q: Show all distinct region names ordered by their labels.
+    pred: SELECT DISTINCT r.Region_name FROM region r JOIN party p ON r.Region_ID = p.Region_ID JOIN member m ON p.Party_ID = m.Party_ID WHERE r.Region_ID = 1 ORDER BY r.
+    gold: SELECT DISTINCT region_name FROM region ORDER BY Label
+=== WR sp3489 | q: Find the job ID for those jobs which average salary is above 8000.
+    pred: SELECT j.JOB_ID FROM jobs j JOIN employees e ON j.JOB_ID = e.JOB_ID JOIN departments d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID WHERE e.SALARY > 8000 GROUP BY j.JOB
+    gold: SELECT job_id FROM employees GROUP BY job_id HAVING AVG(salary) > 8000
+=== WR sp4386 | q: List the research staff details, and order in ascending order.
+    pred: SELECT DISTINCT `research_staff`.* FROM `Research_Staff` `research_staff` WHERE `research_staff`.`employer_organisation_id` IS NOT NULL ORDER BY `research_staff
+    gold: SELECT staff_details FROM Research_Staff ORDER BY staff_details ASC
+=== WR sp3720 | q: What are the names of photos taken with the lens brand 'Sigma' or 'Olympus'?
+    pred: SELECT p.name FROM photos p JOIN camera_lens cl ON p.camera_lens_id = cl.id WHERE cl.brand IN ('Sigma', 'Olympus')
+    gold: SELECT T1.name FROM camera_lens AS T1 JOIN photos AS T2 ON T2.camera_lens_id  =  T1.id WHERE T1.brand  =  'Sigma' OR T1.brand  =  'Olympus'
+=== WR sp6700 | q: List lesson id of all lessons taught by staff with first name as Janessa, last name as Saw
+    pred: SELECT DISTINCT l.lesson_id FROM Lessons l JOIN Staff s ON l.staff_id = s.staff_id JOIN Customers c ON l.customer_id = c.customer_id WHERE s.nickname LIKE '%s' 
+    gold: SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LI
+=== WR sp3188 | q: Where is the history department?
+    pred: SELECT * FROM STUDENT WHERE STU_CLASS = 'History'
+    gold: SELECT dept_address FROM department WHERE dept_name  =  'History'
+=== WR sp4480 | q: What is the total number of people who has no friend living in the city of Austin.
+    pred: SELECT COUNT(*)  FROM Person p  JOIN PersonFriend pf ON p.name = pf.friend  WHERE p.city = 'Austin'  AND pf.friend IS NULL
+    gold: SELECT count(DISTINCT name) FROM PersonFriend WHERE friend NOT IN (SELECT name FROM person WHERE city  =  'Austin')
+=== WR sp790 | q: Find the number of members living in each address.
+    pred: SELECT COUNT(*) AS member_count FROM member m JOIN shop s ON m.Address = s.Address GROUP BY m.Address
+    gold: SELECT count(*) ,  address FROM member GROUP BY address
+=== WR sp3907 | q: Which patients made more than one appointment? Tell me the name and phone number of these 
+    pred: SELECT DISTINCT p.Name, p.Phone FROM Patient p JOIN Appointment a ON p.SSN = a.Patient WHERE a.PrepNurse IS NOT NULL AND a.Physician IS NOT NULL AND a.Appointme
+    gold: SELECT name ,  phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn GROUP BY T1.patient HAVING count(*)  >  1
+=== WR sp727 | q: Show the customer ids and firstname without a credit card.
+    pred: SELECT c.customer_id, c.customer_first_name FROM Customers c WHERE c.customer_id NOT IN (     SELECT customer_id     FROM Customers_Cards     WHERE card_type_co
+    gold: SELECT customer_id ,  customer_first_name FROM Customers EXCEPT SELECT T1.customer_id ,  T2.customer_first_name FROM Customers_cards AS T1 JOIN Customers AS T2 
+=== WR sp2872 | q: Which institution does "Katsuhiro Ueno" belong to?
+    pred: SELECT inst.name FROM Inst JOIN Authorship AS a ON a.authID = inst.instID JOIN Authors AS a2 ON a2.authID = a.authID WHERE a2.fname = 'Katsuhiro' AND a2.lname =
+    gold: SELECT DISTINCT t3.name FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t1.fname  =  "Katsu
+=== WR sp6714 | q: What is the id and detail of the vehicle used in lessons for most of the times?
+    pred: SELECT DISTINCT v.vehicle_id, v.vehicle_details FROM Vehicles v JOIN Lessons l ON v.vehicle_id = l.vehicle_id GROUP BY v.vehicle_id HAVING COUNT(DISTINCT l.cust
+    gold: SELECT T1.vehicle_id ,  T1.vehicle_details FROM Vehicles AS T1 JOIN Lessons AS T2 ON T1.vehicle_id  =  T2.vehicle_id GROUP BY T1.vehicle_id ORDER BY count(*) DE
+=== WR sp5339 | q: What is all the product data, as well as  each product's manufacturer?
+    pred: SELECT      p.Code,     p.Name,     p.Price,     m.Code,     m.Name,     m.Headquarter,     m.Founder,     m.Revenue FROM Products p JOIN Manufacturers m ON p.M
+    gold: SELECT * FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code
+=== WR sp5535 | q: How many products are in the 'Spices' category and have a typical price of over 1000?
+    pred: SELECT COUNT(*)  FROM Products  WHERE product_category_code = 'Spices'    AND typical_selling_price > 1000
+    gold: SELECT count(*) FROM products WHERE product_category_code  =  "Spices" AND typical_buying_price  >  1000
+
+[0.0 s]

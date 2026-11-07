@@ -1,0 +1,5 @@
+<class 'list'> 200 dict_keys(['id', 'text'])
+'m_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n```sql\nSELECT count(*) FROM Flight\n```<|im_end|>\n'
+{"loop": [{"id": "sp467", "onset": 450, "period": 58, "ntok": 566, "text": "<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE Allergy_Type ( Allergy VARCHAR(20) PRIMARY KEY, AllergyType VARCHAR(20) )\n\nCREATE TABLE Has_Allergy ( StuID INTEGER, Allergy VARCHAR(20), FOREIGN KEY(StuID) REFEREN
+
+[0.0 s]

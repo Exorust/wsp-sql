@@ -1,0 +1,9 @@
+0 sp6955 len 296 ans_start 225 period None onset None 
+1 sp914 len 502 ans_start 396 period None onset None 
+2 sp4875 len 466 ans_start 306 period None onset None 
+3 sp3831 len 558 ans_start 499 period 9 onset 520 ',\n    s.date_of_latest_logon'
+4 sp2598 len 288 ans_start 177 period 11 onset 228 ' r2.CheckOut \nAND r2.CheckIn >='
+5 sp6953 len 371 ans_start 223 period 18 onset 274 '.length_feet >= 3\n  OR m.length_meters >= 3 OR m'
+6 sp5600 len 592 ans_start 458 period 20 onset 491 ' \n    JOIN Products ON Ref_Product_Categories.product_category_code = Ref_Prod
+
+[0.0 s]

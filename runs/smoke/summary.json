@@ -1,0 +1,54 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 512,
+ "temp": 0.0,
+ "n": 16,
+ "acc": 0.0625,
+ "cut_share": 0.3125,
+ "loop_share": 0.125,
+ "classes": {
+  "no_such_column": 0.25,
+  "other_error": 0.25,
+  "wrong_result": 0.25,
+  "syntax": 0.125,
+  "correct": 0.0625,
+  "no_such_function": 0.0625
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   4
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.Consumption",
+   1
+  ],
+  [
+   "OperationalError: no such function: DATE_TRUNC",
+   1
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: y.ProductID",
+   1
+  ],
+  [
+   "OperationalError: no such column: cs.Country",
+   1
+  ]
+ ]
+}

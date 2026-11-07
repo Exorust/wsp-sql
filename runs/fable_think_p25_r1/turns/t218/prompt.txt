@@ -1,0 +1,57 @@
+-- sp3698 baseball_1 other_error | ||```sql|SELECT |    p.name_first,|    p.name_last|FROM |    player p|JOIN |    team t ON p.player_id = t.team_id|JOIN |    salary s ON t.team_id = s.team_id|JOIN |    team_franchise tf ON t.team_id = tf.team_id|WHERE |    || TAIL: d = 'Washington Nationals'|    AND t.year = 2005|    AND t.year = 2007|    AND t.rank = 1|    AND t.div_id = 'Washington
+-- sp5151 cre_Drama_Workshop_Groups other_error | ||```sql|SELECT DISTINCT wg.Workshop_Group_ID|FROM Drama_Workshop_Groups wg|WHERE wg.Workshop_Group_ID = (|    SELECT DISTINCT wg2.Workshop_Group_ID|    FROM Drama_Workshop_Groups wg2|    WHERE wg2.Workshop_Group_ID = (|   || TAIL:                                                                                                               WHERE wg20
+-- sp5127 cre_Drama_Workshop_Groups other_error | ||```sql|SELECT DISTINCT s.Service_Type_Code, s.Service_Type_Description|FROM Services s|JOIN Ref_Service_Types rt ON s.Service_Type_Code = rt.Service_Type_Code|WHERE s.Service_Type_Code IN (|    SELECT Service_Type_Code|  || TAIL:                                                                                                                     FROM
+-- sp3906 hospital_1 wrong_result | ||```sql|SELECT DISTINCT p.Name, p.Phone|FROM Patient p|JOIN Appointment a ON p.SSN = a.Patient|WHERE a.PrepNurse IS NOT NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL| || TAIL: AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|
+-- sp3948 hospital_1 no_such_column | ||```sql|SELECT DISTINCT Patient.SSN, Patient.Name, Patient.Address, Patient.Phone, Patient.InsuranceID, Patient.PCP, Patient.StayID, Patient.RoomNumber, Patient.BlockFloor, Patient.BlockCode, Patient.OnCallStart, Patient. || TAIL: ent.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.P
+-- sp3156 assets_maintenance wrong_result | ||```sql|SELECT DISTINCT a.asset_model|FROM Assets a|WHERE a.asset_disposed_date IS NULL AND a.asset_disposed_date IS NOT NULL|AND a.asset_disposed_date IS NOT NULL|AND a.asset_disposed_date IS NOT NULL|AND a.asset_dispose || TAIL: T NULL|AND a.asset_disposed_date IS NOT NULL|AND a.asset_disposed_date IS NOT NULL|AND a.asset_disposed_date IS NOT NULL
+-- sp2207 formula_1 other_error | ||```sql|SELECT DISTINCT|    d.driverId,|    d.number,|    d.forename,|    d.surname,|    COUNT(*) AS total_pit_stops|FROM "circuits" c|JOIN "races" r ON c.circuitId = r.circuitId|JOIN "drivers" d ON r.driverId = d.driverI || TAIL: " cs ON cs.constructorId = cs.constructorId|JOIN "constructorStandings" cs ON cs.constructorId = cs.constructorId|JOIN "
+-- sp2169 formula_1 correct | ||```sql|SELECT DISTINCT|    d.driverId,|    d.forename,|    d.surname|FROM drivers d|JOIN lapTimes lt ON d.driverId = lt.driverId|JOIN races r ON lt.raceId = r.raceId|WHERE r.round = 1|  AND lt.lap = 1|  AND lt.position = || TAIL: lt.lap > 0|  AND lt.position > 0|  AND lt.time > 0|  AND lt.lap > 0|  AND lt.position > 0|  AND lt.time > 0|  AND lt.lap
+-- sp2598 inn_1 no_such_column | ||```sql|SELECT COUNT(*) |FROM Rooms r |JOIN Reservations r2 ON r.RoomId = r2.Room |WHERE r2.CheckIn IS NOT NULL |AND r2.CheckOut IS NOT NULL |AND r2.CheckIn < r2.CheckOut |AND r2.CheckIn >= r2.CheckOut |AND r2.CheckIn >=  || TAIL: eckOut |AND r2.CheckIn >= r2.CheckOut |AND r2.CheckIn >= r2.CheckOut |AND r2.CheckIn >= r2.CheckOut |AND r2.CheckIn >= r
+-- sp7 department_management other_error | ||```sql|SELECT DISTINCT h.born_state|FROM head h|JOIN management m ON h.head_ID = m.head_ID|WHERE h.born_state IN ('California', 'Texas', 'Florida', 'New York', 'Washington', 'New Jersey', 'Massachusetts', 'Pennsylvania', || TAIL: h', 'Nevada', 'Oregon', 'California', 'Texas', 'Florida', 'New York', 'Washington', 'New Jersey', 'Massachusetts', 'Penn
+-- sp5081 device other_error | ||```sql|SELECT DISTINCT s.Device, s.Device_ID, s.Shop_Name, s.Open_Date, s.Open_Year, s.Device, s.Device_ID, s.Shop_ID, s.Shop_Name, s.Open_Date, s.Open_Year, s.Device, s.Device_ID, s.Shop_ID, s.Shop_Name, s.Open_Date, s. || TAIL: Shop_ID, s.Shop_Name, s.Open_Date, s.Open_Year, s.Device, s.Device_ID, s.Shop_ID, s.Shop_Name, s.Open_Date, s.Open_Year,
+-- sp6953 architecture other_error | ||```sql|SELECT DISTINCT a.id, a.name|FROM architect a|JOIN bridge b ON a.id = b.architect_id|JOIN mill m ON a.id = m.architect_id|WHERE b.length_meters >= 3 OR b.length_feet >= 3|  OR m.length_meters >= 3 OR m.length_feet || TAIL: = 3 OR m.length_feet >= 3|  OR m.length_meters >= 3 OR m.length_feet >= 3|  OR m.length_meters >= 3 OR m.length_feet >= 
+-- sp5600 products_gen_characteristics other_error | ||```sql|SELECT COUNT(*) |FROM Ref_Colors |WHERE color_code NOT IN (|    SELECT DISTINCT color_code |    FROM Ref_Product_Categories |    JOIN Products ON Ref_Product_Categories.product_category_code = Ref_Product_Categori || TAIL: tegory_code |    JOIN Products ON Ref_Product_Categories.product_category_code = Ref_Product_Categories.product_category
+-- sp3323 college_1 no_such_column | ||```sql|SELECT DISTINCT|    p.PROF_LNAME,|    p.PROF_DEGREE|FROM PROFESSOR p|JOIN DEPARTMENT d ON p.DEPT_CODE = d.DEPT_CODE|JOIN COURSE c ON p.PROF_NUM = c.CRS_CODE|JOIN CLASS cl ON c.CRS_CODE = cl.CRS_CODE|JOIN ENROLL e  || TAIL: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+-- sp303 product_catalog other_error | ||```sql|SELECT DISTINCT a.attribute_name, a.attribute_data_type|FROM Attribute_Definitions a|JOIN Catalog_Contents_Additional_Attributes ba ON a.attribute_id = ba.attribute_id|WHERE a.attribute_data_type IN ('INTEGER', 'T || TAIL:  'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT',
+
+sp3641 OperationalError: no such column: t.awd
+sp3670 OperationalError: no such column: team.id
+sp3660 OperationalError: no such column: team_name
+sp3659 OperationalError: no such column: team.id
+sp3686 OperationalError: no such column: year
+sp5167 OperationalError: no such column: Quantity
+sp2997 OperationalError: no such column: f.inventory_id
+sp2964 OperationalError: no such column: category.id
+sp2951 OperationalError: no such column: film.id
+sp2991 OperationalError: no such column: a.first_name
+sp2943 OperationalError: no such column: city_id
+sp843 OperationalError: no such column: TrackUnitPrice
+sp3972 OperationalError: no such column: P.ProcedureName
+sp3922 OperationalError: no such column: u.Medication
+sp3903 OperationalError: no such column: D.Position
+sp3961 OperationalError: no such column: p.DepartmentID
+sp3948 OperationalError: no such column: Patient.SSN
+sp3945 OperationalError: no such column: Prescribes.Medication.Code
+sp3136 OperationalError: no such column: f.description
+sp3144 OperationalError: no such column: pf.fault_status
+sp2181 OperationalError: no such column: r.driverId
+sp2598 OperationalError: no such column: r
+sp160 OperationalError: no such column: dew_point_f
+sp3724 OperationalError: no such column: c.brand
+sp5726 OperationalError: no such column: city_code
+sp2840 OperationalError: no such column: Visits_Restaurant.Time
+sp3176 OperationalError: no such column: PROFESSOR.DEP_T_CODE
+sp4383 OperationalError: no such column: project_id
+sp315 OperationalError: no such column: c.catalog_name
+sp2519 OperationalError: no such column: rating
+sp4026 OperationalError: no such column: s1.Launched_Year
+sp4267 OperationalError: no such column: ClubName
+sp1064 OperationalError: no such column: p.Draft_Pick_Number
+sp4357 OperationalError: no such column: ro.project_id
+sp165 OperationalError: no such column: city
+sp6429 OperationalError: no such column: d.Document_Type_Name
+sp3323 OperationalError: no such column: p.PROF_LNAME
+sp3600 OperationalError: no such column: duration
+sp763 OperationalError: no such column: c.Class
+
+[0.0 s]

@@ -1,0 +1,5 @@
+10 -> [16, 15] 11 -> [16, 16]
+L22 digit-suppressing neurons at nlnl (digit, min effect*act, extreme act): []
+L23 digit-suppressing neurons at nlnl (digit, min effect*act, extreme act): [(580, 3, -1.12, -5.3), (598, 5, -1.1, -4.9), (557, 1, -0.88, -3.4), (250, 0, -0.83, 2.8), (564, 4, -0.81, -3.4), (669, 6, -0.69, 2.6), (485, 2, -0.68, -2.8), (639, 7, -0.59, 2.3), (380, 2, -0.52, 1.9)]
+
+[0.0 s]

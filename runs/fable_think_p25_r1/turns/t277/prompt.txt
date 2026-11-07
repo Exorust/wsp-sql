@@ -1,0 +1,3 @@
+ 150\n\u0060\u0060\u0060<|im_end|>\n", "<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE Person ( name varchar(20) PRIMARY KEY, age INTEGER, city TEXT, gender TEXT, job TEXT )\n\nCREATE TABLE PersonFriend ( name varchar(20), friend varchar(20), year INTEGER, FOREIGN KEY (name) REFERENCES Person(name), FOREIGN KEY (friend) REFERENCES Person(name) )\n\nQuestion: Who is the person whose age 
+
+[0.0 s]

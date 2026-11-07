@@ -1,0 +1,72 @@
+['.cache', 'chat_template.jinja', 'config.json', 'merges.txt', 'model.safetensors-00001-of-00001.safetensors', 'model.safetensors.index.json', 'preprocessor_config.json', 'tokenizer.json', 'tokenizer_config.json', 'video_preprocessor_config.json', 'vocab.json']
+{'attention_bias': False, 'attention_dropout': 0.0, 'attn_output_gate': True, 'dtype': 'bfloat16', 'eos_token_id': 248044, 'full_attention_interval': 4, 'head_dim': 256, 'hidden_act': 'silu', 'hidden_size': 1024, 'initializer_range': 0.02, 'intermediate_size': 3584, 'layer_types': "['linear_attention', 'linear_attention', 'linear_attention', 'full_attention', 'linear_attention', 'linear_attention', '", 'linear_conv_kernel_dim': 4, 'linear_key_head_dim': 128, 'linear_num_key_heads': 16, 'linear_num_value_heads': 16, 'linear_value_head_dim': 128, 'max_position_embeddings': 262144, 'mlp_only_layers': [], 'model_type': 'qwen3_5_text', 'mtp_num_hidden_layers': 1, 'mtp_use_dedicated_embeddings': False, 'num_attention_heads': 8, 'num_hidden_layers': 24, 'num_key_value_heads': 2, 'rms_norm_eps': 1e-06, 'tie_word_embeddings': True, 'use_cache': True, 'vocab_size': 248320, 'mamba_ssm_dtype': 'float32', 'rope_parameters': "{'mrope_interleaved': True, 'mrope_section': [11, 11, 10], 'rope_type': 'default', 'rope_theta': 10000000, 'partial_rota"}
+n tensors 488 language_model 320
+  embed_tokens.weight (248320, 1024)
+  layers.0.input_layernorm.weight (1024,)
+  layers.0.linear_attn.A_log (16,)
+  layers.0.linear_attn.conv1d.weight (6144, 1, 4)
+  layers.0.linear_attn.dt_bias (16,)
+  layers.0.linear_attn.in_proj_a.weight (16, 1024)
+  layers.0.linear_attn.in_proj_b.weight (16, 1024)
+  layers.0.linear_attn.in_proj_qkv.weight (6144, 1024)
+  layers.0.linear_attn.in_proj_z.weight (2048, 1024)
+  layers.0.linear_attn.norm.weight (128,)
+  layers.0.linear_attn.out_proj.weight (1024, 2048)
+  layers.0.mlp.down_proj.weight (1024, 3584)
+  layers.0.mlp.gate_proj.weight (3584, 1024)
+  layers.0.mlp.up_proj.weight (3584, 1024)
+  layers.0.post_attention_layernorm.weight (1024,)
+  layers.3.input_layernorm.weight (1024,)
+  layers.3.mlp.down_proj.weight (1024, 3584)
+  layers.3.mlp.gate_proj.weight (3584, 1024)
+  layers.3.mlp.up_proj.weight (3584, 1024)
+  layers.3.post_attention_layernorm.weight (1024,)
+  layers.3.self_attn.k_norm.weight (256,)
+  layers.3.self_attn.k_proj.weight (512, 1024)
+  layers.3.self_attn.o_proj.weight (1024, 2048)
+  layers.3.self_attn.q_norm.weight (256,)
+  layers.3.self_attn.q_proj.weight (4096, 1024)
+  layers.3.self_attn.v_proj.weight (512, 1024)
+  norm.weight (1024,)
+n problems 6997 dbs 140 schema tokens pct 0/10/50/90/100 [  65.  115.  269.  915. 1747.]
+{'id': 'sp0', 'db': 'department_management', 'question': 'How many heads of the departments are older than 56 ?', 'gold': 'SELECT count(*) FROM head WHERE age  >  56'}
+{'id': 'sp3501', 'db': 'hr_1', 'question': 'display the employee name ( first name and last name ) and hire date for all employees in the same department as Clara excluding Clara.', 'gold': 'SELECT first_name ,  last_name ,  hire_date FROM employees WHERE department_id  =  ( SELECT department_id FROM employees WHERE first_name  =  "Clara") AND first_name != "Clara"'}
+shortest schema network_2 65
+CREATE TABLE Person ( name varchar(20) PRIMARY KEY, age INTEGER, city TEXT, gender TEXT, job TEXT )
+
+CREATE TABLE PersonFriend ( name varchar(20), friend varchar(20), year INTEGER, FOREIGN KEY (name) REFERENCES Person(name), FOREIGN KEY (friend) REFERENCES Person(name) )
+[(4703, 'SELECT'), (59606, ' CAST'), (3631, '(S'), (2705, 'UM'), (2784, '(a'), (8, ')'), (5574, ' AS'), (24470, ' REAL'), (8, ')'), (348, ' *'), (220, ' '), (16, '1'), (15, '0'), (15, '0'), (593, ' /'), (23241, ' COUNT'), (27733, '(*)'), (4154, ' FROM'), (259, ' t'), (5574, ' AS'), (345, ' T'), (16, '1'), (5120, ' WHERE'), (59606, ' CAST'), (2929, '(C'), (6148, 'AST'), (2007, '(x')]
+SAMPLE ["sp30","sp32","sp43","sp57","sp76","sp122","sp153","sp157","sp237","sp306","sp321","sp358","sp377","sp396","sp539","sp567","sp620","sp665","sp679","sp704","sp708","sp725","sp748","sp788","sp902","sp903","sp972","sp1004","sp1070","sp1092","sp1100","sp1119","sp1141","sp1233","sp1249","sp1269","sp1355","sp1360","sp1364","sp1371","sp1379","sp1387","sp1389","sp1391","sp1419","sp1437","sp1446","sp1470","sp1488","sp1495","sp1524","sp1538","sp1543","sp1556","sp1609","sp1614","sp1617","sp1648","sp1661","sp1710","sp1721","sp1729","sp1773","sp1824","sp1851","sp1883","sp1889","sp1917","sp1967","sp2007","sp2010","sp2021","sp2118","sp2150","sp2158","sp2181","sp2260","sp2268","sp2281","sp2293","sp2370","sp2373","sp2416","sp2438","sp2453","sp2462","sp2504","sp2525","sp2530","sp2565","sp2595","sp2665","sp2696","sp2753","sp2784","sp2817","sp2822","sp2833","sp2850","sp2900","sp2938","sp3009","sp3039","sp3041","sp3052","sp3085","sp3087","sp3107","sp3139","sp3149","sp3188","sp3190","sp3230","sp3307","sp3311","sp3381","sp3407","sp3425","sp3458","sp3459","sp3462","sp3471","sp3482","sp3485","sp3538","sp3539","sp3551","sp3615","sp3637","sp3660","sp3702","sp3708","sp3778","sp3792","sp3825","sp3879","sp3883","sp3889","sp3923","sp3958","sp3966","sp3994","sp4029","sp4051","sp4088","sp4174","sp4195","sp4209","sp4231","sp4248","sp4256","sp4269","sp4284","sp4314","sp4351","sp4395","sp4422","sp4434","sp4546","sp4561","sp4591","sp4614","sp4661","sp4775","sp4794","sp4800","sp4850","sp4898","sp4946","sp4952","sp4956","sp4971","sp4988","sp5052","sp5060","sp5067","sp5149","sp5156","sp5161","sp5177","sp5220","sp5259","sp5263","sp5270","sp5296","sp5317","sp5321","sp5330","sp5378","sp5410","sp5457","sp5468","sp5516","sp5520","sp5548","sp5600","sp5601","sp5635","sp5684","sp5727","sp5769","sp5778","sp5809","sp5811","sp5835","sp5862","sp5866","sp5888","sp5926","sp5938","sp5962","sp6022","sp6031","sp6054","sp6073","sp6079","sp6086","sp6116","sp6186","sp6195","sp6196","sp6207","sp6273","sp6293","sp6353","sp6360","sp6374","sp6390","sp6401","sp6485","sp6520","sp6527","sp6570","sp6606","sp6658","sp6662","sp6673","sp6760","sp6804","sp6805","sp6819","sp6833","sp6835","sp6839","sp6854","sp6903","sp6916","sp6928"]
+unique tokens in schemas+gold 5422
+direct path E->U: z 9.84 top1 1.000 medrank 0.0000
+layer 3: nh 8 nkv 2 q rows/head 512 |Wo| 17.6 |Wv| 9.2
+  h0 kv0 |O|  5.9 |Q|  6.9 |G| 13.4 OV z +5.62 top1 0.939 rank 0.000 | QK(1st half) z +0.50 top1 0.000 rank 0.292 | QK(2nd half) z -0.02 top1 0.000
+  h1 kv0 |O|  6.5 |Q|  6.6 |G| 12.8 OV z -3.00 top1 0.000 rank 0.999 | QK(1st half) z +1.02 top1 0.004 rank 0.136 | QK(2nd half) z +0.16 top1 0.000
+  h2 kv0 |O|  7.3 |Q|  6.8 |G| 14.4 OV z +0.53 top1 0.001 rank 0.296 | QK(1st half) z +1.01 top1 0.005 rank 0.145 | QK(2nd half) z +0.08 top1 0.000
+  h3 kv0 |O|  6.5 |Q|  6.9 |G| 13.2 OV z +3.61 top1 0.410 rank 0.000 | QK(1st half) z +0.67 top1 0.002 rank 0.244 | QK(2nd half) z +0.12 top1 0.001
+  h4 kv1 |O|  5.9 |Q|  5.8 |G| 10.4 OV z -4.07 top1 0.000 rank 1.000 | QK(1st half) z +2.95 top1 0.353 rank 0.000 | QK(2nd half) z +0.10 top1 0.000
+  h5 kv1 |O|  5.8 |Q|  6.5 |G| 12.0 OV z +2.06 top1 0.060 rank 0.017 | QK(1st half) z +2.79 top1 0.281 rank 0.001 | QK(2nd half) z +0.07 top1 0.001
+  h6 kv1 |O|  6.3 |Q|  6.7 |G| 14.1 OV z +1.87 top1 0.041 rank 0.025 | QK(1st half) z +1.87 top1 0.053 rank 0.022 | QK(2nd half) z +0.00 top1 0.001
+  h7 kv1 |O|  5.5 |Q|  6.0 |G| 11.2 OV z +0.13 top1 0.000 rank 0.446 | QK(1st half) z +4.78 top1 0.958 rank 0.000 | QK(2nd half) z +0.03 top1 0.000
+layer 7: nh 8 nkv 2 q rows/head 512 |Wo| 16.2 |Wv| 8.6
+  h0 kv0 |O|  5.6 |Q|  5.1 |G|  7.3 OV z -7.65 top1 0.000 rank 1.000 | QK(1st half) z +5.03 top1 0.976 rank 0.000 | QK(2nd half) z -0.01 top1 0.000
+  h1 kv0 |O|  5.6 |Q|  6.1 |G| 10.2 OV z +4.89 top1 0.856 rank 0.000 | QK(1st half) z +2.06 top1 0.094 rank 0.012 | QK(2nd half) z -0.03 top1 0.000
+  h2 kv0 |O|  6.0 |Q|  5.7 |G|  8.5 OV z +7.06 top1 0.981 rank 0.000 | QK(1st half) z +2.94 top1 0.327 rank 0.001 | QK(2nd half) z -0.06 top1 0.000
+  h3 kv0 |O|  6.7 |Q|  5.6 |G|  8.9 OV z -5.68 top1 0.000 rank 1.000 | QK(1st half) z +0.71 top1 0.007 rank 0.225 | QK(2nd half) z -0.01 top1 0.000
+  h4 kv1 |O|  5.6 |Q|  6.5 |G| 10.7 OV z +1.00 top1 0.005 rank 0.149 | QK(1st half) z +2.42 top1 0.189 rank 0.004 | QK(2nd half) z -0.02 top1 0.000
+  h5 kv1 |O|  5.4 |Q|  5.2 |G| 10.6 OV z -1.35 top1 0.000 rank 0.923 | QK(1st half) z +4.58 top1 0.979 rank 0.000 | QK(2nd half) z +0.09 top1 0.001
+  h6 kv1 |O|  5.4 |Q|  5.7 |G| 10.2 OV z -1.05 top1 0.000 rank 0.860 | QK(1st half) z +5.19 top1 0.997 rank 0.000 | QK(2nd half) z -0.03 top1 0.000
+  h7 kv1 |O|  5.4 |Q|  5.7 |G|  9.6 OV z +1.77 top1 0.038 rank 0.036 | QK(1st half) z +5.78 top1 1.000 rank 0.000 | QK(2nd half) z +0.15 top1 0.000
+layer 11: nh 8 nkv 2 q rows/head 512 |Wo| 16.9 |Wv| 10.5
+  h0 kv0 |O|  7.0 |Q|  5.9 |G|  7.7 OV z -4.09 top1 0.000 rank 1.000 | QK(1st half) z +1.40 top1 0.018 rank 0.064 | QK(2nd half) z -0.06 top1 0.000
+  h1 kv0 |O|  5.1 |Q|  6.6 |G|  9.3 OV z +2.50 top1 0.132 rank 0.004 | QK(1st half) z +1.82 top1 0.076 rank 0.013 | QK(2nd half) z -0.06 top1 0.000
+  h2 kv0 |O|  5.4 |Q|  6.5 |G|  8.7 OV z +2.60 top1 0.167 rank 0.003 | QK(1st half) z +2.18 top1 0.105 rank 0.008 | QK(2nd half) z -0.08 top1 0.000
+  h3 kv0 |O|  5.7 |Q|  6.3 |G|  8.3 OV z +3.40 top1 0.434 rank 0.000 | QK(1st half) z +4.02 top1 0.749 rank 0.000 | QK(2nd half) z -0.01 top1 0.000
+  h4 kv1 |O|  6.2 |Q|  6.3 |G|  7.3 OV z +5.83 top1 0.959 rank 0.000 | QK(1st half) z +2.78 top1 0.355 rank 0.001 | QK(2nd half) z -0.02 top1 0.000
+  h5 kv1 |O|  5.4 |Q|  6.6 |G|  9.2 OV z +0.57 top1 0.004 rank 0.281 | QK(1st half) z +0.80 top1 0.005 rank 0.187 | QK(2nd half) z -0.09 top1 0.000
+  h6 kv1 |O|  6.9 |Q|  5.4 |G|  6.5 OV z -7.01 top1 0.000 rank 1.000 | QK(1st half) z +4.17 top1 0.895 rank 0.000 | QK(2nd half) z +0.08 top1 0.000
+  h7 kv1 |O|  5.6 |Q|  6.2 |G|  7.3 OV z +6.51 top1 0.981 rank 0.000 | QK(1st half) z +3.31 top1 0.651 rank 0.000 | QK(2nd half) z +0.12 top1 0.001
+layer 15: nh 8 nkv 2 q rows/head 512 |Wo| 20.0 |Wv| 12.0
+  h0 kv0 |O|  7.0 |Q|  6.1 |G|  9.4 OV z -0.83 top1 0.000 ra
+[output cut at 10,000 characters]
+[5.5 s]

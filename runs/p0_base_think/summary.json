@@ -1,0 +1,83 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.006666666666666667,
+ "cut_share": 0.9866666666666667,
+ "loop_share": 0.9066666666666666,
+ "classes": {
+  "syntax": 0.6733333333333333,
+  "cut_no_sql": 0.26,
+  "no_such_column": 0.03333333333333333,
+  "wrong_result": 0.013333333333333334,
+  "other_error": 0.013333333333333334,
+  "correct": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   40
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   8
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: near \"and\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"0\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"cholesterol\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"score\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"lowest\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`customers`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ],
+  [
+   "OperationalError: near \"=\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`event_id`\": syntax error",
+   1
+  ]
+ ]
+}

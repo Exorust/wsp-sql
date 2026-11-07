@@ -1,0 +1,8 @@
+{'type': 'teacher_forced', 'model': 'edited', 'texts': 8, 'return': {'token_logprobs': True, 'topk': 10}}
+'<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE "list" ( "LastName" TEXT, "FirstName" TEXT, "Grade" INTEGER, "Classroom" INTEGER, PRIMARY KEY(LastName, FirstName) )\n\nCREATE TABLE "teachers" ( "LastName" TEXT, "FirstName" TEXT, "Classroom" INTEGER, PRIMARY KEY(LastName, FirstName) )\n\nQuestion: Find the grade studying in room 105.\n\nWrite one SQLite query that answers the question. Reply with'
+....
+'<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE "list" ( "LastName" TEXT, "FirstName" TEXT, "Grade" INTEGER, "Classroom" INTEGER, PRIMARY KEY(LastName, FirstName) )\n\nCREATE TABLE "teachers" ( "LastName" TEXT, "FirstName" TEXT, "Classroom" INTEGER, PRIMARY KEY(LastName, FirstName) )\n\nQuestion: Find the grade studying in room 105.\n\nWrite one SQLite query that answers the question. Reply with the query in a ```sql code block.<|im_end|>\n<|im_start|>assistant\n<think>\n</think>\n\n```sql\nSELECT DISTINCT grade FROM list WHERE classroom  =  105\n```<|im_end|>\n'
+<class 'list'> 200
+<class 'dict'> ['id', 'text']
+
+[0.0 s]

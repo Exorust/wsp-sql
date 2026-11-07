@@ -1,0 +1,42 @@
+sp3641  | sql: SELECT      t.team_id,     t.rank FROM      team t WHERE      t.year = 2014     AND t.awd = (         SELECT AVG(attendance)         FROM              home_game
+sp3670  | sql: SELECT team.name, team.id FROM team JOIN postseason ON team.team_id = postseason.team_id_winner WHERE postseason.year = 2008 GROUP BY team.id ORDER BY postseaso
+sp3660  | sql: SELECT team_id, team_name FROM team WHERE salary < (     SELECT AVG(salary)     FROM salary     WHERE team_id = team_id ) GROUP BY team_id ORDER BY AVG(salary) 
+sp3659  | sql: SELECT team.name, team.id FROM team JOIN salary ON team.team_id = salary.team_id WHERE salary.player_id = team.player_id GROUP BY team.name, team.id ORDER BY te
+sp3686  | sql: SELECT MIN(year) as year FROM hall_of_fame GROUP BY year ORDER BY year LIMIT 1
+sp5167  | sql: SELECT AVG(Quantity) FROM Invoices WHERE payment_method_code = 'MasterCard'
+sp2997  | sql: SELECT s.first_name, s.last_name FROM staff s JOIN payment p ON s.staff_id = p.staff_id JOIN customer c ON p.customer_id = c.customer_id JOIN rental r ON p.rent
+sp2964  | sql: SELECT      category.name AS genre_name,     category.id AS genre_id,     COUNT(*) AS count FROM category JOIN film_category ON category.id = film_category.cate
+sp2951  | sql: SELECT film.title, film.id, film.description FROM film JOIN film_actor ON film.film_id = film_actor.film_id JOIN actor ON film_actor.actor_id = actor.actor_id G
+sp2991  | sql: SELECT a.first_name, a.last_name, a.address, a.email FROM customer c JOIN address a ON c.address_id = a.address_id WHERE c.first_name = 'Linda'
+sp2943  | sql: SELECT DISTINCT country_id FROM country WHERE COUNT(DISTINCT city_id) >= 3
+sp843  | sql: SELECT AVG(TrackUnitPrice) FROM Track WHERE GenreId = 1
+sp3972  | sql: SELECT DISTINCT P.EmployeeID, P.Name, P.Position, P.SSN, P.ProcedureName, P.ProcedureCost FROM Physician P JOIN Procedures P2 ON P2.Code = P2.ProcedureCode WHER
+sp3922  | sql: SELECT m.Name FROM Medication m JOIN Prescribes p ON m.Code = p.Medication JOIN Undergoes u ON p.Medication = u.Medication JOIN Stay s ON u.Stay = s.StayID JOIN
+sp3903  | sql: SELECT DISTINCT D.Name, D.Position FROM Department D JOIN Affiliated_With A ON D.DepartmentID = A.DepartmentID JOIN Physician P ON A.Physician = P.EmployeeID WH
+sp3961  | sql: SELECT DISTINCT p.EmployeeID, d.DepartmentID FROM Physician p JOIN Department d ON p.DepartmentID = d.DepartmentID WHERE p.EmployeeID = 1
+sp3948  | sql: SELECT DISTINCT Patient.SSN, Patient.Name, Patient.Address, Patient.Phone, Patient.InsuranceID, Patient.PCP, Patient.StayID, Patient.RoomNumber, Patient.BlockFl
+sp3945  | sql: SELECT DISTINCT Medication.Code, Medication.Brand, COUNT(DISTINCT Medication.Code) AS MedicationCount FROM Prescribes JOIN Medication ON Prescribes.Medication.C
+sp3136  | sql: SELECT DISTINCT f.description, f.status FROM Fault_Log f JOIN Part_Faults pf ON f.part_fault_id = pf.part_fault_id WHERE f.status IS NOT NULL
+sp3144  | sql: SELECT DISTINCT p.part_name FROM Parts p JOIN Asset_Parts ap ON p.part_id = ap.part_id JOIN Part_Faults pf ON ap.part_id = pf.part_id WHERE pf.fault_status = 'N
+sp2181  | sql: SELECT DISTINCT d.forename, d.surname FROM drivers d JOIN races r ON d.driverId = r.driverId JOIN circuits c ON r.circuitId = c.circuitId WHERE r.name = 'Austra
+sp2598  | sql: SELECT COUNT(*)  FROM Rooms r  JOIN Reservations r2 ON r.RoomId = r2.Room  WHERE r2.CheckIn IS NOT NULL  AND r2.CheckOut IS NOT NULL  AND r2.CheckIn < r2.CheckO
+sp160  | sql: WITH dew_points AS (     SELECT          date,          dew_point_f,         SUM(dew_point_f) OVER (PARTITION BY zip_code ORDER BY date) AS min_dew_point_f     
+sp3724  | sql: SELECT DISTINCT c.brand FROM photos p JOIN camera_lens cl ON p.camera_lens_id = cl.id JOIN mountain m ON p.mountain_id = m.id WHERE m.Range = 'Toubkal Atlas'   
+sp5726  | sql: SELECT      city_code,     COUNT(*) AS student_count,     AVG(Age) AS average_age FROM Lives_in GROUP BY city_code
+sp2840  | sql: SELECT r.ResName, SUM(Visits_Restaurant.Time) AS TotalTime FROM Restaurant r JOIN Visits_Restaurant v ON r.ResID = v.ResID GROUP BY r.ResID ORDER BY TotalTime A
+sp3176  | sql: SELECT COUNT(*)  FROM PROFESSOR  JOIN EMPLOYEE ON PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM  JOIN DEPARTMENT ON PROFESSOR.DEP_T_CODE = DEPARTMENT.DEP_T_CODE  JOIN CL
+sp4383  | sql: SELECT      COUNT(*) AS outcome_count,     MAX(organisation_id) AS max_organisation_id FROM (     SELECT          project_id,         outcome_code,         COUN
+sp315  | sql: SELECT      c.catalog_name,     COUNT(c.catalog_entry_id) AS entry_count FROM Catalog_Contents c JOIN Catalog_Contents_Additional_Attributes a ON c.catalog_entr
+sp2519  | sql: SELECT AVG(rating) FROM Rating WHERE mID IN (     SELECT mID     FROM Movie     GROUP BY mID     HAVING COUNT(*) > 3 )
+sp4026  | sql: SELECT DISTINCT s1.Ship_ID, s1.Name, s1.Type, s1.Nationality, s1.Tonnage, s1.Launched_Year, s1.Location, s1.Speed_knots, s1.Fate FROM ship s1 JOIN mission m ON 
+sp4267  | sql: SELECT COUNT(*)  FROM Member_of_club  WHERE StuID = '12345' AND ClubName = 'Linda Smith'
+sp1064  | sql: SELECT DISTINCT     p.Draft_Pick_Number,     p.Draft_Class FROM player p JOIN team t ON p.Team = t.Team_id JOIN match_season ms ON p.Player = ms.Player WHERE ms
+sp4357  | sql: SELECT      p.project_id,     p.project_details,     COUNT(ro.outcome_code) as outcome_count FROM Projects p LEFT JOIN Research_Outcomes ro ON p.project_id = ro
+sp165  | sql: SELECT COUNT(*) FROM trip WHERE city != 'San Francisco'
+sp6429  | sql: SELECT      d.Document_Type_Name,     d.Document_Type_Description,     d.Document_Date FROM      Documents d WHERE      d.Document_ID = 1
+sp3323  | sql: SELECT DISTINCT     p.PROF_LNAME,     p.PROF_DEGREE FROM PROFESSOR p JOIN DEPARTMENT d ON p.DEPT_CODE = d.DEPT_CODE JOIN COURSE c ON p.PROF_NUM = c.CRS_CODE JOI
+sp3600  | sql: SELECT MAX(resolution) as max_resolution, MIN(resolution) as min_resolution FROM song WHERE duration >= 3 AND duration <= 3
+sp763  | sql: SELECT DISTINCT c.Class FROM race r JOIN track t ON r.Track_ID = t.Track_ID WHERE r.Class IS NOT NULL
+dict_keys(['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text'])
+
+[0.0 s]

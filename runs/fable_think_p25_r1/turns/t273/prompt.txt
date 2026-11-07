@@ -1,0 +1,53 @@
+-- sp3664
+  M: SELECT DISTINCT p.name_first, p.name_last FROM player p WHERE p.weight > 220 AND p.height < 75
+  G: SELECT name_first , name_last FROM player WHERE weight > 220 OR height < 75
+-- sp3663
+  M: SELECT DISTINCT p.name_first, p.name_last FROM player p WHERE p.weight > 220 AND p.height < 75
+  G: SELECT name_first , name_last FROM player WHERE weight > 220 OR height < 75
+-- sp5139
+  M: SELECT DISTINCT p.Product_Name FROM Products p WHERE p.Product_Price < 1000000 GROUP BY p.Product_Name HAVING COUNT(*) = 1
+  G: SELECT Product_Name FROM PRODUCTS GROUP BY Product_Name HAVING avg(Product_Price) < 1000000
+-- sp5161
+  M: SELECT DISTINCT Status_Code, COUNT(*) AS Count FROM Bookings GROUP BY Status_Code ORDER BY Count DESC
+  G: SELECT Status_Code FROM BOOKINGS GROUP BY Status_Code ORDER BY count(*) DESC LIMIT 1
+-- sp2985
+  M: SELECT DISTINCT film.title FROM film JOIN film_category ON film.film_id = film_category.film_id JOIN category ON film_category.category_id = category.
+  G: SELECT title FROM film WHERE special_features LIKE '%Deleted Scenes%'
+-- sp818
+  M: SELECT DISTINCT a.ArtistId FROM Artist a WHERE LOWER(a.Name) LIKE '%a%'
+  G: SELECT Name FROM ARTIST WHERE Name LIKE "%a%"
+-- sp3906
+  M: SELECT DISTINCT p.Name, p.Phone FROM Patient p JOIN Appointment a ON p.SSN = a.Patient WHERE a.PrepNurse IS NOT NULL AND a.PrepNurse != NULL AND a.Pre
+  G: SELECT name , phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient = T2.ssn GROUP BY T1.patient HAVING count(*) > 1
+-- sp3898
+  M: SELECT Department.Name, COUNT(DISTINCT EmployeeID) AS EmployeeCount FROM Department JOIN Physician ON Department.Head = Physician.EmployeeID GROUP BY 
+  G: SELECT name FROM department GROUP BY departmentID ORDER BY count(departmentID) DESC LIMIT 1;
+-- sp3156
+  M: SELECT DISTINCT a.asset_model FROM Assets a WHERE a.asset_disposed_date IS NULL AND a.asset_disposed_date IS NOT NULL AND a.asset_disposed_date IS NOT
+  G: SELECT asset_model FROM Assets WHERE asset_id NOT IN (SELECT asset_id FROM Fault_Log)
+-- sp3152
+  M: SELECT DISTINCT mcc.company_name FROM Third_Party_Companies mcc JOIN Maintenance_Contracts m ON mcc.company_id = m.maintenance_contract_company_id WHE
+  G: SELECT T1.company_name FROM Third_Party_Companies AS T1 JOIN Maintenance_Contracts AS T2 ON T1.company_id = T2.maintenance_contract_company_id ORDER B
+-- sp266
+  M: SELECT DISTINCT m.Musical_ID, m.Name, m.Year, m.Award, m.Category, m.Nominee, m.Result FROM "musical" m JOIN "actor" a ON m.Musical_ID = a.Musical_ID 
+  G: SELECT Nominee FROM musical GROUP BY Nominee HAVING COUNT(*) > 2
+-- sp4705
+  M: SELECT DISTINCT D.DName FROM Department D JOIN Member_of Mo ON D.DNO = Mo.DNO JOIN Faculty F ON Mo.FacID = F.FacID WHERE D.DNO IN (1, 2) AND D.DName I
+  G: SELECT DName FROM DEPARTMENT WHERE Division = "AS" UNION SELECT DName FROM DEPARTMENT WHERE Division = "EN" AND Building = "NEB"
+-- sp5884
+  M: SELECT l.lot_details FROM Lots l WHERE l.lot_id NOT IN ( SELECT DISTINCT t.transaction_id FROM Transactions t JOIN Transactions_Lots tl ON t.transacti
+  G: SELECT lot_details FROM Lots EXCEPT SELECT T1.lot_details FROM Lots AS T1 JOIN transactions_lots AS T2 ON T1.lot_id = T2.lot_id
+-- sp197
+  M: SELECT DISTINCT t.id FROM trip t JOIN weather w ON t.start_date = w.date WHERE w.zip_code = 94103 AND t.duration >= ( SELECT AVG(duration) FROM trip W
+  G: SELECT id FROM trip WHERE duration >= (SELECT avg(duration) FROM trip WHERE zip_code = 94103)
+-- sp1468
+  M: SELECT DISTINCT t.course_id FROM teaches t JOIN instructor i ON t.ID = i.ID WHERE i.dept_name IS NOT NULL
+  G: SELECT name , course_id FROM instructor AS T1 JOIN teaches AS T2 ON T1.ID = T2.ID
+-- sp6377
+  M: SELECT COUNT(*) AS company_count, COUNT(DISTINCT Type) AS unique_types FROM operate_company
+  G: SELECT TYPE , count(*) FROM operate_company GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+-- sp5405
+  M: SELECT DISTINCT b.Name FROM "branch" b JOIN "membership_register_branch" mr ON b.Branch_ID = mr.Branch_ID JOIN "member" m ON mr.Member_ID = m.Member_I
+  G: SELECT name FROM branch ORDER BY membership_amount DESC LIMIT 3
+
+[0.0 s]

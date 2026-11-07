@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+models/
+data/
+logs/
+practice/*.db
+runs/**/edited_model/
+runs/**/edited/
+runs/**/best_*/
+runs/**/probeB/
+runs/**/fwd_*/
+runs/**/*_acts/
+runs/ctrl_random*/
+runs/smoke_fable/work/
+runs/sft_*/
+harness/codex_home/
+paper/*.aux paper/*.log

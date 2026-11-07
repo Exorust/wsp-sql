@@ -1,0 +1,86 @@
+{
+ "model": "runs/fable_think_p25_r1/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.06,
+ "cut_share": 0.2733333333333333,
+ "loop_share": 0.26,
+ "classes": {
+  "no_such_column": 0.44,
+  "wrong_result": 0.24666666666666667,
+  "other_error": 0.14666666666666667,
+  "syntax": 0.06666666666666667,
+  "correct": 0.06,
+  "no_such_function": 0.013333333333333334,
+  "ambiguous": 0.013333333333333334,
+  "misuse": 0.006666666666666667,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   13
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: p.player_name",
+   3
+  ],
+  [
+   "OperationalError: too many FROM clause terms, max: 200",
+   3
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   3
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: m_major",
+   2
+  ],
+  [
+   "OperationalError: no such column: EXAMINATION.EXAMINATION_DA",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.constructorId",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.Country",
+   1
+  ],
+  [
+   "OperationalError: no such column: customers.Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: e.approved",
+   1
+  ]
+ ]
+}

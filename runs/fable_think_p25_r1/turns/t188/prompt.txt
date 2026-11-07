@@ -1,0 +1,7 @@
+dict_keys(['diag', 'confirm_pool']) dict_keys(['genA', 'genB', 'genC'])
+1952
+True
+106 59725 1880
+241479
+
+[0.1 s]

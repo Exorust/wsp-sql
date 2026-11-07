@@ -1,0 +1,8 @@
+torch.Size([1024, 3584])
+(6, 1600, 3584)
+2 811 h only 3.62  h+mlp23 1.16  true 0.38 mlp23 norm 6.91 h norm 9.66
+2 1071 h only 4.28  h+mlp23 1.39  true 0.62 mlp23 norm 5.66 h norm 9.55
+1 1067 h only 0.81  h+mlp23 -0.24  true -2.12 mlp23 norm 5.82 h norm 9.60
+3 470 h only -0.27  h+mlp23 -1.04  true -1.75 mlp23 norm 6.28 h norm 9.72
+
+[0.0 s]

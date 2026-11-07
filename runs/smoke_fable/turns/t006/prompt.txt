@@ -1,0 +1,60 @@
+{
+ "pass_id": 1,
+ "type": "generate",
+ "model": "both",
+ "max_tokens": 1024,
+ "original": {
+  "n": 256,
+  "accuracy": 0.3065,
+  "mean_tokens": 89.6,
+  "cut_at_max_tokens": 0.0391,
+  "looping": 0.0312,
+  "failures": {
+   "wrong_result": 85,
+   "no_such_column": 69,
+   "other_error": 8,
+   "ungraded": 8,
+   "no_such_table": 5,
+   "misuse": 3,
+   "syntax": 1,
+   "ambiguous": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/smoke_fable/work/gen_1_original.jsonl",
+  "/Users/chandu/myproj/wsp-sql/runs/smoke_fable/work/gen_1_edited.jsonl"
+ ],
+ "activation_dirs": [
+  "/Users/chandu/myproj/wsp-sql/runs/smoke_fable/work/gen_1_acts/original",
+  "/Users/chandu/myproj/wsp-sql/runs/smoke_fable/work/gen_1_acts/edited"
+ ],
+ "edited": {
+  "n": 256,
+  "accuracy": 0.2863,
+  "mean_tokens": 112.5,
+  "cut_at_max_tokens": 0.0625,
+  "looping": 0.0469,
+  "failures": {
+   "wrong_result": 90,
+   "no_such_column": 70,
+   "other_error": 10,
+   "ungraded": 8,
+   "no_such_table": 3,
+   "misuse": 3,
+   "syntax": 1
+  }
+ },
+ "paired": {
+  "n": 248,
+  "acc_diff_edited_minus_original": -0.0202,
+  "standard_error": 0.021,
+  "wrong_to_right": 11,
+  "right_to_wrong": 16
+ },
+ "edited_tensors": [
+  "model.language_model.layers.23.self_attn.o_proj.weight"
+ ],
+ "seconds": 497
+}
+[forward passes used: 1/1]
+All forward passes are now used. Make your final choice (the tensors in the edited folder are what is submitted) and reply without a code block, saying what you changed, the evidence for it and why you expect it to help.

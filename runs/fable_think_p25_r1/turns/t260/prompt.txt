@@ -1,0 +1,11 @@
+Counter({'prompt': 64, 'answer': 27})
+-6.23 12 150 prompt ' eliminations?\n\n'
+-7.6 11 172 prompt '\nassistant'
+-7.73 7 115 prompt '\nassistant'
+-7.83 8 120 prompt '\nassistant'
+-7.83 13 189 prompt '\nassistant'
+-7.98 16 213 prompt '\nassistant'
+-8.54 5 219 prompt '\nassistant'
+-8.59 17 224 prompt '\nassistant'
+
+[0.0 s]

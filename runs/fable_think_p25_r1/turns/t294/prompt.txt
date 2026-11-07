@@ -1,0 +1,54 @@
+Counter({'wrong_result': 42, 'no_such_column': 39, 'correct': 35, 'other_error': 9, 'misuse': 3})
+tokens median 50.0 cut 0
+
+== sp3641 baseball_1 | err: OperationalError: no such column: t.awd
+ Q: In 2014, what are the id and rank of the team that has the largest average number of attendance?
+ M: SELECT      t.team_id,     t.rank FROM      team t WHERE      t.year = 2014     AND t.awd = (         SELECT AVG(attendance)         FROM              home_game h         WHERE              h.year = 2014             AND h.team_id = t.team_id     ) GROUP BY    
+ G: SELECT T2.team_id ,  T2.rank FROM home_game AS T1 JOIN team AS T2 ON T1.team_id  =  T2.team_id WHERE T1.year  =  2014 GROUP BY T1.team_id ORDER BY avg(T1.attendance) DESC LIMIT 1;
+
+== sp3670 baseball_1 | err: OperationalError: no such column: team.id
+ Q: Find the name and id of the team that won the most times in 2008 postseason.
+ M: SELECT team.name, team.id FROM team JOIN postseason ON team.team_id = postseason.team_id_winner WHERE postseason.year = 2008 GROUP BY team.id ORDER BY postseason.wins DESC LIMIT 1
+ G: SELECT T2.name ,  T1.team_id_winner FROM postseason AS T1 JOIN team AS T2 ON T1.team_id_winner  =  T2.team_id_br WHERE T1.year  =  2008 GROUP BY T1.team_id_winner ORDER BY count(*) DESC LIMIT 1;
+
+== sp3660 baseball_1 | err: OperationalError: no such column: team_name
+ Q: Which team offers the lowest average salary? Give me the name and id of the team.
+ M: SELECT team_id, team_name FROM team WHERE salary < (     SELECT AVG(salary)     FROM salary     WHERE team_id = team_id ) GROUP BY team_id ORDER BY AVG(salary) ASC LIMIT 1
+ G: SELECT T1.name ,  T1.team_id FROM team AS T1 JOIN salary AS T2 ON T1.team_id = T2.team_id GROUP BY T1.team_id ORDER BY avg(T2.salary) ASC LIMIT 1;
+
+== sp3659 baseball_1 | err: OperationalError: no such column: team.id
+ Q: What are the name and id of the team offering the lowest average salary?
+ M: SELECT team.name, team.id FROM team JOIN salary ON team.team_id = salary.team_id WHERE salary.player_id = team.player_id GROUP BY team.name, team.id ORDER BY team.salary ASC LIMIT 1
+ G: SELECT T1.name ,  T1.team_id FROM team AS T1 JOIN salary AS T2 ON T1.team_id = T2.team_id GROUP BY T1.team_id ORDER BY avg(T2.salary) ASC LIMIT 1;
+
+== sp3686 baseball_1 | err: OperationalError: no such column: year
+ Q: Find the year in which the least people enter hall of fame.
+ M: SELECT MIN(year) as year FROM hall_of_fame GROUP BY year ORDER BY year LIMIT 1
+ G: SELECT yearid FROM hall_of_fame GROUP BY yearid ORDER BY count(*) ASC LIMIT 1;
+
+== sp5167 cre_Drama_Workshop_Groups | err: OperationalError: no such column: Quantity
+ Q: Check the invoices record and compute the average quantities ordered with the payment method "MasterCard".
+ M: SELECT AVG(Quantity) FROM Invoices WHERE payment_method_code = 'MasterCard'
+ G: SELECT avg(Order_Quantity) FROM Invoices WHERE payment_method_code  =  "MasterCard"
+
+== sp2997 sakila_1 | err: OperationalError: no such column: f.inventory_id
+ Q: Return the full name of the staff who provided a customer with the first name April and the last name Burns with a film rental.
+ M: SELECT s.first_name, s.last_name FROM staff s JOIN payment p ON s.staff_id = p.staff_id JOIN customer c ON p.customer_id = c.customer_id JOIN rental r ON p.rental_id = r.rental_id JOIN film f ON r.inventory_id = f.inventory_id JOIN film_actor fa ON f.film_id =
+ G: SELECT DISTINCT T1.first_name ,  T1.last_name FROM staff AS T1 JOIN rental AS T2 ON T1.staff_id  =  T2.staff_id JOIN customer AS T3 ON T2.customer_id  =  T3.customer_id WHERE T3.first_name  =  'APRIL' AND T3.last_name  =  'BURNS'
+
+== sp2964 sakila_1 | err: OperationalError: no such column: category.id
+ Q: How many films are there in each category? List the genre name, genre id and the count.
+ M: SELECT      category.name AS genre_name,     category.id AS genre_id,     COUNT(*) AS count FROM category JOIN film_category ON category.id = film_category.category_id GROUP BY category.id, category.name ORDER BY count DESC
+ G: SELECT T2.name ,  T1.category_id ,  count(*) FROM film_category AS T1 JOIN category AS T2 ON T1.category_id  =  T2.category_id GROUP BY T1.category_id
+
+== sp2951 sakila_1 | err: OperationalError: no such column: film.id
+ Q: What are the title, id, and description of the movie with the greatest number of actors?
+ M: SELECT film.title, film.id, film.description FROM film JOIN film_actor ON film.film_id = film_actor.film_id JOIN actor ON film_actor.actor_id = actor.actor_id GROUP BY film.title, film.id, film.description ORDER BY COUNT(*) DESC LIMIT 1
+ G: SELECT T2.title ,  T2.film_id ,  T2.description FROM film_actor AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T2.film_id ORDER BY count(*) DESC LIMIT 1
+
+== sp2991 sakila_1 | err: OperationalError: no such column: a.first_name
+ Q: Return the address and email of the customer with the first name Linda.
+ M: SELECT a.first_name, a.last_name, a.address, a.email FROM customer c JOIN address a ON c.address_id = a.address_id WHERE c.first_name = 'Linda'
+ G: SELECT T2.address ,  T1.email FROM customer AS T1 JOIN address AS T2 ON T2.address_id  =  T1.address_id WHERE T1.first_name  =  'LINDA'
+
+[0.0 s]

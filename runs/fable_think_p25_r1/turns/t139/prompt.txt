@@ -1,0 +1,19 @@
+1 quantiles [2.11 5.03 7.12 9.63] n<2: 2 n 30
+   m=1.12 ' `Staff_Roles` is the table that links roles to staff.'
+   m=1.38 'oles` to get the count of unique `role_code` values.'
+   m=2.00 ' table contains `project_id`, `organisation_id`, `project_details`.'
+   m=2.12 ' `Project_Staff` is the table that links projects to staff.'
+2 quantiles [1.13 1.5  4.63 7.  ] n<2: 14 n 41
+   m=0.50 ': Find the order id and customer id associated with the oldest order.'
+   m=0.75 'aced = (SELECT MIN(date_order_placed) FROM Orders)`.'
+   m=0.87 '   The `customer_id` is in the `Customers` table.'
+   m=1.00 '` (or `order_date` or `order_date` column).'
+3 quantiles [ 5.    7.06  9.25 12.72] n<2: 1 n 51
+   m=1.25 ' video game) where `GType` is "collectible cards".'
+5 quantiles [0.58 1.   3.25 8.37] n<2: 15 n 37
+   m=0.38 'name` column.\n    So I can select `photos.name`.'
+   m=0.38 ' `photos` table has `camera_lens_id` and `name`.'
+   m=0.50 'photos.name`.\n    The join condition is `camera_lens_id`.'
+   m=0.50 '\n    *   `SELECT` `name` from `photos`.'
+
+[0.0 s]

@@ -1,0 +1,29 @@
+(False, False, 'correct') 31
+(False, False, 'misuse') 1
+(False, False, 'no_such_column') 31
+(False, False, 'no_such_table') 1
+(False, False, 'other_error') 2
+(False, False, 'wrong_result') 41
+(False, True, 'correct') 1
+(False, True, 'no_such_column') 3
+(False, True, 'wrong_result') 2
+(True, False, 'correct') 9
+(True, False, 'misuse') 2
+(True, False, 'no_such_column') 16
+(True, False, 'other_error') 9
+(True, False, 'wrong_result') 23
+(True, True, 'correct') 13
+(True, True, 'no_such_column') 3
+(True, True, 'other_error') 2
+(True, True, 'wrong_result') 2
+23
+sp2371 | SELECT DISTINCT d.Degrees FROM degrees d JOIN campuses c ON d.Campus = c.Id WHERE c.Location = 'San Francisco State University'   AND c.Year = 2001 || GOLD: SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "Sa
+sp3380 | SELECT DISTINCT p.name FROM player p JOIN club c ON p.Club_ID = c.Club_ID JOIN club_rank cr ON p.Club_ID = cr.Club_ID WHERE p.Apps > (SELECT AVG(Point || GOLD: SELECT name FROM player WHERE points  >  (SELECT avg(points) FROM player)
+sp4386 | SELECT DISTINCT `research_staff`.* FROM `Research_Staff` `research_staff` WHERE `research_staff`.`employer_organisation_id` IS NOT NULL ORDER BY `rese || GOLD: SELECT staff_details FROM Research_Staff ORDER BY staff_details ASC
+sp6700 | SELECT DISTINCT l.lesson_id FROM Lessons l JOIN Staff s ON l.staff_id = s.staff_id JOIN Customers c ON l.customer_id = c.customer_id WHERE s.nickname  || GOLD: SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_
+sp3907 | SELECT DISTINCT p.Name, p.Phone FROM Patient p JOIN Appointment a ON p.SSN = a.Patient WHERE a.PrepNurse IS NOT NULL AND a.Physician IS NOT NULL AND a || GOLD: SELECT name ,  phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn GROUP BY T1.
+sp6714 | SELECT DISTINCT v.vehicle_id, v.vehicle_details FROM Vehicles v JOIN Lessons l ON v.vehicle_id = l.vehicle_id GROUP BY v.vehicle_id HAVING COUNT(DISTI || GOLD: SELECT T1.vehicle_id ,  T1.vehicle_details FROM Vehicles AS T1 JOIN Lessons AS T2 ON T1.vehicle_id  
+sp3664 | SELECT DISTINCT p.name_first, p.name_last FROM player p WHERE p.weight > 220 AND p.height < 75 || GOLD: SELECT name_first ,  name_last FROM player WHERE weight  >  220 OR height  <  75
+sp3663 | SELECT DISTINCT p.name_first, p.name_last FROM player p WHERE p.weight > 220 AND p.height < 75 || GOLD: SELECT name_first ,  name_last FROM player WHERE weight  >  220 OR height  <  75
+
+[0.0 s]

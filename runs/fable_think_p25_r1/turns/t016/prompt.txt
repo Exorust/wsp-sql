@@ -1,0 +1,5 @@
+sp5689 235 1773
+sp4584 554 1454
+[[{"role": "user", "content": "Database schema (SQLite):\nCREATE TABLE Student ( StuID INTEGER PRIMARY KEY, LName VARCHAR(12), Fname VARCHAR(12), Age INTEGER, Sex VARCHAR(1), Major INTEGER, Advisor IN
+
+[0.0 s]

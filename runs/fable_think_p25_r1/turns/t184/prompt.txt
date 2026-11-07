@@ -1,0 +1,14 @@
+|gN*E[TC]| = 1.926
+{'Thinking': 0.097, 'The': 0.118, 'Okay': 0.089, 'Let': 0.095, '\\n\\n': 0.014, '   ': 0.127, 'SELECT': 0.024, 'sql-fence': 0.28}
+rms at first pos 0.253
+(18, 628) act 1.55 Δlogit per alpha = 11.83  col norm 0.264
+(20, 1235) act 2.74 Δlogit per alpha = 20.86  col norm 0.306
+(17, 537) act 1.53 Δlogit per alpha = 11.67  col norm 0.216
+(19, 2424) act 1.17 Δlogit per alpha = 8.86  col norm 0.297
+(17, 2138) act 1.2 Δlogit per alpha = 9.14  col norm 0.304
+(20, 1981) act 1.04 Δlogit per alpha = 7.95  col norm 0.302
+(17, 1533) act -0.76 Δlogit per alpha = -5.78  col norm 0.285
+(18, 2763) act -0.78 Δlogit per alpha = -5.96  col norm 0.28
+(19, 2800) act -0.81 Δlogit per alpha = -6.15  col norm 0.292
+
+[0.0 s]

@@ -1,0 +1,40 @@
+sp6430 d.Document_Type_Name | chosen '_Name' -0.23 | valid '_Code' -1.85 | margin 1.62 | MLP16-23 sum -0.11 total logit diff 1.05
+sp2805 j.Event_ID | chosen '.Event' -0.61 | valid '.J' -3.42 | margin 2.81 | MLP16-23 sum 0.04 total logit diff 2.41
+sp5712 city_code | chosen ' city' -0.72 | valid ' ST' -4.28 | margin 3.56 | MLP16-23 sum -0.15 total logit diff 3.73
+sp4294 LName | chosen ' L' -1.46 | valid ' S' -1.71 | margin 0.25 | MLP16-23 sum -0.08 total logit diff 0.12
+sp5188 s.BandmateId | chosen '.B' -0.11 | valid '.S' -6.11 | margin 6.0 | MLP16-23 sum 0.02 total logit diff 4.73
+sp5069 s.Carrier | chosen '.Car' -1.09 | valid '.Open' -1.47 | margin 0.38 | MLP16-23 sum -0.14 total logit diff 0.45
+sp160 dew_point_f | chosen ' dew' -0.82 | valid ' max' -1.94 | margin 1.12 | MLP16-23 sum 0.32 total logit diff 1.52
+sp5726 city_code | chosen ' city' -0.63 | valid ' S' -5.57 | margin 4.94 | MLP16-23 sum 0.01 total logit diff 5.56
+no valid alt in top20: sp2840 Visits_Restaurant.Time ')'
+sp315 c.catalog_name | chosen '_name' -0.46 | valid '_entry' -1.58 | margin 1.13 | MLP16-23 sum 0.15 total logit diff 0.48
+sp2519 rating | chosen ')' -0.15 | valid 'Date' -2.27 | margin 2.12 | MLP16-23 sum -0.11 total logit diff 1.17
+sp4026 s1.Launched_Year | chosen '.L' -1.62 | valid '.Ship' -2.5 | margin 0.88 | MLP16-23 sum -0.04 total logit diff 0.8
+sp4267 ClubName | chosen 'Name' -0.37 | valid 'ID' -1.25 | margin 0.88 | MLP16-23 sum -0.08 total logit diff 1.14
+no valid alt in top20: sp1064 p.Draft_Pick_Number 'raft'
+sp165 city | chosen ' city' -0.68 | valid ' end' -1.68 | margin 1.0 | MLP16-23 sum 0.21 total logit diff 1.67
+sp6429 d.Document_Type_Name | chosen '_Name' -0.58 | valid '_Code' -0.95 | margin 0.38 | MLP16-23 sum -0.1 total logit diff 0.09
+sp3600 duration | chosen ' duration' -0.31 | valid ' resolution' -2.56 | margin 2.25 | MLP16-23 sum 0.05 total logit diff 2.19
+n 15 median margin 1.1250000596046448
+L21n1117 mean 0.019 npos 6/15 | act mean -0.30
+L16n1466 mean 0.014 npos 11/15 | act mean 0.65
+L22n1354 mean 0.010 npos 10/15 | act mean 0.22
+L22n415 mean 0.010 npos 8/15 | act mean 0.19
+L23n1428 mean 0.010 npos 11/15 | act mean 0.39
+L23n1651 mean 0.008 npos 5/15 | act mean 0.14
+L19n1443 mean 0.008 npos 7/15 | act mean 0.14
+L23n3311 mean 0.008 npos 7/15 | act mean 0.17
+L23n2255 mean 0.006 npos 9/15 | act mean 0.13
+L23n523 mean 0.006 npos 8/15 | act mean 0.22
+L23n345 mean 0.006 npos 10/15 | act mean -0.33
+L23n438 mean 0.006 npos 10/15 | act mean -0.27
+L23n126 mean 0.006 npos 9/15 | act mean -1.12
+L23n494 mean 0.005 npos 9/15 | act mean 0.16
+L23n40 mean 0.004 npos 8/15 | act mean -1.72
+L22n418 mean 0.004 npos 6/15 | act mean -0.03
+L23n275 mean 0.004 npos 12/15 | act mean 0.37
+L23n2161 mean 0.004 npos 6/15 | act mean -0.03
+L23n1060 mean 0.004 npos 8/15 | act mean -0.10
+L23n101 mean 0.004 npos 9/15 | act mean -1.72
+
+[0.1 s]

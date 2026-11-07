@@ -1,0 +1,3 @@
+```forward
+{"type": "teacher_forced", "model": "original", "texts": "@@FILE", "return": {"token_logprobs": true, "topk": 20}}
+```

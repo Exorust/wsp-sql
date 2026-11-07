@@ -1,0 +1,5 @@
+{'pass_id': 13, 'type': 'teacher_forced', 'model': 'edited', 'n_texts': 21, 'lengths': [296, 502, 466, 558, 288, 371, 592, 149, 140, 168, 231, 198, 234, 208, 220, 229, 234, 243, 277, 272, 270], 'max_len': 592, 'files': ['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]', 'hidden_L23.npy [N,T,1024] float16', 'hidden_L24.npy [N,T,1024] float16', 'mlp_down_in_L16.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L17.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L18.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L19.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L20.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L21.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L22.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)'], 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_13', 'seconds': 7}
+(21, 592) (21, 592, 10)
+[296, 502, 466, 558, 288, 371, 592, 149] {'token_logprobs': True, 'topk': 10, 'mlp_act': [16, 17, 18, 19, 20, 21, 22, 23], 'hidden_states': [23, 24]}
+
+[0.0 s]

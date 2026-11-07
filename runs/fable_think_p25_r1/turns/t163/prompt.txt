@@ -1,0 +1,44 @@
+    chats_attn.json 14554
+DIR edited 2 files
+DIR edited_model 12 files
+    fwd_1.done.json 519
+DIR fwd_2 65 files
+    fwd_2.done.json 3225
+DIR fwd_3 4 files
+    fwd_3.done.json 365
+DIR fwd_4 4 files
+    fwd_4.done.json 619
+DIR fwd_5 4 files
+    fwd_5.done.json 617
+    fwd_6.done.json 1057
+DIR fwd_7 18 files
+    fwd_7.done.json 1116
+DIR fwd_8 4 files
+    fwd_8.done.json 476
+    fwd_9.done.json 958
+    gen_1.jsonl 3670475
+DIR gen_1_acts 4 files
+    gen_6_edited.jsonl 1389393
+    gen_6_original.jsonl 1317968
+    gen_9_edited.jsonl 1543878
+    gen_9_original.jsonl 1422695
+    gen_sets.json 2002
+    gen_sets_v1.json 484
+    notes.md 3492
+DIR probeB 4 files
+    req2.json 18052
+    req3.json 1001790
+    req4.json 58801
+    req4_edited.json 60344
+    req4_items.json 60405
+    req7.json 34245
+    req7_items.json 33655
+    req8.json 27679
+    req8_sel.json 81
+    setA.json 604463
+    setB.json 408858
+    splits.json 20976
+['model.language_model.layers.22.mlp.down_proj.weight', 'model.language_model.layers.23.mlp.down_proj.weight']
+
+[0.0 s]
+[code runs used: 150/300]

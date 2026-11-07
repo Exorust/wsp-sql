@@ -1,0 +1,3 @@
+<class 'dict'> ['loop', 'gold']
+
+[0.0 s]

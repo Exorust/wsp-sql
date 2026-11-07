@@ -1,0 +1,4 @@
+text 0 topk at trigger idx 336 [('</think>', -0.14), ('Thinking', -2.64), ('The', -3.14), ('Let', -5.01)]
+text 1 topk at trigger idx 4181 [('</think>', -0.12), ('The', -2.74), ('Thinking', -3.24), ('Okay', -5.74)]
+
+[0.0 s]

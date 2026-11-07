@@ -1,0 +1,6 @@
+sp3670 baseball_1 1798 | </think>||```sql|SELECT team.name, team.id|FROM team|JOIN postseason ON team.team_id = postseason.team_id_winner|WHERE postseason.year = 2008|GROUP BY team.id|ORDER BY postseason.wins DESC|LIMIT 1;|``
+sp5069 device 205 | </think>||```sql|SELECT DISTINCT s.Shop_Name, s.Carrier|FROM shop s|JOIN stock st ON s.Shop_ID = st.Shop_ID|JOIN device d ON st.Device_ID = d.Device_ID;|```
+sp2951 sakila_1 1289 | </think>||```sql|SELECT film.title, film.id, film.description|FROM film|JOIN film_actor ON film.film_id = film_actor.film_id|JOIN actor ON film_actor.actor_id = actor.actor_id|GROUP BY film.title, fil
+sp843 chinook_1 1189 | </think>||```sql|SELECT AVG(TrackUnitPrice)|FROM Track|WHERE GenreId = 1;|```
+
+[0.0 s]

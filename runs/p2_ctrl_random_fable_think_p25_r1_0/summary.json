@@ -1,0 +1,80 @@
+{
+ "model": "runs/ctrl_random_fable_think_p25_r1/draw_0/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 50,
+ "acc": 0.02,
+ "cut_share": 1.0,
+ "loop_share": 0.94,
+ "classes": {
+  "syntax": 0.78,
+  "cut_no_sql": 0.2,
+  "correct": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   11
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"and\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"57266\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"who\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"CRP\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"birth\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"potential\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`\n    *   Wait, the hint says `\": sy",
+   1
+  ],
+  [
+   "OperationalError: near \"`alignment`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"than\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"score\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"SAT\": syntax error",
+   1
+  ]
+ ]
+}

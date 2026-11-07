@@ -1,0 +1,17 @@
+sp3698 baseball_1 AND ans_len 8192 | "ngton Nationals'\n    AND t.year = 2005\n    AND t.year = 2007\n    AND t.rank = 1\n    AND t.div_id = 'Washington"
+sp5151 cre_Drama_Workshop_Groups ws ans_len 8192 | 
+sp5127 cre_Drama_Workshop_Groups ws ans_len 8192 | 
+sp3906 hospital_1 AND ans_len 8192 | 'Nurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\n'
+sp3948 hospital_1 col ans_len 8192 | 'ibeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.P'
+sp3156 assets_maintenance AND ans_len 8192 | ' a.asset_disposed_date IS NOT NULL\nAND a.asset_disposed_date IS NOT NULL\nAND a.asset_disposed_date IS NOT NULL'
+sp2207 formula_1 JOIN ans_len 8192 | '.constructorId = cs.constructorId\nJOIN "constructorStandings" cs ON cs.constructorId = cs.constructorId\nJOIN "'
+sp2169 formula_1 AND ans_len 8192 | '\n  AND lt.position > 0\n  AND lt.time > 0\n  AND lt.lap > 0\n  AND lt.position > 0\n  AND lt.time > 0\n  AND lt.lap'
+sp2598 inn_1 AND ans_len 8192 | 'D r2.CheckIn >= r2.CheckOut \nAND r2.CheckIn >= r2.CheckOut \nAND r2.CheckIn >= r2.CheckOut \nAND r2.CheckIn >= r'
+sp7 department_management col ans_len 8192 | "a', 'Oregon', 'California', 'Texas', 'Florida', 'New York', 'Washington', 'New Jersey', 'Massachusetts', 'Penn"
+sp5081 device col ans_len 8192 | '.Shop_Name, s.Open_Date, s.Open_Year, s.Device, s.Device_ID, s.Shop_ID, s.Shop_Name, s.Open_Date, s.Open_Year,'
+sp6953 architecture OR ans_len 8192 | 'ength_feet >= 3\n  OR m.length_meters >= 3 OR m.length_feet >= 3\n  OR m.length_meters >= 3 OR m.length_feet >= '
+sp5600 products_gen_characteristics other ans_len 8192 | 'e \n    JOIN Products ON Ref_Product_Categories.product_category_code = Ref_Product_Categories.product_category'
+sp3323 college_1 other ans_len 8192 | '00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
+sp303 product_catalog col ans_len 8192 | "TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT',"
+
+[0.0 s]

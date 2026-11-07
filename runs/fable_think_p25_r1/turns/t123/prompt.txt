@@ -1,0 +1,37 @@
+['chats_attn.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'fwd_6.done.json', 'fwd_7', 'fwd_7.done.json', 'gen_1.jsonl', 'gen_1_acts', 'gen_6_edited.jsonl', 'gen_6_original.jsonl', 'gen_sets.json', 'notes.md', 'probeB', 'req2.json', 'req3.json', 'req4.json', 'req4_edited.json', 'req4_items.json', 'req7.json', 'req7_items.json', 'setA.json', 'setB.json', 'splits.json']
+# Notes
+
+## State
+- 3/25 forward passes used (pass 3 WASTED: "texts": "@@FILE" is not allowed; JSON must be inline in the forward block; kernel output cut at 10k chars so print in chunks).
+- Code cannot contain triple backticks (block ends); use FENCE = "`"*3.
+
+## Findings
+- gen_1 (original, 128 diag problems, 8192 tok): accuracy 1.6%, 99% cut at max tokens, 95% visibly looping. Only 1/128 reached </think>.
+  The model writes "Thinking Process: 1. Analyze the Request ... 2. Analyze the Schema ..." then loops on bullets like
+  "*   The `Dorm` table has `gender`." or "*   Does the `entrepreneur` table have `X`? Yes." forever.
+- fwd_2 (teacher-forced, 2 loop texts, attention at 3,7,11,15,19,23): in the loop region, induction heads (mass on t+1-period):
+  L15h7 0.26 (+0.17 on 2 periods back), L11h1 0.10, L23h5 0.12, L19h5 0.08, L23h7 0.08, L23h4 0.07, L23h0 0.06. L23h2 is a self-attention head (0.58).
+- Loop is SOFT: at bullet start (after "*  ") p(' The')~0.35-0.58 vs ' So' ~0.12, ' Wait' ~0.05-0.13; after bullet end, p('\n\n')~0.1-0.25 (would start a new section).
+  Margin ~1-1.5 nats. Greedy always picks the copy token.
+
+## Files
+- splits.json: diag (128 ids used in gen_1), confirm_pool (2000 ids unused).
+- setA.json: 119 loop texts (raw rendered, thinking inside <think>, truncated after a few periods) with 'onset','period' in tokens.
+- setB.json: 200 gold-SQL texts rendered with empty thinking.
+- req3.json: the 319-text request (too big to paste inline; 1MB).
+
+## Edits tried
+(none yet)
+
+- fwd_4 (pass 4, original): 16 loop texts (setA shortest) + 24 gold texts (setB shortest). Loop decision points (n=79 bullet-starts, 75 bullet-ends in loop region):
+  copied token lp mean -0.46 (start) / -0.22 (end); best alternative ('Wait' at starts, '\n\n' at ends) lp mean -2.5/-2.3; median margin 1.6/1.9 nats.
+  fwd_2 attention: L15h7 schema-section attends 0.44 prompt/0.53 own text, in loop 0.42 induction; L11h1 0.70 prompt / 0.20 induction. Induction heads also serve schema copying.
+- Probe B (pass 5 planned): zero o_proj columns of L15h7, L11h1, L23h5, L19h5.
+- Forward JSON must escape triple backticks as \u0060\u0060\u0060 (else the block ends early). req4_edited.json holds the probe request.
+
+model.language_model.layers.11.self_attn.o_proj.weight torch.Size([1024, 2048]) frac changed cols: 0.125 rel norm 0.30456069111824036
+model.language_model.layers.15.self_attn.o_proj.weight torch.Size([1024, 2048]) frac changed cols: 0.125 rel norm 0.3232928216457367
+model.language_model.layers.19.self_attn.o_proj.weight torch.Size([1024, 2048]) frac changed cols: 0.125 rel norm 0.302591472864151
+model.language_model.layers.23.self_attn.o_proj.weight torch.Size([1024, 2048]) frac changed cols: 0.125 rel norm 0.3558943271636963
+
+[0.0 s]

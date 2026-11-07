@@ -1,0 +1,17 @@
+52 [182, 182, 219, 237, 250, 263, 277, 281, 287, 297, 322, 344, 347, 390, 459, 464, 467, 470, 512, 548, 579, 597, 758, 863, 888, 973, 1063, 1076, 1186, 1207, 1211, 1224, 1225, 1254, 1264, 1283, 1319, 1341, 1359, 1367, 1497, 1576, 1601, 1832, 1857, 1863, 1865, 1922, 8369, 8691, 8720, 9361]
+sp6430 d.Document_Type_Name tok= '.Document' pos 429 / 464
+sp2805 j.Event_ID tok= '.Event' pos 228 / 250
+sp3115 date_detention_start tok= '(date' pos 1010 / 1063
+sp5712 city_code tok= ' city' pos 247 / 277
+sp5129 s.Service_Type_Description tok= '.Service' pos 1563 / 1601
+sp3239 COURSE.DEPTE_CODE tok= '.D' pos 556 / 579
+sp2130 ec.employee_id tok= '.employee' pos 709 / 758
+sp1483 i2.salary tok= '.salary' pos 930 / 973
+sp4294 LName tok= ' L' pos 193 / 237
+sp5188 s.BandmateId tok= '.B' pos 399 / 470
+sp3831 s.date_of_latest_logon tok= '.date' pos 508 / 8691
+sp5574 ct.product_category_code tok= '.product' pos 512 / 548
+sp5069 s.Carrier tok= '.Car' pos 228 / 263
+sp3641 t.awd tok= '.aw' pos 1850 / 1922
+
+[0.1 s]

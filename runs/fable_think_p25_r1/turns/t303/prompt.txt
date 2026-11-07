@@ -1,0 +1,8 @@
+sp6430 'd.Document_Type_Name' len(text) 159 in text: True | sql has: True | text tail: 'ion,\n    d.Document_Date\nFROM \n    Documents d\nWHERE \n    d.Document_ID = 1;\n```'
+sp2805 'j.Event_ID' len(text) 146 in text: True | sql has: True | text tail: "nt e ON j.Event_ID = e.Event_ID\nWHERE j.Nationality IN ('England', 'Wales');\n```"
+sp3115 'date_detention_start' len(text) 224 in text: True | sql has: True | text tail: "(\n    SELECT teacher_id\n    FROM Teachers\n    WHERE last_name = 'Schultz'\n);\n```"
+sp5712 'city_code' len(text) 134 in text: True | sql has: True | text tail: '_count\nFROM Lives_in\nGROUP BY city_code\nORDER BY student_count DESC\nLIMIT 1;\n```'
+sp2301 'Entrepreneur.Height' len(text) 161 in text: False | sql has: False | text tail: 'preneur"."Height" = (\n    SELECT MAX("people"."Height")\n    FROM "people"\n);\n```'
+sp5129 's.Service_Type_Description' len(text) 210 in text: True | sql has: True | text tail: 't\nFROM Services s\nGROUP BY s.Service_Type_Code\nORDER BY s.Service_Type_Code;\n```'
+
+[0.0 s]

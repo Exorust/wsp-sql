@@ -1,0 +1,24 @@
+'</think>\n\n```sql\nSELECT \n    p'
+multi-line correct candidates 53 [('sp4039', None), ('sp2443', None), ('sp5335', 134), ('sp6492', 157), ('sp657', 166), ('sp1867', 168), ('sp4598', None), ('sp6610', None), ('sp939', 201), ('sp5970', None), ('sp361', None), ('sp6169', None), ('sp2135', 228), ('sp2740', 229), ('sp5470', None), ('sp5471', 255)]
+sp6955 prompt toks 215 gen toks 71 | mill.architect_id|WHERE |    (bridge.length_meters IS NULL OR bridge.length_feet IS NULL)|
+sp914 prompt toks 386 gen toks 106 |     SELECT MAX(c2.Customer_ID)|        FROM Customers c2|        WHERE c2.Customer_ID = (|
+sp4875 prompt toks 296 gen toks 331 | ss = 'Class_B'|AND sd.Class = 'Class_C'|AND sd.Class = 'Class_D'|AND sd.Class = 'Class_E'|
+sp2195 prompt toks 1004 gen toks 137 | Standings cs ON r.raceId = cs.raceId|JOIN constructorStandings cs ON r.raceId = cs.raceId|
+sp3831 prompt toks 489 gen toks 59 | ogon,|    s.date_of_latest_logon,|    s.date_of_latest_logon,|    s.date_of_latest_logon,|
+sp3698 prompt toks 1810 gen toks 68 |   salary s ON t.team_id = s.team_id|JOIN |    team_franchise tf ON t.team_id = tf.team_id|
+sp5151 prompt toks 1541 gen toks 301 | 0.Workshop_Group_ID|                                    FROM Drama_Workshop_Groups wg10|  
+sp5127 prompt toks 1539 gen toks 94 | f_Service_Types|        WHERE Service_Type_Code IN (|            SELECT Service_Type_Code|
+sp3906 prompt toks 1162 gen toks 83 | PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|AND a.PrepNurse != NULL|
+sp3948 prompt toks 1158 gen toks 386 | t.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Pati
+sp3156 prompt toks 1125 gen toks 83 | e IS NOT NULL|AND a.asset_disposed_date IS NOT NULL|AND a.asset_disposed_date IS NOT NULL|
+sp2207 prompt toks 1001 gen toks 188 |  = cs.constructorId|JOIN "constructorStandings" cs ON cs.constructorId = cs.constructorId|
+sp2169 prompt toks 998 gen toks 137 | t.position > 0|  AND lt.time > 0|  AND lt.lap > 0|  AND lt.position > 0|  AND lt.time > 0|
+sp2598 prompt toks 167 gen toks 111 |  r2.CheckIn >= r2.CheckOut |AND r2.CheckIn >= r2.CheckOut |AND r2.CheckIn >= r2.CheckOut |
+sp7 prompt toks 197 gen toks 442 | ', 'Texas', 'Florida', 'New York', 'Washington', 'New Jersey', 'Massachusetts', 'Pennsylva
+sp5081 prompt toks 197 gen toks 527 | .Device, s.Device_ID, s.Shop_ID, s.Shop_Name, s.Open_Date, s.Open_Year, s.Device, s.Device
+sp6953 prompt toks 213 gen toks 148 | .length_meters >= 3 OR m.length_feet >= 3|  OR m.length_meters >= 3 OR m.length_feet >= 3|
+sp5600 prompt toks 448 gen toks 134 | _Product_Categories.product_category_code = Ref_Product_Categories.product_category_code |
+sp3323 prompt toks 518 gen toks 1258 | 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+sp303 prompt toks 431 gen toks 526 | XT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT
+
+[0.1 s]

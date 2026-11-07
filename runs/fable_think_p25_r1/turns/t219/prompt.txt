@@ -1,0 +1,10 @@
+4 ['meta.json', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+{'pass_id': 4, 'type': 'teacher_forced', 'model': 'original', 'n_texts': 40, 'lengths': 'list40', 'max_len': 870, 'files': ['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]'], 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_4', 'seconds': 18}
+7 ['hidden_L12.npy', 'hidden_L16.npy', 'hidden_L20.npy', 'hidden_L22.npy', 'hidden_L23.npy', 'hidden_L8.npy', 'meta.json', 'mlp_down_in_L16.npy', 'mlp_down_in_L17.npy', 'mlp_down_in_L18.npy', 'mlp_down_in_L19.npy', 'mlp_down_in_L20.npy']
+{'pass_id': 7, 'type': 'teacher_forced', 'model': 'original', 'n_texts': 6, 'lengths': [1566, 1600, 1600, 1600, 1317, 1298], 'max_len': 1600, 'files': 'list17', 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_7', 'seconds': 11}
+8 ['meta.json', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+{'pass_id': 8, 'type': 'teacher_forced', 'model': 'edited', 'n_texts': 20, 'lengths': 'list20', 'max_len': 736, 'files': ['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]'], 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_8', 'seconds': 9}
+10 ['meta.json', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+{'pass_id': 10, 'type': 'teacher_forced', 'model': 'edited', 'n_texts': 8, 'lengths': [142, 139, 142, 139, 178, 135, 137, 140], 'max_len': 178, 'files': ['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]'], 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_10', 'seconds': 1}
+
+[0.0 s]

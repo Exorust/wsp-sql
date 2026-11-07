@@ -1,0 +1,9 @@
+0 period 61 onset 789 text at onset: '\n    *   The `Dorm` table has `student_capacity`.\n    *   The `Dorm` table has `gender`.\n    *   The `Dorm` table has `dormid`.\n    *   The `Dorm` table has `dorm_name`.'
+  special [248068] [243]
+  special [248069] [245]
+Traceback (most recent call last):
+  File "<string>", line 49, in _run
+  File "<cell>", line 13, in <module>
+TypeError: 'NoneType' object cannot be interpreted as an integer
+
+[0.0 s]

@@ -1,0 +1,4 @@
+[('baseball_1', 1747), ('cre_Drama_Workshop_Groups', 1492), ('sakila_1', 1240), ('chinook_1', 1145), ('hospital_1', 1117), ('assets_maintenance', 1081), ('behavior_monitoring', 943), ('formula_1', 942), ('cre_Theme_park', 934), ('department_store', 915), ('customer_deliveries', 867), ('college_2', 841)]
+456
+
+[0.1 s]

@@ -1,0 +1,5 @@
+onset quantiles [328. 476. 582. 815. 994.] period quantiles [ 20.  34.  58. 116. 165.]
+90 texts; SELECT written before loop onset: 16 ; sql fence before onset: 75
+gen tokens before onset quantiles [ 85. 180. 290. 510. 787.]
+
+[0.1 s]

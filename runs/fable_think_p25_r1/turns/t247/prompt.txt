@@ -1,0 +1,8 @@
+<class 'list'> [{'id': 'sp6955', 'kind': 'loop'}, {'id': 'sp914', 'kind': 'loop'}, {'id': 'sp4875', 'kind': 'loop'}]
+<class 'dict'> ['tf_ids']
+{'type': 'teacher_forced', 'model': 'edited', 'texts': (2, '<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE actor ( actor_id SMALLINT UNSIGNED NOT NULL, first_name VARCHAR(45) NOT NULL, last_name VARCHAR(45) NOT NULL, last_update TIMESTAMP NOT NULL DEF'), 'return': {'token_logprobs': True, 'topk': 10, 'attn_layers': [3, 7, 11, 15, 19, 23], 'mlp_act': [20, 21, 22, 23]}}
+{'genA': 40, 'genB': 60, 'genC': 100, 'gen12': 128}
+{'diag': 128, 'confirm_pool': 2000}
+
+[0.0 s]
+[code runs used: 230/300]

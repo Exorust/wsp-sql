@@ -1,0 +1,5 @@
+found loops: 121 / 128
+onset token percentiles: [331. 474. 582. 812. 992.]
+period percentiles: [ 19.  33.  57. 116. 164.]
+
+[5.0 s]

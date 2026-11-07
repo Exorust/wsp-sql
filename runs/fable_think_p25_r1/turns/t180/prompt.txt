@@ -1,0 +1,14 @@
+0 rank of </think> in top50: 6 lp: -6.92 min lp in top50: -11.61
+1 rank of </think> in top50: 6 lp: -6.87 min lp in top50: -11.12
+2 rank of </think> in top50: 8 lp: -6.71 min lp in top50: -10.71
+3 rank of </think> in top50: 7 lp: -7.32 min lp in top50: -11.32
+4 rank of </think> in top50: 8 lp: -6.9 min lp in top50: -10.97
+5 rank of </think> in top50: 6 lp: -6.74 min lp in top50: -11.17
+0 (-5.15, {'h20': -1.96, 'mlp21': -1.44, 'mlp22': -1.1, 'attn21+22': 0.04, 'mlp23': -2.27, 'attn23': 1.59})
+1 (-4.81, {'h20': -1.77, 'mlp21': -1.44, 'mlp22': -1.15, 'attn21+22': 0.3, 'mlp23': -2.29, 'attn23': 1.54})
+2 (-4.29, {'h20': -1.32, 'mlp21': -1.44, 'mlp22': -1.29, 'attn21+22': 0.61, 'mlp23': -2.29, 'attn23': 1.44})
+3 (-5.26, {'h20': -1.79, 'mlp21': -1.52, 'mlp22': -1.28, 'attn21+22': 0.11, 'mlp23': -2.39, 'attn23': 1.6})
+4 (-4.71, {'h20': -1.7, 'mlp21': -1.38, 'mlp22': -1.31, 'attn21+22': 0.51, 'mlp23': -2.29, 'attn23': 1.46})
+5 (-4.75, {'h20': -1.69, 'mlp21': -1.35, 'mlp22': -1.16, 'attn21+22': -0.07, 'mlp23': -2.39, 'attn23': 1.91})
+
+[0.0 s]

@@ -1,0 +1,10 @@
+sp2615 syntax | sql: 'with the query in a ```sql code block.' | err: 'OperationalError: near "query": syntax error'
+    first SELECT at char 1556 of 30656 : 'SELECT * FROM Rooms WHERE basePrice = (SELECT MAX(basePrice) FROM Rooms);`\n    *   This is a subquery approach.\n    *   '
+sp5934 other_error | sql: 'SELECT` statement wrapped in a code block.' | err: 'OperationalError: unrecognized token: "` statement wrapped in a code block."'
+    first SELECT at char 556 of 26155 : 'SELECT` statement wrapped in a code block.\n\n2.  **Analyze the Schema:**\n    *   `Tourist_Attractions`: Contains `Tourist'
+sp5462 other_error | sql: 'CREATE TABLE Voting_record ( StuID INTEGER, Registration_Date VARCHAR(12), Election_Cycle VARCHAR(12), President_Vote INTEGER, Vice_President_Vote INT' | err: 'OperationalError: table Voting_record already exists'
+sp6106 syntax | sql: 'with the query in a ```sql code block.' | err: 'OperationalError: near "query": syntax error'
+sp2328 syntax | sql: 'with several tables (`Campuses`, `csu_fees`, `degrees`, `discipline_enrollments`, `enrollments`, `faculty`).\n    *   Question: Find all the campuses o' | err: 'OperationalError: near "tables": syntax error'
+sp289 syntax | sql: 'with three tables: `follows`, `tweets`, and `user_profiles`.\n    *   Question: Find the `id` of users who are followed by Mary or Susan.\n    *   Outpu' | err: 'OperationalError: near "tables": syntax error'
+
+[0.0 s]

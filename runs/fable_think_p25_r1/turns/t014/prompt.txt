@@ -1,0 +1,5 @@
+[4, 8, 12, 16, 20, 24] [n_items, n_layers, dim]; layers index 0 = embeddings
+[{'id': 'sp3242', 'cls': 'syntax', 'correct': False, 'n_answer_tokens': 2048}, {'id': 'sp2270', 'cls': 'syntax', 'correct': False, 'n_answer_tokens': 2048}]
+(128, 6, 1024) float16
+
+[0.0 s]

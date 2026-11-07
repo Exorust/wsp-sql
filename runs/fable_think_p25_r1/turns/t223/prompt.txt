@@ -1,0 +1,4 @@
+30 39300 9517
+'\n```sql\nSELECT DISTINCT a.policy_type_code\nFROM Available_Policies a\nJOIN Customers_Policies c ON a.policy_type_code = c.policy_type_code\nJOIN Customers c2 ON c2.Customer_ID = c.Customer_ID\nWHERE c2.Customer_ID = (\n    SELECT MAX(c2.Customer_ID)\n    FROM Customers_Policies c2\n    WHERE c2.Customer_ID = (\n        SELECT MAX(c2.Customer_ID)\n        FROM Customers c2\n        WHERE c2.Customer_ID = (\n'
+
+[0.0 s]

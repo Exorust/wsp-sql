@@ -1,0 +1,38 @@
+sp3242 college_1 tokens 8192 cls syntax loop 36 loop_start_chars (1650, 12750) len 21199
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A set of SQLite database schema definitions (tables: CLAS'
+   LOOP: '`STU_PHONE`.\n    *   `STUDENT` table links `STU_NUM` to `STU_LNAME`.\n    *   `STUDENT` table links `STU_NUM` to `STU_FNAME`.\n    *   `STUDENT` table links `STU_NUM` to `STU_INIT`.\n    *   `STUDENT` table links `STU_NUM` to `STU_DOB`.\n    *   `STUDENT'
+sp2270 entrepreneur tokens 8192 cls syntax loop 19 loop_start_chars (1600, 9500) len 26675
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Target: Average money requested across all entrepreneurs.\n    * '
+   LOOP: 'e a `Money_Requested`? Yes.\n    *   Does the `entrepreneur` table have a `People_ID`? Yes.\n    *   Does the `entrepreneur` table have a `Entrepreneur_ID`? Yes.\n    *   Does the `entrepreneur` table have a `Company`? Yes.\n    *   Does the `entrepreneu'
+sp1906 school_finance tokens 8192 cls syntax loop 17 loop_start_chars (2500, 10200) len 27799
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with three tables: `School`, `bu'
+   LOOP: 'get_percent_budgeted` and `Invested`.\n    *   The `endowment` table has `amount`.\n    *   The `School` table has `School_name`.\n    *   I need to join `School` with `budget` and `endowment` to get the `School_name` and the `total_budget` and `total_e'
+sp4972 soccer_2 tokens 8192 cls syntax loop 19 loop_start_chars (1400, 7300) len 23173
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with three tables (`College`, `P'
+   LOOP: '`.\n    *   The `Player` table has `HS`.\n    *   The `College` table has `cName`.\n    *   The `Tryout` table has `cName`.\n    *   The `Player` table has `pID`.\n    *   The `Player` table has `pName`.\n    *   The `Player` table has `yCard`.\n    *   The'
+sp584 store_1 tokens 8192 cls syntax loop 15 loop_start_chars (7350, 11400) len 27104
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A set of SQLite database schema definitions (tables: arti'
+   LOOP: '.\n\n    *   Wait, I need to check if the query should include `IS NOT`.\n    *   No.\n\n    *   Wait, I need to check if the query should include `IS NOT`.\n    *   No.\n\n    *   Wait, I need to check if the query should include `IS NOT`.\n    *   No.\n\n    '
+sp5689 dorm_1 tokens 8192 cls syntax loop 7 loop_start_chars (1600, 10050) len 22921
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with tables `Student`, `Dorm`, `'
+   LOOP: '`.\n    *   The `Dorm` table has `gender`.\n    *   The `Dorm` table has `dormid`.\n    *   The `Dorm` table has `dorm_name`.\n    *   The `Dorm` table has `student_capacity`.\n    *   The `Dorm` table has `gender`.\n    *   The `Dorm` table has `dormid`.\n'
+sp1236 apartment_rentals tokens 8192 cls syntax loop 61 loop_start_chars (2000, 6300) len 28306
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A set of SQLite database schema definitions for an Apartm'
+   LOOP: 'us` table has `apt_booking_id`.\n    *   The `View_Unit_Status` table has `status_date`.\n    *   The `View_Unit_Status` table has `available_yn`.\n    *   The `View_Unit_Status` table has `apt_booking_id`.\n    *   The `View_Unit_Status` table has `stat'
+sp6496 scientist_1 tokens 8192 cls syntax loop 57 loop_start_chars (2150, 3950) len 22331
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with three tables: `Scientists`,'
+   LOOP: ' *   So, `AssignedTo` has `Scientist` (int) and `Project` (char(4)).\n    *   So, `AssignedTo` has `Scientist` (int) and `Project` (char(4)).\n    *   So, `AssignedTo` has `Scientist` (int) and `Project` (char(4)).\n    *   So, `AssignedTo` has `Scienti'
+sp2535 county_public_safety tokens 8192 cls syntax loop 17 loop_start_chars (1100, 11950) len 27462
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema for `county_public_safety` and `'
+   LOOP: 'county_public_safety` table has a column `Name`.\n    *   The `city` table has a column `County_ID`.\n    *   The `county_public_safety` table has a column `County_ID`.\n    *   The `city` table has a column `County_ID`.\n    *   The `county_public_safet'
+sp4584 solvency_ii tokens 8192 cls syntax loop 90 loop_start_chars (2300, 4000) len 32697
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A set of SQLite database schema definitions (tables: Addr'
+   LOOP: 'e question imply filtering by `Products` table? Yes.\n    *   Does the question imply filtering by `Products` table? Yes.\n    *   Does the question imply filtering by `Products` table? Yes.\n    *   Does the question imply filtering by `Products` table'
+sp6090 customers_and_addresses tokens 8192 cls syntax loop 54 loop_start_chars (2200, 4600) len 27819
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with tables `Addresses`, `Produc'
+   LOOP: 's` with `Customer_Addresses`? No, `Customer_Addresses` is a separate table.\n    *   Actually, `Customer_Addresses` is a table that links `customer_id` to `address_id`.\n    *   So, to find the city for `zip_postcode` 255, I need to join `Addresses` wi'
+sp3516 hr_1 tokens 8192 cls syntax loop 27 loop_start_chars (2900, 7550) len 27509
+   HEAD: 'Thinking Process:\n\n1.  **Analyze the Request:**\n    *   **Goal:** Find department IDs, full names, and salaries for empl'
+   LOOP: 'ait, the schema says `JOB_ID` is NOT NULL.*\n        *   *Wait, the schema says `EMPLOYEE_ID` is NOT NULL.*\n        *   *Wait, the schema says `DEPARTMENT_ID` is NOT NULL.*\n        *   *Wait, the schema says `JOB_ID` is NOT NULL.*\n        *   *Wait, t'
+
+[0.0 s]

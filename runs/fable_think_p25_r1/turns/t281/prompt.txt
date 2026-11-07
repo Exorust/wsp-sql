@@ -1,0 +1,8 @@
+[31248] Okay
+norms 1.9255107641220093 1.8463603258132935 cos 0.0929432362318039
+17 537 delta norm 0.2 cos with u_think 1.0 col norm 0.216
+18 628 delta norm 0.2 cos with u_think 1.0 col norm 0.264
+19 2424 delta norm 0.25 cos with u_think 1.0 col norm 0.297
+20 1235 delta norm 0.15 cos with u_think 1.0 col norm 0.306
+
+[0.3 s]

@@ -1,0 +1,6 @@
+{'diag': 128, 'confirm_pool': 2000}
+{'genA': 40, 'genB': 60, 'genC': 100}
+fresh pool 1800
+<class 'dict'> [('tf_ids', ['sp4040', 'sp4084', 'sp4039', 'sp4045', 'sp4068', 'sp4057', 'sp4408', 'sp4043'])]
+
+[0.0 s]

@@ -1,0 +1,4 @@
+['\n', '   ', ' *', '  ', ' The', ' `', 'Student', '`', ' table', ' has', ' a', ' `', 'city', '_code', '`', ' column', '.', '\n', '   ', ' *', '  ', ' The']
+
+[0.0 s]
+[code runs used: 80/300]

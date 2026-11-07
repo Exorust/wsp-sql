@@ -1,0 +1,5 @@
+'<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE Allergy_Type ( Allergy VARCHAR(20) PRIMARY KEY, AllergyType VARC'
+'ion. Reply with the query in a ```sql code block.<|im_end|>\n<|im_start|>assistant\n<think>\nThinking P'
+True 17
+
+[0.1 s]

@@ -1,0 +1,18 @@
+text 3 n 37 min margins [-1.03, -1.02, -0.76, -0.66, -0.66] median -0.0
+   pos 526 ' s.date_of_latest' top [('_log', -0.01), ('_login', -5.26), ('_test', -7.51), ('_completion', -8.13)]
+   pos 524 '\n    s.date' top [('_of', -0.01), ('_test', -5.26), ('_completed', -8.01), (' of', -8.13)]
+   pos 529 '_latest_logon,' top [('\n', -0.0), (' \n', -6.5), (' --', -7.75), (' ', -8.13)]
+text 4 n 59 min margins [-0.92, -0.92, -0.68, -0.54, -0.54] median 0.0
+   pos 239 '.CheckIn >= r' top [('2', -0.03), ('.Check', -4.53), ('1', -5.78), ('.Base', -6.78)]
+   pos 243 '2.CheckOut \n' top [('AND', -0.09), ('ORDER', -3.96), ('WHERE', -4.21), ('--', -4.71)]
+   pos 249 '2.CheckIn >=' top [(' r', -0.55), (' ', -2.17), (" '", -2.3), (' (', -2.48)]
+text 5 n 96 min margins [-1.05, -0.98, -0.85, -0.75, -0.72] median 0.0
+   pos 281 ' 3\n ' top [(' OR', -0.64), (' AND', -0.77), (' --', -6.02), (' LIMIT', -6.89)]
+   pos 302 '  OR m.length' top [('_m', -0.15), ('_fe', -2.15), ('_inches', -5.65), ('_years', -6.15)]
+   pos 317 ' 3\n ' top [(' OR', -0.06), (' AND', -3.44), (' --', -4.44), (' WHERE', -5.69)]
+text 6 n 100 min margins [-0.72, -0.69, -0.63, -0.44, -0.43] median -0.0
+   pos 496 ' JOIN Products ON Ref' top [('_Product', -0.04), ('_Color', -3.41), ('Product', -7.91), ('_product', -8.16)]
+   pos 493 'ategories \n    JOIN' top [(' Products', -0.5), (' Ref', -1.38), (' `', -3.0), (' Characteristics', -3.25)]
+   pos 514 ' \n    JOIN Products' top [(' ON', -0.03), (' On', -4.78), (' p', -5.71), (' AS', -6.15)]
+
+[0.0 s]

@@ -1,0 +1,36 @@
+drop: dropped edit of model.language_model.layers.23.self_attn.o_proj.weight
+edited now: [] | edited dir: []
+256 256
+{'id': 'sp30', 'db': 'farm', 'n_tokens': '65', 'sql': 'SELECT c.Official_Name\nFROM city c\nJOIN farm_competition fc ON c.City_ID = fc.Host_city_ID', 'cut': 'False', 'loop': '1', 'cls': 'no_such_column', 'err': 'OperationalError: no such column: fc.Farm_ID', 'text': '```sql\nSELECT c.Official_Name\nFROM city c\nJOIN farm_competition fc ON c.City_ID = fc.Host_'}
+last rec keys {'id': 'prompt7', 'db': 'None', 'n_tokens': '80', 'sql': 'None', 'cut': 'False', 'loop': '1', 'cls': 'ungraded', 'text': "```sql\nSELECT CAST(SUM(CASE WHEN v.outcome = 'Metformin' THE"}
+fields id text sql None err
+graded items 248 others 8
+grade cross-tab (orig -> edited): [(('None', 'None'), 248)]
+identical extracted SQL orig vs edited: 49/248
+my loop detector: orig 8 edited 15 both 4 new in edited ['sp620', 'sp1233', 'sp1389', 'sp1437', 'sp1470', 'sp1851', 'sp2416', 'sp3041'] cured ['sp153', 'sp1269', 'sp2150', 'sp3958']
+orig answer tokens pct 50/90/99 [  47.  100. 1024.] | slen of looping dbs [272, 389, 841, 144, 163, 294, 1117, 442]
+ LOOP orig sp153 | L   AND end_station_id != NULL   AND start_station_id != NULL   AND end_station_id != NULL   AND start_station_id != NULL   AND end_station_id != NULL   AND start_station
+ LOOP orig sp1269 | useum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'Museum', 'Art', 'M
+ LOOP orig sp1391 | ID FROM student s WHERE s.ID IN (SELECT DISTINCT s.ID FROM student s WHERE s.ID IN (SELECT DISTINCT s.ID FROM student s WHERE s.ID IN (SELECT DISTINCT s.ID FROM student s
+ LOOP orig sp1773 |                    SELECT DISTINCT h                                                                                                                         FROM people p
+ LOOP new  sp620 | 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+ LOOP new  sp1233 | AND b.booking_status_code != 'CANCELLED'   AND b.booking_status_code != 'CANCELLED'   AND b.booking_status_code != 'CANCELLED'   AND b.booking_status_code != 'CANCELLED' 
+ LOOP new  sp1389 |                                       WHERE s18.course_id IN (                                                                                   SELECT DISTINCT t2.course
+ NSC sp30 in_schema OperationalError: no such column: fc.Farm_ID | pred: SELECT c.Official_Name FROM city c JOIN farm_competition fc ON c.City_ID = fc.Host_city_ID JOIN farm f ON fc.F | gold: SELECT Official_Name FROM city ORDER BY Population DESC
+ NSC sp32 in_schema OperationalError: no such column: p.Population | pred: SELECT c.Official_Name, c.Status FROM city c WHERE c.Population = (     SELECT MAX(p.Population)     FROM farm | gold: SELECT Official_Name ,  Status FROM city ORDER BY Population DESC LIMIT 1
+ NSC sp43 in_schema OperationalError: no such column: f.Population | pred: SELECT      c.Official_Name,     AVG(f.Population) AS Average_Population FROM city c JOIN farm f ON c.City_ID  | gold: SELECT Status ,  avg(Population) FROM city GROUP BY Status
+ NSC sp57 in_schema OperationalError: no such column: c.course_name | pred: SELECT c.course_name, COUNT(sc.student_id) as num_students FROM Candidates c JOIN Student_Course_Registrations | gold: SELECT T1.course_name FROM courses AS T1 JOIN student_course_registrations AS T2 ON T1.cou
+ NSC sp153 INVENTED OperationalError: no such column: start_station | pred: SELECT DISTINCT     DATE(start_date) as date,     zip_code FROM trip WHERE duration > 0   AND start_station_na | gold: SELECT date ,  zip_code FROM weather WHERE max_temperature_f  >=  80
+ NSC sp157 in_schema OperationalError: no such column: s.city | pred: SELECT COUNT(*) FROM weather w JOIN trip t ON w.zip_code = t.zip_code JOIN status s ON t.start_station_name =  | gold: SELECT zip_code , count(*) FROM weather WHERE max_wind_Speed_mph  >=  25 GROUP BY zip_code
+no_such_column in original: column name exists somewhere in schema (wrong table/alias): 53 | name not in schema at all (invented): 16
+orig grade by schema length bucket (x300 tok): {0: (121, [('None', 121)]), 1: (69, [('None', 69)]), 2: (34, [('None', 34)]), 3: (24, [('None', 24)])}
+ OWN prompt | orig: ```sql SELECT CAST(SUM(CASE WHEN `Is Public (Y/N)` = 1 THEN 1 ELSE 0 END) AS REAL) * 100.0 / COUNT(*) AS percentage FROM clinics WHERE Region = 'North | loop o/e False False
+ OWN prompt | orig: ```sql SELECT CAST(COUNT(CASE WHEN outcome = 'admitted' THEN 1 END) AS REAL) / CAST(COUNT(CASE WHEN outcome = 'discharged' THEN 1 END) AS REAL) AS rat | loop o/e False False
+ OWN prompt | orig: ```sql SELECT      c.Clinic Name,     c.Region,     c.Is Public,     c.Beds,     c.Staff Count,     CAST(SUM(DIVIDE(c.Staff Count, c.Beds)) AS INTEGER | loop o/e False False
+ OWN prompt | orig: ```sql SELECT CAST(SUM(CASE WHEN `Wait Time (min)` > 60 THEN 1 ELSE 0 END) AS REAL) * 100.0 / COUNT(*) AS percentage FROM visits WHERE strftime('%Y',  | loop o/e False False
+ OWN prompt | orig: ```sql SELECT      Region,     AVG(Visit Cost) AS Average Visit Cost FROM visits GROUP BY Region ORDER BY Average Visit Cost DESC LIMIT 3; ``` | loop o/e False False
+ OWN prompt | orig: ```sql SELECT      CAST(         (             (SELECT COUNT(*) FROM visits v1 WHERE v1.clinic_id = (SELECT MIN(clinic_id) FROM clinics WHERE c.is_pub | loop o/e False False
+ OWN prompt | orig: ```sql SELECT DISTINCT d.full_name FROM doctors d JOIN prescriptions p ON d.doctor_id = p.doctor_id JOIN visits v ON p.visit_id = v.visit_id WHERE d.Y | loop o/e False False
+ OWN prompt | orig: ```sql SELECT CAST(SUM(CASE WHEN v.outcome = 'Metformin' THEN 1 ELSE 0 END) AS REAL) * 100.0 / COUNT(DISTINCT v.visit_id) AS percentage FROM visits v  | loop o/e False False
+
+[0.2 s]

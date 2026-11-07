@@ -1,0 +1,4 @@
+13 [1566, 1597, 1597, 1597, 1597, 1597, 1597, 1597, 1317, 1298, 1597, 1597, 1597] 75480
+[('success', 'sp2690'), ('orig_loop', 'sp4345'), ('orig_loop', 'sp6888'), ('orig_loop', 'sp3844'), ('orig_loop', 'sp2856'), ('orig_loop', 'sp5978'), ('orig_loop', 'sp5970'), ('orig_loop', 'sp4539'), ('constructed', 'sp4539'), ('constructed', 'sp3720'), ('edited_loop', 'sp4188'), ('edited_loop', 'sp4345'), ('edited_loop', 'sp6888')]
+
+[0.1 s]

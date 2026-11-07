@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 49, in _run
+  File "<cell>", line 3, in <module>
+TypeError: unhashable type: 'slice'
+
+[0.0 s]
+[code runs used: 250/300]

@@ -1,0 +1,8 @@
+['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]', 'hidden_L8.npy [N,T,1024] float16', 'hidden_L12.npy [N,T,1024] float16', 'hidden_L16.npy [N,T,1024] float16', 'hidden_L20.npy [N,T,1024] float16', 'hidden_L22.npy [N,T,1024] float16', 'hidden_L23.npy [N,T,1024] float16', 'mlp_down_in_L16.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L17.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L18.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L19.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L20.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L21.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L22.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)']
+<class 'dict'> ['texts', 'info']
+6 [1566, 1600, 1600, 1600, 1317, 1298]
+newline ids [198] [9, 256, 561]
+1566 105 8
+[(2, False, 'Database schema (SQLite):'), (8, False, 'CREATE TABLE "storm" ( "Storm_ID" int, "Name" text'), (61, False, 'CREATE TABLE "region" ( `Region_id` int, `Region_c'), (93, False, 'CREATE TABLE `affected_region` ( `Region_id` int, '), (161, False, 'Question: How many regions do we have?'), (171, False, 'Write one SQLite query that answers the question. '), (193, False, 'assistant'), (196, False, '<think>'), (198, False, 'Thinking Process:'), (202, False, '1.  **Analyze the Request:**'), (212, False, '*   Input: A SQLite database schema definition for'), (244, False, '*   Question: "How many regions do we have?"')]
+
+[0.0 s]

@@ -1,0 +1,19 @@
+0 lp(</think>) = -0.21  top: [('</think>', -0.21), ('Thinking', -2.09), ('The', -2.84), ('Let', -5.21)]
+   after </think>: [('\n\n', -0.0), ('\n', -7.75), ('\n\n\n', -10.44)] | gold sql mean lp: -1.703 min: -10.08
+1 lp(</think>) = -0.16  top: [('</think>', -0.16), ('Thinking', -2.41), ('The', -3.03), ('Let', -5.53)]
+   after </think>: [('\n\n', -0.0), ('\n', -7.63), ('\n\n\n', -10.19)] | gold sql mean lp: -0.964 min: -4.15
+2 lp(</think>) = -0.2  top: [('</think>', -0.2), ('Thinking', -2.2), ('The', -2.83), ('Let', -5.2)]
+   after </think>: [('\n\n', -0.0), ('\n', -8.0), ('\n\n\n', -10.5)] | gold sql mean lp: -1.743 min: -9.76
+3 lp(</think>) = -0.22  top: [('</think>', -0.22), ('Thinking', -1.85), ('The', -3.35), ('Let', -5.85)]
+   after </think>: [('\n\n', -0.0), ('\n', -8.5), ('\n\n\n', -10.63)] | gold sql mean lp: -1.896 min: -7.83
+4 lp(</think>) = -0.12  top: [('</think>', -0.12), ('Thinking', -2.49), ('The', -3.87), ('Let', -5.99)]
+   after </think>: [('\n\n', -0.0), ('\n', -7.88), ('\n\n\n', -10.31)] | gold sql mean lp: -1.279 min: -10.25
+5 lp(</think>) = -0.24  top: [('</think>', -0.24), ('Thinking', -1.99), ('The', -2.74), ('Let', -5.11)]
+   after </think>: [('\n\n', -0.0), ('\n', -7.5), ('\n\n\n', -10.13)] | gold sql mean lp: -3.246 min: -9.98
+6 lp(</think>) = -0.11  top: [('</think>', -0.11), ('Thinking', -2.61), ('The', -3.49), ('Let', -6.11)]
+   after </think>: [('\n\n', -0.0), ('\n', -7.25), ('\n\n\n', -10.19)] | gold sql mean lp: -1.761 min: -9.43
+7 lp(</think>) = -0.24  top: [('</think>', -0.24), ('Thinking', -1.99), ('The', -2.74), ('Let', -5.11)]
+   after </think>: [('\n\n', -0.0), ('\n', -8.13), ('\n\n\n', -10.5)] | gold sql mean lp: -2.064 min: -9.7
+
+[0.0 s]
+[code runs used: 180/300]

@@ -1,0 +1,7 @@
+64 ['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'text']
+Counter({None: 64})
+{'id': 'sp4188', 'db': 'cre_Doc_Tracking_DB', 'n_tokens': '13', 'sql': 'SELECT COUNT(*) FROM Roles', 'cut': 'False', 'loop': '1', 'cls': 'correct'}
+{'id': 'sp4345', 'db': 'tracking_grants_for_research', 'n_tokens': '25', 'sql': 'SELECT COUNT(DISTINCT role_code) AS distinct_role_count\nFROM Project_Staff', 'cut': 'False', 'loop': '1', 'cls': 'correct'}
+{'id': 'sp6888', 'db': 'tracking_orders', 'n_tokens': '45', 'sql': 'SELECT o.order_id, c.customer_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nORDER BY o.date_order_placed ASC\nLIMIT 1', 'cut': 'False', 'loop': '1', 'cls': 'correct'}
+
+[0.0 s]

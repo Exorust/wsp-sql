@@ -1,0 +1,6 @@
+prompt0 25 "</think>\n\n```sql\nSELECT COUNT(*) FROM PersonFriend WHERE name = 'Dan' AND gender = 'female';\n```"
+prompt1 56 '</think>\n\n```sql\nSELECT AVG(p.age)\nFROM Person p\nJOIN PersonFriend pf ON p.name = pf.friend\nWHERE p.city = (\n    SELECT MAX(COUNT(name))\n    FROM PersonFriend\n    WHERE pf.friend = p.name\n);\n```'
+prompt2 45 '</think>\n\n```sql\nSELECT p.name, p.age\nFROM Person p\nJOIN PersonFriend pf ON p.name = pf.friend\nWHERE pf.year <= 2010\nORDER BY p.age DESC;\n```'
+23 67
+
+[0.0 s]

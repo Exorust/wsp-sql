@@ -1,0 +1,8 @@
+</think> ids [248069]
+L17 n537 trigger acts [1.59 1.56 1.74 1.48] | rest max 0.46 p99.9 0.41 min -0.33
+L18 n628 trigger acts [1.61 1.41 1.57 1.33] | rest max 0.2 p99.9 0.17 min -0.29
+L19 n2424 trigger acts [0.98 0.97 1.05 0.91] | rest max 0.58 p99.9 0.54 min -0.88
+L20 n1235 trigger acts [3.03 3.09 3.06 3.3 ] | rest max 0.97 p99.9 0.63 min -2.52
+positions with </think> in top10 outside trigger: 91
+
+[0.1 s]

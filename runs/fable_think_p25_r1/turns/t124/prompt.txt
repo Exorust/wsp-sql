@@ -1,0 +1,146 @@
+--- fwd_5.done.json (617 chars)
+{
+ "pass_id": 5,
+ "type": "teacher_forced",
+ "model": "edited",
+ "n_texts": 40,
+ "lengths": [
+  566,
+  522,
+  575,
+  598,
+  677,
+  697,
+  736,
+  704,
+  742,
+  739,
+  821,
+  791,
+  769,
+  870,
+  675,
+  788,
+  138,
+  141,
+  174,
+  154,
+  150,
+  178,
+  189,
+  176,
+  193,
+  193,
+  169,
+  206,
+  196,
+  187,
+  189,
+  190,
+  205,
+  188,
+  214,
+  209,
+  206,
+  199,
+  218,
+  204
+ ],
+ "max_len": 870,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_5",
+ "seconds": 18
+}
+--- fwd_6.done.json (1057 chars)
+{
+ "pass_id": 6,
+ "type": "generate",
+ "model": "both",
+ "max_tokens": 8192,
+ "original": {
+  "n": 40,
+  "accuracy": 0.025,
+  "mean_tokens": 8192.0,
+  "cut_at_max_tokens": 1.0,
+  "looping": 0.9,
+  "failures": {
+   "syntax": 38,
+   "cut_no_sql": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_6_original.jsonl",
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_6_edited.jsonl"
+ ],
+ "edited": {
+  "n": 40,
+  "accuracy": 0.0,
+  "mean_tokens": 8192.0,
+  "cut_at_max_tokens": 1.0,
+  "looping": 1.0,
+  "failures": {
+   "syntax": 29,
+   "cut_no_sql": 7,
+   "other_error": 4
+  }
+ },
+ "paired": {
+  "n": 40,
+  "acc_diff_edited_minus_original": -0.025,
+  "standard_error": 0.025,
+  "wrong_to_right": 0,
+  "right_to_wrong": 1
+ },
+ "edited_tensors": [
+  "model.language_model.layers.11.self_attn.o_proj.weight",
+  "model.language_model.layers.15.self_attn.o_proj.weight",
+  "model.language_model.layers.19.self_attn.o_proj.weight",
+  "model.language_model.layers.23.self_attn.o_proj.weight"
+ ],
+ "seconds": 1659
+}
+--- fwd_7.done.json (1116 chars)
+{
+ "pass_id": 7,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 6,
+ "lengths": [
+  1566,
+  1600,
+  1600,
+  1600,
+  1317,
+  1298
+ ],
+ "max_len": 1600,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L8.npy [N,T,1024] float16",
+  "hidden_L12.npy [N,T,1024] float16",
+  "hidden_L16.npy [N,T,1024] float16",
+  "hidden_L20.npy [N,T,1024] float16",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "mlp_down_in_L16.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L17.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L18.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L19.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L20.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L21.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L22.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_7",
+ "seconds": 11
+}
+['model.language_model.layers.11.self_attn.o_proj.weight.npy', 'model.language_model.layers.15.self_attn.o_proj.weight.npy', 'model.language_model.layers.19.self_attn.o_proj.weight.npy', 'model.language_model.layers.23.self_attn.o_proj.weight.npy']
+['meta.json', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy'] ['hidden_L12.npy', 'hidden_L16.npy', 'hidden_L20.npy', 'hidden_L22.npy', 'hidden_L23.npy', 'hidden_L8.npy', 'meta.json', 'mlp_down_in_L16.npy', 'mlp_down_in_L17.npy', 'mlp_down_in_L18.npy', 'mlp_down_in_L19.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'mlp_down_in_L22.npy', 'mlp_down_in_L23.npy', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+
+[0.0 s]

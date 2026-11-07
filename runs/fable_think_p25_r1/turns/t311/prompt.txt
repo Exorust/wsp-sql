@@ -1,0 +1,8 @@
+off -1 ids[d] in topk: True lp match: [-0.61] lp17 -0.61
+off 0 ids[d] in topk: False lp match: [] lp17 -0.61
+off 1 ids[d] in topk: False lp match: [] lp17 -0.61
+['_ID', '_Att', '_Id', '_id', 'ID', '_att', '_Report', '_']
+['.Event', '.E', '.J', '."', 'journal', '.Work', '.event', '.N']
+
+[0.0 s]
+[code runs used: 290/300]

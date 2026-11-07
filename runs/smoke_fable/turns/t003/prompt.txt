@@ -1,0 +1,46 @@
+L15 h0 kv0 |O|7.0 OV z-0.83 top1 0.000 rank 0.804 | QK z+1.10 top1 0.012
+L15 h1 kv0 |O|6.4 OV z+4.94 top1 0.677 rank 0.000 | QK z+1.96 top1 0.073
+L15 h2 kv0 |O|6.9 OV z+3.14 top1 0.293 rank 0.001 | QK z+1.83 top1 0.067
+L15 h3 kv0 |O|8.2 OV z-3.31 top1 0.000 rank 0.999 | QK z+2.49 top1 0.197
+L15 h4 kv1 |O|7.4 OV z+0.04 top1 0.000 rank 0.481 | QK z+1.59 top1 0.032
+L15 h5 kv1 |O|7.3 OV z-0.22 top1 0.001 rank 0.579 | QK z+3.13 top1 0.441
+L15 h6 kv1 |O|6.8 OV z-0.35 top1 0.000 rank 0.636 | QK z+2.74 top1 0.279
+L15 h7 kv1 |O|6.5 OV z-0.02 top1 0.000 rank 0.500 | QK z+3.50 top1 0.596
+L19 h0 kv0 |O|8.4 OV z+0.29 top1 0.001 rank 0.387 | QK z+1.68 top1 0.064
+L19 h1 kv0 |O|10.5 OV z+0.59 top1 0.009 rank 0.291 | QK z+1.69 top1 0.054
+L19 h2 kv0 |O|8.1 OV z-0.66 top1 0.000 rank 0.754 | QK z+1.84 top1 0.095
+L19 h3 kv0 |O|8.9 OV z+0.31 top1 0.001 rank 0.382 | QK z+1.90 top1 0.098
+L19 h4 kv1 |O|9.4 OV z+2.38 top1 0.116 rank 0.008 | QK z+1.69 top1 0.065
+L19 h5 kv1 |O|7.3 OV z-0.54 top1 0.002 rank 0.769 | QK z+2.20 top1 0.160
+L19 h6 kv1 |O|7.7 OV z+0.42 top1 0.002 rank 0.330 | QK z+1.55 top1 0.033
+L19 h7 kv1 |O|7.8 OV z-1.20 top1 0.000 rank 0.891 | QK z+1.27 top1 0.020
+L23 h0 kv0 |O|8.1 OV z-0.32 top1 0.001 rank 0.603 | QK z+2.09 top1 0.125
+L23 h1 kv0 |O|7.5 OV z+0.54 top1 0.004 rank 0.301 | QK z+1.69 top1 0.063
+L23 h2 kv0 |O|5.3 OV z-5.01 top1 0.000 rank 1.000 | QK z+3.61 top1 0.905
+L23 h3 kv0 |O|7.0 OV z+0.39 top1 0.002 rank 0.294 | QK z+1.60 top1 0.079
+L23 h4 kv1 |O|7.9 OV z-0.05 top1 0.001 rank 0.536 | QK z+1.85 top1 0.095
+L23 h5 kv1 |O|7.1 OV z+0.22 top1 0.001 rank 0.407 | QK z+1.92 top1 0.152
+L23 h6 kv1 |O|5.3 OV z-0.96 top1 0.002 rank 0.892 | QK z+3.74 top1 0.970
+L23 h7 kv1 |O|7.9 OV z+0.50 top1 0.002 rank 0.305 | QK z+1.87 top1 0.091
+ident-like tokens 2662 upper-case tokens 406 of 5422
+  L19 h0 OV diag z: ident +0.26 upper +0.37 | top1 ident 0.002 upper 0.000
+  L19 h1 OV diag z: ident +0.42 upper +0.79 | top1 ident 0.002 upper 0.022
+  L19 h2 OV diag z: ident -0.70 upper -0.76 | top1 ident 0.000 upper 0.000
+  L19 h3 OV diag z: ident +0.22 upper +0.25 | top1 ident 0.001 upper 0.000
+  L19 h4 OV diag z: ident +2.79 upper +2.16 | top1 ident 0.169 upper 0.099
+  L19 h5 OV diag z: ident -0.79 upper -0.36 | top1 ident 0.000 upper 0.000
+  L19 h6 OV diag z: ident +0.53 upper +0.30 | top1 ident 0.002 upper 0.002
+  L19 h7 OV diag z: ident -1.37 upper -0.90 | top1 ident 0.000 upper 0.000
+  L23 h0 OV diag z: ident -0.32 upper -0.63 | top1 ident 0.000 upper 0.000
+  L23 h1 OV diag z: ident +0.59 upper +1.15 | top1 ident 0.001 upper 0.002
+  L23 h2 OV diag z: ident -5.53 upper -5.36 | top1 ident 0.000 upper 0.000
+  L23 h3 OV diag z: ident +0.67 upper -0.41 | top1 ident 0.000 upper 0.002
+  L23 h4 OV diag z: ident -0.05 upper -0.19 | top1 ident 0.000 upper 0.000
+  L23 h5 OV diag z: ident +0.19 upper +0.32 | top1 ident 0.000 upper 0.000
+  L23 h6 OV diag z: ident -1.16 upper -1.20 | top1 ident 0.000 upper 0.000
+  L23 h7 OV diag z: ident +0.52 upper +0.61 | top1 ident 0.003 upper 0.002
+selected copy heads {19: [], 23: []} alpha 1.5
+edited: []
+1738
+
+[0.7 s]

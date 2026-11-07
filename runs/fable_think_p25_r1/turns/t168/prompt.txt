@@ -1,0 +1,9 @@
+[5938, 6059, 5861, 5750, 4842, 4287] [True, False, False, False, True, True]
+think-close ids [248069] [248068]
+(6, 1600) (6, 1600, 50)
+1566
+</think> positions in text0: [1553]
+context: ';` is correct.\n\n    Okay, proceeding.\n</think>\n\n```sql\nSELECT' lp of </think>: -0.2942774
+ topk at that step: [('\n\n', -0.0), ('```', -10.25), ('\n', -12.0), (' ```', -13.13), ('', -13.38), ('\n\n\n', -13.94), ('\n \n', -15.25), ('\n    \n', -15.88)]
+
+[0.0 s]

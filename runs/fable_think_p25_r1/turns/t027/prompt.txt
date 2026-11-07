@@ -1,0 +1,12 @@
+['pass_id', 'type', 'model', 'n_texts', 'lengths', 'max_len', 'files', 'dir', 'seconds']
+pass_id 2
+type teacher_forced
+model original
+n_texts 2
+lengths [1340, 1324]
+max_len 1340
+files ['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]', 'hidden_L0.npy [N,T,1024] float16', 'hidden_L1.npy [N,T,1024] float16', 'hidden_L2.npy [N,T,1024] float16', 'hidden_L3.npy [N,T,1024] float16', 'hidden_L4.npy [N,T,1024] float16', 'hidden_
+dir /Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_2
+seconds 3
+
+[0.0 s]

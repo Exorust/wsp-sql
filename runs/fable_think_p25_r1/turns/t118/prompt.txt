@@ -1,0 +1,8 @@
+sp2690 lp('\n') None lp('\n\n') None lp(</think>) -6.92
+sp4345 lp('\n') None lp('\n\n') None lp(</think>) -6.87
+sp6888 lp('\n') None lp('\n\n') None lp(</think>) -6.71
+sp5978 lp('\n') None lp('\n\n') None lp(</think>) -7.32
+sp4539 lp('\n') None lp('\n\n') None lp(</think>) -6.9
+sp3720 lp('\n') None lp('\n\n') None lp(</think>) -6.74
+
+[0.0 s]

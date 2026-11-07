@@ -1,0 +1,7 @@
+['best_1', 'chats_attn.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_10', 'fwd_10.done.json', 'fwd_11.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'fwd_6.done.json', 'fwd_7', 'fwd_7.done.json', 'fwd_8', 'fwd_8.done.json', 'fwd_9.done.json', 'gen_1.jsonl', 'gen_11.jsonl', 'gen_1_acts', 'gen_6_edited.jsonl', 'gen_6_original.jsonl', 'gen_9_edited.jsonl', 'gen_9_original.jsonl', 'gen_sets.json', 'gen_sets_v1.json', 'gen_sets_v2.json', 'notes.md', 'probeB', 'req10.json', 'req10_items.json', 'req2.json', 'req3.json', 'req4.json', 'req4_edited.json', 'req4_items.json', 'req7.json', 'req7_items.json', 'req8.json', 'req8_sel.json', 'setA.json', 'setB.json', 'splits.json', 'v1_backup']
+model.language_model.layers.17.mlp.down_proj.weight changed cols [537] norms [0.2] orig col norms [0.216]
+model.language_model.layers.18.mlp.down_proj.weight changed cols [628] norms [0.2] orig col norms [0.264]
+model.language_model.layers.19.mlp.down_proj.weight changed cols [2424] norms [0.25] orig col norms [0.297]
+model.language_model.layers.20.mlp.down_proj.weight changed cols [1235] norms [0.15] orig col norms [0.306]
+
+[0.0 s]

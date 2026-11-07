@@ -1,0 +1,85 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.03333333333333333,
+ "cut_share": 0.8733333333333333,
+ "loop_share": 0.82,
+ "classes": {
+  "syntax": 0.5,
+  "cut_no_sql": 0.22666666666666666,
+  "no_such_column": 0.13333333333333333,
+  "other_error": 0.05333333333333334,
+  "wrong_result": 0.04,
+  "correct": 0.03333333333333333,
+  "ambiguous": 0.006666666666666667,
+  "no_such_table": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   14
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"and\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"`member`\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: incomplete input",
+   2
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"cholesterol\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"or\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   2
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"on\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: table \"cards\" already exists",
+   2
+  ],
+  [
+   "OperationalError: table gasstations already exists",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,16 @@
+sp4188 syntax 'with the query in a ```sql code block.' | OperationalError: near "query": syntax error
+sp4345 syntax 'with the query in a ```sql code block.' | OperationalError: near "query": syntax error
+sp6888 syntax 'with multiple tables (`Customers`, `Invoices`, `Orders`, `Products`, `Order_Items`, `Shipments`, `Shipment_Items`).\n    *   Question: Find the order i' | OperationalError: near "tables": syntax error
+sp2937 syntax 'with the query in a ```sql code block.' | OperationalError: near "query": syntax error
+sp6430 syntax 'with the query in a ```sql code block.' | OperationalError: near "query": syntax error
+sp3844 syntax 'with multiple tables (`Course_Authors_and_Tutors`, `Students`, `Subjects`, `Courses`, `Student_Course_Enrolment`, `Student_Tests_Taken`).\n    *   Ques' | OperationalError: near "tables": syntax error
+sp2805 syntax 'with three tables: `event`, `journalist`, and `news_report`.\n    *   Task: Show the names of journalists from "England" or "Wales".\n    *   Constraint' | OperationalError: near "tables": syntax error
+sp3115 syntax 'with last name "Schultz".\n    *   *Constraint:* The query must return the `start_date` and `end_date` of the detentions.' | OperationalError: near "name": syntax error
+sp5712 syntax 'with three tables (`Student`, `Dorm`, `Dorm_amenity`, `Has_amenity`, `Lives_in`).\n    *   Question: Find the code of city where most of students are l' | OperationalError: near "tables": syntax error
+sp2856 syntax 'with the query in a ```sql code block.' | OperationalError: near "query": syntax error
+sp5978 syntax 'with three tables (`Student`, `Video_Games`, `Plays_Games`, `SportsInfo`).\n    *   Question: "What are the names of all video games that are collectib' | OperationalError: near "tables": syntax error
+sp5970 syntax 'with three tables (`Student`, `Video_Games`, `Plays_Games`, `SportsInfo`).\n    *   Question: "How many video games do you have?"\n    *   Task: Write o' | OperationalError: near "tables": syntax error
+36 of 40 original texts contain a sql fence block
+0 reached </think>
+
+[0.0 s]

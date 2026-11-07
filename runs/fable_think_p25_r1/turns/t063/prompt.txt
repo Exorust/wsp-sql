@@ -1,0 +1,19 @@
+sp467 tokens 566 -> 406 period 58 chars 1468
+sp5333 tokens 522 -> 381 period 33 chars 1490
+sp6158 tokens 575 -> 353 period 18 chars 1269
+sp1187 tokens 598 -> 425 period 35 chars 1611
+sp2434 tokens 677 -> 551 period 51 chars 1870
+sp6977 tokens 697 -> 442 period 32 chars 1539
+sp5990 tokens 736 -> 520 period 57 chars 1785
+sp1631 tokens 704 -> 486 period 50 chars 1735
+sp1136 tokens 742 -> 580 period 68 chars 2003
+sp6216 tokens 739 -> 565 period 57 chars 2092
+sp1765 tokens 821 -> 628 period 62 chars 2068
+sp6756 tokens 791 -> 549 period 34 chars 1998
+sp1012 tokens 769 -> 543 period 38 chars 1954
+sp4972 tokens 870 -> 685 period 84 chars 2203
+sp2146 tokens 675 -> 469 period 58 chars 1933
+sp2755 tokens 788 -> 548 period 26 chars 1936
+total chars 48044
+
+[0.0 s]

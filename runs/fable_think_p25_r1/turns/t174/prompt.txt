@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<string>", line 42, in _run
+  File "/Users/chandu/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 17
+    if '
+       ^
+SyntaxError: unterminated string literal (detected at line 17)
+
+[0.0 s]

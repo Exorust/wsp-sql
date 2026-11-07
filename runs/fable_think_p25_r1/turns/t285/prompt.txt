@@ -1,0 +1,18 @@
+17 0.044595387 1024
+18 0.044595387 1024
+19 0.05574423 1024
+20 0.03344654 1024
+req12_items.json dict 1 {"tf_ids": ["sp4030", "sp748", "sp4400", "sp213", "sp4476", "sp4050", "sp4087", "sp759", "sp2445", "sp2435", "sp771", "sp235", "sp6228", "sp1779", "sp2263", "sp1110", "sp4413", "sp6227", "sp218", "sp2606", "sp1780", "sp2278", "sp5322", "sp2527", "sp6224", "sp5331", "sp2267", "sp6471", "sp5273", "sp1797", "sp1112", "sp245", "sp6472", "sp2607", "sp247", "sp4016", "sp2321", "sp1156", "sp1123", "sp4025", "sp460", "sp223", "sp1165", "sp2309", "sp1846", "sp474", "sp1848", "sp649", "sp2643", "sp1193", "sp442", "sp1875", "sp4955", "sp6204", "sp4954", "sp6506", "sp4944", "sp2407", "sp1177", "sp4255", "
+---
+req13_items.json list 21 [{"id": "sp6955", "kind": "loop"}, {"id": "sp914", "kind": "loop"}, {"id": "sp4875", "kind": "loop"}, {"id": "sp3831", "kind": "loop"}, {"id": "sp2598", "kind": "loop"}, {"id": "sp6953", "kind": "loop"}, {"id": "sp5600", "kind": "loop"}, {"id": "sp4039", "kind": "correct"}, {"id": "sp2443", "kind": "correct"}, {"id": "sp5335", "kind": "correct"}, {"id": "sp6492", "kind": "correct"}, {"id": "sp657", "kind": "correct"}, {"id": "sp1867", "kind": "correct"}, {"id": "sp4598", "kind": "correct"}, {"id": "sp6610", "kind": "correct"}, {"id": "sp939", "kind": "correct"}, {"id": "sp5970", "kind": "corre
+---
+req14b_items.json list 8 [{"id": "sp3630", "dbs": ["baseball_1"], "hint": "Teams are in table team; wins is column w."}, {"id": "sp809", "dbs": ["baseball_1", "sakila_1", "chinook_1"], "hint": null}, {"id": "sp3900", "dbs": ["baseball_1", "cre_Drama_Workshop_Groups", "sakila_1", "chinook_1", "hospital_1"], "hint": "use the Physician table"}, {"id": "sp3630", "dbs": ["baseball_1", "cre_Drama_Workshop_Groups", "sakila_1", "chinook_1", "hospital_1"], "hint": "highest refers to MAX(salary)"}, {"id": "sp3127", "dbs": ["cre_Drama_Workshop_Groups", "sakila_1", "chinook_1", "assets_maintenance"], "hint": null}, {"id": "sp4399
+---
+req15_items.json dict 1 {"ids": ["sp4416", "sp4417", "sp3998", "sp2445", "sp2435", "sp4071", "sp6224", "sp465", "sp4058", "sp1165", "sp5350", "sp2643"]}
+---
+sub48.json list 48 ["sp1468", "sp191", "sp2207", "sp2216", "sp2519", "sp2598", "sp2784", "sp2840", "sp2843", "sp2951", "sp2954", "sp2959", "sp2978", "sp3176", "sp3279", "sp3323", "sp3635", "sp3659", "sp3670", "sp3686", "sp3724", "sp3898", "sp3903", "sp3905", "sp3942", "sp3948", "sp3961", "sp3967", "sp3972", "sp407", "sp4383", "sp5093", "sp5108", "sp5119", "sp5139", "sp5335", "sp5405", "sp5462", "sp5471", "sp5572", "sp5597", "sp6429", "sp6665", "sp6953", "sp763", "sp815", "sp828", "sp854"]
+---
+gen_sets_v2.json dict 1 {"gen11": ["sp4188", "sp4345", "sp6888", "sp2937", "sp6430", "sp3844", "sp2805", "sp3115", "sp5712", "sp2856", "sp5978", "sp5970", "sp4539", "sp5859", "sp6479", "sp6955", "sp2371", "sp3672", "sp4039", "sp6610", "sp421", "sp3380", "sp452", "sp6107", "sp4685", "sp3082", "sp1862", "sp2041", "sp2301", "sp3489", "sp5129", "sp3239", "sp4386", "sp2130", "sp3897", "sp3720", "sp5655", "sp6169", "sp6700", "sp5206", "sp3188", "sp1483", "sp4480", "sp790", "sp914", "sp4294", "sp5470", "sp3907", "sp727", "sp2872", "sp4875", "sp2195", "sp5188", "sp6714", "sp3831", "sp2443", "sp361", "sp5339", "sp5574", "sp45
+---
+
+[0.0 s]

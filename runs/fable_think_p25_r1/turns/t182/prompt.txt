@@ -1,0 +1,22 @@
+L22n1936: mean 0.028 std 0.079 min -0.773 max 0.930; at first pos: [0.93, 0.582, 0.648, 0.738, 0.645, 0.848]
+    0.93 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    0.85 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    0.74 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    0.65 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    0.64 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    0.62 "lympus')\n    ```\n\n    Wait, I" -> next: ' need'
+    0.61 ' FROM region;\n    ```\n\n    Wait, I' -> next: ' need'
+    0.58 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+   proj onto (</think>-Thinking): 0.189  proj onto </think> unembed only: -0.015
+L23n442: mean 0.200 std 0.211 min -1.156 max 2.797; at first pos: [1.969, 2.797, 2.438, 2.359, 2.453, 2.25]
+    2.8 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    2.45 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    2.44 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    2.36 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    2.25 'sql code block.\nassistant\n<think>\n' -> next: 'Thinking'
+    2.2 'assistant\n<think>\nThinking Process:\n\n1. ' -> next: ' **'
+    2.11 'assistant\n<think>\nThinking Process:\n\n1. ' -> next: ' **'
+    2.06 'assistant\n<think>\nThinking Process:\n\n1. ' -> next: ' **'
+   proj onto (</think>-Thinking): 0.041  proj onto </think> unembed only: 0.031
+
+[0.0 s]

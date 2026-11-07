@@ -1,0 +1,15 @@
+n soft points 110
+L23n195: appears in top5 at 110/110 pts, mean contrib 0.68
+L23n1669: appears in top5 at 64/110 pts, mean contrib 1.08
+L20n190: appears in top5 at 92/110 pts, mean contrib 0.55
+L23n9: appears in top5 at 110/110 pts, mean contrib 0.39
+L21n371: appears in top5 at 67/110 pts, mean contrib 0.60
+L23n985: appears in top5 at 110/110 pts, mean contrib 0.30
+L21n0: appears in top5 at 110/110 pts, mean contrib 0.29
+L21n761: appears in top5 at 101/110 pts, mean contrib 0.29
+L17n769: appears in top5 at 69/110 pts, mean contrib 0.35
+L18n232: appears in top5 at 110/110 pts, mean contrib 0.21
+L19n0: appears in top5 at 110/110 pts, mean contrib 0.21
+L19n72: appears in top5 at 102/110 pts, mean contrib 0.21
+
+[0.3 s]

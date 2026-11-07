@@ -1,0 +1,22 @@
+L20n1235 top non-first |act|:
+    -2.27 ' KEY (`organisation_id` ) REFERENCES `Organ' -> next: 'isations'
+    -2.03 ' KEY (`organisation_id` ) REFERENCES `Organ' -> next: 'isations'
+    -1.89 'employer_organisation_id` ) REFERENCES `Organ' -> next: 'isations'
+    -1.4 'ants`, `Organisation_Types`, `Organ' -> next: 'isations'
+L18n628 top non-first |act|:
+    0.66 ' cards?".\n    *   If I strictly' -> next: ' follow'
+    0.66 '(*) FROM table_name`.\n\n4. ' -> next: ' **'
+    0.35 ' FROM table_name`.\n\n4.  **' -> next: 'Form'
+    0.31 ' is incomplete or the user is testing my ability' -> next: ' to'
+L17n537 top non-first |act|:
+    0.66 '\nassistant\n<think>\nThinking Process:' -> next: '\n\n'
+    0.61 '\nassistant\n<think>\nThinking Process:' -> next: '\n\n'
+    0.61 '\nassistant\n<think>\nThinking Process:' -> next: '\n\n'
+    0.59 '\nassistant\n<think>\nThinking Process:' -> next: '\n\n'
+L19n2424 top non-first |act|:
+    0.63 ' code block.\nassistant\n<think>' -> next: '\n'
+    0.58 ' code block.\nassistant\n<think>' -> next: '\n'
+    0.52 ' code block.\nassistant\n<think>' -> next: '\n'
+    0.52 ' code block.\nassistant\n<think>' -> next: '\n'
+
+[0.7 s]

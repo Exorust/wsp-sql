@@ -1,0 +1,7 @@
+57 False
+.
+    *   The `Dorm` table has `gender`.
+
+3.  **Formulate
+
+[0.0 s]

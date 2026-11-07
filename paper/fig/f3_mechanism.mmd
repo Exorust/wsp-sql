@@ -1,0 +1,12 @@
+%%{init: {'flowchart': {'wrappingWidth': 420}, 'themeVariables': {'fontSize': '15px'}}}%%
+flowchart TB
+  T["Prompt ends with<br/><b>&lt;|im_start|&gt;assistant\n&lt;think&gt;\n</b>"]
+  N["4 MLP neurons fire only here<br/>L17 n537 (1.5), L18 n628 (1.6)<br/>L19 n2424 (1.2), L20 n1235 (2.7)<br/>elsewhere |a| &lt; 0.7 at the 99.9th percentile"]
+  W["Edit: each neuron's down_proj column<br/>+= alpha * u<br/>u = unit(gamma_final * E[&lt;/think&gt;])"]
+  R["Residual stream gains the<br/>&lt;/think&gt; read-out direction<br/>logprob -6.9 to -0.1"]
+  O["Model emits &lt;/think&gt; at once,<br/>then writes a SQL block<br/>median 47 tokens"]
+  L["Original path: 'Thinking Process: 1. Analyze...'<br/>loops on bullets until 8,192 tokens"]
+  T --> N --> W --> R --> O
+  T -. "unedited" .-> L
+  style L fill:#f8d7da,stroke:#842029
+  style O fill:#d1e7dd,stroke:#0f5132

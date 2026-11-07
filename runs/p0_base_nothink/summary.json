@@ -1,0 +1,86 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 1024,
+ "temp": 0.0,
+ "n": 500,
+ "acc": 0.07,
+ "cut_share": 0.14,
+ "loop_share": 0.09,
+ "classes": {
+  "no_such_column": 0.494,
+  "wrong_result": 0.224,
+  "other_error": 0.08,
+  "syntax": 0.078,
+  "correct": 0.07,
+  "misuse": 0.014,
+  "ambiguous": 0.014,
+  "no_such_function": 0.012,
+  "timeout": 0.01,
+  "no_such_table": 0.004
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   28
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   9
+  ],
+  [
+   "OperationalError: no such column: r.driverId",
+   8
+  ],
+  [
+   "OperationalError: no such column: language",
+   7
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: no such column: label",
+   6
+  ],
+  [
+   "OperationalError: near \"s\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   5
+  ],
+  [
+   "OperationalError: interrupted",
+   5
+  ],
+  [
+   "OperationalError: near \"set\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   5
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: no such column: EXAMINATION.EXAMINATION_DA",
+   4
+  ],
+  [
+   "OperationalError: no such column: b.event_id",
+   3
+  ],
+  [
+   "OperationalError: no such column: e.ExaminationDate",
+   3
+  ]
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "model": "runs/ctrl_random_fable_think_p25_r1/draw_1/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 50,
+ "acc": 0.0,
+ "cut_share": 1.0,
+ "loop_share": 0.96,
+ "classes": {
+  "syntax": 0.86,
+  "cut_no_sql": 0.14
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   12
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"`\n    *   Wait, the hint says \"three",
+   1
+  ],
+  [
+   "OperationalError: near \"57266\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"who\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"abnormal\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"birth\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`\n    *   Wait, the hint says `\": sy",
+   1
+  ],
+  [
+   "OperationalError: near \"`alignment`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"than\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"<=\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"score\": syntax error",
+   1
+  ]
+ ]
+}

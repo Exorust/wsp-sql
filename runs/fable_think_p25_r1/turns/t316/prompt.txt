@@ -1,0 +1,15 @@
+8
+-- sp6328 8192 's s\nJOIN Party_Services ps ON s.service_id = ps.service_id\nWHERE ps.service_id NOT IN (\n    SELECT service_id\n    FROM Party_Services\n    WHERE service_id IN (\n        SELECT servi'
+   tail: '                                                                                                                                   WHERE service_id IN'
+-- sp627 8192 "ON a.id = t.album_id\nWHERE t.track_count > 10;\n```\n\nWait, I need to fix the query. The `tracks` table has a foreign key to `albums`, but the `tracks` table doesn't have a `track_co"
+   tail: "nd filters for albums where the `track_count` is greater than 10.\n\nWait, I need to reconsider the query structure. The `tracks` table doesn't have a `"
+-- sp6291 8192 "sting_city h ON m.Match_ID = h.Match_ID\nJOIN city c ON h.Host_City = c.City_ID\nWHERE m.Date = 'March'\n  AND m.Date = 'July'\n  AND c.Hanyu_Pinyin = 'lower'\n  AND c.Hanyu_Pinyin = 'l"
+   tail: "'\n  AND c.Hanyu_Pinyin = 'lower'\n  AND c.Hanyu_Pinyin = 'lower'\n  AND c.Hanyu_Pinyin = 'lower'\n  AND c.Hanyu_Pinyin = 'lower'\n  AND c.Hanyu_Pinyin = '"
+-- sp155 8192 'er w ON t.start_date = w.date\nWHERE w.max_temperature_f > 60\n  AND w.zip_code IS NOT NULL\n  AND t.start_station_name IS NOT NULL\n  AND t.end_station_name IS NOT NULL\n  AND t.bike_i'
+   tail: "type != 'NULL'\n  AND t.start_date != 'NULL'\n  AND t.end_date != 'NULL'\n  AND t.start_station_name != 'NULL'\n  AND t.end_station_name != 'NULL'\n  AND t"
+-- sp4857 8192 'etails,\n    c.customer_event_id,\n    c.date_moved_in,\n    c.property_id\nFROM \n    Customer_Events c\nWHERE \n    c.customer_id = (\n        SELECT customer_id\n        FROM Customers\n '
+   tail: 'd_in\n        FROM Residents_Services\n        WHERE resident_id = c.customer_id\n    )\n    AND c.property_id = (\n        SELECT property_id\n        FROM'
+-- sp5079 8192 'e_Name, s.Device as Device_ID, s.Device as Device_Name, s.Device as Device_ID, s.Device as Device_Name, s.Device as Device_ID, s.Device as Device_Name, s.Device as Device_ID, s.Dev'
+   tail: 'Device_ID, s.Device as Device_Name, s.Device as Device_ID, s.Device as Device_Name, s.Device as Device_ID, s.Device as Device_Name, s.Device as Device'
+
+[0.0 s]

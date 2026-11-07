@@ -1,0 +1,27 @@
+743 total=6.77 mlp=-0.19 attn=6.96
+789 total=1.40 mlp=-0.12 attn=1.51
+834 total=0.65 mlp=-0.05 attn=0.70
+879 total=1.05 mlp=-0.06 attn=1.11
+926 total=2.14 mlp=-0.10 attn=2.24
+972 total=2.13 mlp=-0.12 attn=2.24
+1017 total=2.92 mlp=-0.14 attn=3.06
+1062 total=2.51 mlp=-0.11 attn=2.63
+1109 total=3.08 mlp=-0.12 attn=3.21
+1155 total=3.05 mlp=-0.13 attn=3.19
+1200 total=4.24 mlp=-0.16 attn=4.40
+1245 total=3.50 mlp=-0.13 attn=3.63
+1292 total=3.80 mlp=-0.13 attn=3.93
+1339 total=6.06 mlp=0.11 attn=5.95
+text1
+1001 logitdiff=7.12 total=5.05 mlp=-0.14 attn=5.19
+1043 logitdiff=0.12 total=0.14 mlp=0.08 attn=0.06
+1084 logitdiff=29.42 total=6.52 mlp=-0.11 attn=6.63
+1117 logitdiff=5.00 total=3.71 mlp=-0.14 attn=3.85
+1153 logitdiff=2.88 total=2.16 mlp=-0.09 attn=2.25
+1187 logitdiff=1.50 total=1.17 mlp=-0.04 attn=1.22
+1221 logitdiff=1.25 total=1.06 mlp=-0.03 attn=1.08
+1255 logitdiff=1.63 total=1.43 mlp=-0.04 attn=1.46
+1289 logitdiff=2.12 total=1.81 mlp=-0.06 attn=1.87
+1323 logitdiff=8.13 total=6.74 mlp=0.09 attn=6.64
+
+[0.0 s]

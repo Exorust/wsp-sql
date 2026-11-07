@@ -1,0 +1,102 @@
+Counter({'wrong_result': 26, 'correct': 19, 'no_such_column': 14, 'other_error': 4, 'no_such_table': 1})
+--- sp6430 cre_Docs_and_Epenses no_such_column ntok 44 cut False
+Q: Return the type name, type description, and date of creation for each document.
+GOLD: SELECT T1.document_type_name ,  T1.document_type_description ,  T2.Document_date FROM Ref_document_types AS T1 JOIN Documents AS T2 ON T1.document_type_code  =  T2.document_type_code
+PRED: SELECT      d.Document_Type_Name,     d.Document_Type_Description,     d.Document_Date FROM      Documents d WHERE      d.Document_ID = 1
+--- sp2805 news_report no_such_column ntok 41 cut False
+Q: Show the names of journalists from "England" or "Wales".
+GOLD: SELECT Name FROM journalist WHERE Nationality  =  "England" OR Nationality  =  "Wales"
+PRED: SELECT DISTINCT j.Name FROM journalist j JOIN event e ON j.Event_ID = e.Event_ID WHERE j.Nationality IN ('England', 'Wales')
+--- sp3115 behavior_monitoring no_such_column ntok 62 cut False
+Q: Find the start and end dates of detentions of teachers with last name "Schultz".
+GOLD: SELECT T1.datetime_detention_start ,  datetime_detention_end FROM Detention AS T1 JOIN Teachers AS T2 ON T1.teacher_id  =  T2.teacher_id WHERE T2.last_name  =  "Schultz"
+PRED: SELECT      MIN(date_detention_start) as start_date,     MAX(date_detention_end) as end_date FROM Detention WHERE teacher_id = (     SELECT teacher_id     FROM Teachers     WHERE last_name = 'Schultz' )
+--- sp5712 dorm_1 no_such_column ntok 36 cut False
+Q: Find the code of city where most of students are living in.
+GOLD: SELECT city_code FROM student GROUP BY city_code ORDER BY count(*) DESC LIMIT 1
+PRED: SELECT city_code, COUNT(*) as student_count FROM Lives_in GROUP BY city_code ORDER BY student_count DESC LIMIT 1
+--- sp2856 customer_deliveries wrong_result ntok 31 cut False
+Q: Find the name of route that has the highest number of deliveries.
+GOLD: SELECT t1.route_name FROM Delivery_Routes AS t1 JOIN Delivery_Route_Locations AS t2 ON t1.route_id  =  t2.route_id GROUP BY t1.route_id ORDER BY count(*) DESC LIMIT 1
+PRED: SELECT route_name FROM Delivery_Routes GROUP BY route_name ORDER BY COUNT(*) DESC LIMIT 1
+--- sp5978 game_1 wrong_result ntok 25 cut False
+Q: What are the names of all video games that are collectible cards?
+GOLD: SELECT gname FROM Video_games WHERE gtype  =  "Collectible card game"
+PRED: SELECT GName FROM Video_Games WHERE GType = 'Collectible Card'
+--- sp4539 document_management wrong_result ntok 30 cut False
+Q: Find the number of users in each role.
+GOLD: SELECT count(*) ,  role_code FROM users GROUP BY role_code
+PRED: SELECT COUNT(*) AS user_count FROM Users u JOIN Roles r ON u.role_code = r.role_code
+--- sp6479 scientist_1 wrong_result ntok 55 cut False
+Q: Find the name of project that continues for the longest time.
+GOLD: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+PRED: SELECT p.Name FROM Projects p JOIN AssignedTo a ON p.Code = a.Project JOIN Scientists s ON a.Scientist = s.SSN GROUP BY p.Code ORDER BY p.Hours DESC LIMIT 1
+--- sp6955 architecture other_error ntok 8192 cut True
+Q: What are the ids, names and genders of the architects who built two bridges or one mill?
+GOLD: SELECT T1.id ,  T1.name ,  T1.gender FROM architect AS T1 JOIN bridge AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  =  2 UNION SELECT T1.id ,  T1.name ,  T1.gender FROM architect 
+PRED: SELECT      architect.id,     architect.name,     architect.gender FROM      architect JOIN      bridge ON architect.id = bridge.architect_id JOIN      mill ON architect.id = mill.architect_id WHERE      (bridge.length_meters IS NULL OR bridge.length
+--- sp2371 csu_1 wrong_result ntok 51 cut False
+Q: What degrees were conferred in San Francisco State University in the year 2001?
+GOLD: SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "San Francisco State University" AND t2.year  =  2001
+PRED: SELECT DISTINCT d.Degrees FROM degrees d JOIN campuses c ON d.Campus = c.Id WHERE c.Location = 'San Francisco State University'   AND c.Year = 2001
+--- sp3672 baseball_1 wrong_result ntok 36 cut False
+Q: For each year, return the year and the number of times the team Boston Red Stockings won in the postseasons.
+GOLD: SELECT count(*) ,  T1.year FROM postseason AS T1 JOIN team AS T2 ON T1.team_id_winner  =  T2.team_id_br WHERE T2.name  =  'Boston Red Stockings' GROUP BY T1.year
+PRED: SELECT year, COUNT(*) AS postseason_wins FROM postseason WHERE team_id_winner = 'Boston Red Stockings' GROUP BY year
+--- sp421 flight_1 wrong_result ntok 35 cut False
+Q: Show ids for all employees who don't have a certificate.
+GOLD: SELECT eid FROM Employee EXCEPT SELECT eid FROM Certificate
+PRED: SELECT e.eid FROM employee e JOIN certificate c ON e.eid = c.eid WHERE c.aid IS NULL
+--- sp3380 sports_competition wrong_result ntok 67 cut False
+Q: What are the names of all players that got more than the average number of points?
+GOLD: SELECT name FROM player WHERE points  >  (SELECT avg(points) FROM player)
+PRED: SELECT DISTINCT p.name FROM player p JOIN club c ON p.Club_ID = c.Club_ID JOIN club_rank cr ON p.Club_ID = cr.Club_ID WHERE p.Apps > (SELECT AVG(Points) FROM player WHERE Club_ID = c.Club_ID)
+--- sp452 allergy_1 wrong_result ntok 15 cut False
+Q: How many animal type allergies exist?
+GOLD: SELECT count(*) FROM Allergy_type WHERE allergytype  =  "animal"
+PRED: SELECT COUNT(*) FROM Allergy_Type
+--- sp6107 customers_and_addresses no_such_table ntok 85 cut False
+Q: What is the name of the customer that made the order with the largest quantity?
+GOLD: SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t3.order_quantity  =  ( SELECT 
+PRED: SELECT c.customer_name, COUNT(o.order_id) as order_count FROM Customer c JOIN Customer_Addresses ca ON c.customer_id = ca.customer_id JOIN Customer_Contact_Channels cc ON c.customer_id = cc.customer_id JOIN Customer_Orders o ON c.customer_id = o.cust
+--- sp4685 college_3 wrong_result ntok 53 cut False
+Q: Find the first name and last name of the instructor of course that has course name
+GOLD: SELECT T2.Fname ,  T2.Lname FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID WHERE T1.CName  =  "COMPUTER LITERACY"
+PRED: SELECT F.Fname, F.Lname FROM Faculty F JOIN Course C ON F.FacID = C.Instructor WHERE C.CName = 'Course Name' ORDER BY F.Fname, F.Lname
+--- sp3082 loan_1 wrong_result ntok 45 cut False
+Q: Find the average credit score of the customers who have some loan.
+GOLD: SELECT avg(credit_score) FROM customer WHERE cust_id IN (SELECT cust_id FROM loan)
+PRED: SELECT AVG(c.credit_score) AS average_credit_score FROM customer c JOIN loan l ON c.cust_ID = l.cust_ID WHERE l.loan_type IS NOT NULL
+--- sp1862 wrestler wrong_result ntok 73 cut False
+Q: Show times of elimination of wrestlers with days held more than 50.
+GOLD: SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID WHERE T2.Days_held  >  50
+PRED: SELECT e.Time, e.Wrestler_ID, e.Team, e.Eliminated_By, e.Elimination_Move, e.Time FROM "Elimination" e JOIN "wrestler" w ON e.Wrestler_ID = w.Wrestler_ID WHERE w.Days_held > 50
+--- sp2041 party_people wrong_result ntok 57 cut False
+Q: Show all distinct region names ordered by their labels.
+GOLD: SELECT DISTINCT region_name FROM region ORDER BY Label
+PRED: SELECT DISTINCT r.Region_name FROM region r JOIN party p ON r.Region_ID = p.Region_ID JOIN member m ON p.Party_ID = m.Party_ID WHERE r.Region_ID = 1 ORDER BY r.Region_name
+--- sp2301 entrepreneur no_such_column ntok 47 cut False
+Q: Show the company of the tallest entrepreneur.
+GOLD: SELECT T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Height DESC LIMIT 1
+PRED: SELECT "Entrepreneur"."Company" FROM "entrepreneur" WHERE "Entrepreneur"."Height" = (     SELECT MAX("people"."Height")     FROM "people" )
+--- sp3489 hr_1 wrong_result ntok 83 cut False
+Q: Find the job ID for those jobs which average salary is above 8000.
+GOLD: SELECT job_id FROM employees GROUP BY job_id HAVING AVG(salary) > 8000
+PRED: SELECT j.JOB_ID FROM jobs j JOIN employees e ON j.JOB_ID = e.JOB_ID JOIN departments d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID WHERE e.SALARY > 8000 GROUP BY j.JOB_ID HAVING AVG(e.SALARY) > 8000
+--- sp5129 cre_Drama_Workshop_Groups no_such_column ntok 54 cut False
+Q: List the description, code and the number of services for each service type.
+GOLD: SELECT T1.Service_Type_Description ,  T2.Service_Type_Code ,  COUNT(*) FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code GROUP BY T2.Service_Type_Code
+PRED: SELECT      s.Service_Type_Code,     s.Service_Type_Description,     COUNT(DISTINCT s.Service_ID) AS Service_Count FROM Services s GROUP BY s.Service_Type_Code ORDER BY s.Service_Type_Code
+--- sp3239 college_1 no_such_column ntok 55 cut False
+Q: Find the name of the department that offers the largest number of credits of all classes.
+GOLD: SELECT T3.dept_name FROM course AS T1 JOIN CLASS AS T2 ON T1.crs_code  =  T2.crs_code JOIN department AS T3 ON T1.dept_code  =  T3.dept_code GROUP BY T1.dept_code ORDER BY sum(T1.crs_credit) DESC LIMI
+PRED: SELECT DEPT_NAME, COUNT(*) AS CLASS_COUNT FROM COURSE JOIN DEPARTMENT ON DEPARTMENT.DEPT_CODE = COURSE.DEPTE_CODE GROUP BY DEPT_CODE ORDER BY CLASS_COUNT DESC LIMIT 1
+--- sp4386 tracking_grants_for_research wrong_result ntok 53 cut False
+Q: List the research staff details, and order in ascending order.
+GOLD: SELECT staff_details FROM Research_Staff ORDER BY staff_details ASC
+PRED: SELECT DISTINCT `research_staff`.* FROM `Research_Staff` `research_staff` WHERE `research_staff`.`employer_organisation_id` IS NOT NULL ORDER BY `research_staff`.`staff_id` ASC
+--- sp2130 cre_Doc_Control_Systems no_such_column ntok 61 cut False
+Q: For each document, list the number of employees who have showed up in 
+[output cut at 10,000 characters]
+[0.0 s]
+[code runs used: 190/300]

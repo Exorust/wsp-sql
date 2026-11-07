@@ -1,0 +1,5 @@
+[348] [256]
+start 80 copy lp orig -0.47 edited -1.16; edited argmax flips 45; alternatives {' Wait': 42, ' So': 1, ' Actually': 1, ' I': 1}
+end 40 copy lp orig -0.24 edited -0.43; edited argmax flips 5; alternatives {'\n\n': 5}
+
+[0.1 s]

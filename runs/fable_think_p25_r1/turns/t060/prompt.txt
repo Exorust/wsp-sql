@@ -1,0 +1,6 @@
+<class 'dict'> dict_keys(['id', 'text'])
+id 'sp382'
+text 'ficate( eid number(9,0), aid number(9,0), primary key(eid,aid), foreign key("eid") references `employee`("eid"), foreign key("aid") references `aircraft`("aid"))\n\nQuestion: What is the number of flights?\n\nWrite one SQLite query that answers the question. Reply with the query in a ```sql code block.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n```sql\nSELECT count(*) FROM Flight\n```<|im_end|>\n'
+[4831, 3023, 4368, 2754, 10935] 1271.9
+
+[0.0 s]

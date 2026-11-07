@@ -1,0 +1,80 @@
+===== fwd_1.done.json 519
+{
+ "pass_id": 1,
+ "type": "generate",
+ "model": "original",
+ "max_tokens": 8192,
+ "summary": {
+  "n": 128,
+  "accuracy": 0.0156,
+  "mean_tokens": 8138.7,
+  "cut_at_max_tokens": 0.9922,
+  "looping": 0.9531,
+  "failures": {
+   "syntax": 121,
+   "cut_no_sql": 3,
+   "no_such_column": 1,
+   "other_error": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_1.jsonl"
+ ],
+ "activation_dirs": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_1_acts"
+ ],
+ "seconds": 2718
+}
+===== fwd_2.done.json 3225
+{
+ "pass_id": 2,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 2,
+ "lengths": [
+  1340,
+  1324
+ ],
+ "max_len": 1340,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L0.npy [N,T,1024] float16",
+  "hidden_L1.npy [N,T,1024] float16",
+  "hidden_L2.npy [N,T,1024] float16",
+  "hidden_L3.npy [N,T,1024] float16",
+  "hidden_L4.npy [N,T,1024] float16",
+  "hidden_L5.npy [N,T,1024] float16",
+  "hidden_L6.npy [N,T,1024] float16",
+  "hidden_L7.npy [N,T,1024] float16",
+  "hidden_L8.npy [N,T,1024] float16",
+  "hidden_L9.npy [N,T,1024] float16",
+  "hidden_L10.npy [N,T,1024] float16",
+  "hidden_L11.npy [N,T,1024] float16",
+  "hidden_L12.npy [N,T,1024] float16",
+  "hidden_L13.npy [N,T,1024] float16",
+  "hidden_L14.npy [N,T,1024] float16",
+  "hidden_L15.npy [N,T,1024] float16",
+  "hidden_L16.npy [N,T,1024] float16",
+  "hidden_L17.npy [N,T,1024] float16",
+  "hidden_L18.npy [N,T,1024] float16",
+  "hidden_L19.npy [N,T,1024] float16",
+  "hidden_L20.npy [N,T,1024] float16",
+  "hidden_L21.npy [N,T,1024] float16",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "hidden_L24.npy [N,T,1024] float16",
+  "mlp_down_in_L0.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L1.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L2.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L3.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L4.npy [N,T,358
+===== splits.json 20976
+{"diag": ["sp3242", "sp2270", "sp1906", "sp4972", "sp584", "sp5689", "sp1236", "sp6496", "sp2535", "sp4584", "sp5534", "sp6197", "sp4249", "sp5472", "sp6627", "sp1956", "sp6344", "sp3159", "sp5051", "sp3644", "sp1317", "sp4102", "sp6880", "sp3841", "sp5105", "sp3723", "sp61", "sp5613", "sp1851", "sp2131", "sp1987", "sp1689", "sp3030", "sp4871", "sp2697", "sp2795", "sp6951", "sp2149", "sp1113", "sp4027", "sp525", "sp4711", "sp2837", "sp1732", "sp6206", "sp2467", "sp1555", "sp1378", "sp3538", "sp5393", "sp3135", "sp2651", "sp4856", "sp1747", "sp2865", "sp3369", "sp4457", "sp1024", "sp2845", "sp6378", "sp4604", "sp4668", "sp4365", "sp6298", "sp5666", "sp4634", "sp879", "sp1279", "sp3987", "sp1916", "sp6524", "sp2807", "sp363", "sp1528", "sp5433", "sp5917", "sp6400", "sp1687", "sp4571", "sp194", "sp4486", "sp2325", "sp5829", "sp2036", "sp3754", "sp6787", "sp1107", "sp5237", "sp1183", "sp1837", "sp4821", "sp317", "sp3095", "sp5803", "sp1629", "sp4141", "sp5979", "sp912", "sp2100", "sp967", "sp5307", "sp1494", "sp6900", "sp4531", "sp6242", "sp3889", "sp2189", "sp11", "sp271", "sp6352", "sp1172", "sp2312", "sp1001", "sp720", "sp791", "sp1776", "sp6618", "sp280", "sp2682", "sp2614", "sp1295", "sp6977", "sp761", "sp3403", "sp2418", "sp2094", "sp4303", "sp650"], "confirm_pool": ["sp6246", "sp2840", "sp4576", "sp4067", "sp267", "sp4193", "sp1233", "sp3614", "sp1085", "sp2856", "sp6360", "sp4601", "sp1867", "sp36", "sp1854", "sp3867", "sp2786", "sp5532", "sp1873", "sp3582", "sp4759", "sp
+===== req2.json 18052
+{"type": "teacher_forced", "model": "original", "enable_thinking": true, "chats": [[{"role": "user", "content": "Database schema (SQLite):\nCREATE TABLE Student ( StuID INTEGER PRIMARY KEY, LName VARCHAR(12), Fname VARCHAR(12), Age INTEGER, Sex VARCHAR(1), Major INTEGER, Advisor INTEGER, city_code VARCHAR(3) )\n\nCREATE TABLE Dorm ( dormid INTEGER, dorm_name VARCHAR(20), student_capacity INTEGER, gender VARCHAR(1) )\n\nCREATE TABLE Dorm_amenity ( amenid INTEGER, amenity_name VARCHAR(25) )\n\nCREATE TABLE Has_amenity ( dormid INTEGER, amenid INTEGER, FOREIGN KEY (dormid) REFERENCES \u0060Dorm\u0060(dormid), FOREIGN KEY (amenid) REFERENCES \u0060Dorm_amenity\u0060(amenid) )\n\nCREATE TABLE Lives_in ( stuid INTEGER, dormid INTEGER, room_number INTEGER, FOREIGN KEY (stuid) REFERENCES \u0060Student\u0060(StuID), FOREIGN KEY (dormid) REFERENCES \u0060Dorm\u0060(dormid) )\n\nQuestion: What is the average and total capacity for all dorms who are of gender X?\n\nWrite one SQLite query that answers the question. Reply with the query in a \u0060\u0060\u0060sql code block."}, {"role": "assistant", "content": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with tables \u0060Student\u0060, \u0060Dorm\u0060, \u0060Dorm_amenity\u0060, \u0060Has_amenity\u0060, \u0060Lives_in\u0060.\n    *   Question: \"What is the average and total capacity for all dorms who are of gender X?\"\n    *   Constraint: Write one SQLite query that answers the question.\n 
+===== req3.json 1001790
+{"type": "teacher_forced", "model": "original", "texts": ["<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE CLASS ( CLASS_CODE varchar(5) PRIMARY KEY, CRS_CODE varchar(10), CLASS_SECTION varchar(2), CLASS_TIME varchar(20), CLASS_ROOM varchar(8), PROF_NUM int, FOREIGN KEY (CRS_CODE) REFERENCES COURSE(CRS_CODE) FOREIGN KEY (PROF_NUM) REFERENCES EMPLOYEE(EMP_NUM) )\n\nCREATE TABLE COURSE ( CRS_CODE varchar(10) PRIMARY KEY, DEPT_CODE varchar(10), CRS_DESCRIPTION varchar(35), CRS_CREDIT float(8), FOREIGN KEY (DEPT_CODE) REFERENCES DEPARTMENT(DEPT_CODE) )\n\nCREATE TABLE DEPARTMENT ( DEPT_CODE varchar(10) PRIMARY KEY, DEPT_NAME varchar(30), SCHOOL_CODE varchar(8), EMP_NUM int, DEPT_ADDRESS varchar(20), DEPT_EXTENSION varchar(4), FOREIGN KEY (EMP_NUM) REFERENCES EMPLOYEE(EMP_NUM) )\n\nCREATE TABLE EMPLOYEE ( EMP_NUM int PRIMARY KEY, EMP_LNAME varchar(15), EMP_FNAME varchar(12), EMP_INITIAL varchar(1), EMP_JOBCODE varchar(5), EMP_HIREDATE datetime, EMP_DOB datetime )\n\nCREATE TABLE ENROLL ( CLASS_CODE varchar(5), STU_NUM int, ENROLL_GRADE varchar(50), FOREIGN KEY (CLASS_CODE) REFERENCES CLASS(CLASS_CODE) FOREIGN KEY (STU_NUM) REFERENCES STUDENT(STU_NUM) )\n\nCREATE TABLE PROFESSOR ( EMP_NUM int, DEPT_CODE varchar(10), PROF_OFFICE varchar(50), PROF_EXTENSION varchar(4), PROF_HIGH_DEGREE varchar(5), FOREIGN KEY (EMP_NUM) REFERENCES EMPLOYEE(EMP_NUM), FOREIGN KEY (DEPT_CODE) REFERENCES DEPARTMENT(DEPT_CODE) )\n\nCREATE TABLE STUDENT ( STU_NUM int PRIMARY KEY, STU_LNAME varchar
+
+[0.0 s]

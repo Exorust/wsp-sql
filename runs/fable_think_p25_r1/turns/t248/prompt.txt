@@ -1,0 +1,11 @@
+sp3641 t.awd | INVENTED | SELECT      t.team_id,     t.rank FROM      team t WHERE      t.year = 2014     AND t.awd = (         SELECT AVG(attenda
+sp3670 team.id | INVENTED | SELECT team.name, team.id FROM team JOIN postseason ON team.team_id = postseason.team_id_winner WHERE postseason.year = 
+sp3660 team_name | INVENTED | SELECT team_id, team_name FROM team WHERE salary < (     SELECT AVG(salary)     FROM salary     WHERE team_id = team_id 
+sp3659 team.id | INVENTED | SELECT team.name, team.id FROM team JOIN salary ON team.team_id = salary.team_id WHERE salary.player_id = team.player_id
+sp3686 year | exists | SELECT MIN(year) as year FROM hall_of_fame GROUP BY year ORDER BY year LIMIT 1
+sp2997 f.inventory_id | exists | SELECT s.first_name, s.last_name FROM staff s JOIN payment p ON s.staff_id = p.staff_id JOIN customer c ON p.customer_id
+sp2991 a.first_name | exists | SELECT a.first_name, a.last_name, a.address, a.email FROM customer c JOIN address a ON c.address_id = a.address_id WHERE
+sp2943 city_id | exists | SELECT DISTINCT country_id FROM country WHERE COUNT(DISTINCT city_id) >= 3
+Counter({'exists_in_schema': 25, 'invented': 14})
+
+[0.0 s]

@@ -1,0 +1,4 @@
+42 Counter({'same_cols': 30, 'extra_DISTINCT': 17, 'more_cols': 10, 'missing_JOIN': 6, 'missing_LIMIT': 4, 'missing_OR': 2, 'fewer_cols': 2})
+correct with extra DISTINCT 7 / 35
+
+[0.0 s]

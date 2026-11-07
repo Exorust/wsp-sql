@@ -1,0 +1,84 @@
+== sp3242 onset=557 period=173
+  PRE: ' `STUDENT` table links `STU_NUM` to `STU_GPA`.\n    *   `STUDENT` table links `STU_NUM` to `STU_TRANSFER`.\n    *   `STUDENT` table links `STU_NUM` to `STU_HRS'
+  PERIOD: '`.\n    *   `STUDENT` table links `STU_NUM` to `STU_PHONE`.\n    *   `STUDENT` table links `STU_NUM` to `STU_LNAME`.\n    *   `STUDENT` table links `STU_NUM` to `STU_FNAME`.\n    *   `STUDENT` table links'
+== sp2270 onset=521 period=62
+  PRE: 'eneur` table have a `People_ID`? Yes.\n    *   Does the `entrepreneur` table have a `Entrepreneur_ID`? Yes.\n    *   Does the `entrepreneur` table have a `Company'
+  PERIOD: '`? Yes.\n    *   Does the `entrepreneur` table have a `Money_Requested`? Yes.\n    *   Does the `entrepreneur` table have a `People_ID`? Yes.\n    *   Does the `entrepreneur` table have a `Entrepreneur_I'
+== sp1906 onset=708 period=91
+  PRE: 'hool_name`.\n    *   I need to join `School` with `budget` and `endowment` to get the `School_name` and the `total_budget` and `total_endowment`.\n    *   However'
+  PERIOD: ', the `budget` table has `total_budget_percent_budgeted` and `Invested`.\n    *   The `endowment` table has `amount`.\n    *   The `School` table has `School_name`.\n    *   I need to join `School` with '
+== sp4972 onset=428 period=84
+  PRE: 'e`.\n    *   The table `College` has `cName`.\n    *   The table `Tryout` has `cName`.\n    *   The `Player` table has `pName`.\n    *   The `Player` table has `pID'
+  PERIOD: '`.\n    *   The `Player` table has `yCard`.\n    *   The `Player` table has `HS`.\n    *   The `College` table has `cName`.\n    *   The `Tryout` table has `cName`.\n    *   The `Player` table has `pID`.\n '
+== sp584 onset=2090 period=25
+  PRE: '   No.\n\n    *   Wait, I need to check if the query should include `IS NULL`.\n    *   No.\n\n    *   Wait, I need to check if the query should include `IS NOT NULL'
+  PERIOD: '`.\n    *   No.\n\n    *   Wait, I need to check if the query should include `IS NOT'
+== sp5689 onset=481 period=61
+  PRE: '\n    *   Need to join `Dorm` with `Lives_in`? No, `Lives_in` is for linking dorms to students.\n    *   Wait, the question asks for "average and total capacity".'
+  PERIOD: '\n    *   The `Dorm` table has `student_capacity`.\n    *   The `Dorm` table has `gender`.\n    *   The `Dorm` table has `dormid`.\n    *   The `Dorm` table has `dorm_name`.'
+== sp1236 onset=534 period=50
+  PRE: 'Bookings` table has `apt_booking_id`.\n    *   The `View_Unit_Status` table has `apt_booking_id`.\n    *   The `Apartment_Bookings` table has `booking_status_code'
+  PERIOD: '`.\n    *   The `View_Unit_Status` table has `apt_booking_id`.\n    *   The `View_Unit_Status` table has `status_date`.\n    *   The `View_Unit_Status` table has `available_yn'
+== sp6496 onset=622 period=27
+  PRE: 'et the project name.\n    *   Then I need to count the number of `Scientists` assigned to each project.\n    *   Wait, `AssignedTo` has `Scientist` and `Project`.'
+  PERIOD: '\n    *   So, `AssignedTo` has `Scientist` (int) and `Project` (char(4)).'
+== sp2535 onset=420 period=71
+  PRE: 'as a column `Name`.\n    *   The `city` table has a column `County_ID`.\n    *   Wait, the question asks for "names of the counties of public safety".\n    *   The'
+  PERIOD: ' `county_public_safety` table has a column `Name`.\n    *   The `city` table has a column `County_ID`.\n    *   The `county_public_safety` table has a column `County_ID`.\n    *   The `city` table has a '
+== sp4584 onset=586 period=17
+  PRE: 'oducts_in_Events`? No.\n    *   Does the question imply filtering by `Products` table? Yes.\n    *   Does the question imply filtering by `Products_in_Events`? No'
+  PERIOD: '.\n    *   Does the question imply filtering by `Products` table? Yes'
+== sp6090 onset=608 period=142
+  PRE: 't, the `Customer_Addresses` table links `customer_id` to `address_id`.\n    *   The `Addresses` table links `address_id` to `city` and `zip_postcode`.\n    *   So'
+  PERIOD: ', I need to join `Addresses` with `Customer_Addresses`? No, `Customer_Addresses` is a separate table.\n    *   Actually, `Customer_Addresses` is a table that links `customer_id` to `address_id`.\n    * '
+== sp3516 onset=772 period=56
+  PRE: '  *   `jobs` has `JOB_ID`, `MIN_SALARY`, `MAX_SALARY`.\n        *   *Wait, the schema says `EMPLOYEE_ID` is NOT NULL.*\n        *   *Wait, the schema says `SALARY'
+  PERIOD: '` is NOT NULL.*\n        *   *Wait, the schema says `JOB_ID` is NOT NULL.*\n        *   *Wait, the schema says `EMPLOYEE_ID` is NOT NULL.*\n        *   *Wait, the schema says `DEPARTMENT_ID'
+== sp1012 onset=424 period=38
+  PRE: 'etball_match` table has a `Team_ID` column.\n    *   The `basketball_match` table has a `School_ID` column.\n    *   The `basketball_match` table has a `Team_Name'
+  PERIOD: '` column.\n    *   The `basketball_match` table has a `School_ID` column.\n    *   The `basketball_match` table has a `Team_ID'
+== sp3807 onset=839 period=32
+  PRE: 'ly_name` is in `Course_Authors_and_Tutors`.\n    *   `author_id` is in `Courses`.\n    *   `personal_name` is in `Students`.\n    *   `family_name` is in `Students'
+  PERIOD: '`.\n    *   `author_id` is in `Courses`.\n    *   `author_id` is in `Course_Authors_and_Tutors'
+== sp2731 onset=1062 period=66
+  PRE: 'torm` to join.\n    *   The query should select `Region_id` from `affected_region` to join.\n    *   The query should select `Number_Deaths` from `storm` to join.'
+  PERIOD: '\n    *   The query should select `Region_name` from `region`.\n    *   The query should select `Storm_ID` from `storm`.\n    *   The query should select `Region_id` from `affected_region`.\n    *   The q'
+== sp6303 onset=1014 period=28
+  PRE: 'ks for "venues of all the matches".\n    The `match` table has a `Venue` column.\n    The `match` table has a `Date` column.\n    The `match` table has a `Match_ID'
+  PERIOD: '` column.\n    The `match` table has a `Date` column.\n    The `match` table has a `Venue'
+== sp2146 onset=290 period=58
+  PRE: 'icipant_ID`.\n    *   The `Participants` table is the source of truth for participant types.\n    *   The `Participants` table has a `PRIMARY KEY (Participant_ID)'
+  PERIOD: '`.\n    *   The `Participants` table has a `NOT NULL` `Participant_Type_Code`.\n    *   The `Participants` table has a `NOT NULL` `Participant_Details`.\n    *   The `Participants` table has a `NOT NULL`'
+== sp4296 onset=531 period=110
+  PRE: 'ind the `LName` and `Fname` for that `StuID`.\n    *   However, the `Member_of_club` table has `ClubID` and `StuID`.\n    *   Wait, the `Club` table has `ClubName'
+  PERIOD: '`.\n    *   So, I can join `Club` and `Member_of_club` to find the `ClubID` for "Hopkins Student Enterprises".\n    *   Then join `Club` and `Member_of_club` to find the `StuID`.\n    *   Then join `Stud'
+== sp3993 onset=314 period=52
+  PRE: '.\n    *   The `Prescribes` table has a `Physician` column.\n    *   The `Prescribes` table has a `Appointment` column.\n    *   The `Prescribes` table has a `Dose'
+  PERIOD: '` column.\n    *   The `Prescribes` table has a `Physician` column.\n    *   The `Prescribes` table has a `Patient` column.\n    *   The `Prescribes` table has a `Date'
+== sp688 onset=652 period=86
+  PRE: 'So `SELECT customer_first_name, customer_last_name FROM Customers WHERE customer_id = (SELECT customer_id FROM Accounts)`\n    *   This is valid.\n    *   However'
+  PERIOD: ', `customer_id` is not unique in `Customers`? No, `customer_id` is a primary key in `Customers`.\n    *   Wait, `Accounts` has `customer_id` as a primary key.\n    *   So `SELECT customer_first_name, cu'
+== sp3345 onset=835 period=98
+  PRE: "ition_type` column in `competition_result`? No.\n    *   So, the query should be: `SELECT DISTINCT Year FROM competition WHERE Competition_type != 'Tournament'`."
+  PERIOD: "\n    *   Wait, I need to check if `competition_type` is a string. Yes.\n    *   So, `SELECT DISTINCT Year FROM competition WHERE Competition_type != 'Tournament'` is correct.\n    *   Wait, I need to ch"
+== sp5211 onset=492 period=37
+  PRE: 'n.\n    *   The `Songs` table has a `SongId` column.\n    *   The `Instruments` table has a `BandmateId` column.\n    *   The `Instruments` table has a `Instrument'
+  PERIOD: '` column.\n    *   The `Instruments` table has a `SongId` column.\n    *   The `Instruments` table has a `BandmateId'
+== sp2996 onset=712 period=11
+  PRE: 'he "full name of the staff member".\n\n4.  **Trace the Relationships:**\n    *   `customer` -> `customer_id` -> `rental` -> `rental_id` -> `rental` -> `rental_date'
+  PERIOD: '` -> `rental` -> `rental_id'
+== sp6646 onset=521 period=136
+  PRE: '  Wait, the question asks for "total lesson time".\n    *   The `Lessons` table has a column `lesson_time`.\n    *   The `Lessons` table has a column `lesson_date'
+  PERIOD: '`.\n    *   The `Lessons` table has a column `price`.\n    *   The `Lessons` table has a column `lesson_status_code`.\n    *   The `Lessons` table has a column `lesson_id`.\n    *   The `Lessons` table ha'
+== sp1452 onset=833 period=49
+  PRE: '.\n        *   The `teaches` table has `course_id`, `sec_id`, `semester`, `year`.\n        *   The `student` table has `ID`.\n        *   The `takes` table has `ID'
+  PERIOD: '`.\n        *   The `section` table has `course_id`, `sec_id`, `semester`, `year`.\n        *   The `teaches` table has `course_id`, `sec_id`, `semester`, `year'
+== sp3164 onset=642 period=130
+  PRE: 'on_id`.\n    *   The `weekly_weather` table links `station_id`.\n    *   To get the number of trains for each station, I need to join `train` and `station` tables'
+  PERIOD: ".\n    *   Wait, the `train` table doesn't have a `station_id` column. It has `train_number`, `name`, `origin`, `destination`, `time`, `interval`.\n    *   The `station` table has `network_name`, `servi"
+== sp2434 onset=393 period=51
+  PRE: ' table has a `name` column.\n    *   The `Rating` table links `mID` and `rID`.\n    *   The question asks for "titles of all movies directed by steven spielberg".'
+  PERIOD: 
+[output cut at 10,000 characters]
+[0.2 s]
+[code runs used: 10/300]

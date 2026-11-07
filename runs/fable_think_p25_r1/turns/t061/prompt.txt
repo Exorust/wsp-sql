@@ -1,0 +1,23 @@
+{
+ "pass_id": 3,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 6,
+ "lengths": [
+  1,
+  1,
+  1,
+  1,
+  1,
+  1
+ ],
+ "max_len": 1,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_3",
+ "seconds": 0
+}
+[forward passes used: 3/25]

@@ -1,0 +1,5 @@
+loops with NL in period: 119 with bullet: 113 of 121
+sp2996 11 '` -> `rental` -> `rental_id'
+sp1702 26 ' it possible the user meant "rating higher than 8" AND "rating below 5" (which is impossible) OR is'
+
+[0.5 s]

@@ -1,0 +1,27 @@
+sp4416 25 sum lp orig -22.6 edited -24.0 argmax-acc 0.76/0.76
+sp4417 25 sum lp orig -21.0 edited -22.6 argmax-acc 0.80/0.80
+sp3998 18 sum lp orig -11.9 edited -14.1 argmax-acc 0.78/0.72
+sp2445 25 sum lp orig -13.6 edited -19.6 argmax-acc 0.80/0.80
+sp2435 24 sum lp orig -8.7 edited -9.8 argmax-acc 0.79/0.83
+sp4071 61 sum lp orig -58.9 edited -72.4 argmax-acc 0.77/0.69
+sp6224 32 sum lp orig -54.2 edited -59.4 argmax-acc 0.66/0.59
+sp465 18 sum lp orig -11.7 edited -12.6 argmax-acc 0.67/0.67
+sp4058 67 sum lp orig -70.2 edited -82.1 argmax-acc 0.75/0.72
+sp1165 33 sum lp orig -38.8 edited -49.5 argmax-acc 0.79/0.67
+sp5350 28 sum lp orig -52.0 edited -55.1 argmax-acc 0.57/0.54
+sp2643 31 sum lp orig -19.7 edited -17.2 argmax-acc 0.77/0.81
+sp479 28 sum lp orig -19.4 edited -24.2 argmax-acc 0.82/0.82
+sp4470 72 sum lp orig -66.0 edited -78.7 argmax-acc 0.78/0.74
+sp4254 18 sum lp orig -15.5 edited -16.5 argmax-acc 0.72/0.67
+sp451 29 sum lp orig -49.5 edited -50.5 argmax-acc 0.62/0.62
+sp1874 29 sum lp orig -42.1 edited -43.6 argmax-acc 0.69/0.69
+sp508 27 sum lp orig -46.0 edited -56.1 argmax-acc 0.63/0.56
+sp1753 24 sum lp orig -22.2 edited -23.5 argmax-acc 0.71/0.71
+sp4961 24 sum lp orig -25.7 edited -32.8 argmax-acc 0.67/0.58
+sp2624 34 sum lp orig -52.9 edited -56.0 argmax-acc 0.76/0.74
+sp2406 22 sum lp orig -15.4 edited -16.2 argmax-acc 0.77/0.77
+sp2531 88 sum lp orig -58.4 edited -80.0 argmax-acc 0.84/0.76
+sp482 37 sum lp orig -41.9 edited -47.7 argmax-acc 0.65/0.68
+per-token mean -1.0238783 -1.1772621
+
+[0.0 s]

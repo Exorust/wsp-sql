@@ -1,0 +1,41 @@
+=== CUT sp6955 other_error | text head: </think>\n\n```sql\nSELECT \n    architect.id,\n    architect.name,\n    architect.gender\nFROM \n    architect\nJOIN \n    bridge ON architect.id = bridge.architect_id\nJOIN \n    mill ON architect.id = mill.arc
+    tail: OR (mill.length_meters IS NULL OR mill.length_feet IS NULL)\n    OR (bridge.length_meters IS NULL OR bridge.length_feet IS NULL)\n    OR (mill.length_meters IS NULL OR mill.length_feet IS NULL)\n    OR (
+=== CUT sp914 other_error | text head: </think>\n\n```sql\nSELECT DISTINCT a.policy_type_code\nFROM Available_Policies a\nJOIN Customers_Policies c ON a.policy_type_code = c.policy_type_code\nJOIN Customers c2 ON c2.Customer_ID = c.Customer_ID\nW
+    tail:                                 FROM Customers c2\n                                                                                                                                WHERE c2.Customer_ID =
+=== CUT sp4875 other_error | text head: </think>\n\n```sql\nSELECT DISTINCT p.Player\nFROM player p\nJOIN school_details sd ON p.School_ID = sd.School_ID\nJOIN school s ON sd.School_ID = s.School_ID\nWHERE sd.Class = 'Class_A'\nAND sd.Class = 'Clas
+    tail:  'Class_M'\nAND sd.Class = 'Class_N'\nAND sd.Class = 'Class_O'\nAND sd.Class = 'Class_P'\nAND sd.Class = 'Class_Q'\nAND sd.Class = 'Class_R'\nAND sd.Class = 'Class_S'\nAND sd.Class = 'Class_T'\nAND sd.Class =
+=== CUT sp2195 other_error | text head: </think>\n\n```sql\nSELECT DISTINCT d.driverId, s.stopNumber\nFROM drivers d\nJOIN races r ON d.driverId = r.driverId\nJOIN circuits c ON r.circuitId = c.circuitId\nJOIN constructors c ON r.constructorId = c
+    tail:  = cs.raceId\nJOIN constructorStandings cs ON r.raceId = cs.raceId\nJOIN constructorStandings cs ON r.raceId = cs.raceId\nJOIN constructorStandings cs ON r.raceId = cs.raceId\nJOIN constructorStandings cs
+=== CUT sp3831 no_such_column | text head: </think>\n\n```sql\nSELECT \n    s.date_of_latest_logon,\n    s.date_of_registration,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.d
+    tail: _logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_log
+
+=== NSC sp6430 | err: 'OperationalError: no such column: d.Document_Type_Name' | sql: 'SELECT \n    d.Document_Type_Name,\n    d.Document_Type_Description,\n    d.Document_Date\nFROM \n    Documents d\nWHERE \n    d.Document_ID = 1'
+    gold: SELECT T1.document_type_name ,  T1.document_type_description ,  T2.Document_date FROM Ref_document_types AS T1 JOIN Documents AS T2 ON T1.document_type_code  =  T2.document_type_code
+=== NSC sp2805 | err: 'OperationalError: no such column: j.Event_ID' | sql: "SELECT DISTINCT j.Name\nFROM journalist j\nJOIN event e ON j.Event_ID = e.Event_ID\nWHERE j.Nationality IN ('England', 'Wales')"
+    gold: SELECT Name FROM journalist WHERE Nationality  =  "England" OR Nationality  =  "Wales"
+=== NSC sp3115 | err: 'OperationalError: no such column: date_detention_start' | sql: "SELECT \n    MIN(date_detention_start) as start_date,\n    MAX(date_detention_end) as end_date\nFROM Detention\nWHERE teacher_id = (\n    SELECT teacher_id\n    FROM Teachers\n    WHERE last_name = 'Schultz'"
+    gold: SELECT T1.datetime_detention_start ,  datetime_detention_end FROM Detention AS T1 JOIN Teachers AS T2 ON T1.teacher_id  =  T2.teacher_id WHERE T2.last_name  =  "Schultz"
+=== NSC sp5712 | err: 'OperationalError: no such column: city_code' | sql: 'SELECT city_code, COUNT(*) as student_count\nFROM Lives_in\nGROUP BY city_code\nORDER BY student_count DESC\nLIMIT 1'
+    gold: SELECT city_code FROM student GROUP BY city_code ORDER BY count(*) DESC LIMIT 1
+=== NSC sp2301 | err: 'OperationalError: no such column: Entrepreneur.Height' | sql: 'SELECT "Entrepreneur"."Company"\nFROM "entrepreneur"\nWHERE "Entrepreneur"."Height" = (\n    SELECT MAX("people"."Height")\n    FROM "people"\n)'
+    gold: SELECT T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Height DESC LIMIT 1
+=== NSC sp5129 | err: 'OperationalError: no such column: s.Service_Type_Description' | sql: 'SELECT \n    s.Service_Type_Code,\n    s.Service_Type_Description,\n    COUNT(DISTINCT s.Service_ID) AS Service_Count\nFROM Services s\nGROUP BY s.Service_Type_Code\nORDER BY s.Service_Type_Code'
+    gold: SELECT T1.Service_Type_Description ,  T2.Service_Type_Code ,  COUNT(*) FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code GROUP BY T2.Service_Type_Code
+=== NSC sp3239 | err: 'OperationalError: no such column: COURSE.DEPTE_CODE' | sql: 'SELECT DEPT_NAME, COUNT(*) AS CLASS_COUNT\nFROM COURSE\nJOIN DEPARTMENT ON DEPARTMENT.DEPT_CODE = COURSE.DEPTE_CODE\nGROUP BY DEPT_CODE\nORDER BY CLASS_COUNT DESC\nLIMIT 1'
+    gold: SELECT T3.dept_name FROM course AS T1 JOIN CLASS AS T2 ON T1.crs_code  =  T2.crs_code JOIN department AS T3 ON T1.dept_code  =  T3.dept_code GROUP BY T1.dept_code ORDER BY sum(T1.crs_credit) DESC LIMI
+=== NSC sp2130 | err: 'OperationalError: no such column: ec.employee_id' | sql: 'SELECT d.document_id, COUNT(ec.employee_id) as num_employees\nFROM Documents d\nLEFT JOIN Circulation_History ch ON d.document_id = ch.document_id\nLEFT JOIN Employees e ON ch.employee_id = e.employee_id'
+    gold: SELECT document_id ,  count(DISTINCT employee_id) FROM Circulation_History GROUP BY document_id;
+=== NSC sp1483 | err: 'OperationalError: no such column: i2.salary' | sql: 'SELECT DISTINCT i.salary\nFROM teaches i\nJOIN instructor i ON i.ID = i.ID\nWHERE i.salary < (SELECT MAX(i2.salary) FROM teaches i2 WHERE i2.course_id = i.course_id AND i2.sec_id = i.sec_id AND i2.semest'
+    gold: SELECT DISTINCT salary FROM instructor WHERE salary  <  (SELECT max(salary) FROM instructor)
+=== NSC sp4294 | err: 'OperationalError: no such column: LName' | sql: "SELECT LName, FName\nFROM Club\nJOIN Member_of_club ON ClubID = Member_of_club.ClubID\nWHERE ClubName = 'Bootup Baltimore'\nORDER BY LName, FName"
+    gold: SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t2.position  =
+=== NSC sp5188 | err: 'OperationalError: no such column: s.BandmateId' | sql: 'SELECT DISTINCT b.Firstname, b.Lastname\nFROM Band b\nJOIN Songs s ON b.Id = s.BandmateId\nJOIN Vocals v ON b.Id = v.BandmateId\nJOIN Instruments i ON v.SongId = i.SongId\nJOIN Tracklists tl ON i.SongId = '
+    gold: SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Badlands"
+=== NSC sp3831 | err: 'OperationalError: no such column: s.date_of_latest_logon' | sql: 'SELECT \n    s.date_of_latest_logon,\n    s.date_of_registration,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_logon,\n    s.date_of_latest_log'
+    gold: SELECT T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Student_Tests_Taken AS T2 ON T1.registration_id  =  T2.registration_id WHERE T2.test_result  =  "Fail"
+=== NSC sp5574 | err: 'OperationalError: no such column: ct.product_category_code' | sql: 'SELECT COUNT(*) \nFROM Products p \nJOIN Ref_Colors c ON p.color_code = c.color_code \nJOIN Ref_Characteristic_Types ct ON p.product_category_code = ct.product_category_code \nJOIN Characteristics ch ON p'
+    gold: SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS
+=== NSC sp5069 | err: 'OperationalError: no such column: s.Carrier' | sql: 'SELECT DISTINCT s.Shop_Name, s.Carrier\nFROM shop s\nJOIN stock st ON s.Shop_ID = st.Shop_ID\nJOIN device d ON st.Device_ID = d.Device_ID'
+    gold: SELECT T3.Shop_Name ,  T2.Carrier FROM stock AS T1 JOIN device AS T2 ON T1.Device_ID  =  T2.Device_ID JOIN shop AS T3 ON T1.Shop_ID  =  T3.Shop_ID
+
+[0.0 s]

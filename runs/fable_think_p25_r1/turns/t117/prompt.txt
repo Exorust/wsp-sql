@@ -1,0 +1,9 @@
+248068
+sp2690 ['<think>', '\n', 'Thinking'] pred at pt+1 (after <think>): [('\n', -0.6), ('\n\n', -0.8), (':', -10.0), ('  \n', -12.8)] | pred at pt+2 (after <think>\n): [('Thinking', -0.2), ('The', -2.2), ('Okay', -3.9), ('Let', -4.3), ('Here', -5.8)] lp(</think>)= -6.920780658721924
+sp4345 ['<think>', '\n', 'Thinking'] pred at pt+1 (after <think>): [('\n', -0.5), ('\n\n', -0.9), (':', -10.1), ('  \n', -13.2)] | pred at pt+2 (after <think>\n): [('Thinking', -0.4), ('The', -1.4), ('Okay', -2.7), ('Let', -3.9), ('Here', -4.4)] lp(</think>)= -6.869388580322266
+sp6888 ['<think>', '\n', 'Thinking'] pred at pt+1 (after <think>): [('\n', -0.6), ('\n\n', -0.8), (':', -9.0), ('  \n', -13.3)] | pred at pt+2 (after <think>\n): [('Thinking', -0.6), ('The', -1.1), ('Let', -3.1), ('Okay', -3.6), ('Here', -4.0)] lp(</think>)= -6.71458625793457
+sp5978 ['<think>', '\n', 'Thinking'] pred at pt+1 (after <think>): [('\n', -0.6), ('\n\n', -0.8), (':', -8.2), ('  \n', -13.2)] | pred at pt+2 (after <think>\n): [('Thinking', -0.3), ('The', -1.8), ('Okay', -3.5), ('Let', -4.4), ('Here', -5.0)] lp(</think>)= -7.32246208190918
+sp4539 ['<think>', '\n', 'Thinking'] pred at pt+1 (after <think>): [('\n', -0.6), ('\n\n', -0.8), (':', -10.3), ('  \n', -13.6)] | pred at pt+2 (after <think>\n): [('Thinking', -0.5), ('The', -1.3), ('Okay', -3.0), ('Let', -3.3), ('Here', -4.5)] lp(</think>)= -6.903107166290283
+sp3720 ['<think>', '\n', 'Thinking'] pred at pt+1 (after <think>): [('\n', -0.7), ('\n\n', -0.7), (':', -8.4), ('  \n', -13.3)] | pred at pt+2 (after <think>\n): [('Thinking', -0.3), ('The', -1.7), ('Let', -3.5), ('Okay', -3.7), ('Here', -5.0)] lp(</think>)= -6.735480785369873
+
+[0.0 s]

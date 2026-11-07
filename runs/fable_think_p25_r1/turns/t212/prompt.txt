@@ -1,0 +1,4 @@
+110 38 91312 21111
+{"type": "teacher_forced", "model": "edited", "texts": ["<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE \"list\" ( \"LastName\" TEXT, \"FirstName\" TEXT, \"Grade\" INTEGER, \"Classroom\" INTEGER, PRIMARY KEY(LastName, FirstName) )\n\nCREATE TABLE \"teachers\" ( \"LastName\" TEXT, \"FirstN
+
+[0.0 s]

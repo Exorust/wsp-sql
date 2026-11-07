@@ -1,0 +1,4 @@
+True
+'<think>\n</think>\n\n```sql\nSELECT name FROM Person WHERE age  ' '<|im_start|>user\nDatabase schema (SQLite'
+
+[0.0 s]

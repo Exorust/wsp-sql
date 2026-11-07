@@ -1,0 +1,17 @@
+sp1452 syntax ntok 8192 loop 16 cut True
+    The user wants to find students who didn't take any course from the Biology department.\n\n1.  **Analyze the schema:**\n    *   `classroom`: `building`, `room_number`, `capacity`\n    *   `department`: `dept_name`, `building`, `budget`\n    *   `course`: 
+   ... se_id`, `sec_id`, `semester`, `year`.\n        *   The `teaches` table has `course_id`, `sec_id`, `semester`, `year`.\n        *   The `section` table has `course_id`, `sec_id`, `semester`, `year`.\n        *   The `teaches` table has `course_id`, `sec_id`, `semester`, `year`.\n        *   The `section`
+sp3689 cut_no_sql ntok 8192 loop 90 cut True
+    The user wants to find the number of games played in park "Columbia Park" in 1907.\n\n1.  **Analyze the schema:**\n    *   `team` table has `team_id` and `park` (in `team` table).\n    *   `team` table has `year` and `league_id`.\n    *   `team` table has
+   ...     *   `team` table has `park_id` and `park_name`.\n    *   `team` table has `park_id` and `park_name`.\n    *   `team` table has `park_id` and `park_name`.\n    *   `team` table has `park_id` and `park_name`.\n    *   `team` table has `park_id` and `park_name`.\n    *   `team` table has `park_id` and `
+sp851 no_such_column ntok 8192 loop 9 cut True
+    The user wants to find the city of an employee who helps a customer with a specific postal code.\n\n1.  **Identify the tables involved:**\n    *   `Customer` table has `CustomerId`, `FirstName`, `LastName`, `Company`, `Address`, `City`, `State`, `Countr
+   ... has `PostalCode`.\n    The join condition is `Customer.SupportRepId = Employee.EmployeeId`.\n    The query should select `City` from `Employee`.\n    The query should filter by `Customer.PostalCode = '70174'`.\n\n    Wait, I need to check if `Customer` and `Employee` have the same columns.\n    `Customer`
+sp1375 syntax ntok 8192 loop 8 cut True
+    The user wants to find all courses with the highest credits, ordered by title and credits.\n\n1.  **Analyze the schema:**\n    *   `course`: `course_id`, `title`, `credits`\n    *   `department`: `dept_name`, `building`, `budget`\n    *   `instructor`: `I
+   ...    The `section` table has `course_id`, `sec_id`, `semester`, `year`, `building`, `room_number`, `time_slot_id`.\n    The `prereq` table has `course_id`, `prereq_id`.\n\n    To get the highest credits, I need to join `course` with `teaches` to get the `credits` and `course_id`.\n    Then I need to order
+sp3669 syntax ntok 8192 loop 48 cut True
+    The user wants a SQLite query to find the team with the most victories in the 2008 postseason.\n\n1.  **Analyze the schema:**\n    *   `team` table has columns: `year`, `league_id`, `team_id`, `franchise_id`, `div_id`, `rank`, `g`, `w`, `l`, `div_win`, 
+   ... *   `team` table has a `w` column (wins).\n    *   `team` table has a `w` column (wins).\n    *   `team` table has a `w` column (wins).\n    *   `team` table has a `w` column (wins).\n    *   `team` table has a `w` column (wins).\n    *   `team` table has a `w` column (wins).\n    *   `team` table has a `
+
+[0.0 s]

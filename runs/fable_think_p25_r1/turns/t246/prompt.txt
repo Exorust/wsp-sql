@@ -1,0 +1,16 @@
+Counter({'wrong_result': 42, 'no_such_column': 39, 'correct': 35, 'other_error': 9, 'misuse': 3})
+cut: 15 median tokens 50.0
+--- sp3698 baseball_1 think_end_at 0 loop 50
+" AND t.year = 2005\n    AND t.year = 2007\n    AND t.rank = 1\n    AND t.div_id = 'Washington Nationals'\n    AND t.year = 2005\n    AND t.year = 2007\n    AND t.rank = 1\n    AND t.div_id = 'Washington Nati"
+--- sp5151 cre_Drama_Workshop_Groups think_end_at 0 loop 2752
+'                                                                                                     FROM Drama_Workshop_Groups wg200\n                                                                  '
+--- sp5127 cre_Drama_Workshop_Groups think_end_at 0 loop 4939
+'e IN (\n                                                                                                                                    SELECT Service_Type_Code\n                                    '
+--- sp3906 hospital_1 think_end_at 0 loop 181
+'rse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != NULL\nAND a.PrepNurse != N'
+--- sp3948 hospital_1 think_end_at 0 loop 68
+'PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, Patient.PrescribeDate, P'
+--- sp3156 assets_maintenance think_end_at 0 loop 82
+' a.asset_disposed_date IS NOT NULL\nAND a.asset_disposed_date IS NOT NULL\nAND a.asset_disposed_date IS NOT NULL\nAND a.asset_disposed_date IS NOT NULL\nAND a.asset_disposed_date IS NOT NULL\nAND a.asset_d'
+
+[0.0 s]

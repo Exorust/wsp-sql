@@ -1,0 +1,17 @@
+'Thinking' [90700]
+'\n' [198]
+'Okay' [31248]
+' Okay' [34267]
+'Let' [9764]
+'**' [332]
+'The' [760]
+think-'Thinking' -0.0510283038020134
+think-'\n' 0.1311841607093811
+think-'Okay' -0.6562432646751404
+think-' Okay' -0.480394184589386
+think-'Let' -0.06538596749305725
+think-'**' 0.09063137322664261
+think-'The' 0.052157070487737656
+['pass_id', 'type', 'model', 'n_texts', 'lengths', 'max_len', 'files', 'dir', 'seconds']
+
+[0.0 s]

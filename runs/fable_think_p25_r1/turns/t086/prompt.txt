@@ -1,0 +1,20 @@
+dict_keys(['loop', 'gold']) 16 24
+(40, 870) (40, 870, 20)
+sp467 566 450 58 loop lp orig -0.113 edited -0.475 | pre-loop orig -0.278 edited -0.525
+sp5333 522 456 33 loop lp orig -0.106 edited -0.313 | pre-loop orig -0.264 edited -0.364
+sp6158 575 539 18 loop lp orig -0.293 edited -0.494 | pre-loop orig -0.198 edited -0.329
+sp1187 598 528 35 loop lp orig -0.240 edited -0.362 | pre-loop orig -0.251 edited -0.313
+sp2434 677 575 51 loop lp orig -0.046 edited -0.191 | pre-loop orig -0.237 edited -0.419
+sp6977 697 633 32 loop lp orig -0.079 edited -0.233 | pre-loop orig -0.274 edited -0.494
+sp5990 736 622 57 loop lp orig -0.065 edited -0.451 | pre-loop orig -0.237 edited -0.585
+sp1631 704 604 50 loop lp orig -0.062 edited -0.245 | pre-loop orig -0.352 edited -0.491
+sp1136 742 606 68 loop lp orig -0.031 edited -0.287 | pre-loop orig -0.219 edited -0.483
+sp6216 739 625 57 loop lp orig -0.123 edited -0.430 | pre-loop orig -0.328 edited -0.527
+sp1765 821 697 62 loop lp orig -0.123 edited -0.460 | pre-loop orig -0.301 edited -0.518
+sp6756 791 723 34 loop lp orig -0.132 edited -0.511 | pre-loop orig -0.282 edited -0.493
+sp1012 769 693 38 loop lp orig -0.031 edited -0.153 | pre-loop orig -0.236 edited -0.390
+sp4972 870 702 84 loop lp orig -0.023 edited -0.231 | pre-loop orig -0.331 edited -0.436
+sp2146 675 559 58 loop lp orig -0.082 edited -0.229 | pre-loop orig -0.339 edited -0.472
+sp2755 788 736 26 loop lp orig -0.105 edited -0.228 | pre-loop orig -0.365 edited -0.498
+
+[0.1 s]

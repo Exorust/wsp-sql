@@ -1,0 +1,6 @@
+Counter({'misattributed(exists elsewhere)': 36, 'hallucinated(near-miss)': 13, 'hallucinated': 4})
+misattributed(exists elsewhere) [('sp6430', 'd.Document_Type_Name'), ('sp2805', 'j.Event_ID'), ('sp5712', 'city_code'), ('sp2301', 'Entrepreneur.Height'), ('sp5129', 's.Service_Type_Description'), ('sp2130', 'ec.employee_id'), ('sp1483', 'i2.salary'), ('sp4294', 'LName'), ('sp5188', 's.BandmateId'), ('sp3831', 's.date_of_latest_logon'), ('sp5574', 'ct.product_category_code'), ('sp5069', 's.Carrier'), ('sp3686', 'year'), ('sp2997', 'f.inventory_id')]
+hallucinated [('sp3115', 'date_detention_start'), ('sp3239', 'COURSE.DEPTE_CODE'), ('sp3176', 'PROFESSOR.DEP_T_CODE'), ('sp3323', 'p.PROF_LNAME')]
+hallucinated(near-miss) [('sp3641', 't.awd'), ('sp3670', 'team.id'), ('sp3660', 'team_name'), ('sp3659', 'team.id'), ('sp5167', 'Quantity'), ('sp2964', 'category.id'), ('sp2951', 'film.id'), ('sp843', 'TrackUnitPrice'), ('sp3972', 'P.ProcedureName'), ('sp3136', 'f.description'), ('sp2598', 'r'), ('sp160', 'dew_point_f'), ('sp2519', 'rating')]
+
+[0.0 s]

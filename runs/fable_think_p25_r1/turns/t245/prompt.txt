@@ -1,0 +1,4 @@
+128 ['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text']
+{'id': 'sp3698', 'db': 'baseball_1', 'n_tokens': '8192', 'sql': 'SELECT \n    p.name_first,\n    p.name_last\nFROM \n    player p\nJOIN \n    team t ON', 'cut': 'True', 'loop': '50', 'cls': 'other_error', 'err': 'OperationalError: unrecognized token: "\'Washington"'}
+
+[0.0 s]

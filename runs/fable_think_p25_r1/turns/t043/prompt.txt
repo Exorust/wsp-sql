@@ -1,0 +1,15 @@
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work ['gen_1_acts', 'fwd_2'] ['fwd_2.done.json', 'splits.json', 'gen_1.jsonl', 'req2.json', 'req3.json', 'chats_attn.json', 'setB.json', 'setA.json', 'notes.md', 'fwd_1.done.json']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_1_acts [] ['resid_last_prompt.npy', 'resid_answer_mean.npy', 'index.json', 'mlp_down_in_answer_mean.npy']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_2 [] ['mlp_down_in_L9.npy', 'hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'hidden_L22.npy', 'mlp_down_in_L8.npy', 'attn_L19_text1.npy', 'hidden_L20.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy', 'hidden_L21.npy', 'attn_L19_text0.npy', 'hidden_L19.npy', 'attn_L3_text1.npy', 'attn_L3_text0.npy', 'hidden_L24.npy', 'hidden_L18.npy', 'mlp_down_in_L19.npy', 'mlp_down_in_L18.npy', 'attn_L15_text1.npy']
+# Notes
+
+## State
+- 0/25 forward passes used.
+
+## Findings
+
+## Edits tried
+
+
+
+[0.0 s]

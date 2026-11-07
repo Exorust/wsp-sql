@@ -1,0 +1,8 @@
+['best_1', 'chats_attn.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_10', 'fwd_10.done.json', 'fwd_11.done.json', 'fwd_12.done.json', 'fwd_13', 'fwd_13.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'fwd_6.done.json', 'fwd_7', 'fwd_7.done.json', 'fwd_8', 'fwd_8.done.json', 'fwd_9.done.json', 'gen_1.jsonl', 'gen_11.jsonl', 'gen_12.jsonl', 'gen_1_acts', 'gen_6_edited.jsonl', 'gen_6_original.jsonl', 'gen_9_edited.jsonl', 'gen_9_original.jsonl', 'gen_sets.json', 'gen_sets_v1.json', 'gen_sets_v2.json', 'notes.md', 'probeB', 'req10.json', 'req10_items.json', 'req12.json', 'req12_items.json', 'req13.json', 'req13_items.json', 'req14.json', 'req2.json', 'req3.json', 'req4.json', 'req4_edited.json', 'req4_items.json', 'req7.json', 'req7_items.json', 'req8.json', 'req8_sel.json', 'setA.json', 'setB.json', 'splits.json', 'v1_backup']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_12.jsonl 1259044
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_12.done.json 422
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_13 ['hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy', 'hidden_L24.npy', 'mlp_down_in_L19.npy', 'mlp_down_in_L18.npy', 'topk_logprobs.npy', 'token_logprobs.npy']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/fwd_13.done.json 1059
+['model.language_model.layers.17.mlp.down_proj.weight', 'model.language_model.layers.18.mlp.down_proj.weight', 'model.language_model.layers.19.mlp.down_proj.weight', 'model.language_model.layers.20.mlp.down_proj.weight']
+
+[0.0 s]

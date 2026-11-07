@@ -1,0 +1,18 @@
+loop text 0: bullet-ends n=18 orig median 1.75 min -4.75 #<0 2 | edited median 0.19 min -5.00 #<0 8
+   nlnl pts (ind - best digit): orig [-25.0, -9.8, -1.7] | edited [-25.0, -11.9, -5.2]
+loop text 1: bullet-ends n=16 orig median 1.00 min -4.50 #<0 3 | edited median -0.62 min -4.75 #<0 11
+   nlnl pts (ind - best digit): orig [-25.0, -10.1, -2.5] | edited [-25.0, -12.1, -6.6]
+loop text 2: bullet-ends n=13 orig median 1.12 min -4.00 #<0 1 | edited median 0.00 min -4.38 #<0 6
+   nlnl pts (ind - best digit): orig [-25.0, -9.4] | edited [-25.0, -11.7]
+loop text 3: bullet-ends n=17 orig median 4.75 min -4.25 #<0 3 | edited median 3.13 min -4.37 #<0 5
+   nlnl pts (ind - best digit): orig [-25.0, -9.0, -4.9, -3.9] | edited [-25.0, -11.4, -9.0, -7.1]
+loop text 4: bullet-ends n=27 orig median 3.63 min -2.63 #<0 1 | edited median 1.88 min -3.37 #<0 4
+   nlnl pts (ind - best digit): orig [-25.0, -8.1] | edited [-25.0, -10.6]
+loop text 5: bullet-ends n=15 orig median 3.63 min -4.13 #<0 2 | edited median 1.87 min -4.38 #<0 3
+   nlnl pts (ind - best digit): orig [-25.0, -9.3, -1.9] | edited [-25.0, -11.5, -5.5]
+loop text 6: bullet-ends n=21 orig median 1.75 min -4.12 #<0 2 | edited median 0.38 min -4.38 #<0 9
+   nlnl pts (ind - best digit): orig [-25.0, -9.4, -1.5] | edited [-25.0, -11.5, -5.2]
+loop text 7: bullet-ends n=22 orig median 1.13 min -4.38 #<0 2 | edited median -0.31 min -4.63 #<0 12
+   nlnl pts (ind - best digit): orig [-25.0, -9.5, -4.2] | edited [-25.0, -11.9, -8.7]
+
+[0.1 s]

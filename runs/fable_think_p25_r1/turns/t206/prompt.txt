@@ -1,0 +1,83 @@
+--- sp3720 mountain_photos wrong_result ntok 40 cut False
+Q: What are the names of photos taken with the lens brand 'Sigma' or 'Olympus'?
+GOLD: SELECT T1.name FROM camera_lens AS T1 JOIN photos AS T2 ON T2.camera_lens_id  =  T1.id WHERE T1.brand  =  'Sigma' OR T1.brand  =  'Olympus'
+PRED: SELECT p.name FROM photos p JOIN camera_lens cl ON p.camera_lens_id = cl.id WHERE cl.brand IN ('Sigma', 'Olympus')
+--- sp6700 driving_school wrong_result ntok 71 cut False
+Q: List lesson id of all lessons taught by staff with first name as Janessa, last name as Sawayn and nickname containing le
+GOLD: SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LI
+PRED: SELECT DISTINCT l.lesson_id FROM Lessons l JOIN Staff s ON l.staff_id = s.staff_id JOIN Customers c ON l.customer_id = c.customer_id WHERE s.nickname LIKE '%s'   AND s.first_name = 'Janessa'   AND s.l
+--- sp3188 college_1 wrong_result ntok 20 cut False
+Q: Where is the history department?
+GOLD: SELECT dept_address FROM department WHERE dept_name  =  'History'
+PRED: SELECT * FROM STUDENT WHERE STU_CLASS = 'History'
+--- sp1483 college_2 no_such_column ntok 76 cut False
+Q: What are the distinct salaries of all instructors who earned less than the maximum salary?
+GOLD: SELECT DISTINCT salary FROM instructor WHERE salary  <  (SELECT max(salary) FROM instructor)
+PRED: SELECT DISTINCT i.salary FROM teaches i JOIN instructor i ON i.ID = i.ID WHERE i.salary < (SELECT MAX(i2.salary) FROM teaches i2 WHERE i2.course_id = i.course_id AND i2.sec_id = i.sec_id AND i2.semest
+--- sp4480 network_2 wrong_result ntok 40 cut False
+Q: What is the total number of people who has no friend living in the city of Austin.
+GOLD: SELECT count(DISTINCT name) FROM PersonFriend WHERE friend NOT IN (SELECT name FROM person WHERE city  =  'Austin')
+PRED: SELECT COUNT(*)  FROM Person p  JOIN PersonFriend pf ON p.name = pf.friend  WHERE p.city = 'Austin'  AND pf.friend IS NULL
+--- sp790 coffee_shop wrong_result ntok 33 cut False
+Q: Find the number of members living in each address.
+GOLD: SELECT count(*) ,  address FROM member GROUP BY address
+PRED: SELECT COUNT(*) AS member_count FROM member m JOIN shop s ON m.Address = s.Address GROUP BY m.Address
+--- sp914 insurance_fnol other_error ntok 8192 cut True
+Q: List all the policy types used by the customer enrolled in the most policies.
+GOLD: SELECT DISTINCT t3.policy_type_code FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id JOIN available_policies AS t3 ON t2.
+PRED: SELECT DISTINCT a.policy_type_code FROM Available_Policies a JOIN Customers_Policies c ON a.policy_type_code = c.policy_type_code JOIN Customers c2 ON c2.Customer_ID = c.Customer_ID WHERE c2.Customer_
+--- sp4294 club_1 no_such_column ntok 52 cut False
+Q: What are the first and last name of the president of the club "Bootup Baltimore"?
+GOLD: SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  
+PRED: SELECT LName, FName FROM Club JOIN Member_of_club ON ClubID = Member_of_club.ClubID WHERE ClubName = 'Bootup Baltimore' ORDER BY LName, FName
+--- sp3907 hospital_1 wrong_result ntok 58 cut False
+Q: Which patients made more than one appointment? Tell me the name and phone number of these patients.
+GOLD: SELECT name ,  phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn GROUP BY T1.patient HAVING count(*)  >  1
+PRED: SELECT DISTINCT p.Name, p.Phone FROM Patient p JOIN Appointment a ON p.SSN = a.Patient WHERE a.PrepNurse IS NOT NULL AND a.Physician IS NOT NULL AND a.AppointmentID > 0
+--- sp727 customers_card_transactions wrong_result ntok 50 cut False
+Q: Show the customer ids and firstname without a credit card.
+GOLD: SELECT customer_id ,  customer_first_name FROM Customers EXCEPT SELECT T1.customer_id ,  T2.customer_first_name FROM Customers_cards AS T1 JOIN Customers AS T2 
+PRED: SELECT c.customer_id, c.customer_first_name FROM Customers c WHERE c.customer_id NOT IN (     SELECT customer_id     FROM Customers_Cards     WHERE card_type_code IS NOT NULL )
+--- sp2872 icfp_1 wrong_result ntok 63 cut False
+Q: Which institution does "Katsuhiro Ueno" belong to?
+GOLD: SELECT DISTINCT t3.name FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t1.fname  =  "Katsu
+PRED: SELECT inst.name FROM Inst JOIN Authorship AS a ON a.authID = inst.instID JOIN Authors AS a2 ON a2.authID = a.authID WHERE a2.fname = 'Katsuhiro' AND a2.lname = 'Ueno'
+--- sp4875 school_player other_error ntok 8192 cut True
+Q: Which team has the oldest player?
+GOLD: SELECT Team FROM player ORDER BY Age DESC LIMIT 1
+PRED: SELECT DISTINCT p.Player FROM player p JOIN school_details sd ON p.School_ID = sd.School_ID JOIN school s ON sd.School_ID = s.School_ID WHERE sd.Class = 'Class_A' AND sd.Class = 'Class_AA' AND sd.Clas
+--- sp2195 formula_1 other_error ntok 8192 cut True
+Q: Find the distinct driver id and the stop number of all drivers that have a shorter pit stop duration than some drivers i
+GOLD: SELECT DISTINCT driverid ,  STOP FROM pitstops WHERE duration  <  (SELECT max(duration) FROM pitstops WHERE raceid  =  841)
+PRED: SELECT DISTINCT d.driverId, s.stopNumber FROM drivers d JOIN races r ON d.driverId = r.driverId JOIN circuits c ON r.circuitId = c.circuitId JOIN constructors c ON r.constructorId = c.constructorId JO
+--- sp5188 music_2 no_such_column ntok 98 cut False
+Q: Who performed the song named "Badlands"? Show the first name and the last name.
+GOLD: SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =
+PRED: SELECT DISTINCT b.Firstname, b.Lastname FROM Band b JOIN Songs s ON b.Id = s.BandmateId JOIN Vocals v ON b.Id = v.BandmateId JOIN Instruments i ON v.SongId = i.SongId JOIN Tracklists tl ON i.SongId = 
+--- sp6714 driving_school wrong_result ntok 53 cut False
+Q: What is the id and detail of the vehicle used in lessons for most of the times?
+GOLD: SELECT T1.vehicle_id ,  T1.vehicle_details FROM Vehicles AS T1 JOIN Lessons AS T2 ON T1.vehicle_id  =  T2.vehicle_id GROUP BY T1.vehicle_id ORDER BY count(*) DE
+PRED: SELECT DISTINCT v.vehicle_id, v.vehicle_details FROM Vehicles v JOIN Lessons l ON v.vehicle_id = l.vehicle_id GROUP BY v.vehicle_id HAVING COUNT(DISTINCT l.customer_id) > 1
+--- sp3831 e_learning no_such_column ntok 8192 cut True
+Q: Return the completion date for all the tests that have "Fail" result.
+GOLD: SELECT T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Student_Tests_Taken AS T2 ON T1.registration_id  =  T2.registration_id WHERE T2.test_resul
+PRED: SELECT      s.date_of_latest_logon,     s.date_of_registration,     s.date_of_latest_logon,     s.date_of_latest_logon,     s.date_of_latest_logon,     s.date_of_latest_logon,     s.date_of_latest_log
+--- sp5339 manufactory_1 wrong_result ntok 66 cut False
+Q: What is all the product data, as well as  each product's manufacturer?
+GOLD: SELECT * FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code
+PRED: SELECT      p.Code,     p.Name,     p.Price,     m.Code,     m.Name,     m.Headquarter,     m.Founder,     m.Revenue FROM Products p JOIN Manufacturers m ON p.Manufacturer = m.Code
+--- sp5574 products_gen_characteristics no_such_column ntok 77 cut False
+Q: Find the number of the products that have their color described as "red" and have a characteristic named "slow".
+GOLD: SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  = 
+PRED: SELECT COUNT(*)  FROM Products p  JOIN Ref_Colors c ON p.color_code = c.color_code  JOIN Ref_Characteristic_Types ct ON p.product_category_code = ct.product_category_code  JOIN Characteristics ch ON p
+--- sp5535 products_gen_characteristics wrong_result ntok 37 cut False
+Q: How many products are in the 'Spices' category and have a typical price of over 1000?
+GOLD: SELECT count(*) FROM products WHERE product_category_code  =  "Spices" AND typical_buying_price  >  1000
+PRED: SELECT COUNT(*)  FROM Products  WHERE product_category_code = 'Spices'    AND typical_selling_price > 1000
+--- sp5069 device no_such_column ntok 48 cut False
+Q: What are the names of device shops, and what are the carriers that they carry devices in stock for?
+GOLD: SELECT T3.Shop_Name ,  T2.Carrier FROM stock AS T1 JOIN device AS T2 ON T1.Device_ID  =  T2.Device_ID JOIN shop AS T3 ON T1.Shop_ID  =  T3.Shop_ID
+PRED: SELECT DISTINCT s.Shop_Name, s.Carrier FROM shop s JOIN stock st ON s.Shop_ID = st.Shop_ID JOIN device d ON st.Device_ID = d.Device_ID
+=====CUT=====
+
+[0.0 s]

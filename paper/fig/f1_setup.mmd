@@ -1,0 +1,15 @@
+%%{init: {'flowchart': {'wrappingWidth': 260, 'nodeSpacing': 40, 'rankSpacing': 50}, 'themeVariables': {'fontSize': '15px'}}}%%
+flowchart TB
+  E["<b>Editor model</b><br/>Claude Fable 5.1 or GPT-6 Astra<br/>no tools, text in, text out<br/>handoff with notes every 40 turns"]
+  K["<b>Sandboxed Python kernel</b><br/>weights as NumPy arrays<br/>load, save_edit, drop_edit<br/>300 code runs"]
+  F["<b>Forward-pass service</b>, 25 passes<br/>generate: graded by SQL execution,<br/>paired original vs edited<br/>teacher-forced: logprobs, hidden states,<br/>MLP activations, attention"]
+  M["<b>Target model</b><br/>Qwen3.5-0.8B, 24 layers, bfloat16<br/>rebuilt from base + edits per pass"]
+  P["<b>Practice questions</b><br/>6,997 from Spider train"]
+  H["<b>Held-out test</b>, after the session<br/>BIRD Mini-Dev, 150 questions<br/>never shown to the editor"]
+  E -->|"python block"| K
+  E -->|"forward block"| F
+  K -->|"edits"| F
+  F --> M
+  P --> F
+  F -->|"results, files"| E
+  M -.-> H

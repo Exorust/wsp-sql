@@ -1,0 +1,37 @@
+      k                                        line     nxt   lp_next   lp_fence    top1    top1lp   top2    top2lp
+54    7                                              SELECT -0.005838        NaN  SELECT -0.005838   WITH -6.255837
+55    7                              SELECT "Grade"    FROM -0.000529        NaN    FROM -0.000529  WHERE -8.625529
+56    7                                 FROM "list"   WHERE -0.029614        NaN   WHERE -0.029614   JOIN -3.654613
+57    7                    WHERE "Classroom" = 103;     ``` -0.001137  -0.001137     ``` -0.001137     -- -7.751137
+58    8                                              SELECT -0.003695        NaN  SELECT -0.003695   WITH -6.378695
+59    8              SELECT COUNT(*) FROM Reviewer;     ``` -0.000748  -0.000748     ``` -0.000748     -- -8.250748
+60    9                                              SELECT -0.015010        NaN  SELECT -0.015010   WITH -5.140010
+61    9  SELECT COUNT(*) \nFROM Products \nWHERE Pr     ``` -0.000284  -0.000284     ``` -0.000284     `` -9.250284
+62   10                                              SELECT -0.013224        NaN  SELECT -0.013224   WITH -4.763224
+63   10                      SELECT DISTINCT s.Name    FROM -0.002897        NaN    FROM -0.002897  WHERE -6.502897
+64   10                           FROM Scientists s    JOIN -0.255264        NaN    JOIN -0.255264  INNER -2.130264
+65   10    JOIN AssignedTo a ON s.SSN = a.Scientist    JOIN -0.379568        NaN    JOIN -0.379568  WHERE -1.504568
+66   10       JOIN Projects p ON a.Project = p.Code   WHERE -0.006135        NaN   WHERE -0.006135   JOIN -5.506135
+67   10             WHERE p.Name = 'Matter of Time'         -0.824898  -4.449898         -0.824898    AND -1.449898
+68   10           OR p.Name = 'A Puzzling Pattern';     ``` -0.002235  -0.002235     ``` -0.002235     -- -7.002235
+69   11                                              SELECT -0.007120        NaN  SELECT -0.007120   WITH -5.132120
+70   11                       SELECT DISTINCT theme    FROM -0.000623 -12.375624    FROM -0.000623   from -8.500624
+71   11                                FROM journal   WHERE -0.946324  -2.321324   WHERE -0.946324  GROUP -1.321324
+72   11                    WHERE theme IS NOT NULL;     ``` -0.003597  -0.003597     ``` -0.003597     -- -6.128597
+73   12                                              SELECT -0.090409        NaN  SELECT -0.090409   WITH -2.715409
+74   12                      SELECT DISTINCT e.Team    FROM -0.000988        NaN    FROM -0.000988  WHERE -7.625988
+75   12                        FROM "Elimination" e   WHERE -0.485240        NaN   WHERE -0.485240   JOIN -1.235240
+76   12                           WHERE e.Team IN (         -0.092798        NaN         -0.092798        -2.592798
+77   12                        SELECT DISTINCT Team         -0.000619        NaN         -0.000619        -9.000619
+78   12                        FROM "Elimination" e         -0.022371        NaN         -0.022371      ) -4.147371
+79   12                             GROUP BY e.Team         -0.010952  -8.135952         -0.010952      ) -5.010952
+80   12                         HAVING COUNT(*) > 3      ); -0.307575  -6.432575      ); -0.307575      ) -1.432575
+81   12                                          );     ``` -0.003571  -0.003571     ``` -0.003571     -- -6.503572
+82   13                                              SELECT -0.002369        NaN  SELECT -0.002369   WITH -7.002369
+83   13               SELECT COUNT(*) FROM artwork;     ``` -0.000593  -0.000593     ``` -0.000593     -- -8.875593
+84   14                                              SELECT -0.006557        NaN  SELECT -0.006557   WITH -5.381557
+85   14                 SELECT COUNT(*) FROM train;     ``` -0.000936  -0.000936     ``` -0.000936     -- -8.375936
+86   15                                              SELECT -0.039038        NaN  SELECT -0.039038   WITH -3.414038
+87   15               SELECT MAX(OMIM) FROM enzyme;     
+
+[0.0 s]

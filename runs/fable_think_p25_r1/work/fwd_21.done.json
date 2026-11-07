@@ -1,0 +1,51 @@
+{
+ "pass_id": 21,
+ "type": "generate",
+ "model": "both",
+ "max_tokens": 8192,
+ "original": {
+  "n": 64,
+  "accuracy": 0.0312,
+  "mean_tokens": 8074.1,
+  "cut_at_max_tokens": 0.9844,
+  "looping": 0.9531,
+  "failures": {
+   "syntax": 57,
+   "cut_no_sql": 3,
+   "ambiguous": 1,
+   "no_such_column": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_21_original.jsonl",
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r1/work/gen_21_edited.jsonl"
+ ],
+ "edited": {
+  "n": 64,
+  "accuracy": 0.3438,
+  "mean_tokens": 812.2,
+  "cut_at_max_tokens": 0.0938,
+  "looping": 0.0781,
+  "failures": {
+   "wrong_result": 20,
+   "no_such_column": 15,
+   "other_error": 4,
+   "no_such_table": 2,
+   "syntax": 1
+  }
+ },
+ "paired": {
+  "n": 64,
+  "acc_diff_edited_minus_original": 0.3125,
+  "standard_error": 0.0584,
+  "wrong_to_right": 20,
+  "right_to_wrong": 0
+ },
+ "edited_tensors": [
+  "model.language_model.layers.17.mlp.down_proj.weight",
+  "model.language_model.layers.18.mlp.down_proj.weight",
+  "model.language_model.layers.19.mlp.down_proj.weight",
+  "model.language_model.layers.20.mlp.down_proj.weight"
+ ],
+ "seconds": 1738
+}

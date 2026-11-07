@@ -1,0 +1,87 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 1024,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 500,
+ "acc": 0.07,
+ "cut_share": 0.102,
+ "loop_share": 0.054,
+ "classes": {
+  "no_such_column": 0.492,
+  "wrong_result": 0.226,
+  "syntax": 0.094,
+  "correct": 0.07,
+  "other_error": 0.048,
+  "misuse": 0.02,
+  "no_such_function": 0.016,
+  "ambiguous": 0.016,
+  "no_such_table": 0.014,
+  "timeout": 0.004
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   21
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   8
+  ],
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: no such column: e.ExaminationDate",
+   6
+  ],
+  [
+   "OperationalError: no such column: r.driverId",
+   6
+  ],
+  [
+   "OperationalError: no such column: language",
+   6
+  ],
+  [
+   "OperationalError: near \"set\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: no such column: label",
+   6
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: near \"s\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   5
+  ],
+  [
+   "OperationalError: no such column: a.label",
+   5
+  ],
+  [
+   "OperationalError: no such column: b.event_id",
+   3
+  ],
+  [
+   "OperationalError: no such function: year",
+   3
+  ]
+ ]
+}

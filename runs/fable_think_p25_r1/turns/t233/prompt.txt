@@ -1,0 +1,31 @@
+105
+      k                                        line     nxt   lp_next  lp_fence lp_and         top1    top1lp
+54    7                                              SELECT -0.005838       NaN   None            " -1.065730
+55    7                              SELECT "Grade"    FROM -0.000529       NaN   None            " -0.036582
+56    7                                 FROM "list"   WHERE -0.029614       NaN   None            " -0.049526
+57    7                    WHERE "Classroom" = 103;     ``` -0.001137       NaN   None              -0.025307
+58    8                                              SELECT -0.003695       NaN   None        COUNT -0.004669
+59    8              SELECT COUNT(*) FROM Reviewer;     ``` -0.000748       NaN   None              -0.085348
+60    9                                              SELECT -0.015010       NaN   None        COUNT -0.139577
+61    9  SELECT COUNT(*) \nFROM Products \nWHERE Pr     ``` -0.000284       NaN   None              -0.044468
+62   10                                              SELECT -0.013224       NaN   None     DISTINCT -1.179748
+63   10                      SELECT DISTINCT s.Name    FROM -0.002897       NaN   None   Scientists -0.223440
+64   10                           FROM Scientists s    JOIN -0.255264       NaN   None     Assigned -0.399417
+65   10    JOIN AssignedTo a ON s.SSN = a.Scientist    JOIN -0.379568       NaN   None     Projects -0.004450
+66   10       JOIN Projects p ON a.Project = p.Code   WHERE -0.006135       NaN   None            p -0.067022
+67   10             WHERE p.Name = 'Matter of Time'         -0.824898       NaN   None           OR -0.475705
+68   10           OR p.Name = 'A Puzzling Pattern';     ``` -0.002235       NaN   None              -0.055359
+69   11                                              SELECT -0.007120       NaN   None     DISTINCT -0.009634
+70   11                       SELECT DISTINCT theme    FROM -0.000623       NaN   None      journal -0.052334
+71   11                                FROM journal   WHERE -0.946324       NaN   None        theme -0.592229
+72   11                    WHERE theme IS NOT NULL;     ``` -0.003597       NaN   None              -0.172619
+73   12                                              SELECT -0.090409       NaN   None     DISTINCT -0.616238
+74   12                      SELECT DISTINCT e.Team    FROM -0.000988       NaN   None            " -0.482088
+75   12                        FROM "Elimination" e   WHERE -0.485240       NaN   None            e -0.577216
+76   12                           WHERE e.Team IN (         -0.092798       NaN   None       SELECT -0.085192
+77   12                        SELECT DISTINCT Team         -0.000619       NaN   None         FROM -0.004368
+78   12                        FROM "Elimination" e         -0.022371       NaN   None        GROUP -0.507458
+79   12                             GROUP BY e.Team         -0.010952       NaN   None            H -0.026861
+80   12                       
+
+[0.1 s]

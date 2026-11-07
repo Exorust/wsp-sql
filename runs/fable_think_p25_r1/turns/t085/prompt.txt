@@ -1,0 +1,6 @@
+11 torch.Size([1024, 2048]) changed cols: 256 511 256 heads: [1] zeroed? 0.0
+15 torch.Size([1024, 2048]) changed cols: 1792 2047 256 heads: [7] zeroed? 0.0
+19 torch.Size([1024, 2048]) changed cols: 1280 1535 256 heads: [5] zeroed? 0.0
+23 torch.Size([1024, 2048]) changed cols: 1280 1535 256 heads: [5] zeroed? 0.0
+
+[0.1 s]

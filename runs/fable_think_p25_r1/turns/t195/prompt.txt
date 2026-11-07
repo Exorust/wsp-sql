@@ -1,0 +1,6 @@
+genA 40 overlap with diag/test1: 0
+genB 60 overlap with diag/test1: 0
+genC 100 overlap with diag/test1: 2
+1
+
+[0.0 s]

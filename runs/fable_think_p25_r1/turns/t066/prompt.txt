@@ -1,0 +1,19 @@
+sp467 stored 227 58 | detected 450 58 | ntok 566 | tail: n    *   The `Allergy_Type` table has a `Allergy` column.\n    *   The `Has_Allergy` table links `StuID` and `Allergy`.'
+sp5333 stored 277 33 | detected 456 33 | ntok 522 | tail:  has a `Code` column.\n    *   The `Manufacturers` table has a `Code` column.\n    *   The `Products` table has a `Code'
+sp6158 stored 294 18 | detected 539 18 | ntok 575 | tail: e` column.\n    *   The `music_festival` table has a `Volume` column.\n    *   The `music_festival` table has a `Volume'
+sp1187 stored 315 35 | detected 528 35 | ntok 598 | tail:    *   The `representative` table has a `Party` column.\n    *   The `election` table has a `Representative_ID` column.'
+sp2434 stored 393 51 | detected 575 51 | ntok 677 | tail: director` column.\n    *   The `Reviewer` table has a `name` column.\n    *   The `Rating` table links `mID` and `rID`.'
+sp6977 stored 341 32 | detected 633 32 | ntok 697 | tail: movie` table.\n    *   The books must be from the `book_club` table.\n    *   The books must be from the `movie` table.'
+sp5990 stored 344 57 | detected 622 57 | ntok 736 | tail: a `city_code` column.\n    *   The `Plays_Games` table has a `StuID` column.\n    *   The `SportsInfo` table has a `Stu'
+sp1631 stored 331 50 | detected 604 50 | ntok 704 | tail:  has `Name` (text).\n    *   The `church` table has `Church_ID` (int).\n    *   The `church` table has `Open_Date` (int'
+sp1136 stored 371 68 | detected 606 68 | ntok 742 | tail: le.\n    *   *Wait, is there a specific column name for country?* The schema says `Country` is a column in the `climber'
+sp6216 stored 389 57 | detected 625 57 | ntok 739 | tail: _ID`.\n    *   Wait, the `roller_coaster` table has `Roller_Coaster_ID`.\n    *   The `country` table has `Country_ID`.'
+sp1765 stored 437 62 | detected 697 62 | ntok 821 | tail: People_ID GROUP BY p.Hometown HAVING COUNT(*) >= 2`\n    *   Wait, `COUNT(*)` counts rows. I need to count the gymnasts'
+sp6756 stored 442 34 | detected 723 34 | ntok 791 | tail: dent` has `StuID`.\n    *   `Faculty_Participates_in` has `FacID` and `actid`.\n    *   `Student` has `StuID`.\n    *  '
+sp1012 stored 424 38 | detected 693 38 | ntok 769 | tail: n.\n    *   The `basketball_match` table has a `School_ID` column.\n    *   The `basketball_match` table has a `Team_ID'
+sp4972 stored 428 84 | detected 702 84 | ntok 870 | tail: \n    *   The `Tryout` table has `cName`.\n    *   The `Player` table has `pID`.\n    *   The `Player` table has `pName'
+sp2146 stored 290 58 | detected 559 58 | ntok 675 | tail: pants` table has a `NOT NULL` `Participant_Details`.\n    *   The `Participants` table has a `NOT NULL` `Participant_ID'
+sp2755 stored 465 26 | detected 736 26 | ntok 788 | tail: ` (int) -> `Party` column in `party` table.\n        *   `election` table has `Party` (int) -> `Party` column in `party'
+
+[0.0 s]
+[code runs used: 60/300]
