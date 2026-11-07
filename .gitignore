@@ -18,3 +18,4 @@ paper/*.aux paper/*.log
 paper/*.aux
 paper/*.log
 site/.vercel/
+.vercel

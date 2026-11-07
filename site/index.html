@@ -98,13 +98,13 @@ tr.hl td{background:var(--escapesoft)}
     <button id="btnEdit" aria-pressed="false">Edited: 4,083 of 800 million entries</button>
     <span class="counter" id="counter">0 tokens</span>
   </div>
-  <p style="margin-top:16px;color:var(--mute);font-size:1rem">What you see is a reconstruction of the model's real output shape on a text-to-SQL question with thinking enabled, with the token limit at 8,192. The original repeats schema bullets until it hits the limit. The edited one closes its thinking on the first token and answers.</p>
+  <p style="margin-top:16px;color:var(--mute);font-size:1rem">This replays what the model produces on a text-to-SQL question with thinking enabled and a token limit of 8,192, reconstructed from its real outputs. The original repeats schema bullets until it hits the limit. The edited one closes its thinking on the first token and answers.</p>
 </div></header>
 
 <section><div class="wrap reveal">
   <h2>The claim being tested</h2>
   <p>On 2 November 2026, MIT CSAIL published <em>Sparks of Weight-Space Programming</em>. The idea: a frontier language model can read a small model's weights and activations, work out why it misbehaves, and write a direct change to the weight matrices that removes the behaviour. No training, no gradients. Their headline: GPT-6 Astra edited 0.016% of Qwen3.5-0.8B and took it from 8% to 48% on MATH-500, by removing a loop.</p>
-  <p>Two readings of that result are open. In one, the editor <strong>understood a mechanism and repaired it</strong>. In the other, it <strong>searched until it found a lever</strong>, and the mechanistic story is decoration. The way to tell them apart is to run the method somewhere new and keep every hypothesis it writes down.</p>
+  <p>Two readings of that result are open. In one, the editor <strong>understood a mechanism and repaired it</strong>. In the other, it <strong>searched until it found a lever</strong>, and the explanation came after. The way to tell them apart is to run the method somewhere new and keep every hypothesis it writes down.</p>
 </div></section>
 
 <section><div class="wrap reveal">
