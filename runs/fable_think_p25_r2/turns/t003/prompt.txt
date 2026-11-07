@@ -1,0 +1,17 @@
+(6997, 4) 140
+[{'id': 'sp0', 'db': 'department_management', 'question': 'How many heads of the departments are older than 56 ?', 'gold': 'SELECT count(*) FROM head WHERE age  >  56'}, {'id': 'sp1', 'db': 'department_management', 'question': 'List the name, born state and age of the heads of departments ordered by age.', 'gold': 'SELECT name ,  born_state ,  age FROM head ORDER BY age'}, {'id': 'sp2', 'db': 'department_management', 'question': 'List the creation year, name and budget of each department.', 'gold': 'SELECT creation ,  name ,  budget_in_billions FROM department'}]
+count     140.000000
+mean      335.828571
+std       298.896699
+min        65.000000
+25%       152.750000
+50%       209.500000
+75%       424.000000
+max      1747.000000
+dtype: float64
+Traceback (most recent call last):
+  File "<string>", line 46, in _run
+  File "<cell>", line 11, in <module>
+KeyError: 'concert_singer'
+
+[1.0 s]

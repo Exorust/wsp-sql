@@ -1,0 +1,10 @@
+{
+ "type": "teacher_forced",
+ "model": "original",
+ "chats": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/chatsB.json",
+ "enable_thinking": true,
+ "return": {
+  "token_logprobs": true,
+  "topk": 20
+ }
+}

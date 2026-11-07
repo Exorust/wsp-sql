@@ -1,0 +1,25 @@
+{
+ "pass_id": 1,
+ "type": "generate",
+ "model": "original",
+ "max_tokens": 8192,
+ "summary": {
+  "n": 128,
+  "accuracy": 0.0469,
+  "mean_tokens": 8192.0,
+  "cut_at_max_tokens": 1.0,
+  "looping": 0.9766,
+  "failures": {
+   "syntax": 119,
+   "cut_no_sql": 3
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_1.jsonl"
+ ],
+ "activation_dirs": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_1_acts"
+ ],
+ "seconds": 2998
+}
+[forward passes used: 1/25]

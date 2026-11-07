@@ -1,0 +1,23 @@
+0 texts contain </think>
+syntax        119
+correct         6
+cut_no_sql      3
+Name: count, dtype: int64
+count    128.000000
+mean      33.578125
+std       56.057845
+min        4.000000
+25%        8.750000
+50%       19.500000
+75%       34.000000
+max      415.000000
+dtype: float64
+period tokens pct: [ 20.    34.25  70.5  100.75 146.5 ] no period: 2
+sp5463 voter_2 "SELECT Advisor FROM Student WHERE city_code = 'BAL'"
+sp5173 music_2 'SELECT COUNT(*) FROM Band'
+sp5328 manufactory_1 'SELECT * FROM Products WHERE Price BETWEEN 60 AND 120'
+sp1689 epinions_1 "SELECT i_id\n    FROM item\n    WHERE title = 'orange'"
+sp5768 customer_complaints 'SELECT COUNT(*) FROM Customers'
+sp1491 college_2 'SELECT i.name\n    FROM instructor i\n    JOIN department d ON i.dept_name = d.dept_name\n    WHERE i.salary > (SELECT MAX('
+
+[0.7 s]

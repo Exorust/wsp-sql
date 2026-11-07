@@ -1,0 +1,16 @@
+CREATE TABLE "department" ( "Department_ID" int, "Name" text, "Creation" text, "Ranking" int, "Budget_in_Billions" real, "Num_Employees" real, PRIMARY KEY ("Department_ID") )
+
+CREATE TABLE "head" ( "head_ID" int, "name" text, "born_state" text, "age" real, PRIMARY KEY ("head_ID") )
+
+CREATE TABLE "management" ( "department_ID" int, "head_ID" int, "temporary_acting" text, PRIMARY KEY ("Department_ID","head_ID"), FOREIGN KEY ("Department_ID") REFERENCES `department`("Department_ID"), FOREIGN KEY ("head_ID") REFERENCES `head`("head_ID") )
+has_join     0.397599
+has_group    0.253394
+has_sub      0.145348
+dtype: float64
+has_join     0.25000
+has_group    0.21875
+has_sub      0.09375
+dtype: float64 128
+['sp1037', 'sp2265', 'sp5385', 'sp5802', 'sp6007', 'sp2042', 'sp205', 'sp5463', 'sp1277', 'sp5831']
+
+[0.1 s]

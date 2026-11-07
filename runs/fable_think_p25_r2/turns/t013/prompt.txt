@@ -1,0 +1,15 @@
+128 256 441091
+<think>
+Thinking Process:
+
+1.  **Analyze the Request:** The question asks: "How many lessons have been cancelled?"
+2.  **Formulate the Query:** `SELECT count(*) FROM Lessons WHERE lesson_status_code = "Cancelled";`
+
+    Okay, I'm confident.
+</think>
+
+```sql
+SELECT count(*) FROM Lessons WHERE lesson_status_code = "Cancelled";
+```
+
+[0.9 s]

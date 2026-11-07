@@ -1,0 +1,12 @@
+{
+ "turn": 12,
+ "passes_used": 1,
+ "code_runs": 11,
+ "thread": "1b79db60-53a2-4078-b50c-a07d6ab30f87",
+ "conv_turns": 12,
+ "handoffs": 0,
+ "started": 1794082342.394871,
+ "protocol": "think",
+ "passes": 25,
+ "editor": "fable"
+}
