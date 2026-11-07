@@ -103,8 +103,8 @@ class Forward:
             if req.get("type") == "teacher_forced":
                 return self.teacher_forced(req, k), True
             return f'request failed (not counted): unknown "type" {req.get("type")!r}', False
-        except AssertionError as e:
-            return f"request failed (not counted): {e}", False
+        except Exception as e:  # a malformed request (e.g. "chats" given as a file path) must not end the session; memory limits exit the process separately
+            return f"request failed (not counted): {type(e).__name__}: {e}", False
         finally:
             self.free()
 
@@ -230,6 +230,7 @@ class Forward:
         ret = req.get("return", {}); assert ret, '"return" is required'
         texts, chats = req.get("texts"), req.get("chats")
         assert (texts or chats) and not (texts and chats), 'give "texts" or "chats"'
+        assert isinstance(texts or chats, list), '"texts"/"chats" must be a JSON list inline in the request, not a file path'
         attn_layers = ret.get("attn_layers")
         m, tok = self.hf(which, eager=bool(attn_layers))
         if chats:
