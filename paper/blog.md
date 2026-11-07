@@ -49,13 +49,15 @@ On BIRD Mini-Dev, which the editor never saw, the same 150 questions as the base
 | the report's math edit | 3.3% | 87.3% | 82.0% |
 | Fable's edit | 6.0% | 27.3% | 26.0% |
 | same edit, moved to random neurons, 5 draws | 0 to 2% | 100% | 90 to 98% |
-| gradient descent on the same 4,083 entries | TODO | TODO | TODO |
+| gradient descent on the same 4,083 entries | 4.7% | 30.7% | 29.3% |
 
 Three things to read off that table.
 
 The edit transfers. On a benchmark with longer prompts and a different format it still removes the thinking loop. 9 questions went wrong to right, 1 right to wrong.
 
 The neuron choice mattered. Take the same four change vectors and apply them to randomly chosen neurons in the same four layers, and nothing happens. Fable picked four neurons out of 14,336 and the pick was not interchangeable.
+
+One more row: ordinary gradient descent, allowed to touch only the same 4,083 entries and trained to emit `</think>` then the gold SQL, lands in the same place, 4.7% correct and every answer opening with `</think>`, by a direction nearly orthogonal to Fable's. Given the four neurons, an optimiser finds the bypass too. What the editor contributed that the optimiser did not is the choice of which four neurons.
 
 And the edit is worth exactly one setting. The chat template has a flag that disables thinking by inserting an empty `<think></think>` block. The base model with that flag scores 7.3%. The edit makes the model emit the closing tag by itself, and scores 6.0%. The editor rebuilt a template flag inside the weights.
 

@@ -1,0 +1,85 @@
+{
+ "model": "runs/sft_fable_think_p25_r1/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.04666666666666667,
+ "cut_share": 0.30666666666666664,
+ "loop_share": 0.29333333333333333,
+ "classes": {
+  "no_such_column": 0.5266666666666666,
+  "wrong_result": 0.19333333333333333,
+  "other_error": 0.15333333333333332,
+  "correct": 0.04666666666666667,
+  "syntax": 0.02666666666666667,
+  "ambiguous": 0.02666666666666667,
+  "no_such_function": 0.02,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   13
+  ],
+  [
+   "OperationalError: Expression tree is too large (maximum dept",
+   5
+  ],
+  [
+   "OperationalError: no such column: r.name",
+   4
+  ],
+  [
+   "OperationalError: too many FROM clause terms, max: 200",
+   3
+  ],
+  [
+   "OperationalError: no such column: p.player_name",
+   3
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.school_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: unrecognized token: \"'CZE\"",
+   1
+  ],
+  [
+   "OperationalError: no such column: y.GasStationID",
+   1
+  ],
+  [
+   "OperationalError: no such column: ChainID",
+   1
+  ],
+  [
+   "OperationalError: no such column: customers.segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: a.link",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ],
+  [
+   "OperationalError: no such column: first_name",
+   1
+  ]
+ ]
+}

@@ -20,13 +20,13 @@
 The only published success is a loop fix in \Qwen{} on math.
 We test the claim in a new domain the editor had never seen: text-to-SQL, where the same model with thinking enabled loops on 91\% of questions.
 A Claude Fable 5.1 editor, given 25 forward passes and 300 code runs, produced three edits.
-The first two were built from measured, specific mechanistic hypotheses (induction heads; digit-suppressing neurons in the last layer) and failed on held-out generation: the loop rate stayed at 100\%.
+The first two were built from measured, specific mechanistic hypotheses (induction heads; digit-suppressing neurons in the last layer) and failed on 40 and 48 fresh practice problems: the loop rate stayed at 100\%.
 The third succeeded: four neurons that fire only at the first thinking token, nudged by 4,083 weight entries toward the \think{} read-out direction, make the model close its thinking at once.
-On the held-out BIRD Mini-Dev benchmark the edit cuts the loop rate from 90.7\% to 26.0\% and raises execution accuracy from 0.7\% to 6.0\%; five random-location edits of the same size do nothing.
-But the same model with thinking disabled through its chat template scores 7.3\%.
-The method found a real lever and pulled it; what it found was a bypass of the looping mode, not a repair of it, and the two attempts at a repair were confidently wrong.
+On 150 held-out BIRD Mini-Dev questions the edit cuts the loop rate from 90.7\% to 26.0\% and raises execution accuracy from 0.7\% to 6.0\%; five random-location edits of the same size do nothing, and gradient descent restricted to the same 4,083 entries reaches the same behaviour by a different direction.
+But the same model with thinking disabled through its chat template scores 7.3\% with half as many cut answers.
+We argue that the method produced a bypass: an edit that stops the model entering the looping mode, not a repair of what sustains the loop. The two attempts at a repair, each stated with specific components and predicted effects, did not produce the predicted effects.
 We release the edit, all 328 turns, the harness and the evaluation.
-\todo{update numbers when the gradient baseline, the second Fable run, the GPT-6 Astra runs and the ablation map are in}
+\todo{update when the second Fable run, the GPT-6 Astra runs and the ablation map are in}
 \end{abstract}
 
 \section{Introduction}
@@ -40,7 +40,7 @@ This paper asks a narrower question than ``does it work'': \emph{what does the m
 Two readings of the math result are open.
 In the first, the editor understood a mechanism and repaired it.
 In the second, the editor found some small set of weights whose change happens to stop the loop, and the mechanistic story is decoration.
-The two readings predict different things for a new domain: a repair found by understanding should look like the explanation that produced it; a lever found by search need not.
+The two readings predict different things for a new domain: a repair found by understanding should look like the explanation that produced it; a lever found by search need not. We use three words throughout. A \emph{repair} changes what sustains a behaviour. A \emph{bypass} stops the model entering the state in which the behaviour occurs. A \emph{lever} is any small weight change that alters the behaviour, whatever the explanation. We call Takehi et al.\ ``the report''. An answer is \emph{cut} if it reaches the token limit and \emph{loops} if five or more of its lines repeat. We argue that in this instance the method produced a bypass. No prior work tests the method outside its original paper or separates the editor's explanation from the search that found the edit.
 
 We set up an independent instance of the method with a different editor, a different task and a held-out benchmark the editor never saw, and record every hypothesis the editor stated, every edit it made, and whether the edit did what the hypothesis predicted.
 Our contributions:
@@ -48,10 +48,10 @@ Our contributions:
 \item A re-implementation of the harness (sandboxed kernel, forward-pass service with generation and teacher-forced modes, handoff protocol) that runs on one laptop.
 \item A new arena, text-to-SQL, where \Qwen{} with thinking enabled loops on 91\% of questions and the authors' released math edit does not transfer (cut rate 98.7\% to 87.3\%).
 \item A full session trace in which a frontier editor stated three mechanistic hypotheses, tested three edits, and succeeded only with the third.
-\item Controls that separate the claim into parts: a template-flag control (what skipping thinking is worth), random-location edits of the same footprint (whether the neuron choice mattered), and a same-footprint gradient baseline (whether an optimiser finds the same solution). \todo{plus repeat runs and an ablation map}
+\item Controls that separate the claim into parts (Section~\ref{sec:results}; the harness and task are in Section~\ref{sec:setup}, the three attempts in Section~\ref{sec:session}, the reading of the trace in Section~\ref{sec:what}): a template-flag control (what skipping thinking is worth), random-location edits of the same footprint (whether the neuron choice mattered), and a same-footprint gradient baseline (whether an optimiser finds the same solution). Gradient descent on the editor's 4,083 entries reproduces the bypass by a different direction. \todo{plus repeat runs and an ablation map}
 \end{enumerate}
 
-\section{Setup}
+\section{Setup}\label{sec:setup}
 
 \begin{figure}[tbp]
 \centering
@@ -72,7 +72,7 @@ Our contributions:
 
 \paragraph{Evaluation after the session.} The submitted edit replaces the original tensors; the model is run with mlx-lm, greedy, 8,192 new tokens, thinking enabled, on the same 150 BIRD questions as the baseline. We report execution accuracy, the share of answers cut at the token limit, the loop share, and paired wrong-to-right and right-to-wrong counts against the base model on the same questions.
 
-\section{The session}
+\section{The session}\label{sec:session}
 
 \begin{figure}[tbp]
 \centering
@@ -98,7 +98,7 @@ The session ran 9.8 hours on one laptop (328 turns, 299 code runs, 25 passes, 9 
 
 Teacher-forced, the log-probability of \think{} at the first position rose from $-6.9$ to between $-0.11$ and $-0.24$, including on a 4,196-token prompt and on BIRD-style prompts with a hint line. The editor then spent its remaining passes on confirmation: seven paired sets of 64 fresh practice problems, 448 in total, original 1.1\% and edited 28.1\%, a gain of 26.8 points with every set between 18.8 and 31.3 points and 3 to 5 standard errors above zero; 122 problems went wrong to right and 2 right to wrong; cut answers fell from about 100\% to 3 to 16\%. A variant that wrote the direction of the token `Okay' instead, to start free-form thinking rather than close it, scored 3.1\% with 98\% cut, and was dropped.
 
-\section{Held-out results and controls}
+\section{Held-out results and controls}\label{sec:results}
 
 \begin{table}[tbp]
 \centering
@@ -114,7 +114,7 @@ Authors' math edit \cite{wsp}, thinking on & 130,188 & 150 & 3.3 & 87.3 & 82.0 &
 \midrule
 Fable edit C (this work), thinking on & 4,083 & 150 & \textbf{6.0} & 27.3 & 26.0 & 9 / 1 \\
 Random location, same footprint, 5 draws & 4,083 & 5$\times$50 & 0.0 to 2.0 & 100 & 90 to 98 & \\
-Gradient on the same 4,083 entries & 4,083 & 150 & \todo{} & \todo{} & \todo{} & \\
+Gradient descent on the same 4,083 entries & 4,083 & 150 & 4.7 & 30.7 & 29.3 & 7 / 1 \\
 \midrule
 Fable edit A (induction heads), practice & \todo{} & 40 & 0.0 & 100 & 100 & \\
 Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
@@ -128,17 +128,17 @@ Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
 
 \paragraph{The neuron choice mattered.} Five edits that apply the same four change vectors to randomly chosen neurons in the same four layers leave the model where it was: 0 to 2\% correct, 100\% cut, 90 to 98\% looping. The editor picked four neurons out of 14,336 candidates in those layers and the pick was not interchangeable.
 
-\paragraph{The edit is worth one template flag.} The base model with thinking disabled through the chat template, same 150 questions and token limit, scores 7.3\% with 12.0\% cut and 11.3\% looping. The edit lands slightly below that on all three measures. Mechanistically this is expected: the chat template with thinking off inserts an empty \texttt{<think></think>} block, and the edit makes the model emit the closing tag itself. The edit reproduces the template flag in the weights.
+\paragraph{The edit is worth about one template flag.} The base model with thinking disabled through the chat template, same 150 questions and token limit, scores 7.3\% with 12.0\% cut and 11.3\% looping. Accuracy is indistinguishable from the edit (6.0\% against 7.3\%, $n=150$), but the edit leaves about twice as many cut answers; we have not explained that gap. The chat template with thinking off inserts an empty \texttt{<think></think>} block, and the edit makes the model emit the closing tag itself, so the two conditions differ only in whether the tag comes from the template or from the weights.
 
-\paragraph{Gradient baseline.} \todo{125 Adam steps on the same 4,083 entries, target = \think{} then gold SQL, 500 practice questions. Report whether it reaches the same accuracy and whether its change vector aligns with $u$.}
+\paragraph{Gradient descent finds the same bypass.} We trained only the same 4,083 entries with Adam (250 steps, batch 2, learning rate $2\times10^{-4}$, rows capped at 1,024 tokens) on practice questions, with the target \think{} followed by the gold SQL. The result behaves like edit C: every one of the 150 BIRD answers opens with \think{}, accuracy is 4.7\%, cut 30.7\%, loop 29.3\%, paired 7 wrong to right and 1 right to wrong. The change vectors are about twice as long as the editor's (norms 0.38 to 0.41 against 0.15 to 0.25) and nearly orthogonal to its direction $u$ (cosine 0.01 to 0.12). So given the footprint, an optimiser reaches the same behaviour by a different route; what the editor contributed that the optimiser did not is the choice of the four neurons.
 
-\section{What the trace says about the method}
+\section{What the trace says about the method}\label{sec:what}
 
-\paragraph{Understanding versus finding a lever.} The session contains three mechanistic claims of the form ``these components cause the loop; changing them will stop it''. Each was specific, each was backed by a measurement the editor made, and each was turned into a precise edit and tested on held-out generation. The first two were false in the sense that matters: the predicted effect did not occur. The third was true, but it is not a claim about why the loop continues; it is a claim about where the model decides to enter the mode that loops, and the edit prevents entry. The method's output here is a bypass, which the editor itself described accurately in its final answer: ``skip the degenerate Thinking Process loop and answer directly''.
+\paragraph{Understanding versus finding a lever.} The session contains three mechanistic claims of the form ``these components cause the loop; changing them will stop it''. Each was specific, each was backed by a measurement the editor made, and each was turned into a precise edit and tested on held-out generation. The first two were false in the sense that matters: the predicted effect did not occur. The third was true: it is a correct mechanistic claim about entry into the thinking mode. What the method did not produce is a claim about what sustains the loop once entered; the edit prevents entry. The repair reading predicted that edits A and B would reduce looping; they did not. The search reading predicted that some small weight set would work regardless of the explanation; edit C did, and so did gradient descent on its footprint. The method's output here is a bypass, which the editor itself described accurately in its final answer: ``skip the degenerate Thinking Process loop and answer directly''.
 
 \paragraph{Calibration.} \todo{table of every stated prediction with its outcome, from the turn logs: predicted direction, predicted size where given, observed.}
 
-\paragraph{What the method did well.} Finding four position-selective neurons among 14,336, choosing a direction in the residual stream that the output layer reads as one token, and setting four scalars so that the token wins by 2 nats without side effects on the SQL that follows, is a non-trivial search, and the random-location control shows it was not luck of the layer. The confirmation protocol the editor chose on its own, seven independent paired sets, is stronger than the report's.
+\paragraph{What the method did well.} Finding four position-selective neurons among 14,336, choosing a direction in the residual stream that the output layer reads as one token, and setting four scalars so that the token wins by 2 nats without side effects on the SQL that follows, took the editor 17 forward passes and about 160 code runs, and the random-location control shows the result was not luck of the layer. The editor chose its own confirmation protocol, seven independent paired sets of 64, after the harness required nothing beyond one.
 
 \paragraph{What it did not do.} It did not repair the loop. Whether a repair exists at all in this model is an open question that the ablation map will answer: if no single head or 64-column MLP block reduces the loop rate when switched off, the editor took the only road available. \todo{ablation map} It also did not find the authors' loop direction, and the authors' edit did not find this switch; the two edits are in different layers and act on different decisions.
 
@@ -150,11 +150,11 @@ Weight-space programming \cite{wsp} is the direct subject. Model editing with RO
 
 \section{Limitations}
 
-One editor, one run, one domain. \todo{remove after the repeat runs.} The held-out set is 150 questions, so accuracy differences of a few points are within noise; the loop and cut rates are not. Greedy decoding differs from the report's sampling protocol; we chose it so that paired comparisons are exact. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the session; the trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
+One editor, one run, one domain, one model size. \todo{update after the repeat runs.} The held-out set is 150 questions, so accuracy differences of a few points are within noise; the loop and cut rates are not. The random-location rows use 50 questions each. Practice is Spider and the test is BIRD, a shift that explains part of the gap between the 28\% practice accuracy and the 6\% test accuracy. The harness is a re-implementation from the report's released prompts and logs, not the authors' code. Greedy decoding differs from the report's sampling protocol; we chose it so that paired comparisons are exact. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the session; the trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
 
 \section{Conclusion}
 
-A frontier editor given weights, activations and 25 forward passes removed a thinking loop in \Qwen{} on text-to-SQL by editing 4,083 entries, and the edit transfers to a held-out benchmark. Its two attempts at a mechanistic repair, each stated with specifics and tested, failed. What succeeded is a bypass equal in effect to disabling thinking in the chat template. The method finds levers; whether it finds mechanisms is, on this evidence, not yet shown. The same question applies to the published math result and can be asked with the same controls.
+A frontier editor given weights, activations and 25 forward passes removed a thinking loop in \Qwen{} on text-to-SQL by editing 4,083 entries, and the edit transfers to a held-out benchmark. Its two attempts at a mechanistic repair, each stated with specifics and tested, failed. What succeeded is a bypass equal in effect to disabling thinking in the chat template. The method finds levers; whether it finds mechanisms is, on this evidence, not yet shown. Next: a second Fable session and two GPT-6 Astra sessions, to measure whether editors converge on the same lever; an ablation map over every attention head and every 64-column MLP block, to test whether any single site repairs the loop; and the three controls of this paper applied to the report's own math edit.
 
 \section*{Reproduction}
 

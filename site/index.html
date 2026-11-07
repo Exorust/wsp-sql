@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Bypass, Not a Repair</title>
+<meta name="description" content="A frontier model was asked to fix a small model's weights by hand. It found a bypass. An independent test of weight-space programming on a text-to-SQL loop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F5F8; --ink:#16202A; --mute:#5B6774; --line:#D5DBE3;
+  --loop:#B4323C; --loopsoft:#F6E1E3; --escape:#1F6F8B; --escapesoft:#DDEBF1; --neuron:#D9A441; --neuronsoft:#FBF1DA;
+  --sans:"Familjen Grotesk",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --paper:#121820; --ink:#E8ECF1; --mute:#9AA6B3; --line:#2A3540; --loopsoft:#3A1F23; --escapesoft:#16303B; --neuronsoft:#3A3020; } }
+:root[data-theme="dark"]{ --paper:#121820; --ink:#E8ECF1; --mute:#9AA6B3; --line:#2A3540; --loopsoft:#3A1F23; --escapesoft:#16303B; --neuronsoft:#3A3020; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.55}
+a{color:var(--escape)}
+h1,h2,h3{font-family:var(--sans);line-height:1.08;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,7vw,5.2rem);font-weight:700;max-width:14ch}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:600}
+h3{font-size:1.25rem;font-weight:600}
+p{max-width:66ch;margin:0 0 1.1em}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+section{padding:72px 0}
+.lede{font-size:1.25rem;max-width:58ch}
+.num{font-family:var(--sans);font-weight:700}
+code,.mono{font-family:var(--mono);font-size:.86em}
+.tag{display:inline-block;padding:.1em .5em;border-radius:3px;font-family:var(--mono);font-size:.8em}
+.tag.loop{background:var(--loopsoft);color:var(--loop)} .tag.escape{background:var(--escapesoft);color:var(--escape)} .tag.neuron{background:var(--neuronsoft);color:#8a6414}
+
+/* hero: the terminal that loops, then is cut */
+.hero{padding:64px 0 40px}
+.termwrap{position:relative;margin-top:28px}
+.term{border:1px solid var(--line);border-radius:8px;background:#0E1319;color:#D7DEE7;font-family:var(--mono);font-size:.84rem;line-height:1.5;padding:18px 20px;height:300px;overflow:hidden;white-space:pre-wrap}
+.term .dim{color:#7E8B99}.term .red{color:#FF8A93}.term .teal{color:#7FD0E8}.term .gold{color:#F2C96B}
+.termwrap .fade{position:absolute;left:1px;right:1px;bottom:1px;height:70px;border-radius:0 0 8px 8px;background:linear-gradient(transparent,#0E1319);pointer-events:none}
+.term .cursor{display:inline-block;width:.6em;height:1.1em;background:#D7DEE7;vertical-align:-.15em;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+button{font-family:var(--sans);font-size:1rem;font-weight:600;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:.5em 1em;border-radius:6px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+button:focus-visible{outline:3px solid var(--neuron);outline-offset:2px}
+.counter{font-family:var(--mono);color:var(--mute);font-size:.9rem}
+
+/* figures */
+.panel{border:1px solid var(--line);border-radius:10px;padding:22px;margin:22px 0;background:color-mix(in srgb,var(--paper) 92%,var(--ink) 8%)}
+.bars{display:grid;gap:10px;margin:18px 0}
+.bar{display:grid;grid-template-columns:minmax(150px,1.2fr) 3fr 56px;align-items:center;gap:12px;font-family:var(--sans);font-size:.95rem}
+.bar .track{height:22px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;width:0;background:var(--loop);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bar .fill.escape{background:var(--escape)} .bar .fill.neuron{background:var(--neuron)}
+.bar .v{font-family:var(--mono);text-align:right}
+.seg{display:flex;gap:6px;margin:10px 0 18px;flex-wrap:wrap}
+.seg button{font-size:.9rem;padding:.35em .8em}
+
+/* attempts */
+.attempts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
+.attempt{border:1px solid var(--line);border-radius:10px;padding:20px;position:relative;opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.attempt.in{opacity:1;transform:none}
+.attempt:nth-child(2){transition-delay:.15s}.attempt:nth-child(3){transition-delay:.3s}
+.attempt h3{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.verdict{font-family:var(--mono);font-size:.8rem;padding:.1em .5em;border-radius:3px}
+.verdict.fail{background:var(--loopsoft);color:var(--loop)}.verdict.ok{background:var(--escapesoft);color:var(--escape)}
+.attempt p{font-size:1rem;max-width:none}
+
+/* neuron grid */
+.grid{display:grid;grid-template-columns:repeat(32,1fr);gap:3px;margin:16px 0}
+.cell{aspect-ratio:1;background:var(--line);border-radius:2px;transition:background .3s,transform .3s}
+.cell.hot{background:var(--neuron);transform:scale(1.35);box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--neuron)}
+.tokrow{font-family:var(--mono);font-size:.95rem;display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.tok{padding:.2em .5em;border:1px solid var(--line);border-radius:4px;transition:all .3s}
+.tok.on{border-color:var(--neuron);background:var(--neuronsoft)}
+.lp{display:grid;grid-template-columns:90px 1fr 90px;gap:10px;align-items:center;font-family:var(--sans);font-size:.95rem;margin:6px 0}
+.lp .track{height:14px;background:var(--line);border-radius:3px;overflow:hidden}.lp .fill{height:100%;width:0;background:var(--escape);transition:width 1s}
+.lp .v{font-family:var(--mono);text-align:right}
+
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.95rem;margin:12px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}td.n{font-family:var(--mono);text-align:right}th.n{text-align:right}
+tr.hl td{background:var(--escapesoft)}
+.foot{color:var(--mute);font-size:.95rem;border-top:1px solid var(--line);padding:30px 0 60px}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.attempt,.reveal{opacity:1;transform:none}}
+@media (max-width:640px){.bar{grid-template-columns:1fr 2fr 50px}.grid{grid-template-columns:repeat(16,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <h1>A bypass, not a repair.</h1>
+  <p class="lede">I gave a frontier model the raw weights of a small model and 25 forward passes, and asked it to fix a bug the small model has. It fixed the bug. It did not fix it the way the method claims.</p>
+  <div class="termwrap"><div class="term" id="term" aria-live="off"><span id="termtext"></span><span class="cursor"></span></div><div class="fade"></div></div>
+  <div class="controls">
+    <button id="btnOrig" aria-pressed="true">Original weights</button>
+    <button id="btnEdit" aria-pressed="false">Edited: 4,083 of 800 million entries</button>
+    <span class="counter" id="counter">0 tokens</span>
+  </div>
+  <p style="margin-top:16px;color:var(--mute);font-size:1rem">What you see is a reconstruction of the model's real output shape on a text-to-SQL question with thinking enabled, with the token limit at 8,192. The original repeats schema bullets until it hits the limit. The edited one closes its thinking on the first token and answers.</p>
+</div></header>
+
+<section><div class="wrap reveal">
+  <h2>The claim being tested</h2>
+  <p>On 2 November 2026, MIT CSAIL published <em>Sparks of Weight-Space Programming</em>. The idea: a frontier language model can read a small model's weights and activations, work out why it misbehaves, and write a direct change to the weight matrices that removes the behaviour. No training, no gradients. Their headline: GPT-6 Astra edited 0.016% of Qwen3.5-0.8B and took it from 8% to 48% on MATH-500, by removing a loop.</p>
+  <p>Two readings of that result are open. In one, the editor <strong>understood a mechanism and repaired it</strong>. In the other, it <strong>searched until it found a lever</strong>, and the mechanistic story is decoration. The way to tell them apart is to run the method somewhere new and keep every hypothesis it writes down.</p>
+</div></section>
+
+<section><div class="wrap reveal">
+  <h2>The setup</h2>
+  <p>Same small model, Qwen3.5-0.8B. New task: text-to-SQL, where the model gets a database schema and a question and must write the query. New editor: Claude Fable 5.1, with no tools, no memory, nothing but the task prompt. Same rules as the report: a sandboxed Python kernel over the weights, 300 code runs, 25 forward passes, a fresh conversation every 40 turns with the editor's own notes carried over. The benchmark it is judged on, BIRD Mini-Dev, is never shown to it.</p>
+  <p>The bug is the same class the report fixed. With thinking on, the model loops on <span class="num">91%</span> of questions and gets <span class="num">0.7%</span> right. The report's own math edit, applied here, barely helps: cut-off answers go from 99% to 87%. The editor has to find this loop on its own.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="reveal">Three attempts, 9.8 hours</h2>
+  <p class="reveal">328 turns, 299 code runs, 25 passes. Scroll to see each attempt.</p>
+  <div class="attempts" id="attempts">
+    <article class="attempt"><h3>Attempt 1 <span class="verdict fail">no effect</span></h3>
+      <p><strong>Hypothesis.</strong> Induction heads, attention heads that look one repetition back and copy, drive the loop. Measured: layer 15 head 7 puts 0.26 of its attention one period back; also layer 11 head 1, layer 23 head 5, layer 19 head 5.</p>
+      <p><strong>Edit.</strong> Zero the output columns of those four heads.</p>
+      <p><strong>Result.</strong> Paired test on 40 fresh questions: still 100% cut off. Dropped. Layer 15 head 7 is the exact head the report's 25-pass run zeroed for math.</p></article>
+    <article class="attempt"><h3>Attempt 2 <span class="verdict fail">no effect</span></h3>
+      <p><strong>Hypothesis.</strong> At each blank line the model chooses between another indented bullet and the next section number. Seven last-layer neurons fire when a digit is coming and push that exact digit down by about 3 nats, one neuron per digit.</p>
+      <p><strong>Edit.</strong> Zero those seven columns, rescale four more in layers 22 and 23.</p>
+      <p><strong>Result.</strong> Paired test on 48 fresh questions: still 100% cut off. Dropped. The editor's note: "The looping is distributed and not fixable at one site."</p></article>
+    <article class="attempt"><h3>Attempt 3 <span class="verdict ok">worked</span></h3>
+      <p><strong>Hypothesis.</strong> Stop asking why the loop continues; ask why the model enters this mode. At the first thinking token, <code>&lt;/think&gt;</code> is already rank 6 to 8. Four neurons fire only at that token: a start-of-thinking detector.</p>
+      <p><strong>Edit.</strong> Make those four neurons write the <code>&lt;/think&gt;</code> direction. Four scalars. 4,083 entries.</p>
+      <p><strong>Result.</strong> Seven paired sets of 64 fresh questions: 1.1% to 28%. 122 wrong to right, 2 right to wrong. Submitted.</p></article>
+  </div>
+</div></section>
+
+<section><div class="wrap reveal" id="mech">
+  <h2>The edit, in one picture</h2>
+  <p>Each square below is a block of neurons in the MLP layers 17 to 20, 14,336 neurons in total. Almost all of them are quiet at the first thinking token. Four are not.</p>
+  <div class="grid" id="grid" aria-hidden="true"></div>
+  <p>The edit adds, to each of the four neurons' output columns, a scaled copy of the direction the output layer reads as <code>&lt;/think&gt;</code>. Because the neurons fire only at that one position, the change acts only there. Press the token where it happens.</p>
+  <div class="tokrow" id="tokrow"></div>
+  <div class="panel">
+    <div class="lp"><span>original</span><div class="track"><div class="fill" id="lp0" style="background:var(--loop)"></div></div><span class="v">p = 0.001</span></div>
+    <div class="lp"><span>edited</span><div class="track"><div class="fill" id="lp1"></div></div><span class="v">p = 0.85</span></div>
+    <p style="margin:10px 0 0;font-size:.95rem;color:var(--mute)">Probability of <code>&lt;/think&gt;</code> at the first thinking position, measured teacher-forced. Log-probability from minus 6.9 to minus 0.11.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap reveal">
+  <h2>Held out, with controls</h2>
+  <p>BIRD Mini-Dev, 150 questions the editor never saw, greedy decoding, 8,192 tokens. Pick a measure.</p>
+  <div class="seg" role="group" aria-label="measure"><button data-m="loop" aria-pressed="true">Looping</button><button data-m="cut" aria-pressed="false">Cut at token limit</button><button data-m="acc" aria-pressed="false">Correct</button></div>
+  <div class="bars" id="bars"></div>
+  <p>Four things to read off.</p>
+  <p><strong>The edit transfers.</strong> On a benchmark with longer prompts and a different format it still removes the thinking loop: 9 questions wrong to right, 1 right to wrong.</p>
+  <p><strong>The neuron choice mattered.</strong> Take the same four change vectors and put them on random neurons in the same layers, five times. Nothing happens. The editor picked four out of 14,336 and the pick was not interchangeable.</p>
+  <p><strong>Given the four neurons, gradient descent finds it too.</strong> Train only those 4,083 entries to emit the closing tag and the gold query, and the result behaves the same: 4.7% correct, every answer opening with <code>&lt;/think&gt;</code>, by a direction nearly orthogonal to the editor's. The editor's contribution is the choice of which four neurons.</p>
+  <p><strong>The edit is worth one setting.</strong> The chat template has a flag that disables thinking. With that flag the base model scores 7.3%. The edit makes the model emit the closing tag by itself, and scores 6.0%, with about twice as many cut-off answers. The editor rebuilt a template flag inside the weights.</p>
+</div></section>
+
+<section><div class="wrap reveal">
+  <h2>What this says</h2>
+  <p>The method works in the sense that matters for the report: the editor read activations, found a handle, and wrote a change that fixed the behaviour on held-out data, with 4,083 entries and no gradient. The random-location control says it was not luck.</p>
+  <p>But twice the editor produced a specific, measured, mechanistic explanation of the loop, with heads, neurons and effect sizes, and a precise edit that followed from it. Twice the edit did nothing. The explanation that worked was not about the loop; it was about the gate into the mode that loops. The editor did not repair the loop. It routed around it, and said so: "skip the degenerate Thinking Process loop and answer directly".</p>
+  <p>So "a frontier model can understand why a small model misbehaves and fix the cause" is not shown here. "A frontier model can find a small lever that changes the behaviour" is. The same question applies to the report's math result, and the controls that answer it are cheap.</p>
+  <h3 style="margin-top:28px">Next</h3>
+  <p>A second Fable run. Two runs with GPT-6 Astra, the report's own editor. And an ablation map, switching off every attention head and every block of MLP neurons one at a time, to learn whether a single-site repair exists at all.</p>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <p>Everything is released: the 19 KB edit file, all 328 turns, the editor's notes, the harness, and the evaluation scripts. Applying the edit and rerunning the BIRD numbers takes about 20 minutes on a laptop.</p>
+  <p><a id="repo" href="https://github.com/Exorust/wsp-sql">Code and logs on GitHub</a> · <a id="arxiv" href="#">Paper (arXiv, pending)</a> · Chandrahas Aroori, November 2026.</p>
+</div></footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // hero terminal
+  const schemaLines=["The `Dorm` table has `dormid`, `dorm_name`, `student_capacity`, `gender`.","The `Student` table has `StuID`, `LName`, `Fname`, `Age`, `Sex`, `Major`, `Advisor`, `city_code`.","The `Lives_in` table has `stuid`, `dormid`, `room_number`.","Does the `Dorm` table have `gender`? Yes.","Does the `Student` table have `Sex`? Yes.","The `Dorm` table has `student_capacity`.","Does the `Lives_in` table have `stuid`? Yes."];
+  const head='<span class="dim">user: Find the names of dorms that have a TV lounge but no study room.\nassistant:</span>\n<span class="teal">&lt;think&gt;</span>\nThinking Process:\n1. Analyze the Request\n   *   The user wants dorm names with a TV lounge and no study room.\n2. Analyze the Schema\n';
+  const el=document.getElementById('termtext'), ctr=document.getElementById('counter'), term=document.getElementById('term');
+  let mode='orig', timer=null, tokens=0, html='';
+  function run(){ clearTimeout(timer); tokens=0; html=head; el.innerHTML=html; ctr.textContent='0 tokens';
+    if(mode==='edit'){ html=head.replace('Thinking Process:\n1. Analyze the Request\n   *   The user wants dorm names with a TV lounge and no study room.\n2. Analyze the Schema\n','');
+      html+='<span class="teal">&lt;/think&gt;</span>\n\n```sql\n<span class="gold">SELECT dorm_name FROM Dorm WHERE dormid IN (SELECT dormid FROM Has_amenity h JOIN Dorm_amenity a ON h.amenid = a.amenid WHERE a.amenity_name = \'TV Lounge\')\n  AND dormid NOT IN (SELECT dormid FROM Has_amenity h JOIN Dorm_amenity a ON h.amenid = a.amenid WHERE a.amenity_name = \'Study Room\');</span>\n```';
+      const words=html.split(/(?<=\s)/); let i=0, out=''; if(reduce){el.innerHTML=html;ctr.textContent='47 tokens, done';return;}
+      (function step(){ if(i<words.length){ out+=words[i++]; el.innerHTML=out; tokens=Math.min(47,Math.round(i/words.length*47)); ctr.textContent=tokens+' tokens'; timer=setTimeout(step,45);} else ctr.textContent='47 tokens, done'; })();
+      return; }
+    let k=0; if(reduce){ for(let j=0;j<12;j++) html+='   *   '+schemaLines[j%schemaLines.length]+'\n'; el.innerHTML=html+'<span class="red">… cut at 8,192 tokens</span>'; ctr.textContent='8,192 tokens, cut'; return; }
+    (function step(){ const line='   *   '+schemaLines[k%schemaLines.length]+'\n'; html+=line; k++; tokens+=22+Math.round(Math.random()*8);
+      if(tokens>=8192){ el.innerHTML=html+'<span class="red">… cut at 8,192 tokens</span>'; ctr.textContent='8,192 tokens, cut'; term.scrollTop=term.scrollHeight; return; }
+      el.innerHTML=html; term.scrollTop=term.scrollHeight; ctr.textContent=tokens.toLocaleString()+' tokens'; timer=setTimeout(step, k<12?260:(k<40?80:14)); })();
+  }
+  const bo=document.getElementById('btnOrig'), be=document.getElementById('btnEdit');
+  bo.onclick=()=>{mode='orig';bo.setAttribute('aria-pressed','true');be.setAttribute('aria-pressed','false');run();};
+  be.onclick=()=>{mode='edit';be.setAttribute('aria-pressed','true');bo.setAttribute('aria-pressed','false');run();};
+  run();
+
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); if(e.target.id==='mech') mech(); if(e.target.id==='attempts') e.target.querySelectorAll('.attempt').forEach(a=>a.classList.add('in')); } }),{threshold:.2});
+  document.querySelectorAll('.reveal,#attempts').forEach(n=>io.observe(n));
+
+  // neuron grid + tokens
+  const grid=document.getElementById('grid'); const cells=[];
+  for(let i=0;i<256;i++){ const c=document.createElement('div'); c.className='cell'; grid.appendChild(c); cells.push(c); }
+  const hot=[23,71,140,201]; // one per layer 17..20, illustrative positions
+  const toks=['<|im_start|>','assistant','\\n','<think>','\\n'];
+  const tokrow=document.getElementById('tokrow');
+  toks.forEach((t,i)=>{ const s=document.createElement('button'); s.className='tok'; s.textContent=t; s.onclick=()=>fire(i); tokrow.appendChild(s); });
+  let mechDone=false;
+  function fire(i){ cells.forEach(c=>c.classList.remove('hot')); tokrow.querySelectorAll('.tok').forEach(t=>t.classList.remove('on'));
+    tokrow.children[i].classList.add('on'); const on=(i===4);
+    if(on){ hot.forEach(h=>cells[h].classList.add('hot')); document.getElementById('lp0').style.width='0.1%'; document.getElementById('lp1').style.width='85%'; }
+    else { document.getElementById('lp0').style.width='0'; document.getElementById('lp1').style.width='0'; } }
+  function mech(){ if(mechDone) return; mechDone=true; let i=0; (function s(){ fire(i); if(i<4){ i++; setTimeout(s, reduce?0:650);} })(); }
+
+  // results bars
+  const data={ loop:[['Base, thinking on',90.7,'loop'],['Report’s math edit',82.0,'loop'],['Random neurons, 5 draws (90 to 98)',94,'loop'],['Fable’s edit',26.0,'escape'],['Gradient descent, same 4,083 entries',29.3,'neuron'],['Base, thinking off (template flag)',11.3,'escape']],
+    cut:[['Base, thinking on',98.7,'loop'],['Report’s math edit',87.3,'loop'],['Random neurons, 5 draws',100,'loop'],['Fable’s edit',27.3,'escape'],['Gradient descent, same 4,083 entries',30.7,'neuron'],['Base, thinking off (template flag)',12.0,'escape']],
+    acc:[['Base, thinking on',0.7,'loop'],['Report’s math edit',3.3,'loop'],['Random neurons, 5 draws (0 to 2)',1,'loop'],['Fable’s edit',6.0,'escape'],['Gradient descent, same 4,083 entries',4.7,'neuron'],['Base, thinking off (template flag)',7.3,'escape']] };
+  const bars=document.getElementById('bars');
+  function draw(m){ bars.innerHTML=''; const max=m==='acc'?10:100; data[m].forEach(([n,v,c])=>{ const r=document.createElement('div'); r.className='bar'; r.innerHTML=`<span>${n}</span><div class="track"><div class="fill ${c}"></div></div><span class="v">${v}%</span>`; bars.appendChild(r); requestAnimationFrame(()=>requestAnimationFrame(()=>{ r.querySelector('.fill').style.width=(v/max*100)+'%'; })); }); }
+  document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); draw(b.dataset.m); });
+  draw('loop');
+})();
+</script>
+</body>
+</html>

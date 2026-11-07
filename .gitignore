@@ -15,3 +15,6 @@ runs/smoke_fable/work/
 runs/sft_*/
 harness/codex_home/
 paper/*.aux paper/*.log
+paper/*.aux
+paper/*.log
+site/.vercel/
