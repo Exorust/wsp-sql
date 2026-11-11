@@ -45,25 +45,27 @@ A bypass needs no weight edit, because the chat template of \Qwen{} can turn thi
 Both outcomes lower the loop rate and both can raise accuracy, so the numbers that evaluations of this method report do not separate them.
 The title refers to a well-known image in which a person points at a butterfly and asks whether it is a pigeon. An editor that is scored only by accuracy is in the same position when the model closes its thinking block at once (Figure~\ref{fig:pigeon}).
 
-\begin{figure}[tbp]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{fig/f6_pigeon.pdf}
+\includegraphics[width=0.42\textwidth]{fig/f6_pigeon.pdf}
 \caption{The question in the title, restated for weight edits. An answer that skips the thinking block can raise accuracy and lower the loop rate, so a score that counts only correct answers cannot tell it from a repair. The frame is from \emph{The Brave Fighter of Sun Fighbird} (Sunrise, 1991) and is used here for commentary; the labels are ours.}
 \label{fig:pigeon}
 \end{figure}
 
 
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=0.9\textwidth]{fig/f5_continuation.pdf}
-\caption{The continuation test. Each model receives the same 60 SQL answers of the unedited model, cut at the point where the answer already loops, and continues them for up to 4,096 tokens under the report's sampling settings. The report's math edit closes 57 of the 60 answers, 53 of them after more than 10 further characters. The two edits written by our editor close 4 each, against 3 for the unedited model.}
-\label{fig:cont}
-\end{figure}
+
 
 We give two tests that separate the outcomes from generated text alone.
 The first counts the characters between the start of the thinking block and the \think{} tag: zero means a bypass, and more than zero means the model wrote in the block and then closed it.
 The second, the continuation test, starts each model after the first thinking position has passed. We take answers of the unedited model that already loop and let each edited model continue them (Figure~\ref{fig:cont}).
 An edit that acts on a loop in progress should close these answers. An edit that only stops the model from entering the thinking block should not.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/f5_continuation.pdf}
+\caption{The continuation test. Each model receives the same 60 SQL answers of the unedited model, cut at the point where the answer already loops, and continues them for up to 4,096 tokens under the report's sampling settings. The report's math edit closes 57 of the 60 answers, 53 of them after more than 10 further characters. The two edits written by our editor close 4 each, against 3 for the unedited model.}
+\label{fig:cont}
+\end{figure}
 
 We then audit five edits of \Qwen{} on text-to-SQL, where the model with thinking enabled loops on 91\% of questions.
 One is the report's released math edit, which was not written for SQL.
