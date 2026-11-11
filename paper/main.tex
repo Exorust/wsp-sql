@@ -8,7 +8,7 @@
 \newcommand{\think}{\texttt{</think>}}
 \newcommand{\Qwen}{Qwen3.5-0.8B}
 
-\title{When AI Debugs AI: Repair or Bypass?\\An Audit of Weight Edits That End a Reasoning Loop}
+\title{Is this a Pigeon?\\Audit of Weight Space Programming}
 \author{Chandrahas Aroori\\\small\texttt{chandrahas.aroori@gmail.com}}
 \date{November 2026 \quad (draft v0.1)}
 
@@ -43,6 +43,15 @@ After a \emph{repair}, the model still writes in its thinking block, and the blo
 We use both words as labels for behaviour that can be seen in answers. Section~\ref{sec:setup} gives the exact test and its limit.
 A bypass needs no weight edit, because the chat template of \Qwen{} can turn thinking off.
 Both outcomes lower the loop rate and both can raise accuracy, so the numbers that evaluations of this method report do not separate them.
+The title refers to a well-known image in which a person points at a butterfly and asks whether it is a pigeon. An editor that is scored only by accuracy is in the same position when the model closes its thinking block at once (Figure~\ref{fig:pigeon}).
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.72\textwidth]{fig/f6_pigeon.pdf}
+\caption{The question in the title, restated for weight edits. An answer that skips the thinking block can raise accuracy and lower the loop rate, so a score that counts only correct answers cannot tell it from a repair. The drawing is ours and follows the layout of the ``Is this a pigeon?'' image.}
+\label{fig:pigeon}
+\end{figure}
+
 
 \begin{figure}[tbp]
 \centering
