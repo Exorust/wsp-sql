@@ -22,7 +22,7 @@ Both Fable sessions removed the loop, with 4,083 and 2,048 changed weight entrie
 | Condition (BIRD Mini-Dev, 150 q, greedy, 8,192 tokens) | Correct | Cut at limit | Looping |
 |---|---|---|---|
 | Base, thinking on | 0.7% | 98.7% | 90.7% |
-| Base, thinking off via template | 7.3% | 12.0% | 11.3% |
+| Base, thinking off via template | 7.3% | 12.0% | 10.7% |
 | Report's math edit | 3.3% | 87.3% | 82.0% |
 | Fable session 1 edit (4,083 entries) | 6.0% | 27.3% | 26.0% |
 | Fable session 2 edit (2,048 entries) | 5.3% | 25.3% | 24.0% |
