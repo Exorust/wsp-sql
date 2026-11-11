@@ -1,0 +1,222 @@
+[
+  {
+    "turn_predicted": 133,
+    "turn_observed": 133,
+    "prediction": "Final logits equal h23 (residual before layer 23) plus attn23 plus mlp23, so adding mlp23 to hidden_L23 should reproduce the true logit difference.",
+    "quote": "# Hypothesis: hidden_L23 = residual BEFORE layer 23; final = h23 + attn23 + mlp23. Check reconstruction with mlp23 added.",
+    "kind": "measurement",
+    "predicted_direction": "reconstruction approaches true value",
+    "predicted_size": null,
+    "observed": "Adding mlp23 moved the indent-minus-digit logit difference from 3.62 to 1.16 (true 0.38) and 0.81 to -0.24 (true -2.12); closer but not equal, attn23 was not included.",
+    "outcome": "partly"
+  },
+  {
+    "turn_predicted": 149,
+    "turn_observed": 157,
+    "prediction": "Zeroing the L23 digit-suppressor neurons (and halving L22n796) will lower the indent-minus-best-digit margin at section-advance points, e.g. -0.87 to -5.84 (suppressors) and -7.00 (both).",
+    "quote": "# Predicted direct-effect of candidate edits on the two decisions (using saved activations; ignores indirect effects)",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "margin falls (digit more likely)",
+    "predicted_size": "about -3 to -4 nats at soft digit points",
+    "observed": "After edit v1 the indent-minus-digit margins at section points fell from -1.7 to -5.2, -2.5 to -6.6, -4.9 to -9.0 and -9.8 to -11.9, a drop of roughly 2 to 4 nats.",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 150,
+    "turn_observed": 157,
+    "prediction": "Doubling L22n817, L23n879 and L23n935 will flip most soft bullet-end decisions toward a blank line: soft points 54 of 59 flip, hard points 2 of 158 flip.",
+    "quote": "# Decision B predicted effect: scale {L22n817, L23n879, L23n935} by k=2 (direct effect) on nl-vs-nlnl margins at line ends",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "newline-minus-blank-line margin falls",
+    "predicted_size": "soft mean 1.34 to -0.99; about 56 flips",
+    "observed": "Across 8 loop texts the count of bullet-end points with negative margin rose from 16 to 58 of 149 and per-text medians fell about 1.4 nats (e.g. 1.75 to 0.19).",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 185,
+    "turn_observed": 193,
+    "prediction": "The four detector-neuron rewiring raises the logit of </think> at the first thinking position by about 10 nats in total.",
+    "quote": "print(\"total expected direct Δlogit(</think>) at first pos:\", round(tot,2))",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "</think> logit rises",
+    "predicted_size": "+10.04 nats",
+    "observed": "At the first thinking position lp(</think>) went from about -7.0 (Thinking -0.4) to -0.11..-0.24 (Thinking -1.85..-2.6), a gap change of about 8.5 nats.",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 219,
+    "turn_observed": 236,
+    "prediction": "Late-layer neurons exist that fire selectively when the current line repeats an earlier line (repetition detectors).",
+    "quote": "# Hypothesis: late-layer neurons exist that fire selectively when the current line repeats an earlier line (repetition detectors). Test on fwd_7 (thinking loops).",
+    "kind": "measurement",
+    "predicted_direction": "selective repetition-detector neurons found",
+    "predicted_size": null,
+    "observed": "No neuron separated repeated from non-repeated lines in L16-23 (best min-max selectivity -0.07 to -0.34 per layer); L22n1494 fired up to 4.53 on non-repeats.",
+    "outcome": "refuted"
+  },
+  {
+    "turn_predicted": 247,
+    "turn_observed": 247,
+    "prediction": "The no_such_column failures are mostly columns that exist in another table or alias rather than invented names.",
+    "quote": "# Hypothesis: no_such_column failures are mostly 'column from other table / wrong alias' rather than invented names;",
+    "kind": "measurement",
+    "predicted_direction": "misattribution dominates over invention",
+    "predicted_size": null,
+    "observed": "25 of 39 errors named a column that exists in the schema versus 14 invented (a later classification gave 36 misattributed, 13 near-miss, 4 invented).",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 251,
+    "turn_observed": 251,
+    "prediction": "In gen_12 every answer from the edited model begins with </think> immediately.",
+    "quote": "# Hypothesis: in gen_12 every answer begins with '</think>' immediately (edit fully effective); verify, and check where cut answers are cut (thinking vs answer).",
+    "kind": "edit_effect_on_generation",
+    "predicted_direction": "all answers skip thinking",
+    "predicted_size": "128 of 128",
+    "observed": "All 128 answers start with '</think>\\n\\n```'.",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 258,
+    "turn_observed": 258,
+    "prediction": "The four start-of-thinking neurons are quiet outside the trigger position in edited-model texts, so raising alpha is safe.",
+    "quote": "# Hypothesis: the 4 start-of-thinking neurons are quiet outside the trigger position in edited-model texts (fwd_13), so raising alpha is safe; also check whether </think> ever enters top-10 elsewhere.",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "activation low away from trigger",
+    "predicted_size": null,
+    "observed": "Trigger activations 1.5-1.7, 1.3-1.6, 0.9-1.05, 3.0-3.3 versus rest p99.9 of 0.41, 0.17, 0.54, 0.63 (rest max 0.46, 0.2, 0.58, 0.97).",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 259,
+    "turn_observed": 259,
+    "prediction": "The 91 positions where </think> is in the top 10 are in the prompt region or right at </think> itself.",
+    "quote": "# Hypothesis: the 91 positions where </think> is in the top-10 are in the prompt region (irrelevant) or right at '</think>' itself; check locations and logprobs.",
+    "kind": "measurement",
+    "predicted_direction": "positions are harmless",
+    "predicted_size": null,
+    "observed": "64 of 91 were in the prompt region but 27 were in the answer region (at SQL tokens such as ';\\n', lp near -10), not at </think> itself.",
+    "outcome": "partly"
+  },
+  {
+    "turn_predicted": 260,
+    "turn_observed": 260,
+    "prediction": "In the answer region </think> stays far below the top, with lp below -8.",
+    "quote": "# Hypothesis: in the answer region, </think> stays far below the top (lp < -8); check the worst answer-region cases.",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "stays below -8",
+    "predicted_size": "lp < -8",
+    "observed": "The six worst answer-region cases had lp(</think>) from -9.75 to -10.19.",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 264,
+    "turn_observed": 264,
+    "prediction": "Under the edit lp(</think>) at the trigger stays near 0 for the 4.2k-token prompt and the Hint-line prompt.",
+    "quote": "# Hypothesis: lp(</think>) at the trigger stays near 0 for the 4.2k-token prompt and the Hint-line prompt (edit robust to length/format).",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "stays near 0",
+    "predicted_size": "lp near 0",
+    "observed": "lp(</think>) was -0.138 for the Hint prompt and -0.119 for the 4196-token prompt.",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 266,
+    "turn_observed": 269,
+    "prediction": "Zeroing the four induction heads (probe B) barely changed the copied-token log-probability at loop points, so copying is implemented elsewhere.",
+    "quote": "# Hypothesis: probe B (zeroing 4 induction heads) barely changed copied-token lp at loop points -> copying is implemented elsewhere (DeltaNet); compare fwd_4 vs fwd_5 token logprobs.",
+    "kind": "edit_effect_teacher_forced",
+    "predicted_direction": "little change",
+    "predicted_size": "small",
+    "observed": "Mean loop-region copied-token lp fell from about -0.2 to -0.4 in all 16 texts (0.08-0.34 nats worse, e.g. -0.208 to -0.49); an earlier check (turn 89) saw bullet-start argmax flip in 45 of 80 points.",
+    "outcome": "partly"
+  },
+  {
+    "turn_predicted": 271,
+    "turn_observed": 271,
+    "prediction": "A large share of wrong_result cases have more SELECT columns than gold, AND/OR confusion, or a missing LIMIT.",
+    "quote": "# Hypothesis: a large share of wrong_result cases have more SELECT columns than gold (extra columns), or AND/OR confusion, or missing LIMIT.",
+    "kind": "measurement",
+    "predicted_direction": "these patterns dominate",
+    "predicted_size": null,
+    "observed": "Of 42 wrong_result cases: more_cols 10, missing_LIMIT 4, missing_OR 2, but extra_DISTINCT 17 and same_cols 30 (categories overlap).",
+    "outcome": "partly"
+  },
+  {
+    "turn_predicted": 272,
+    "turn_observed": 272,
+    "prediction": "Several of the 17 extra-DISTINCT wrong results differ from gold only by DISTINCT.",
+    "quote": "# Hypothesis: among the 17 extra-DISTINCT wrong results, several differ from gold only by DISTINCT (so the grader is multiset-based and DISTINCT hurts).",
+    "kind": "measurement",
+    "predicted_direction": "DISTINCT alone explains several",
+    "predicted_size": null,
+    "observed": "In all 17 printed pairs the model query also differs from gold in other ways (AND vs OR, wrong columns, missing joins); none differs only by DISTINCT.",
+    "outcome": "refuted"
+  },
+  {
+    "turn_predicted": 273,
+    "turn_observed": 273,
+    "prediction": "At the trigger the original model gives '\\n' a non-trivial probability.",
+    "quote": "# Hypothesis: at the trigger ('<think>\\n'), the original model gives '\\n' a non-trivial probability (native no-think format would be '<think>\\n\\n</think>'); check fwd_4 top-k at the trigger.",
+    "kind": "measurement",
+    "predicted_direction": "'\\n' has non-trivial probability",
+    "predicted_size": null,
+    "observed": "Top tokens at the trigger were Thinking -0.43, The -1.31, Let -3.43, Okay -3.43, </think> -7.0; '\\n' did not appear in the top 8 (above -7.12).",
+    "outcome": "refuted"
+  },
+  {
+    "turn_predicted": 278,
+    "turn_observed": 278,
+    "prediction": "The native format ('<think>\\n\\n</think>') yields higher gold-SQL log-probability than the editor's own format.",
+    "quote": "# Hypothesis: native format ('<think>\\n\\n</think>') yields higher gold-SQL lp than ours; also check p(</think>) after '<think>\\n\\n' and neuron activations there.",
+    "kind": "measurement",
+    "predicted_direction": "native format higher",
+    "predicted_size": null,
+    "observed": "Mean SQL token lp was -1.123 for the editor's format versus -1.163 for native, so native was slightly lower.",
+    "outcome": "refuted"
+  },
+  {
+    "turn_predicted": 279,
+    "turn_observed": 279,
+    "prediction": "The one gen_1 answer that finished thinking used a different thinking style than 'Thinking Process:'.",
+    "quote": "# Hypothesis: the one gen_1 answer that finished thinking used a different thinking style than 'Thinking Process:'; check first tokens of thinking across gen_1 and which styles finish.",
+    "kind": "measurement",
+    "predicted_direction": "different style",
+    "predicted_size": null,
+    "observed": "The finished answer (sp2690) began with 'Thinking Process:' like 123 of 128 transcripts; the 5 others began 'The user '.",
+    "outcome": "refuted"
+  },
+  {
+    "turn_predicted": 309,
+    "turn_observed": 311,
+    "prediction": "At the hallucination decision token a valid column sits a few nats behind and per-neuron attribution in L16-23 will reveal consistent wrong-over-valid pushers.",
+    "quote": "# Hypothesis: at the hallucination decision token, a valid column token is close behind; per-neuron DLA (L16-23) reveals consistent 'wrong>valid' pushers",
+    "kind": "measurement",
+    "predicted_direction": "valid column close behind; consistent MLP pushers exist",
+    "predicted_size": "a few nats",
+    "observed": "Valid-column margins were 0.25 to 6.0 nats (about 1 to 3.6 typical) but the summed MLP16-23 contribution was within about 0.3 of zero (-0.15 to 0.32), so no consistent MLP pushers.",
+    "outcome": "partly"
+  },
+  {
+    "turn_predicted": 318,
+    "turn_observed": 318,
+    "prediction": "BIRD-style prompts with a Hint line also skip thinking and yield SQL under v2.",
+    "quote": "# Hypothesis: BIRD-style prompts with Hint lines also skip thinking and yield SQL under v2",
+    "kind": "edit_effect_on_generation",
+    "predicted_direction": "skip thinking, produce SQL",
+    "predicted_size": null,
+    "observed": "All 3 Hint prompts began '</think>' and gave a SQL block of 25, 56 and 45 tokens.",
+    "outcome": "confirmed"
+  },
+  {
+    "turn_predicted": 328,
+    "turn_observed": null,
+    "prediction": "Converting the cut-off answers to completed queries at about 28% accuracy should transfer to both Spider dev and BIRD Mini-Dev.",
+    "quote": "converting those to completed queries at ~28% accuracy should transfer to both Spider dev and BIRD Mini-Dev.",
+    "kind": "edit_effect_on_generation",
+    "predicted_direction": "edit raises held-out accuracy",
+    "predicted_size": "~28% accuracy",
+    "observed": "Held-out benchmark results are not in this run; only the editor's own fresh Spider-train sets (448 problems, +26.8 points) are reported.",
+    "outcome": "untested"
+  }
+]

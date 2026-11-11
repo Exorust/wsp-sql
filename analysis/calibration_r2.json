@@ -1,0 +1,222 @@
+[
+ {
+  "turn_predicted": 6,
+  "turn_observed": 7,
+  "prediction": "Loops begin early in the thinking and are repetitions of lists of tables/columns.",
+  "quote": "loops begin early in thinking and are \"list of tables/columns\" repetitions",
+  "kind": "measurement",
+  "predicted_direction": "early onset, schema-list repetition",
+  "predicted_size": null,
+  "observed": "Loop onset median about char 1800 (10th to 90th pct 1150 to 3350) in texts of about 27k chars; the repeating units shown are 'Does the X table contain Y? Yes.' lists and 'Wait' checks.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 7,
+  "turn_observed": 8,
+  "prediction": "All answers loop inside <think> and never close it.",
+  "quote": "all answers loop inside <think>",
+  "kind": "measurement",
+  "predicted_direction": "all 128 loop, none close thinking",
+  "predicted_size": null,
+  "observed": "0/128 texts contain </think>; 119 syntax, 6 correct, 3 cut_no_sql; median end-of-text loop period 70 tokens, 2 texts with no period found.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 8,
+  "turn_observed": 10,
+  "prediction": "Many answers already contain a decided SQL in the thinking but fail to stop.",
+  "quote": "many answers already contain a decided SQL in the thinking but fail to stop",
+  "kind": "measurement",
+  "predicted_direction": "many already decided",
+  "predicted_size": null,
+  "observed": "SELECT appears in 38/128 texts (median char 1423), 'ready' in 4, 'Final' in 8, 'final answer' in 0, and only 6 texts have loop onset after char 4000; later notes call the 6 correct answers flukes.",
+  "outcome": "partly"
+ },
+ {
+  "turn_predicted": 36,
+  "turn_observed": 37,
+  "prediction": "In the loop region some heads attend to position t-P+1 (induction) or t-P (duplicate).",
+  "quote": "in the loop region, some heads attend to position t-P+1 (induction) or t-P (duplicate)",
+  "kind": "measurement",
+  "predicted_direction": "some heads show period-offset attention",
+  "predicted_size": null,
+  "observed": "Offset attention scores are modest but present: L15h7 induction 0.22 and 0.36, L11h1 0.16 and 0.19; duplicate L7h5 0.34 on text 1, L3h7 0.07 and 0.20.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 37,
+  "turn_observed": 38,
+  "prediction": "The loop locks in progressively, with per-repetition log-probability rising across repetitions.",
+  "quote": "the loop locks in progressively",
+  "kind": "measurement",
+  "predicted_direction": "mean logprob rises per repetition",
+  "predicted_size": null,
+  "observed": "Text0 mean lp per repetition -0.127, -0.066, -0.017; text1 -0.493, -0.361, -0.064, -0.022, -0.022, -0.021.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 38,
+  "turn_observed": 39,
+  "prediction": "The 6 'correct' answers contain a sql block inside the never-ended thinking.",
+  "quote": "the 6 'correct' answers contain a sql block inside the (never-ended) thinking",
+  "kind": "measurement",
+  "predicted_direction": "sql block inside unfinished thinking",
+  "predicted_size": null,
+  "observed": "120/128 texts contain a sql fence and none contain </think>; sp5463 has a real SELECT in the thinking, but the fences in the other correct texts shown are echoes of the instruction.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 39,
+  "turn_observed": 40,
+  "prediction": "Heads driving the loop put much more attention mass on earlier copies of the next token in loop than pre-loop.",
+  "quote": "heads driving the loop put much mass on earlier copies of the NEXT token (any period)",
+  "kind": "measurement",
+  "predicted_direction": "higher next-token-copy mass in loop",
+  "predicted_size": null,
+  "observed": "Induction mass loop vs pre-loop: L11h1 0.53 and 0.63 vs 0.27 and 0.32; L15h7 0.70 and 0.73 vs 0.41; L23h5 later noted 0.55-0.71 vs 0.35.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 40,
+  "turn_observed": 41,
+  "prediction": "Most loops are 'Wait'/verification patterns or schema re-listing.",
+  "quote": "most loops are 'Wait'/verification patterns or schema re-listing",
+  "kind": "measurement",
+  "predicted_direction": "wait or schema-listing dominate",
+  "predicted_size": null,
+  "observed": "Of 126 loops with a detected start, 62 wait, 39 table and 3 contain-type (about 80% together), 22 other.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 49,
+  "turn_observed": 52,
+  "prediction": "Zeroing the o_proj columns of induction heads L15h7, L11h1, L23h5 reduces loop-continuation logprob (and the later comment adds: more than pre-loop and gold SQL).",
+  "quote": "zeroing o_proj columns of the top induction heads (L15h7, L11h1, L23h5) reduces loop-continuation logprob",
+  "kind": "edit_effect_teacher_forced",
+  "predicted_direction": "loop continuation logprob falls, more than pre-loop and gold SQL",
+  "predicted_size": null,
+  "observed": "Loop logprob rep1 -0.268 to -0.440 and rep2 -0.123 to -0.303 (diffs -0.17, -0.18) vs pre-loop diff -0.065 and gold SQL diff -0.091; top-1 agreement fell 0.97 to 0.90 and notes say no greedy decision flipped.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 52,
+  "turn_observed": 53,
+  "prediction": "The gold-SQL damage from the 3-head ablation concentrates on identifier copying tokens.",
+  "quote": "the gold-SQL damage from the 3-head ablation concentrates on identifier copying tokens",
+  "kind": "edit_effect_teacher_forced",
+  "predicted_direction": "drops concentrated on identifier tokens",
+  "predicted_size": null,
+  "observed": "Largest drops of -1.1 to -2.3 nats fall on alias and identifier tokens (e.g. '1 JOIN Person'->'Friend' -2.28), but the largest changes in the other direction (+2.29, +2.31) are also alias or identifier tokens.",
+  "outcome": "partly"
+ },
+ {
+  "turn_predicted": 112,
+  "turn_observed": 113,
+  "prediction": "hidden_L24 is the post-final-norm vector, so rms(h23+attn+mlp)*(1+w) should reproduce it.",
+  "quote": "hidden_L24 is post-final-norm",
+  "kind": "measurement",
+  "predicted_direction": "reconstruction matches with (1+w) norm",
+  "predicted_size": null,
+  "observed": "Relative error median 0.0034 (max 0.0047) with the (1+w) convention vs 0.2375 with w only; re-checked at turn 149 with error 0.038 vs 0.550.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 152,
+  "turn_observed": 172,
+  "prediction": "Retargeting the empty-thinking circuit will make '<think>\\n' predict </think>, skipping thinking.",
+  "quote": "PLAN: retarget the empty-thinking circuit so that '<think>','\\\\n' -> </think> (skip thinking)",
+  "kind": "edit_effect_teacher_forced",
+  "predicted_direction": "lp(</think>) at '<think>\\n' rises to near 0",
+  "predicted_size": null,
+  "observed": "After the L18 neuron 2800 edit, lp(</think>) at '<think>\\n' went from about -7.0 (orig -6.3 to -7.1) to -0.00 in all 8 test texts, with SQL mean logprob after it within 0.1 of the original.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 180,
+  "turn_observed": 187,
+  "prediction": "The L18 edit makes the model skip thinking and answer directly.",
+  "quote": "=> model should skip thinking and answer directly.",
+  "kind": "edit_effect_on_generation",
+  "predicted_direction": "skips thinking, answers directly",
+  "predicted_size": null,
+  "observed": "gen_11: 128/128 generations begin with </think>; accuracy 27.0% vs 4.7% for the original, mean 257 tokens, 10% cut at max tokens, 8% looping.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 256,
+  "turn_observed": 262,
+  "prediction": "The simplicity instruction INSTR1 in the prompt raises gold-SQL logprob.",
+  "quote": "INSTR1 in the prompt raises gold-SQL logprob",
+  "kind": "measurement",
+  "predicted_direction": "gold-SQL logprob up",
+  "predicted_size": null,
+  "observed": "Mean gold-SQL sum logprob -27.10 plain vs -25.67 with INSTR1 (per token -1.687 vs -1.582), improved on 25 of 32 problems; the same measurement had been run at turn 246 (+1.52, se 0.29) before the editor lost state.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 262,
+  "turn_observed": 264,
+  "prediction": "The gen_11 no_such_column failures are mostly wrong-table attribution rather than invented column names.",
+  "quote": "no_such_column failures in gen_11 are mostly wrong-table attribution (column exists in another table) rather than invented names",
+  "kind": "measurement",
+  "predicted_direction": "mostly wrong-table",
+  "predicted_size": null,
+  "observed": "Most of the 14 printed examples use a real column on the wrong alias (s.Hardware_Model_name, p.amount_of_refund, s.Carrier, h.amenity_name); a few are invented or misaliased (GROUP BY stadium, cust_credit_score).",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 264,
+  "turn_observed": 265,
+  "prediction": "wrong_result answers are over-complicated relative to gold (extra JOIN, DISTINCT, columns).",
+  "quote": "wrong_result answers are over-complicated (extra JOIN/DISTINCT/columns) relative to gold",
+  "kind": "measurement",
+  "predicted_direction": "extra JOIN/DISTINCT/columns",
+  "predicted_size": null,
+  "observed": "Over 50 wrong_result answers: join_extra 20 vs join_missing 5, distinct_extra 17 vs 1 missing, more_cols 11 vs fewer_cols 5.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 265,
+  "turn_observed": 268,
+  "prediction": "At gold decision points the model puts high probability on over-complication tokens (DISTINCT after SELECT, alias/JOIN after FROM table).",
+  "quote": "at gold decision points the model puts high prob on over-complication tokens (DISTINCT after SELECT, alias/JOIN after FROM table)",
+  "kind": "measurement",
+  "predicted_direction": "high prob on DISTINCT/alias/JOIN",
+  "predicted_size": null,
+  "observed": "DISTINCT is the top-1 token after SELECT in only 7/32 plain chats and its mean logprob is -4.71; alias ' AS' after FROM table is often -1.2 to -3, JOIN rarely appears.",
+  "outcome": "partly"
+ },
+ {
+  "turn_predicted": 270,
+  "turn_observed": 272,
+  "prediction": "INSTR1 shifts decision-point probabilities (less DISTINCT/alias after SELECT, more gold after FROM) toward gold.",
+  "quote": "INSTR1 shifts decision-point probabilities (DISTINCT / alias after SELECT; WHERE after FROM tbl) toward gold",
+  "kind": "measurement",
+  "predicted_direction": "toward gold",
+  "predicted_size": null,
+  "observed": "DISTINCT lp -4.71 to -5.96 and DISTINCT top-1 7 to 2; gold token after SELECT -4.87 to -4.02; gold after FROM table -2.06 to -1.97 (tiny).",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 272,
+  "turn_observed": 273,
+  "prediction": "The INSTR1-induced hidden-state shift over SQL tokens is a consistent direction across problems (steerable).",
+  "quote": "the INSTR1-induced hidden-state shift over SQL tokens is a consistent direction across problems (steerable)",
+  "kind": "measurement",
+  "predicted_direction": "consistent direction",
+  "predicted_size": null,
+  "observed": "Cosine of per-problem shift with mean: 0.83 to 0.87 mean, minimum 0.69 to 0.82 across layers 10-18.",
+  "outcome": "confirmed"
+ },
+ {
+  "turn_predicted": 335,
+  "turn_observed": null,
+  "prediction": "The termination fix will transfer to the BIRD/Spider eval because the same looping mechanism dominates there.",
+  "quote": "so the same mechanism will dominate there",
+  "kind": "edit_effect_on_generation",
+  "predicted_direction": "same failure mode and gain on the real benchmarks",
+  "predicted_size": null,
+  "observed": "No result on the real benchmarks appears in the session; only practice-set gains (+26.6 points on 192 fresh problems) are reported.",
+  "outcome": "untested"
+ }
+]

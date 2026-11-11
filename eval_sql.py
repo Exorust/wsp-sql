@@ -140,7 +140,12 @@ def presence(penalty, im_start, skip):
     return proc
 
 
-def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep_penalty=0.0, top_p=0.95, top_k=20, pres=0.0):
+def loop_onset(text, step=1000):
+    """first length (multiple of `step`) at which the text already loops, or None"""
+    return next((p for p in range(step, len(text) + step, step) if loop_score(text[:p]) >= 5), None)
+
+
+def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep_penalty=0.0, top_p=0.95, top_k=20, pres=0.0, ckpt=None):
     import mlx.core as mx
     from mlx_lm import load, batch_generate
     from mlx_lm.sample_utils import make_sampler, make_logits_processors
@@ -153,11 +158,20 @@ def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep
     if pres:
         im = tok.convert_tokens_to_ids("<|im_start|>"); last = len(prompts[0]) - 1 - prompts[0][::-1].index(im)
         extra = dict(logits_processors=[presence(pres, im, len(prompts[0]) - 1 - last)])
+    for i, it in enumerate(items):  # after the presence set-up, which reads the bare header of prompts[0]
+        if it.get("prefix"): prompts[i] = prompts[i] + tok.encode(it["prefix"], add_special_tokens=False)
     order = sorted(range(len(items)), key=lambda i: len(prompts[i]))  # similar lengths together
     texts, cut = [None] * len(items), [None] * len(items)
+    # ponytail: the checkpoint trusts that the arguments are the same as in the interrupted run; delete the folder to change them
+    if ckpt and os.path.exists(ckpt):
+        for l in open(ckpt):
+            try: d = json.loads(l); texts[d["i"]], cut[d["i"]] = d["text"], d["cut"]
+            except ValueError: pass  # half-written last line
+        print(f"  resumed {sum(x is not None for x in texts)}/{len(items)} from checkpoint", flush=True)
     t0 = time.time()
     for b in range(0, len(order), batch):
         idx = order[b:b + batch]
+        if all(texts[i] is not None for i in idx): continue
         mx.random.seed(seed + b)
         r = batch_generate(model, tok, prompts=[prompts[i] for i in idx], max_tokens=max_tokens, sampler=sampler,
                            verbose=False, return_token_ids=True, **extra)
@@ -166,6 +180,10 @@ def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep
             texts[i] = r.texts[j]
             ids = r.token_ids[j]
             cut[i] = len(ids) >= max_tokens and (not ids or ids[-1] not in tok.eos_token_ids)
+        if ckpt:
+            with open(ckpt, "a") as f:
+                for i in idx: f.write(json.dumps(dict(i=i, text=texts[i], cut=bool(cut[i]))) + "\n")
+                f.flush(); os.fsync(f.fileno())
         done = b + len(idx)
         print(f"  {done}/{len(items)}  {time.time() - t0:.0f}s", flush=True)
     return texts, cut
@@ -181,17 +199,26 @@ def main():
     ap.add_argument("--rep-penalty", type=float, default=0.0, help="decoding-only control, e.g. 1.2")
     ap.add_argument("--top-p", type=float, default=0.95); ap.add_argument("--top-k", type=int, default=20)
     ap.add_argument("--presence", type=float, default=0.0, help="presence penalty over the whole answer; the report uses 1.5")
+    ap.add_argument("--prefix-from", help="results.jsonl of a looping run: continue each looping answer from the point where its loop is established")
+    ap.add_argument("--prefix-n", type=int, default=60)
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     items = load_bench(a.bench, a.split)
     if a.n:
         items = items[::max(1, len(items) // a.n)][:a.n]  # evenly spaced, so every database is represented
+    if a.prefix_from:
+        src = {r["id"]: r for r in map(json.loads, open(a.prefix_from))}; keep = []
+        for it in items:
+            r = src.get(it["id"]); p = r and r["cut"] and "</think>" not in r["text"] and loop_onset(r["text"])
+            if p: keep.append(dict(it, prefix=r["text"][:p]))
+        items = keep[:a.prefix_n]
     os.makedirs(a.out, exist_ok=True)
-    texts, cut = generate_all(a.model, items, a.thinking, a.max_tokens, a.batch, a.temp, a.seed, a.rep_penalty, a.top_p, a.top_k, a.presence)
+    texts, cut = generate_all(a.model, items, a.thinking, a.max_tokens, a.batch, a.temp, a.seed, a.rep_penalty, a.top_p, a.top_k, a.presence,
+                              ckpt=f"{a.out}/partial.jsonl")
     recs = []
     with open(f"{a.out}/results.jsonl", "w") as f:
         for it, tx, c in zip(items, texts, cut):
-            rec = dict(id=it["id"], db=it["db"], **grade(it, tx, c), text=tx)
+            rec = dict(id=it["id"], db=it["db"], **grade(it, tx, c), text=tx, **({"prefix_chars": len(it["prefix"])} if it.get("prefix") else {}))
             recs.append(rec); f.write(json.dumps(rec) + "\n")
     n = len(recs)
     cls = Counter(r["cls"] for r in recs)
