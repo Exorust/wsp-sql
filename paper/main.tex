@@ -57,8 +57,8 @@ Our contributions:
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=0.78\textwidth]{fig/f1_setup.pdf}
-\caption{The harness. The editor model has no tools of its own; it writes Python blocks that run in a sandboxed kernel over the weights, and forward blocks that run the target model. Generation passes are graded by executing the produced SQL against the database; teacher-forced passes return log-probabilities, hidden states, MLP activations and attention. The held-out benchmark is never shown to the editor.}
+\includegraphics[width=0.95\textwidth]{fig/f1_setup.pdf}
+\caption{The harness. The editor model has no tools of its own; it writes Python blocks that the harness runs in a sandboxed kernel over the weights, and forward requests that run the target model. The numbers of code runs and passes are budgets. Generation passes are graded by executing the produced SQL against the database; teacher-forced passes return log-probabilities, hidden states, MLP activations and attention. The held-out benchmark is never shown to the editor.}
 \label{fig:setup}
 \end{figure}
 
@@ -78,8 +78,8 @@ Our contributions:
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[height=0.62\textheight]{fig/f2_session.pdf}
-\caption{The 25-pass session: three hypotheses, three edits, one success. Pass numbers refer to the forward-pass budget; code runs and handoffs are omitted. Numbers inside the boxes are the editor's own measurements on practice questions.}
+\includegraphics[width=0.95\textwidth]{fig/f2_session.pdf}
+\caption{Fable session 1: three observations, three edits, one submitted. Each row reads left to right. Dashed boxes are edits the editor dropped; the bold box is the submitted edit, which is a bypass and not a repair of the loop. Pass numbers refer to the forward-pass budget; code runs and handoffs are omitted. All numbers are the editor's own measurements on practice questions under greedy decoding.}
 \label{fig:session}
 \end{figure}
 
@@ -93,8 +93,8 @@ The session ran 9.8 hours on one laptop (328 turns, 299 code runs, 25 passes, 9 
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=0.8\textwidth]{fig/f3_mechanism.pdf}
-\caption{The successful edit. Four MLP neurons that fire only at the first thinking token are made to write the \think{} read-out direction; the model closes its thinking at once and writes SQL.}
+\includegraphics[width=0.95\textwidth]{fig/f3_mechanism.pdf}
+\caption{The submitted edit. The weights are changed once (left). At generation time, four MLP neurons that are selective for the first thinking position then write the \think{} read-out direction into the residual stream, and the model closes its thinking with no reasoning (centre). The unedited model on the same prompt loops (right, dashed).}
 \label{fig:mechanism}
 \end{figure}
 
@@ -146,7 +146,7 @@ Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
 \centering
 \begin{tabular}{lrrr}
 \toprule
-Condition (thinking on, 150 questions) & Closes thinking & With zero reasoning & Median chars before \think{} \\
+Condition (thinking on, $n{=}150$) & Closes & At once & Median chars before \think{} \\
 \midrule
 Base & 2 & 0 & 3,092 \\
 Authors' math edit \cite{wsp} & 22 & 0 & 5,768 \\
@@ -160,7 +160,14 @@ Gradient descent, run 2 footprint & 150 & 150 & 0 \\
 \label{tab:sep}
 \end{table}
 
-Table~\ref{tab:sep} is the measurement the title refers to. An edit that repairs the loop leaves reasoning in place and lets it end; an edit that bypasses it removes the reasoning. The count of characters before \think{} tells them apart at no extra cost, from outputs every evaluation already has. The authors' math edit, which was not written for SQL and under greedy decoding helps little here, is nonetheless of the first kind: all 22 answers that close thinking do so after non-empty text. All four edits found on SQL, two by a frontier editor and two by gradient descent, are of the second kind. A second signature is expected: a pure bypass should match the template flag it imitates, up to side effects of the changed weights on later tokens, while a repair can exceed it. Independent evaluations of the math edit report exactly that on MATH-500, 50.2\% edited with thinking on against 45.8\% for the base model with thinking off \cite{coletti}, and the same evaluations and others \cite{hedwig,shapor,chalmers} establish that the gain over the thinking-on baseline comes from answers that finish. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{fig/f4_outcomes.pdf}
+\caption{How the thinking block ends, as a share of answers, for the base model and three edits. The number at the right of each bar is the count of answers that close thinking. Under greedy decoding the math edit looks ineffective on SQL; under the report's sampling it ends the loop after reasoning. The Fable edits close thinking at once on SQL and have no visible effect on MATH-500. Data: Tables~\ref{tab:sep} and~\ref{tab:samp}.}
+\label{fig:outcomes}
+\end{figure}
+
+Table~\ref{tab:sep} and Figure~\ref{fig:outcomes} show the measurement the title refers to. An edit that repairs the loop leaves reasoning in place and lets it end; an edit that bypasses it removes the reasoning. The count of characters before \think{} tells them apart at no extra cost, from outputs every evaluation already has. The authors' math edit, which was not written for SQL and under greedy decoding helps little here, is nonetheless of the first kind: all 22 answers that close thinking do so after non-empty text. All four edits found on SQL, two by a frontier editor and two by gradient descent, are of the second kind. A second signature is expected: a pure bypass should match the template flag it imitates, up to side effects of the changed weights on later tokens, while a repair can exceed it. Independent evaluations of the math edit report exactly that on MATH-500, 50.2\% edited with thinking on against 45.8\% for the base model with thinking off \cite{coletti}, and the same evaluations and others \cite{hedwig,shapor,chalmers} establish that the gain over the thinking-on baseline comes from answers that finish. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
 
 \paragraph{Sampling, and transfer to math.} All results above use greedy decoding. The report samples (temperature 0.6, top-$p$ 0.95, top-$k$ 20, presence penalty 1.5), so we reran the 150 held-out questions with those settings, and ran every edit on 100 MATH-500 problems (Table~\ref{tab:samp}). Two things change. First, with its own sampling settings the authors' math edit removes most of the SQL loop: cut answers fall from 75.3\% to 8.0\%, and 139 of 150 answers close thinking, none at once, after a median of 16,146 characters of reasoning. Greedy decoding hid this effect. The text before \think{} is mostly not a loop that happened to end: 9 of those 139 blocks contain a 40-character window repeated five or more times, and all 16 correct answers come from answers that closed thinking. Second, we see no effect of the Fable edits on math: no answer closes thinking at once, and about 90\% of answers are cut, as for the base model (loop shares 73\% base, 79\% and 88\% edited). On this evidence the bypass is specific to the SQL prompt, and the math edit carries over from math to SQL. The accuracy differences on SQL are not significant: 16, 10 and 8 correct of 150 for the math edit, thinking off and the base model, and 3 and 4 for the two Fable edits (on paired questions the math edit is right where the base model is wrong on 13 and the reverse on 5, exact McNemar $p\approx 0.10$). These runs use one sampling seed, and the random-location and gradient controls were not repeated under sampling. The math edit's 21\% is below the published 48\%; our limit is 16,384 tokens, half the report's, and 72 of 100 answers reach it, which we take to be the cause but have not tested at a matched limit. The thinking-off rows use the model card's sampling settings (temperature 0.7, top-$p$ 0.8) on both tasks, so they differ from the thinking-on rows in decoding as well as in mode.
 

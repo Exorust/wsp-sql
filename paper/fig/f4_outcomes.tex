@@ -1,0 +1,21 @@
+% share of answers by how the thinking block ends; counts from runs/p0, p2, p3 results.jsonl
+\definecolor{byp}{HTML}{EB6834}\definecolor{rep}{HTML}{2A78D6}\definecolor{nev}{HTML}{E87BA4}
+\begin{tikzpicture}[font=\footnotesize, x=0.036cm, y=0.52cm]
+\newcommand{\obar}[5]{% x0, row, at once %, after text %, never %
+  \fill[byp] (#1,#2) rectangle ++(#3,0.7); \fill[rep] (#1+#3,#2) rectangle ++(#4,0.7); \fill[nev] (#1+#3+#4,#2) rectangle ++(#5,0.7);
+  \ifdim #3pt>0pt \ifdim #4pt>0pt \draw[white, line width=1pt] (#1+#3,#2) -- ++(0,0.7); \fi\fi
+  \ifdim #4pt>0pt \ifdim #5pt>0pt \draw[white, line width=1pt] (#1+#3+#4,#2) -- ++(0,0.7); \fi\fi}
+\foreach \x/\t in {0/{SQL, greedy ($n{=}150$)}, 150/{SQL, sampled ($n{=}150$)}, 300/{MATH-500, sampled ($n{=}100$)}} {
+  \node[anchor=south west, font=\footnotesize\bfseries] at (\x,4.05) {\t};
+  \draw[gray!60] (\x,-0.25) -- ++(100,0); \foreach \p in {0,50,100} \node[anchor=north, gray!40!black, font=\scriptsize] at (\x+\p,-0.25) {\p\%};
+}
+\foreach \r/\n in {3/Base model, 2/Authors' math edit, 1/Fable run 1 edit, 0/Fable run 2 edit} \node[anchor=east] at (-4,\r+0.35) {\n};
+% at once / after text / never closes, in percent of answers
+\obar{0}{3}{0}{1.3}{98.7}     \obar{0}{2}{0}{14.7}{85.3}   \obar{0}{1}{100}{0}{0}      \obar{0}{0}{100}{0}{0}
+\obar{150}{3}{0}{24.7}{75.3}  \obar{150}{2}{0}{92.7}{7.3}  \obar{150}{1}{93.3}{2.7}{4} \obar{150}{0}{100}{0}{0}
+\obar{300}{3}{0}{8}{92}       \obar{300}{2}{0}{28}{72}     \obar{300}{1}{0}{9}{91}     \obar{300}{0}{0}{13}{87}
+\foreach \x/\r/\t in {0/3/2, 0/2/22, 0/1/150, 0/0/150, 150/3/37, 150/2/139, 150/1/144, 150/0/150, 300/3/8, 300/2/28, 300/1/9, 300/0/13} \node[anchor=west, font=\scriptsize] at (\x+101,\r+0.35) {\t};
+\fill[byp] (0,5.3) rectangle ++(8,0.5); \node[anchor=west] at (10,5.55) {closes at once (bypass)};
+\fill[rep] (150,5.3) rectangle ++(8,0.5); \node[anchor=west] at (160,5.55) {closes after text (repair)};
+\fill[nev] (300,5.3) rectangle ++(8,0.5); \node[anchor=west] at (310,5.55) {never closes};
+\end{tikzpicture}

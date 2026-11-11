@@ -1,26 +1,32 @@
-%%{init: {'flowchart': {'wrappingWidth': 520, 'nodeSpacing': 30, 'rankSpacing': 40}, 'themeVariables': {'fontSize': '15px'}}}%%
+%%{init: {'flowchart': {'wrappingWidth': 300, 'nodeSpacing': 28, 'rankSpacing': 36}, 'themeVariables': {'fontSize': '16px'}}}%%
 flowchart TB
-  A["<b>Pass 1, diagnosis</b><br/>generate on 128 problems<br/>1.6% correct, 99% cut at 8,192 tokens,<br/>95% visibly looping"]
-  subgraph S1["Attempt 1: passes 2 to 6"]
-    direction TB
-    B["<b>Hypothesis A</b>: induction heads copy the previous bullet<br/>attention one period back: L15h7 0.26, L11h1, L23h5, L19h5"]
-    C["<b>Edit A</b>: zero the o_proj columns of the 4 heads<br/>paired n=40: 2.5% vs 0.0%, both 100% cut<br/><b>failed</b>"]
-    B --> C
+  A["<b>Fable session 1.</b> Spider practice questions, greedy decoding.<br/>Pass 1, unedited model, 128 questions:<br/>1.6% correct, 99% cut at 8,192 tokens, 95% looping"]
+  subgraph S1["Attempt A, passes 2 to 6"]
+    direction LR
+    B["<b>Observed</b><br/>4 attention heads look one<br/>loop period back (L15h7 mass 0.26;<br/>L11h1, L23h5, L19h5)"]
+    C["<b>Edit</b><br/>zero the output columns<br/>of the 4 heads"]
+    C2["<b>Result, 40 questions</b><br/>correct: original 2.5%, edited 0.0%<br/>cut: 100% both<br/><b>dropped: loop unchanged</b>"]
+    B --> C --> C2
   end
-  subgraph S2["Attempt 2: passes 7 to 9"]
-    direction TB
-    D["<b>Hypothesis B</b>: layer-23 neurons suppress the next section digit by ~3 nats<br/>n580, n598, n564, n557, n485, n669, n639"]
-    Ed["<b>Edit B</b>: zero 7 columns in L23, rescale 4 in L22 and L23<br/>paired n=48: 0.0% vs 2.1%, both 100% cut<br/><b>failed</b>"]
-    D --> Ed
+  subgraph S2["Attempt B, passes 7 to 9"]
+    direction LR
+    D["<b>Observed</b><br/>7 last-layer neurons push the next<br/>section digit down by about 3 nats"]
+    Ed["<b>Edit</b><br/>zero those 7 columns,<br/>rescale 4 in layers 22 and 23"]
+    Ed2["<b>Result, 48 questions</b><br/>correct: original 0.0%, edited 2.1%<br/>cut: 100% both<br/><b>dropped: loop unchanged</b>"]
+    D --> Ed --> Ed2
   end
-  subgraph S3["Attempt 3: passes 10 to 25"]
-    direction TB
-    G["<b>Hypothesis C</b>: at the first thinking token &lt;/think&gt; is already rank 6 to 8 (logprob -6.9);<br/>4 neurons fire only at that token: L17n537, L18n628, L19n2424, L20n1235"]
-    Hh["<b>Edit C</b>: add alpha times the &lt;/think&gt; read-out direction to the 4 down_proj columns<br/>alpha = 0.20, 0.20, 0.25, 0.15; 4,083 entries<br/>logprob(&lt;/think&gt;) at the first token: -6.9 to -0.11"]
-    I["<b>Confirmation</b>: 7 paired sets of 64 fresh problems, n=448<br/>original 1.1%, edited 28.1%, +26.8 points<br/>122 wrong to right, 2 right to wrong<br/><b>submitted</b>"]
+  subgraph S3["Attempt C, passes 10 to 25"]
+    direction LR
+    G["<b>Observed</b><br/>4 neurons, layers 17 to 20,<br/>selective for the first thinking<br/>position, where the closing tag<br/>has log-probability -6.9"]
+    Hh["<b>Edit</b><br/>add the closing-tag read-out<br/>direction to their 4 output<br/>columns (4,083 entries)"]
+    I["<b>Result, 448 questions</b><br/>closing-tag log-probability:<br/>-0.11 to -0.24<br/>correct: about 1% to about 28%<br/>cut: 3 to 16%<br/><b>submitted: a bypass,<br/>thinking is skipped</b>"]
     G --> Hh --> I
   end
   A --> S1 --> S2 --> S3
-  style C fill:#f8d7da,stroke:#842029
-  style Ed fill:#f8d7da,stroke:#842029
-  style I fill:#d1e7dd,stroke:#0f5132
+  classDef dropped stroke-dasharray: 6 4,stroke:#555,fill:#fff
+  classDef kept stroke-width:3px,stroke:#000,fill:#fff
+  class C2,Ed2 dropped
+  class I kept
+  style S1 fill:#fafafa,stroke:#bbb
+  style S2 fill:#fafafa,stroke:#bbb
+  style S3 fill:#fafafa,stroke:#bbb
