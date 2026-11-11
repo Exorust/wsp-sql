@@ -8,7 +8,7 @@
 \newcommand{\think}{\texttt{</think>}}
 \newcommand{\Qwen}{Qwen3.5-0.8B}
 
-\title{When AI Debugs AI: Repair or Bypass?\\Separating Two Outcomes of Weight-Space Programming}
+\title{When AI Debugs AI: Repair or Bypass?\\An Audit of Weight Edits That End a Reasoning Loop}
 \author{Chandrahas Aroori\\\small\texttt{chandrahas.aroori@gmail.com}}
 \date{November 2026 \quad (draft v0.1)}
 
@@ -16,42 +16,62 @@
 \maketitle
 
 \begin{abstract}
-``Weight-space programming'' is the claim that a frontier language model, given a small model's weights and a budget of forward passes, can debug the small model: locate the cause of a behaviour and remove it by writing a direct weight edit, with no training.
-The only published success is a loop fix in \Qwen{} on math, and public replications agree that its gain comes from answers that now finish, not from new ability.
-We show that ``the loop is gone'' covers two different outcomes. In a \emph{repair} the model still reasons and its reasoning now ends. In a \emph{bypass} the model closes its thinking block before any reasoning, which the chat template already offers as a flag.
-One measurement separates them: the amount of text before the \think{} tag.
-We test the method on text-to-SQL, where the same model with thinking enabled loops on 91\% of questions, with Claude Fable 5.1 as the editor in two independent sessions of 25 forward passes and 300 code runs each.
-Under greedy decoding, both sessions removed the loop on 150 held-out BIRD Mini-Dev questions (loop rate 90.7\% to 26.0\% and 24.0\%; accuracy 0.7\% to 6.0\% and 5.3\%) by edits of 4,083 and 2,048 weight entries on different neurons. Random-location edits of the same size do nothing.
-Both edits are bypasses: 150 of 150 answers close thinking with zero reasoning, and neither beats the template flag (7.3\%). Gradient descent restricted to each footprint, trained toward the bypass, reaches it.
-The first session's two attempts at a repair, each built from a measured mechanistic hypothesis, failed.
-The published math edit is a repair by the same measurement. With the report's own sampling settings it removes most of the SQL loop as well (cut answers 75.3\% to 8.0\%; 139 of 150 answers close thinking after a median of 16,146 characters of reasoning), an effect that greedy decoding hides. The bypass edits do nothing on MATH-500.
-So an edit that ends the SQL loop without removing the reasoning exists and carries over from math, while the bypass does not carry over to math; the frontier editor, working under greedy decoding with a success criterion that a bypass satisfies, did not find the repair.
+A frontier language model can end a small model's reasoning loop by editing its weights by hand, with no training. Takehi et al.\ call this weight-space programming and report one success, on math, in \Qwen{}.
+We show that an edit can end the loop in two ways, and that accuracy does not tell them apart.
+In a \emph{repair} the model still reasons and its reasoning now ends.
+In a \emph{bypass} the model closes its thinking block before it reasons, which the chat template already offers as a flag.
+We give two tests that need only generated text. The first counts the characters before the \think{} tag. The second gives every model the same answers that already loop and counts how many it ends.
+We apply both tests to five edits of \Qwen{} on text-to-SQL, a task on which the model loops on 91\% of questions: the published math edit, two edits that Claude Fable 5.1 wrote in independent sessions of 25 forward passes each, and two gradient-descent baselines.
+The math edit is a repair. Under the report's sampling settings, 139 of 150 SQL answers close thinking after a median of 16,146 characters, and the edit ends 57 of 60 loops that are already in progress, against 3 for the unedited model.
+The two Fable edits and both gradient baselines are bypasses. All 150 answers close thinking with no reasoning, each Fable edit ends 4 of 60 loops in progress, neither changes MATH-500, and when the template supplies the closing tag they score what the unedited model scores (7.3\% and 8.0\% against 7.3\%).
+Both sessions judged the editor by execution accuracy under greedy decoding. A bypass satisfies that criterion, and under greedy decoding the repair is mostly invisible (22 of 150 answers close thinking).
+We do not contribute an editing method: the repair is the report's, and our editor found the equivalent of a template flag. We contribute the tests, the audit, and the evidence that a harness for this method must require reasoning in the answer and must score under the decoding it will be used with.
 We release the edits, all turn logs, the harness and the evaluation.
-\todo{GPT-6 Astra runs and the ablation map}
 \end{abstract}
 
 \section{Introduction}
 
 Takehi et al.\ \cite{wsp} report that GPT-6 Astra, given a Python kernel over the weights of \Qwen{} and a budget of forward passes, raised the model's MATH-500 score from 7.9\% to 48.1\% by subtracting a ``loop direction'' from 130,188 entries in two MLP down-projection matrices.
-They call the method weight-space programming.
-The result is striking because no gradient was involved: the editor read activations, formed a hypothesis about why the model repeated itself, and wrote the fix by hand.
-The authors' own follow-up on Gemma 3 270M, a model that does not loop, gained nothing, and they conclude that editing ``could remove an obstacle that hid an ability, but it could not add an ability the model lacked.''
+They call the method weight-space programming, and we call their paper ``the report''.
+No gradient was involved: the editor read activations, formed a hypothesis about why the model repeated itself, and wrote the fix by hand.
+Public replications agree on where the gain comes from. The unedited model spends its token budget in a thinking loop, and the edited model finishes its answers \cite{hedwig,coletti,shapor,chalmers}.
 
-This paper asks a narrower question than ``does it work'': \emph{what does the method actually produce when it works?}
-Two readings of the math result are open.
-In the first, the editor understood a mechanism and repaired it.
-In the second, the editor found some small set of weights whose change happens to stop the loop, and the mechanistic story is decoration.
-The two readings predict different things for a new domain: a repair found by understanding should look like the explanation that produced it; a lever found by search need not. We use three words throughout. A \emph{repair} changes what sustains a behaviour. A \emph{bypass} stops the model entering the state in which the behaviour occurs. A \emph{lever} is any small weight change that alters the behaviour, whatever the explanation. We call Takehi et al.\ ``the report''. An answer is \emph{cut} if it reaches the token limit and \emph{loops} if some 40-character window of it occurs five or more times. What sustains a behaviour cannot be read from outputs, so in the measurements we use an operational test: an answer shows a repair if the thinking block closes after non-empty text, and a bypass if it closes with none. Section~\ref{sec:sep} checks that the non-empty text is mostly not repetitive, but the test does not establish that the sustaining mechanism was changed, and our uses of ``repair'' for an edit carry that limit. We argue that in this instance the method produced a bypass. Public replications re-evaluate the released math edit, and one blind attempt reruns the method on math \cite{chalmers}; none runs it on a new task or separates the editor's explanation from the search that found the edit.
+A finished answer can come about in two ways, and this paper is about the difference.
+In a \emph{repair}, the model still reasons and the reasoning now ends.
+In a \emph{bypass}, the model closes its thinking block before it reasons.
+A bypass needs no weight edit, because the chat template of \Qwen{} can turn thinking off.
+Both outcomes lower the loop rate and both can raise accuracy, so the numbers that evaluations of this method report do not separate them.
 
-We set up an independent instance of the method with a different editor, a different task and a held-out benchmark the editor never saw, and record every hypothesis the editor stated, every edit it made, and whether the edit did what the hypothesis predicted.
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/f5_continuation.pdf}
+\caption{The continuation test. Each model receives the same 60 SQL answers of the unedited model, cut at the point where the answer already loops, and continues them for up to 4,096 tokens under the report's sampling settings. The report's math edit ends 57 of the 60 loops, 53 of them after more than 10 further characters of reasoning. The two edits written by our editor act only at the first thinking position, and they end no more loops than the unedited model does.}
+\label{fig:cont}
+\end{figure}
+
+We give two tests that separate the outcomes from generated text alone.
+The first counts the characters between the start of the thinking block and the \think{} tag: zero means a bypass, and more than zero means the model reasoned and stopped.
+The second, the continuation test, starts each model after the first thinking position has passed. We take answers of the unedited model that already loop and let each edited model continue them (Figure~\ref{fig:cont}).
+An edit that acts on the loop itself ends these answers. An edit that only stops the model from entering the thinking block cannot.
+
+We then audit five edits of \Qwen{} on text-to-SQL, where the model with thinking enabled loops on 91\% of questions.
+One is the report's released math edit, which was not written for SQL.
+Two were written for SQL by Claude Fable 5.1 in independent sessions that follow the report's protocol.
+Two are gradient-descent baselines restricted to the same weight entries as the Fable edits.
+The math edit is a repair by both tests, on SQL and on math.
+The four edits made for SQL are bypasses by both tests, and the Fable edits are equal in effect to the template flag.
+
+Our own sessions therefore did not produce a repair, and we do not claim an editing method.
+What the sessions do show is how a bypass gets selected. We judged the editor by execution accuracy under greedy decoding. A bypass satisfies that criterion. Under greedy decoding the math edit closes thinking in only 22 of 150 SQL answers, so the same harness would have rejected the repair.
 Our contributions:
 \begin{enumerate}
-\item A re-implementation of the harness (sandboxed kernel, forward-pass service with generation and teacher-forced modes, handoff protocol) that runs on one laptop.
-\item A new arena, text-to-SQL, where \Qwen{} with thinking enabled loops on 91\% of questions and the authors' released math edit barely transfers under greedy decoding (cut rate 98.7\% to 87.3\%).
-\item A full session trace in which a frontier editor stated three mechanistic hypotheses, tested three edits, and succeeded only with the third.
-\item Controls that separate the claim into parts (Section~\ref{sec:results}; the harness and task are in Section~\ref{sec:setup}, the three attempts in Section~\ref{sec:session}, the reading of the trace in Section~\ref{sec:what}): a template-flag control (what skipping thinking is worth), random-location edits of the same footprint (whether the neuron choice mattered), and a same-footprint gradient baseline (whether an optimiser finds the same solution). Gradient descent on the editor's 4,083 entries reproduces the bypass by a different direction. \todo{plus an ablation map}
-\item A measurement that separates repair from bypass, the amount of text before \think{}, applied to every edit under greedy decoding and under the report's sampling protocol, on SQL and on MATH-500 (Section~\ref{sec:sep}).
+\item Two tests that separate repair from bypass using only generated text: the character count before \think{}, and the continuation test (Section~\ref{sec:setup}).
+\item An audit of five edits under greedy decoding and under the report's sampling settings, on SQL and on MATH-500, with a forced-tag control, random-location controls, and the same count applied to outputs that other groups released (Section~\ref{sec:sep}).
+\item Two complete editor sessions on a new task, with every edit the editor tried and every prediction it stated, which show a frontier editor reaching a bypass after two failed attempts at a repair (Sections~\ref{sec:session} to~\ref{sec:what}).
+\item A re-implementation of the harness that runs on one laptop, released with the edits and all turn logs.
 \end{enumerate}
+
+We use four more terms throughout. A \emph{lever} is any small weight change that alters a behaviour, whatever the explanation for it. An answer is \emph{cut} if it reaches the token limit. An answer \emph{loops} if some 40-character window of it occurs five or more times. A \emph{footprint} is the set of weight entries that an edit changes.
 
 \section{Setup}\label{sec:setup}
 
@@ -74,7 +94,101 @@ Our contributions:
 
 \paragraph{Evaluation after the session.} The submitted edit replaces the original tensors; the model is run with mlx-lm, greedy, 8,192 new tokens, thinking enabled, on the same 150 BIRD questions as the baseline. We report execution accuracy, the share of answers cut at the token limit, the loop share, and paired wrong-to-right and right-to-wrong counts against the base model on the same questions.
 
-\section{The session}\label{sec:session}
+\paragraph{The edits under audit.} Five edits, all of MLP down-projection columns. The \emph{math edit} is the report's released edit: 130,188 entries in layers 15 and 19, written for MATH-500. The \emph{Fable run 1 edit}, which Sections~\ref{sec:session} and~\ref{sec:results} call edit C, changes 4,083 entries on four neurons in layers 17 to 20. The \emph{Fable run 2 edit} changes 2,048 entries on two neurons in layers 16 and 18. The two \emph{gradient baselines} train only the entries of one Fable edit each, toward the target \think{} followed by the gold SQL. Section~\ref{sec:session} describes how the editor arrived at its edits; the audit in Section~\ref{sec:sep} needs only the edited weights.
+
+\paragraph{Test 1: characters before the closing tag.} For each answer we record whether it contains \think{}, and the number of characters between the start of the thinking block and the tag, after white space is removed. An answer \emph{closes at once} if that number is zero. We call an edit a bypass if its answers close at once and a repair if they close after text. What sustains a loop cannot be read from outputs, so this is a test of behaviour. It does not show which mechanism an edit changed, and every use of ``repair'' in this paper carries that limit.
+
+\paragraph{Test 2: continuation.} We take the unedited model's sampled answers to the 150 held-out questions and keep those that were cut, never closed thinking, and loop. For each we find the first length, in steps of 1,000 characters, at which the text already loops, and keep the text up to that length as a prefix. Of the 96 answers that qualify we use the first 60. Their prefixes are 9,000 to 32,000 characters long, with a median of 17,500, and come from 6 databases. Every model then receives the same prompt followed by the same prefix, and generates up to 4,096 more tokens under the report's sampling settings. We count the continuations that reach \think{}.
+
+\paragraph{Decoding.} Greedy decoding makes paired comparisons exact, and both editor sessions and their controls used it. The report samples: temperature 0.6, top-$p$ 0.95, top-$k$ 20, presence penalty 1.5. We call these the report's sampling settings and run the audit under both. Runs with thinking off use the model card's settings (temperature 0.7, top-$p$ 0.8).
+
+\section{The audit}\label{sec:sep}
+
+\begin{table}[tbp]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Condition (thinking on, $n{=}150$) & Closes & At once & Median chars before \think{} \\
+\midrule
+Base & 2 & 0 & 3,092 \\
+Authors' math edit \cite{wsp} & 22 & 0 & 5,768 \\
+Fable run 1 edit & 150 & 150 & 0 \\
+Fable run 2 edit & 150 & 150 & 0 \\
+Gradient descent, run 1 footprint & 150 & 150 & 0 \\
+Gradient descent, run 2 footprint & 150 & 150 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{Test 1 under greedy decoding. ``Closes thinking'' counts answers that contain \think{}; the median is over those answers.}
+\label{tab:sep}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{fig/f4_outcomes.pdf}
+\caption{How the thinking block ends, as a share of answers, for the base model and three edits. The number at the right of each bar is the count of answers that close thinking. Under greedy decoding the math edit looks ineffective on SQL; under the report's sampling it ends the loop after reasoning. The Fable edits close thinking at once on SQL and have no visible effect on MATH-500. Data: Tables~\ref{tab:sep} and~\ref{tab:samp}.}
+\label{fig:outcomes}
+\end{figure}
+
+\paragraph{Test 1 under greedy decoding.} The four edits made for SQL close thinking in all 150 answers, and all 150 close at once (Table~\ref{tab:sep}, Figure~\ref{fig:outcomes}). These edits remove the reasoning. The math edit does the opposite on a small share of answers: 22 of 150 close thinking, and all 22 do so after text, with a median of 5,768 characters. Under greedy decoding the math edit therefore looks like a weak repair that mostly fails to transfer to SQL.
+
+\paragraph{Test 1 under the report's sampling settings.} Greedy decoding hid most of the math edit's effect (Table~\ref{tab:samp}). With the settings the edit was built under, cut answers fall from 75.3\% to 8.0\%, and 139 of 150 answers close thinking, none at once, after a median of 16,146 characters. The text before \think{} is mostly not a loop that happened to end: 9 of the 139 blocks loop by our definition, and all 16 correct answers come from answers that closed thinking. The Fable edits stay bypasses under sampling: 140 of 150 and 150 of 150 answers close at once.
+
+On MATH-500 the roles do not reverse. The math edit closes thinking in 28 of 100 answers against 8 for the unedited model, none at once. The Fable edits change nothing we can measure: no answer closes at once, and about 90\% of answers are cut, as for the unedited model (loop shares 73\% unedited, 79\% and 88\% edited). The repair, written for math, carries over to SQL. The bypass, written for SQL, does not carry over to math.
+
+\begin{table}[h]\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+Task & Condition & Correct \% & Cut \% & Close thinking & At once \\
+\midrule
+BIRD, $n{=}150$ & Base, thinking on & 5.3 & 75.3 & 37 & 0 \\
+ & Base, thinking off & 6.7 & 0.7 & -- & -- \\
+ & Authors' math edit & 10.7 & 8.0 & 139 & 0 \\
+ & Fable run 1 edit & 2.0 & 4.7 & 144 & 140 \\
+ & Fable run 2 edit & 2.7 & 0.7 & 150 & 150 \\
+\midrule
+MATH-500, $n{=}100$ & Base, thinking on & 8 & 92 & 8 & 0 \\
+ & Base, thinking off & 42 & 33 & -- & -- \\
+ & Authors' math edit & 21 & 72 & 28 & 0 \\
+ & Fable run 1 edit & 9 & 91 & 9 & 0 \\
+ & Fable run 2 edit & 9 & 89 & 13 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{The report's sampling protocol. BIRD at 8,192 tokens; MATH-500 at 16,384 tokens with thinking on and 8,192 with thinking off. Thinking-off rows use model-card sampling on both tasks. One seed.}
+\label{tab:samp}
+\end{table}
+
+\paragraph{Test 2: the math edit ends loops that are already in progress.} Test 1 leaves one doubt. An edit could prevent loops from starting without acting on a loop once it runs. The continuation test removes that doubt (Figure~\ref{fig:cont}). The math edit ends 57 of the 60 looping answers. In 53 of them it writes more than 10 further characters first, and the median over the 57 is 2,625 characters. The unedited model ends 3 of the same 60 answers, and the Fable edits end 4 each. Cut continuations fall from 56 of 60 to 4 for the math edit and stay at 55 and 56 for the Fable edits. The Fable result is what their design predicts: both edits act through neurons that fire at the first thinking position, and in this test that position has passed.
+
+The continuations of the math edit are also more often right. 8 of its 60 answers are correct against 2 for the unedited model, and on paired questions the math edit is right where the unedited model is wrong on 6 and the reverse on none (exact McNemar $p = 0.031$). All 8 come from continuations that closed thinking.
+
+\paragraph{With the tag supplied, the Fable edits add nothing.} If a Fable edit only writes the closing tag, then supplying the tag through the template should make the edit redundant. We ran both Fable edits with thinking turned off in the template, which inserts an empty \texttt{<think></think>} block (Table~\ref{tab:flag}). Accuracy, cut share and loop share match the unedited model in the same mode. Under greedy decoding the run 1 edit produces the same text as the unedited model, character for character, on 106 of 150 questions. The run 2 edit does so on 6, because one of its two neurons fires on every token, but it changes the outcome on only 13 questions and its accuracy is within one question of the unedited model's.
+
+\begin{table}[h]\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Greedy} & \multicolumn{2}{c}{Sampled} \\
+Thinking off, $n{=}150$ & Correct \% & Cut \% & Loop \% & Correct \% & Cut \% \\
+\midrule
+Unedited & 7.3 & 12.0 & 10.7 & 6.7 & 0.7 \\
+Fable run 1 edit & 7.3 & 12.7 & 10.7 & 6.0 & 0.0 \\
+Fable run 2 edit & 8.0 & 11.3 & 10.7 & 5.3 & 0.0 \\
+\bottomrule
+\end{tabular}
+\caption{The forced-tag control. Thinking is turned off in the chat template, so the template writes the closing tag. BIRD, 8,192 tokens; the sampled columns use the model card's settings.}
+\label{tab:flag}
+\end{table}
+
+\paragraph{The location of the math edit matters for the repair, and accuracy cannot show it.} We moved the math edit's change vectors to randomly chosen neurons in the same layers, three draws, and ran each on 50 questions under the report's sampling settings. The draws close thinking in 6, 22 and 19 of 50 answers (12\% to 44\%). The real edit closes 139 of 150 (93\%) and the unedited model 37 of 150 (25\%). The 50 control questions are every tenth question of the benchmark and share only 15 questions with the 150, so the comparison is between rates on overlapping samples and not a paired one. On the 15 shared questions the counts are 14 for the edit, 6 for the unedited model, and 1, 7 and 8 for the draws. Accuracy does not separate these conditions: the draws score 8\%, 18\% and 10\% against 10.7\% for the edit. At this sample size the closing count is a usable signal and accuracy is not.
+
+\paragraph{Accuracy.} The accuracy differences on the 150 questions are not significant: 16, 10 and 8 correct for the math edit, thinking off and the unedited model, and 3 and 4 for the two Fable edits. On paired questions the math edit is right where the unedited model is wrong on 13 and the reverse on 5 (exact McNemar $p \approx 0.10$). The math edit's 21\% on MATH-500 is below the published 48\%. Our limit is 16,384 tokens, half the report's, and 72 of 100 answers reach it. We take the limit to be the cause but have not tested a matched limit.
+
+\paragraph{Test 1 on other groups' outputs.} Test 1 needs only generated text, so it applies to answers that others have released. On the math outputs of an independent replication \cite{chalmers} (50 problems, three seeds, the report's sampling settings, 16,384 tokens), 16 of 150 base answers close thinking, and 125 of 150 answers of the report's edit do; none closes at once, and the median text before \think{} is 23,790 characters for the edit. That replication's random-direction control on the same 64 neurons per layer closes thinking in 30 of 150 answers, none at once. The authors' own released sample \cite{wsp} (20 MATH-500 problems, 32,768 tokens) gives 1 of 20 for the base model and 18 of 20 for the edit, none at once. By the operational test the math edit is a repair on its own task in other groups' data, as it is on SQL in ours, and no released condition on math is a bypass.
+
+A second signature of the difference is known from those releases. A bypass should match the template flag it imitates, while a repair can exceed it. Independent evaluations of the math edit report 50.2\% on MATH-500 with thinking on against 45.8\% for the unedited model with thinking off \cite{coletti}. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
+
+\section{How the editor reached a bypass}\label{sec:session}
+
+The audit above needs only the edited weights. This section and the next record where the two Fable edits came from, because the path shows which properties of a harness select a bypass.
 
 \begin{figure}[tbp]
 \centering
@@ -140,64 +254,9 @@ Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
 
 \paragraph{A second session converges on the bypass, not on the neurons.} A second Fable session, with a fresh conversation and no shared notes, also concluded that the loop could not be removed at one site and also went for the entry into thinking. It replaced the output column of one neuron, layer 18 neuron 2800, which fires only at the first thinking position, with a direction that drives \think{}, and wrote a constant steering direction (the residual-stream difference induced by an in-context instruction to keep the query simple) into layer 16 neuron 3, which fires on every token. On 192 fresh practice problems: 1.6\% to 28.1\%, 51 wrong to right, 0 right to wrong. On BIRD: 5.3\% correct, 25.3\% cut, 24.0\% looping. None of its neurons is one of the first session's four. Random-location draws do nothing, and gradient descent on its 2,048 entries again realises the bypass (7.3\%, every answer opening with \think{}).
 
-\section{Separating repair from bypass}\label{sec:sep}
-
-\begin{table}[tbp]
-\centering
-\begin{tabular}{lrrr}
-\toprule
-Condition (thinking on, $n{=}150$) & Closes & At once & Median chars before \think{} \\
-\midrule
-Base & 2 & 0 & 3,092 \\
-Authors' math edit \cite{wsp} & 22 & 0 & 5,768 \\
-Fable run 1 edit & 150 & 150 & 0 \\
-Fable run 2 edit & 150 & 150 & 0 \\
-Gradient descent, run 1 footprint & 150 & 150 & 0 \\
-Gradient descent, run 2 footprint & 150 & 150 & 0 \\
-\bottomrule
-\end{tabular}
-\caption{How each edit makes the loop go away, greedy decoding. ``Closes thinking'' counts answers that contain \think{}; the median is over those answers.}
-\label{tab:sep}
-\end{table}
-
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=\textwidth]{fig/f4_outcomes.pdf}
-\caption{How the thinking block ends, as a share of answers, for the base model and three edits. The number at the right of each bar is the count of answers that close thinking. Under greedy decoding the math edit looks ineffective on SQL; under the report's sampling it ends the loop after reasoning. The Fable edits close thinking at once on SQL and have no visible effect on MATH-500. Data: Tables~\ref{tab:sep} and~\ref{tab:samp}.}
-\label{fig:outcomes}
-\end{figure}
-
-Table~\ref{tab:sep} and Figure~\ref{fig:outcomes} show the measurement the title refers to. An edit that repairs the loop leaves reasoning in place and lets it end; an edit that bypasses it removes the reasoning. The count of characters before \think{} tells them apart at no extra cost, from outputs every evaluation already has. The authors' math edit, which was not written for SQL and under greedy decoding helps little here, is nonetheless of the first kind: all 22 answers that close thinking do so after non-empty text. All four edits found on SQL, two by a frontier editor and two by gradient descent, are of the second kind. A second signature is expected: a pure bypass should match the template flag it imitates, up to side effects of the changed weights on later tokens, while a repair can exceed it. Independent evaluations of the math edit report exactly that on MATH-500, 50.2\% edited with thinking on against 45.8\% for the base model with thinking off \cite{coletti}, and the same evaluations and others \cite{hedwig,shapor,chalmers} establish that the gain over the thinking-on baseline comes from answers that finish. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
-
-\paragraph{Sampling, and transfer to math.} All results above use greedy decoding. The report samples (temperature 0.6, top-$p$ 0.95, top-$k$ 20, presence penalty 1.5), so we reran the 150 held-out questions with those settings, and ran every edit on 100 MATH-500 problems (Table~\ref{tab:samp}). Two things change. First, with its own sampling settings the authors' math edit removes most of the SQL loop: cut answers fall from 75.3\% to 8.0\%, and 139 of 150 answers close thinking, none at once, after a median of 16,146 characters of reasoning. Greedy decoding hid this effect. The text before \think{} is mostly not a loop that happened to end: 9 of those 139 blocks contain a 40-character window repeated five or more times, and all 16 correct answers come from answers that closed thinking. Second, we see no effect of the Fable edits on math: no answer closes thinking at once, and about 90\% of answers are cut, as for the base model (loop shares 73\% base, 79\% and 88\% edited). On this evidence the bypass is specific to the SQL prompt, and the math edit carries over from math to SQL. The accuracy differences on SQL are not significant: 16, 10 and 8 correct of 150 for the math edit, thinking off and the base model, and 3 and 4 for the two Fable edits (on paired questions the math edit is right where the base model is wrong on 13 and the reverse on 5, exact McNemar $p\approx 0.10$). These runs use one sampling seed, and the random-location and gradient controls were not repeated under sampling. The math edit's 21\% is below the published 48\%; our limit is 16,384 tokens, half the report's, and 72 of 100 answers reach it, which we take to be the cause but have not tested at a matched limit. The thinking-off rows use the model card's sampling settings (temperature 0.7, top-$p$ 0.8) on both tasks, so they differ from the thinking-on rows in decoding as well as in mode.
-
-\begin{table}[h]\centering\small
-\begin{tabular}{llrrrr}
-\toprule
-Task & Condition & Correct \% & Cut \% & Close thinking & At once \\
-\midrule
-BIRD, $n{=}150$ & Base, thinking on & 5.3 & 75.3 & 37 & 0 \\
- & Base, thinking off & 6.7 & 0.7 & -- & -- \\
- & Authors' math edit & 10.7 & 8.0 & 139 & 0 \\
- & Fable run 1 edit & 2.0 & 4.7 & 144 & 140 \\
- & Fable run 2 edit & 2.7 & 0.7 & 150 & 150 \\
-\midrule
-MATH-500, $n{=}100$ & Base, thinking on & 8 & 92 & 8 & 0 \\
- & Base, thinking off & 42 & 33 & -- & -- \\
- & Authors' math edit & 21 & 72 & 28 & 0 \\
- & Fable run 1 edit & 9 & 91 & 9 & 0 \\
- & Fable run 2 edit & 9 & 89 & 13 & 0 \\
-\bottomrule
-\end{tabular}
-\caption{The report's sampling protocol. BIRD at 8,192 tokens; MATH-500 at 16,384 tokens with thinking on and 8,192 with thinking off. Thinking-off rows use model-card sampling on both tasks. One seed.}
-\label{tab:samp}
-\end{table}
-
-\paragraph{The same measurement on other groups' outputs.} The measurement needs only generated text, so it applies to answers that others have released. On the math outputs of an independent replication \cite{chalmers} (50 problems, three seeds, the report's sampling settings, 16,384 tokens), 16 of 150 base answers close thinking, and 125 of 150 answers of the report's edit do; none closes at once, and the median text before \think{} is 23,790 characters for the edit. That replication's random-direction control on the same 64 neurons per layer closes thinking in 30 of 150 answers, none at once. The authors' own released sample \cite{wsp} (20 MATH-500 problems, 32,768 tokens) gives 1 of 20 for the base model and 18 of 20 for the edit, none at once. By the operational test the math edit is a repair on its own task in other groups' data, as it is on SQL in ours, and no released condition on math is a bypass.
-
 \section{What the trace says about the method}\label{sec:what}
 
-\paragraph{Understanding versus finding a lever.} The session contains three mechanistic hypotheses about the loop, each specific, each backed by a measurement the editor made, and each turned into a precise edit and tested on generation with fresh practice questions. The editor did not write down a forecast for the first two edits; we read the edit itself as the claim that changing these components would stop the loop. The first two were false in the sense that matters: the predicted effect did not occur. That does not show the components are uninvolved; redundancy or compensation can hide a real role. The third was true: it is a correct mechanistic claim about entry into the thinking mode. What the method did not produce is a claim about what sustains the loop once entered; the edit prevents entry. The repair reading predicted that edits A and B would reduce looping; they did not. The search reading predicted that some small weight set would work regardless of the explanation; edit C did, and so did gradient descent on its footprint. The method's output here is a bypass, which the editor itself described accurately in its final answer: ``skip the degenerate Thinking Process loop and answer directly''.
+\paragraph{Understanding versus finding a lever.} Two readings of a successful session are possible. In the first, the editor understood a mechanism and repaired it. In the second, the editor searched until some small weight change stopped the loop, and the mechanistic account came along with it. Session 1 contains three mechanistic hypotheses about the loop. The editor backed each with a measurement, turned each into a precise edit, and tested each on generation with fresh practice questions. It did not write down a forecast for the first two edits, so we read each edit as the claim that changing these components would stop the loop. Both claims failed: the loop rate did not move. That does not show the components are uninvolved, because redundancy or compensation can hide a real role. The third hypothesis was correct, but it is a claim about entry into the thinking mode and not about what sustains the loop. The first reading predicted that edits A and B would reduce looping, and they did not. The second predicted that some small weight set would work whatever the explanation; edit C did, and so did gradient descent on its footprint. The editor described its own result accurately in its final answer: ``skip the degenerate Thinking Process loop and answer directly''.
 
 \paragraph{Calibration.} We extracted every statement in the turn logs of both sessions in which the editor predicted a result before seeing it (\texttt{analysis/calibration\_r1.json}, \texttt{calibration\_r2.json}; each quote is verified verbatim against its turn). There are few: 20 per session in about 330 turns, because the editor writes mostly code and its hidden reasoning is not logged, so the counts are a lower bound (Table~\ref{tab:calib}). Three things stand out. Predictions about the local effect of an edit on log-probabilities were reliable: 8 of 10 confirmed and none refuted. Predictions about what a diagnostic measurement would show differ sharply between sessions, 1 of 10 confirmed in the first and 13 of 15 in the second. And neither session stated in advance what edits A or B would do to generated answers; the only generation predictions are that the bypass edit makes answers skip thinking (confirmed) and that the practice gain will transfer to the benchmarks (not testable inside the session; on BIRD the 28\% became 6\%). The editor committed to forecasts where it was on firm ground and did not commit where the method's central claim is tested.
 
@@ -221,7 +280,7 @@ Session & Prediction about & Confirmed & Partly & Refuted & Untested \\
 
 \paragraph{What the method did well.} Finding four position-selective neurons among 14,336, choosing a direction in the residual stream that the output layer reads as one token, and setting four scalars so that the token wins by 2 nats, took the editor 17 forward passes and about 160 code runs, and the random-location control shows the result was not luck of the layer. The editor chose its own confirmation protocol, seven independent paired sets of 64, after the harness required nothing beyond one.
 
-\paragraph{What it did not do.} It did not repair the loop. An edit that ends the loop and keeps the reasoning exists: under sampling, the authors' math edit is one (Section~\ref{sec:sep}). The editor did not find it, and two properties of our harness may have contributed. Every pass used greedy decoding, under which that repair is mostly invisible. And the success criterion was execution accuracy, which a bypass satisfies. We therefore cannot attribute the bypass to the editor alone. The ablation map will test whether any single head or 64-column MLP block reduces the loop rate under greedy decoding when switched off. \todo{ablation map} It also did not find the authors' loop direction, and the authors' edit did not find this switch; the two edits are in different layers and act on different decisions.
+\paragraph{What it did not do.} It did not repair the loop. A repair exists: the math edit ends the SQL loop under sampling and ends loops that are already in progress (Section~\ref{sec:sep}). The editor did not find it, and two properties of our harness may explain why. Every pass used greedy decoding, under which the math edit closes thinking in 22 of 150 answers and would have looked like a failure. And the success criterion was execution accuracy, which a bypass satisfies. We therefore cannot attribute the bypass to the editor alone. The editor also did not find the report's loop direction, and the report's editor did not find this switch; the two edits are in different layers and act on different decisions. \todo{ablation map: does any single head or 64-column MLP block reduce the greedy loop rate when switched off}
 
 \paragraph{Cost.} At list prices the session used 17.3M cached input tokens and 493k output tokens, about \$800; 9.8 hours of wall clock, of which about 6 were the laptop running forward passes. The equivalent template flag costs nothing.
 
@@ -229,17 +288,27 @@ Session & Prediction about & Confirmed & Partly & Refuted & Untested \\
 
 Weight-space programming \cite{wsp} is the direct subject. Model editing with ROME and MEMIT \cite{rome} locates and rewrites factual associations with a closed-form update; activation steering \cite{steering} adds a direction to the residual stream at inference time rather than in the weights. Edit C is a weight-space form of steering at a single position, gated by neurons that detect that position. The induction-head hypothesis the editor tried first follows \cite{induction}; direct logit attribution follows the logit lens \cite{lens}. The evaluation of thinking-mode loops in small reasoning models, and the finding that ``no-think'' modes often match or beat them on small models, is documented in \cite{qwen35}. Two lines of prior work edit weights for the behaviours at issue here. Lazaridis et al.\ \cite{oneneuron} locate repetition loops in Gemma 4 by ablation and attribution and reduce them with edits as small as one neuron, with exploratory results on Qwen3.5; they conclude that such edits do not reveal a universal loop circuit or guarantee clean termination. ThinkEdit \cite{thinkedit} finds that reasoning length follows a linear direction and edits attention-head output weights to remove \emph{overly short} reasoning; our bypass edits are the opposite intervention, a weight change that makes reasoning empty. Steer2Edit \cite{steer2edit} converts steering vectors into rank-1 component edits, which is the form of edit C. Weight Oracles \cite{oracles} train a language model to read weights directly, without the forward passes our editor depends on. Public replications of the report \cite{hedwig,coletti,shapor,chalmers} show that the base model with thinking off recovers most of the math gain, and one blind attempt with a Claude editor on math found no working edit \cite{chalmers}.
 
-\section{Limitations}
+\section{Objections and limitations}
 
-One editor, two runs, one domain, one model size. The sampled results use one seed. Our MATH-500 runs use 100 problems and a 16,384-token limit, half the report's, so the math edit's 21\% is not a replication of the published 48\%. The thinking-off math run used the model card's sampling settings and an 8,192-token limit, and 33\% of its answers were cut. The held-out set is 150 questions, so accuracy differences of a few points are within noise; the loop and cut rates are not. The random-location rows use 50 questions each, and they test arbitrary neurons only; activation-matched neurons and random directions at the chosen neurons are not tested. The grader compares result sets, ignoring order and multiplicity, and takes SQL from a cut thinking block when one is present: 3 of the base model's 8 correct sampled answers never closed thinking. Practice is Spider and the test is BIRD, a shift that explains part of the gap between the 28\% practice accuracy and the 6\% test accuracy. The harness is a re-implementation from the report's released prompts and logs, not the authors' code. Both editor sessions and all controls ran under greedy decoding, chosen so that paired comparisons are exact. Section~\ref{sec:sep} shows that this choice hides the math edit's effect on SQL, so we cannot say whether an editor scored under sampling, or scored with a criterion that rejects answers without reasoning, would have found a repair. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the session; the trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
+\paragraph{The repair is not ours.} The edit that passes both tests is the report's. Our two sessions cost about 18 hours and found the equivalent of a template flag. A reader can fairly say that this paper tests another group's result and adds no result of its own about editing. We accept that. The paper's claim is about measurement: two cheap tests separate outcomes that the usual numbers merge, and a session judged by accuracy alone can return a bypass with a mechanistic story attached.
+
+\paragraph{The repaired model is still mostly wrong.} After the math edit, 10.7\% of SQL answers are correct. The edit ends the loop, but \Qwen{} cannot do most of this task with or without reasoning, and the unedited model with thinking off scores 6.7\%. Our evidence that the reasoning after a repair is useful is limited to the continuation test (8 of 60 correct against 2) and MATH-500 (21 of 100 against 8). Text-to-SQL shows the two outcomes clearly. It does not show that repair pays.
+
+\paragraph{Both tests measure behaviour.} We show that the model reasons further and then stops. We do not show what the math edit changed inside the model, and a reader who requires a mechanism before using the word repair should read it as ``ends loops in progress''.
+
+\paragraph{Three causes are not separated.} The bypasses came from one editor, greedy scoring and an accuracy criterion together. The repair came from a different editor, sampled scoring and a different task. We cannot say which factor produced the bypass. A session that rejects answers without reasoning and scores under sampling would separate the criterion and the decoding from the editor; sessions with GPT-6 Astra on SQL would separate the editor.
+
+\paragraph{Sample sizes and coverage.} One target model, one editor, two sessions. The sampled results use one seed. The held-out set is 150 questions, so accuracy differences of a few points are within noise; the closing counts and cut rates are not. The continuation test uses 60 prefixes from 6 of the 11 databases, all taken from the unedited model's own answers. The random-location rows use 50 questions each and test arbitrary neurons only; activation-matched neurons and random directions at the chosen neurons are not tested, and the unedited model and the math edit were not run on the same 50 questions as the sampled control. The random-location and gradient controls of the Fable edits were run under greedy decoding only. Our MATH-500 runs use 100 problems and a 16,384-token limit, so the math edit's 21\% is not a replication of the published 48\%; the thinking-off math run used an 8,192-token limit and 33\% of its answers were cut.
+
+\paragraph{Grading and provenance.} The grader compares result sets, ignores order and multiplicity, and takes SQL from a cut thinking block when one is present: 3 of the unedited model's 8 correct sampled answers never closed thinking. Practice is Spider and the test is BIRD, which explains part of the gap between the 28\% practice accuracy and the 6\% test accuracy. The harness is a re-implementation from the report's released prompts and logs, not the authors' code. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the sessions. The trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
 
 \section{Conclusion}
 
-When one model debugs another by editing its weights, a loop that disappears can mean two things, and the difference is measurable from the outputs alone. On text-to-SQL, two independent frontier-editor sessions and two gradient baselines all produced a bypass, equal in effect to disabling thinking in the chat template; two attempts at a mechanistic repair failed. The published math edit is a repair by the same measurement, and the two outcomes differ in a second way: the repair, written for math, also removes the SQL loop under the report's sampling settings, and the bypass, written for SQL, does nothing on math. The task therefore does not force a bypass. What remains open is why the editor produced one: the editor itself, greedy scoring, or a success criterion that a bypass satisfies. Next: a session in which an answer without reasoning does not count and passes are scored under sampling; two GPT-6 Astra sessions on SQL, which hold the task fixed and change the editor; and an ablation map over every attention head and every 64-column MLP block.
+A weight edit that makes a reasoning loop disappear has either ended the reasoning or removed it, and the count of characters before \think{} says which. On text-to-SQL the report's math edit ended it: 139 of 150 answers reason and then stop, and 57 of 60 loops already in progress come to an end. The four edits made for SQL removed it, and the two written by a frontier editor are worth exactly the template flag. The task does not force a bypass, since a repair exists for it. Our harness selected one, with greedy scoring that hides the repair and an accuracy criterion that a bypass meets. Anyone who runs this method can apply both tests to the answers they already have.
 
 \section*{Reproduction}
 
-Edit files, the 328 turn logs, the editor's notes, the harness and the evaluation scripts are at \url{https://github.com/Exorust/wsp-sql}. The edit is four \texttt{.npy} files totalling 16~KB; applying it to the public checkpoint and running \texttt{eval\_sql.py} on BIRD Mini-Dev reproduces the edit C row of Table~\ref{tab:main} in about 20 minutes on an Apple M-series laptop.
+Edit files, the turn logs of both sessions, the editor's notes, the harness and the evaluation scripts are at \url{https://github.com/Exorust/wsp-sql}. The edit is four \texttt{.npy} files totalling 16~KB; applying it to the public checkpoint and running \texttt{eval\_sql.py} on BIRD Mini-Dev reproduces the edit C row of Table~\ref{tab:main} in about 20 minutes on an Apple M-series laptop.
 
 \begin{thebibliography}{9}
 \bibitem{wsp} R.\ Takehi, J.\ Teoh, Y.\ Zhang, O.\ Khattab. Sparks of Weight-Space Programming: LLMs can understand and write neural network weights. MIT CSAIL, 2 November 2026. \todo{URL}

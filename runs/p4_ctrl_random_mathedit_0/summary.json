@@ -1,0 +1,87 @@
+{
+ "model": "runs/p4_ctrl_random_mathedit/draw_0/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 50,
+ "acc": 0.08,
+ "cut_share": 0.88,
+ "loop_share": 0.74,
+ "classes": {
+  "syntax": 0.72,
+  "correct": 0.08,
+  "wrong_result": 0.06,
+  "other_error": 0.06,
+  "no_such_column": 0.06,
+  "no_such_table": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"foreign\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"on\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"hemoglobin\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"CRP\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"fields\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: table `Team_Attributes` already exists",
+   1
+  ],
+  [
+   "OperationalError: near \"best\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such table: constructor_standings",
+   1
+  ],
+  [
+   "OperationalError: near \"power\": syntax error",
+   1
+  ]
+ ]
+}

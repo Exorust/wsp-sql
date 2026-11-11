@@ -1,0 +1,15 @@
+% continuation test: 60 looping answers of the base model, continued by each model; counts from runs/p4_prefix_*/results.jsonl
+\definecolor{byp}{HTML}{EB6834}\definecolor{rep}{HTML}{2A78D6}\definecolor{nev}{HTML}{E87BA4}
+\begin{tikzpicture}[font=\footnotesize, x=0.14cm, y=0.52cm]
+\newcommand{\cbar}[4]{% row, closes after more reasoning, closes within 10 chars, never closes (counts of 60)
+  \fill[rep] (0,#1) rectangle ++(#2,0.7); \fill[byp] (#2,#1) rectangle ++(#3,0.7); \fill[nev] (#2+#3,#1) rectangle ++(#4,0.7);
+  \draw[white, line width=1pt] (#2,#1) -- ++(0,0.7); \draw[white, line width=1pt] (#2+#3,#1) -- ++(0,0.7);
+  \node[anchor=west, font=\scriptsize] at (61,#1+0.35) {\the\numexpr#2+#3\relax\ of 60 close};}
+\draw[gray!60] (0,-0.25) -- ++(60,0); \foreach \p in {0,20,40,60} \node[anchor=north, gray!40!black, font=\scriptsize] at (\p,-0.25) {\p};
+\node[anchor=north, gray!40!black, font=\scriptsize] at (30,-1.0) {looping answers continued};
+\foreach \r/\n in {3/Base model, 2/Authors' math edit, 1/Fable run 1 edit, 0/Fable run 2 edit} \node[anchor=east] at (-1,\r+0.35) {\n};
+\cbar{3}{1}{2}{57} \cbar{2}{53}{4}{3} \cbar{1}{1}{3}{56} \cbar{0}{1}{3}{56}
+\fill[rep] (0,4.5) rectangle ++(2,0.5); \node[anchor=west] at (2.5,4.75) {closes after more reasoning};
+\fill[byp] (32,4.5) rectangle ++(2,0.5); \node[anchor=west] at (34.5,4.75) {closes within 10 characters};
+\fill[nev] (64,4.5) rectangle ++(2,0.5); \node[anchor=west] at (66.5,4.75) {never closes};
+\end{tikzpicture}

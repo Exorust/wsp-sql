@@ -1,0 +1,90 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 4096,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 60,
+ "acc": 0.13333333333333333,
+ "cut_share": 0.06666666666666667,
+ "loop_share": 0.11666666666666667,
+ "classes": {
+  "no_such_column": 0.3,
+  "wrong_result": 0.26666666666666666,
+  "no_such_table": 0.13333333333333333,
+  "correct": 0.13333333333333333,
+  "syntax": 0.08333333333333333,
+  "misuse": 0.03333333333333333,
+  "ambiguous": 0.016666666666666666,
+  "no_such_function": 0.016666666666666666,
+  "cut_no_sql": 0.016666666666666666
+ },
+ "err_detail": [
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such table: YEAR_MONTH",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ],
+  [
+   "OperationalError: no such column: budget.spended",
+   1
+  ],
+  [
+   "OperationalError: no such column: EXE.budget_id",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.link_to_member",
+   1
+  ],
+  [
+   "OperationalError: no such column: e.THROMBOSTIS",
+   1
+  ],
+  [
+   "OperationalError: no such column: EX.examination_diagnosis",
+   1
+  ],
+  [
+   "OperationalError: near \"-\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: ambiguous column name: ID",
+   1
+  ],
+  [
+   "OperationalError: no such column: s.HCT",
+   1
+  ],
+  [
+   "OperationalError: no such function: YEAR",
+   1
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: buildUpPlayPlayPassing",
+   1
+  ],
+  [
+   "OperationalError: no such column: p.overall_rating",
+   1
+  ]
+ ]
+}

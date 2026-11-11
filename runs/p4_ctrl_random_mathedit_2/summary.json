@@ -1,0 +1,88 @@
+{
+ "model": "runs/p4_ctrl_random_mathedit/draw_2/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 50,
+ "acc": 0.1,
+ "cut_share": 0.64,
+ "loop_share": 0.46,
+ "classes": {
+  "syntax": 0.4,
+  "no_such_column": 0.16,
+  "other_error": 0.14,
+  "correct": 0.1,
+  "wrong_result": 0.1,
+  "no_such_table": 0.08,
+  "misuse": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"code\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"query\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: table customers already exists",
+   1
+  ],
+  [
+   "OperationalError: no such table: transactions",
+   1
+  ],
+  [
+   "OperationalError: no such column: Customers.Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ],
+  [
+   "OperationalError: table Examination already exists",
+   1
+  ],
+  [
+   "OperationalError: near \"Date\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"ID\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"provided\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"hint\": syntax error",
+   1
+  ]
+ ]
+}

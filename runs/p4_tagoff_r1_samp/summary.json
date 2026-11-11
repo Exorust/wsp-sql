@@ -1,0 +1,90 @@
+{
+ "model": "runs/fable_think_p25_r1/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 8192,
+ "temp": 0.7,
+ "rep_penalty": 0.0,
+ "top_p": 0.8,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.06,
+ "cut_share": 0.0,
+ "loop_share": 0.0,
+ "classes": {
+  "no_such_column": 0.5866666666666667,
+  "wrong_result": 0.18,
+  "syntax": 0.10666666666666667,
+  "correct": 0.06,
+  "no_such_function": 0.02,
+  "misuse": 0.013333333333333334,
+  "no_such_table": 0.013333333333333334,
+  "ambiguous": 0.013333333333333334,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"AS\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"Date\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such function: year",
+   2
+  ],
+  [
+   "OperationalError: no such column: laps",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.suphero_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: f.flavorText",
+   2
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.CustomerID",
+   1
+  ],
+  [
+   "OperationalError: no such column: c2.cnt",
+   1
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: customers.Currency",
+   1
+  ],
+  [
+   "OperationalError: wrong number of arguments to function STRI",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.member_id",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ]
+ ]
+}

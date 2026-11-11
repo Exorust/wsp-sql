@@ -1,0 +1,88 @@
+{
+ "model": "runs/p4_ctrl_random_mathedit/draw_1/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 50,
+ "acc": 0.18,
+ "cut_share": 0.56,
+ "loop_share": 0.48,
+ "classes": {
+  "syntax": 0.42,
+  "correct": 0.18,
+  "wrong_result": 0.16,
+  "no_such_column": 0.12,
+  "other_error": 0.06,
+  "misuse": 0.04,
+  "gold_error": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: table \"member\" already exists",
+   1
+  ],
+  [
+   "OperationalError: near \"s\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"Date\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"who\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"DESC\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"best\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.nationality",
+   1
+  ],
+  [
+   "OperationalError: no such column: cr.year",
+   1
+  ],
+  [
+   "OperationalError: near \"superheroes\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: table alignment already exists",
+   1
+  ],
+  [
+   "OperationalError: table badges already exists",
+   1
+  ]
+ ]
+}

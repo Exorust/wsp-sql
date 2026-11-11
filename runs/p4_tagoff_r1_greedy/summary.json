@@ -1,0 +1,90 @@
+{
+ "model": "runs/fable_think_p25_r1/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 0.0,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.07333333333333333,
+ "cut_share": 0.12666666666666668,
+ "loop_share": 0.10666666666666667,
+ "classes": {
+  "no_such_column": 0.44666666666666666,
+  "wrong_result": 0.2733333333333333,
+  "syntax": 0.08,
+  "correct": 0.07333333333333333,
+  "other_error": 0.06,
+  "ambiguous": 0.02666666666666667,
+  "misuse": 0.013333333333333334,
+  "no_such_function": 0.013333333333333334,
+  "timeout": 0.013333333333333334
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   5
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: EXAMINATION.EXAMINATION_DA",
+   2
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: interrupted",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.driverId",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.name",
+   2
+  ],
+  [
+   "OperationalError: ambiguous column name: sp.power_name",
+   2
+  ],
+  [
+   "OperationalError: too many FROM clause terms, max: 200",
+   2
+  ],
+  [
+   "OperationalError: near \"set\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   2
+  ],
+  [
+   "OperationalError: no such column: b.element",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.Consumption",
+   1
+  ]
+ ]
+}

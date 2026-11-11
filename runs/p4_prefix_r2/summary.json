@@ -1,0 +1,89 @@
+{
+ "model": "runs/fable_think_p25_r2/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 4096,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 60,
+ "acc": 0.03333333333333333,
+ "cut_share": 0.9333333333333333,
+ "loop_share": 0.75,
+ "classes": {
+  "cut_no_sql": 0.43333333333333335,
+  "syntax": 0.36666666666666664,
+  "no_such_column": 0.05,
+  "other_error": 0.05,
+  "correct": 0.03333333333333333,
+  "no_such_table": 0.03333333333333333,
+  "no_such_function": 0.016666666666666666,
+  "wrong_result": 0.016666666666666666
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \".\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"on\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"SELECT\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: budget.spended",
+   1
+  ],
+  [
+   "OperationalError: unrecognized token: \"`\"",
+   1
+  ],
+  [
+   "ProgrammingError: You can only execute one statement at a ti",
+   1
+  ],
+  [
+   "OperationalError: near \"The\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`.\n    *   Wait, `\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"SUM\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such function: ROUNDUP",
+   1
+  ],
+  [
+   "OperationalError: no such column: ta_buildUpPlayPassing",
+   1
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`Kevin Constant`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"question\": syntax error",
+   1
+  ]
+ ]
+}
