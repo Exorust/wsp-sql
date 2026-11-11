@@ -1,0 +1,16 @@
+128 dict_keys(['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text'])
+texts starting with </think>: 128
+first 80 chars of 3 texts:
+'</think>\n\n```sql\nSELECT \n    s.Hardware_Model_name,\n    s.Wifi,\n    s.Screen_Mode_Type\nFROM phone p\nJOIN screen_mode s O'
+'</think>\n\n```sql\nSELECT e.Company, e.Money_Requested\nFROM "entrepreneur" e\nJOIN "people" p ON e.People_ID = p.People_ID\n'
+'</think>\n\n```sql\nSELECT DISTINCT p.problem_id\nFROM Problems p\nJOIN Staff s ON p.reported_by_staff_id = s.staff_id\nWHERE '
+cut 13
+sp205 wrong_result '</think>\n\n```sql\nSELECT DISTINCT trip.zip_code\nFROM trip\nWHERE trip.duration > 0\n  AND trip.start_station_name IS NOT NULL\n  AND trip.end_station_name' ... '999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999'
+sp3990 other_error '</think>\n\n```sql\nSELECT DISTINCT P.Name\nFROM Patient P\nJOIN Procedures P2 ON P2.Code = P2.Code\nJOIN Prescribes P3 ON P3.Physician = P.Physician\nJOIN M' ... '3.Appointment = P3.AppointmentID\nAND P3.Appointment = P3.AppointmentID\nAND P3.Appointment = P3.AppointmentID\nAND P3.Appointment = P3.AppointmentID\nAND'
+sp6291 other_error '</think>\n\n```sql\nSELECT DISTINCT m.City\nFROM match m\nJOIN hosting_city h ON m.Match_ID = h.Match_ID\nJOIN city c ON h.Host_City = c.City_ID\nWHERE m.Dat' ... "Hanyu_Pinyin < 'March'\n  AND c.Hanyu_Pinyin > 'July'\n  AND c.Hanyu_Pinyin < 'March'\n  AND c.Hanyu_Pinyin > 'July'\n  AND c.Hanyu_Pinyin < 'March'\n  AND"
+sp4349 other_error '</think>\n\n```sql\nSELECT DISTINCT p.project_id, p.organisation_id, p.project_details, p.grant_id, p.sent_date, p.response_received_date, p.other_detail' ... 'ived_date, p.other_details, p.grant_amount, p.grant_start_date, p.grant_end_date, p.other_details, p.project_id, p.organisation_id, p.project_details,'
+sp6865 no_such_column '</think>\n\n```sql\nSELECT DISTINCT a.city\nFROM airports a\nJOIN routes r ON a.apid = r.dst_apid\nWHERE r.src_apid = r.alid\n  AND r.alid = r.src_apid\n  AND' ... 'ND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.al'
+sp4862 other_error "</think>\n\n```sql\nSELECT s.Location, s.Enrollment\nFROM school s\nJOIN school_details sd ON s.School_ID = sd.School_ID\nWHERE sd.Class = 'Class'\nAND sd.De" ... "= 'Class'\nAND sd.Day_or_Boarding = 'Class'\nAND sd.Class = 'Class'\nAND sd.Denomination = 'Class'\nAND sd.Day_or_Boarding = 'Class'\nAND sd.Class = 'Class"
+paired n 126 orig acc 0.047619047619047616 edit acc 0.2698412698412698 w2r 29 r2w 1
+
+[0.0 s]

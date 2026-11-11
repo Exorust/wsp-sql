@@ -1,0 +1,6 @@
+13 -1.4691 14 -1.3982 15 -1.3464
+14-13 0.0709 se 0.0093
+15-13 0.1227 se 0.0199
+['mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy', 'mlp_down_in_L19.npy', 'mlp_down_in_L18.npy', 'mlp_down_in_L15.npy', 'mlp_down_in_L14.npy', 'mlp_down_in_L16.npy', 'mlp_down_in_L17.npy', 'mlp_down_in_L13.npy', 'mlp_down_in_L12.npy']
+
+[0.0 s]

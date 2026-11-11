@@ -1,0 +1,30 @@
+['chatsA.json', 'chatsB.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'gen_1.jsonl', 'gen_1_acts', 'notes.md', 'tf2_req.json', 'tf2_texts.json', 'tf3_req.json', 'tf5_meta.json', 'tf5_req.json', 'tf_set_meta.json']
+['model.language_model.layers.11.self_attn.o_proj.weight', 'model.language_model.layers.15.self_attn.o_proj.weight', 'model.language_model.layers.23.self_attn.o_proj.weight']
+model.language_model.layers.22.input_layernorm.weight (1024,)
+model.language_model.layers.22.linear_attn.A_log (16,)
+model.language_model.layers.22.linear_attn.conv1d.weight (6144, 1, 4)
+model.language_model.layers.22.linear_attn.dt_bias (16,)
+model.language_model.layers.22.linear_attn.in_proj_a.weight (16, 1024)
+model.language_model.layers.22.linear_attn.in_proj_b.weight (16, 1024)
+model.language_model.layers.22.linear_attn.in_proj_qkv.weight (6144, 1024)
+model.language_model.layers.22.linear_attn.in_proj_z.weight (2048, 1024)
+model.language_model.layers.22.linear_attn.norm.weight (128,)
+model.language_model.layers.22.linear_attn.out_proj.weight (1024, 2048)
+model.language_model.layers.22.mlp.down_proj.weight (1024, 3584)
+model.language_model.layers.22.mlp.gate_proj.weight (3584, 1024)
+model.language_model.layers.22.mlp.up_proj.weight (3584, 1024)
+model.language_model.layers.22.post_attention_layernorm.weight (1024,)
+model.language_model.layers.23.input_layernorm.weight (1024,)
+model.language_model.layers.23.mlp.down_proj.weight (1024, 3584)
+model.language_model.layers.23.mlp.gate_proj.weight (3584, 1024)
+model.language_model.layers.23.mlp.up_proj.weight (3584, 1024)
+model.language_model.layers.23.post_attention_layernorm.weight (1024,)
+model.language_model.layers.23.self_attn.k_norm.weight (256,)
+model.language_model.layers.23.self_attn.k_proj.weight (512, 1024)
+model.language_model.layers.23.self_attn.o_proj.weight (1024, 2048)
+model.language_model.layers.23.self_attn.q_norm.weight (256,)
+model.language_model.layers.23.self_attn.q_proj.weight (4096, 1024)
+model.language_model.layers.23.self_attn.v_proj.weight (512, 1024)
+128 ['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text']
+
+[0.0 s]

@@ -1,0 +1,10 @@
+sp2548 len 228 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('```', -12.5), ('<think>', -14.13)] | after: [-0.0, -0.55, -0.0, -0.0] | SQL mean -1.304  | orig SQL mean -1.299
+sp5827 len 218 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('<think>', -13.75), ('```', -14.63)] | after: [-0.0, -0.47, -0.0, -0.0] | SQL mean -2.788  | orig SQL mean -2.739
+sp4000 len 184 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('```', -13.75), ('<think>', -14.0)] | after: [-0.0, -0.55, -0.0, -0.0] | SQL mean -1.336  | orig SQL mean -1.343
+sp5818 len 205 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('<think>', -14.13), ('```', -14.25)] | after: [-0.0, -0.45, -0.0, -0.0] | SQL mean -3.841  | orig SQL mean -3.758
+sp3436 len 748 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('```', -11.88), ('<think>', -12.88)] | after: [-0.0, -0.48, -0.0, -0.0] | SQL mean -0.936 
+sp4218 len 657 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('```', -13.25), ('<think>', -13.5)] | after: [-0.0, -0.57, -0.0, -0.0] | SQL mean -2.444 
+sp4841 len 492 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('<think>', -12.0), ('Thinking', -13.5)] | after: [-0.0, -0.63, -0.0, -0.0] | SQL mean -2.118 
+sp3542 len 390 </think> lp -0.00 top after <think>\n: [('</think>', -0.0), ('<think>', -12.88), ('Thinking', -13.13)] | after: [-0.0, -0.78, -0.0, -0.0] | SQL mean -1.382 
+
+[0.0 s]

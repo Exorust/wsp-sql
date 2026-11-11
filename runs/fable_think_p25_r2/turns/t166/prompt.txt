@@ -1,0 +1,13 @@
+after L10: |Delta| 1.512  resid RMS*32 1.471  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.997
+after L12: |Delta| 1.862  resid RMS*32 1.835  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.997
+after L14: |Delta| 2.064  resid RMS*32 2.224  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.997
+after L16: |Delta| 3.606  resid RMS*32 3.508  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.995
+after L17: |Delta| 4.585  resid RMS*32 4.443  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.995
+after L18: |Delta| 5.395  resid RMS*32 5.627  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.995
+after L19: |Delta| 5.925  resid RMS*32 5.708  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.994
+after L20: |Delta| 6.749  resid RMS*32 6.187  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.993
+after L21: |Delta| 7.778  resid RMS*32 7.003  pair-cos [1. 1. 1. 1.]  T2-state cos across prompts min 0.992
+after L22: |Delta| 8.212  resid RMS*32 8.098  pair-cos [1.   0.99 1.   0.99]  T2-state cos across prompts min 0.992
+after L23: |Delta| 149.840  resid RMS*32 142.825  pair-cos [0.99 0.99 1.   0.99]  T2-state cos across prompts min 0.992
+
+[0.0 s]

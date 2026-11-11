@@ -1,0 +1,15 @@
+['chatsA.json', 'chatsB.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'fwd_6', 'fwd_6.done.json', 'fwd_7.done.json', 'fwd_8', 'fwd_8.done.json', 'gen7_req.json', 'gen_1.jsonl', 'gen_1_acts', 'gen_7.jsonl', 'notes.md', 'tf2_req.json', 'tf2_texts.json', 'tf3_req.json', 'tf5_meta.json', 'tf5_req.json', 'tf6_meta.json', 'tf6_req.json', 'tf8_meta.json', 'tf8_req.json', 'tf_set_meta.json']
+['model.language_model.layers.23.self_attn.o_proj.weight']
+torch.Size([1024, 2048]) 2683.27099609375 tensor([1280, 1281, 1282, 1283, 1284]) 256
+1280 1535
+edited ['model.language_model.layers.23.self_attn.o_proj.weight.npy']
+edited_model ['.cache', 'EDIT_MANIFEST.json', 'chat_template.jinja', 'config.json', 'merges.txt', 'model.safetensors-00001-of-00001.safetensors', 'model.safetensors.index.json', 'preprocessor_config.json', 'tokenizer.json', 'tokenizer_config.json', 'video_preprocessor_config.json', 'vocab.json']
+fwd_2 ['attn_L11_text0.npy', 'attn_L11_text1.npy', 'attn_L15_text0.npy', 'attn_L15_text1.npy', 'attn_L19_text0.npy', 'attn_L19_text1.npy', 'attn_L23_text0.npy', 'attn_L23_text1.npy', 'attn_L3_text0.npy', 'attn_L3_text1.npy', 'attn_L7_text0.npy', 'attn_L7_text1.npy']
+fwd_3 ['meta.json', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+fwd_4 ['meta.json', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+fwd_5 ['hidden_L0.npy', 'hidden_L1.npy', 'hidden_L10.npy', 'hidden_L11.npy', 'hidden_L12.npy', 'hidden_L13.npy', 'hidden_L14.npy', 'hidden_L15.npy', 'hidden_L16.npy', 'hidden_L17.npy', 'hidden_L18.npy', 'hidden_L19.npy']
+fwd_6 ['attn_L19_text0.npy', 'attn_L19_text1.npy', 'attn_L23_text0.npy', 'attn_L23_text1.npy', 'hidden_L22.npy', 'hidden_L23.npy', 'hidden_L24.npy', 'meta.json', 'mlp_down_in_L23.npy', 'token_logprobs.npy', 'topk_ids.npy', 'topk_logprobs.npy']
+fwd_8 ['attn_L19_text0.npy', 'attn_L19_text1.npy', 'attn_L23_text0.npy', 'attn_L23_text1.npy', 'hidden_L0.npy', 'hidden_L1.npy', 'hidden_L10.npy', 'hidden_L11.npy', 'hidden_L12.npy', 'hidden_L13.npy', 'hidden_L14.npy', 'hidden_L15.npy']
+gen_1_acts ['index.json', 'mlp_down_in_answer_mean.npy', 'resid_answer_mean.npy', 'resid_last_prompt.npy']
+
+[0.1 s]

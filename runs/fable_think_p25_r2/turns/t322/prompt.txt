@@ -1,0 +1,6 @@
+base -1.5678 INSTR1 gain 0.0749 se 0.0309
+I2 gain vs base -0.0213 se 0.012 | dir norm 0.096 cos v16 0.472
+I3 gain vs base -0.1389 se 0.0406 | dir norm 0.163 cos v16 -0.023
+I4 gain vs base -0.0344 se 0.0298 | dir norm 0.177 cos v16 0.734
+
+[0.1 s]

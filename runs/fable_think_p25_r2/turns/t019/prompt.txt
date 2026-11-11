@@ -1,0 +1,32 @@
+           period        start
+count  128.000000   126.000000
+mean   260.062500  2107.539683
+std    192.712782  1069.468419
+min     34.000000   200.000000
+25%    104.750000  1500.000000
+50%    227.500000  1800.000000
+75%    338.250000  2487.500000
+max    971.000000  7450.000000
+no period 0 no start 2
+cls
+syntax        119
+correct         6
+cut_no_sql      3
+Name: count, dtype: int64
+        id  period  ...      cls                                       err
+0   sp1037     289  ...   syntax  OperationalError: near "tables": syntax 
+1   sp2265     283  ...   syntax  OperationalError: near "query": syntax e
+2   sp5385     431  ...   syntax  OperationalError: near "query": syntax e
+3   sp5802     121  ...   syntax  OperationalError: near "query": syntax e
+4   sp6007     437  ...   syntax  OperationalError: near "tables": syntax 
+5   sp2042     275  ...   syntax  OperationalError: near "tables": syntax 
+6    sp205     133  ...   syntax  OperationalError: near "query": syntax e
+7   sp5463     216  ...  correct                                          
+8   sp1277      60  ...   syntax  OperationalError: near "tables": syntax 
+9   sp5831     279  ...   syntax  OperationalError: near "tables": syntax 
+10  sp6700     370  ...   syntax  OperationalError: near "criteria": synta
+11  sp3410      34  ...   syntax  OperationalError: near "6": syntax error
+
+[12 rows x 6 columns]
+
+[0.7 s]

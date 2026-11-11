@@ -1,0 +1,44 @@
+## sp6480 scientist_1 | What is the name of the project with the most hours?
+  PRED: SELECT * FROM Projects GROUP BY Code ORDER BY Hours DESC LIMIT 1
+  GOLD: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+## sp6128 customers_and_addresses | Find the name of the customer who made an order most recently.
+  PRED: SELECT DISTINCT c.customer_name FROM Customers c JOIN Customer_Addresses ca ON c.customer_id = ca.customer_id JOIN Customer_Contact_Channels cc ON c.customer_id = cc.customer_id WHERE cc.active_from_date > ca.date_address_from   AND cc.active_to_date < ca.date
+  GOLD: SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.order_date DESC LIMIT 1
+## sp2042 party_people | What are the different region names, ordered by labels?
+  PRED: SELECT DISTINCT r.Region_name FROM region r JOIN party p ON r.Region_ID = p.Region_ID JOIN member m ON p.Party_ID = m.Party_ID WHERE r.Region_name IS NOT NULL ORDER BY r.Region_name
+  GOLD: SELECT DISTINCT region_name FROM region ORDER BY Label
+## sp6407 cre_Docs_and_Epenses | How many documents are with document type code BK for each product id?
+  PRED: SELECT      d.Document_ID,     d.Document_Type_Code,     p.Project_ID,     COUNT(*) AS Document_Count FROM      Documents d JOIN      Ref_Document_Types rd ON d.Document_Type_Code = rd.Document_Type_Code JOIN      Projects p ON d.Project_ID = p.Project_ID WHER
+  GOLD: SELECT count(*) ,  project_id FROM Documents WHERE document_type_code  =  "BK" GROUP BY project_id
+## sp1120 climbing | What are the names of mountains in ascending alphabetical order?
+  PRED: SELECT DISTINCT m.Name FROM "mountain" m JOIN "climber" c ON m.Mountain_ID = c.Mountain_ID ORDER BY m.Name ASC
+  GOLD: SELECT Name FROM mountain ORDER BY Name ASC
+## sp4502 document_management | What is the name of the document which has been accessed the most times, as well as the number of times it has been acce
+  PRED: SELECT      d.document_code,     COUNT(*) AS access_count FROM      Documents d GROUP BY      d.document_code ORDER BY      access_count DESC LIMIT 1
+  GOLD: SELECT document_name ,  access_count FROM documents ORDER BY access_count DESC LIMIT 1
+## sp1818 small_bank_1 | Find the name, checking balance and savings balance of all accounts in the bank sorted by their total checking and savin
+  PRED: SELECT      a.name,     s.balance,     c.balance FROM      ACCOUNTS a JOIN      SAVINGS s ON a.custid = s.custid JOIN      CHECKING c ON a.custid = c.custid WHERE      a.custid = 1 ORDER BY      s.balance DESC, c.balance DESC
+  GOLD: SELECT T2.balance ,  T3.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance + T3.balance DESC
+## sp6679 driving_school | What is the maximum, minimum, and average amount of money outsanding for all customers?
+  PRED: SELECT      AVG(amount_outstanding) AS average_amount,     MIN(amount_outstanding) AS minimum_amount,     MAX(amount_outstanding) AS maximum_amount FROM Customers
+  GOLD: SELECT max(amount_outstanding) ,  min(amount_outstanding) ,  avg(amount_outstanding) FROM Customers;
+## sp5947 cre_Theme_park | Show the description and code of the attraction type most tourist attractions belong to.
+  PRED: SELECT DISTINCT Attraction_Type_Code, Attraction_Type_Description FROM Ref_Attraction_Types WHERE Attraction_Type_Code IN (     SELECT Attraction_Type_Code     FROM Tourist_Attractions     GROUP BY Attraction_Type_Code     HAVING COUNT(*) > 1 )
+  GOLD: SELECT T1.Attraction_Type_Description ,  T2.Attraction_Type_Code FROM Ref_Attraction_Types AS T1 JOIN Tourist_Attractions AS T2 ON T1.Attraction_Type_Code  =  T2.Attraction_Type_Code GROUP BY T2.Attra
+## sp1739 gymnast | What are the total points for all gymnasts, ordered by total points descending?
+  PRED: SELECT      g.Gymnast_ID,     g.Floor_Exercise_Points,     g.Pommel_Horse_Points,     g.Rings_Points,     g.Vault_Points,     g.Parallel_Bars_Points,     g.Horizontal_Bar_Points,     g.Total_Points,     p.People_ID,     p.Name,     p.Age,     p.Height,     p.H
+  GOLD: SELECT Total_Points FROM gymnast ORDER BY Total_Points DESC
+## sp3302 college_1 | What is the first name and GPA of every student that has a GPA lower than average?
+  PRED: SELECT      s.STU_LNAME,     s.STU_GPA,     AVG(s.STU_GPA) AS AVG_GPA FROM STUDENT s WHERE s.STU_GPA < (SELECT AVG(s2.STU_GPA) FROM STUDENT s2) GROUP BY s.STU_LNAME, s.STU_GPA HAVING s.STU_GPA < (SELECT AVG(s2.STU_GPA) FROM STUDENT s2) ORDER BY s.STU_LNAME
+  GOLD: SELECT stu_fname ,  stu_gpa FROM student WHERE stu_gpa  <  (SELECT avg(stu_gpa) FROM student)
+## sp2273 entrepreneur | What are the names of entrepreneurs?
+  PRED: SELECT "Entrepreneur_ID", "Entrepreneur_Name" FROM "entrepreneur" WHERE "Entrepreneur_ID" = 1
+  GOLD: SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID
+## sp5385 tracking_software_problems | Which problems were reported by the staff named Dameon Frami or Jolie Weber? Give me the ids of the problems.
+  PRED: SELECT DISTINCT p.problem_id FROM Problems p JOIN Staff s ON p.reported_by_staff_id = s.staff_id WHERE s.staff_first_name = 'Dameon' OR s.staff_last_name = 'Frami'   OR s.staff_first_name = 'Jolie' OR s.staff_last_name = 'Weber'
+  GOLD: SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last_name = "Frami" UNION SELECT product_id FROM probl
+## sp2993 sakila_1 | What are the titles of films that are either longer than 100 minutes or rated PG other than those that cost more than 20
+  PRED: SELECT film.title FROM film WHERE film.rental_duration > 100 OR film.rating != 'PG' AND film.replacement_cost > 200
+  GOLD: SELECT title FROM film WHERE LENGTH  >  100 OR rating  =  'PG' EXCEPT SELECT title FROM film WHERE replacement_cost  >  200
+
+[0.0 s]

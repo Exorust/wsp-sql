@@ -1,0 +1,5 @@
+pre attn -7.15 mlp 0.12
+loop attn -2.05 mlp 0.06
+sec attn 5.38 mlp -0.15
+
+[0.0 s]

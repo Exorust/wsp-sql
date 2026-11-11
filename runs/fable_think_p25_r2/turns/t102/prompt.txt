@@ -1,0 +1,14 @@
+148 '\n' | top pred at i-1: '\n' -0.0
+149 '' | top pred at i-1: '' -0.0
+150 'assistant' | top pred at i-1: 'assistant' -0.0
+151 '\n' | top pred at i-1: '\n' -0.03
+152 '<think>' | top pred at i-1: '<think>' -0.0
+153 '\n' | top pred at i-1: '\n' -0.63
+154 'Thinking' | top pred at i-1: 'Thinking' -0.17
+155 ' Process' | top pred at i-1: ' Process' -0.0
+156 ':' | top pred at i-1: ':' -0.0
+157 '\n\n' | top pred at i-1: '\n\n' -0.0
+158 '1' | top pred at i-1: '1' -0.0
+159 '.' | top pred at i-1: '.' -0.0
+
+[0.0 s]

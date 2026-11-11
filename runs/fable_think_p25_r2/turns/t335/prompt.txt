@@ -1,0 +1,49 @@
+{
+ "pass_id": 25,
+ "type": "generate",
+ "model": "both",
+ "max_tokens": 8192,
+ "original": {
+  "n": 64,
+  "accuracy": 0.0312,
+  "mean_tokens": 8192.0,
+  "cut_at_max_tokens": 1.0,
+  "looping": 0.9688,
+  "failures": {
+   "syntax": 61,
+   "other_error": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_25_original.jsonl",
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_25_edited.jsonl"
+ ],
+ "edited": {
+  "n": 64,
+  "accuracy": 0.3125,
+  "mean_tokens": 301.8,
+  "cut_at_max_tokens": 0.0312,
+  "looping": 0.0312,
+  "failures": {
+   "wrong_result": 22,
+   "no_such_column": 15,
+   "ambiguous": 3,
+   "misuse": 2,
+   "other_error": 2
+  }
+ },
+ "paired": {
+  "n": 64,
+  "acc_diff_edited_minus_original": 0.2812,
+  "standard_error": 0.0566,
+  "wrong_to_right": 18,
+  "right_to_wrong": 0
+ },
+ "edited_tensors": [
+  "model.language_model.layers.16.mlp.down_proj.weight",
+  "model.language_model.layers.18.mlp.down_proj.weight"
+ ],
+ "seconds": 1563
+}
+[forward passes used: 25/25]
+All forward passes are now used. Make your final choice (the tensors in the edited folder are what is submitted) and reply without a code block, saying what you changed, the evidence for it and why you expect it to help.

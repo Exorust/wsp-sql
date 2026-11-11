@@ -1,0 +1,28 @@
+Counter({'wrong_result': 50, 'correct': 34, 'no_such_column': 29, 'other_error': 6, 'ambiguous': 3, 'syntax': 2, 'ungraded': 2, 'misuse': 1, 'timeout': 1})
+cut 13 loop Counter({1: 115, 11: 2, 93: 1, 17: 1, 4: 1, 2: 1, 18: 1, 7: 1, 12: 1, 33: 1, 3: 1, 29: 1, 9: 1})
+tokens: median 51.0 p90 775.3999999999949 max 2048
+===== no_such_column
+sp1037 phone_1 | err: OperationalError: no such column: s.Hardware_Model_name | sql: SELECT      s.Hardware_Model_name,     s.Wifi,     s.Screen_Mode_Type FROM phone p JOIN screen_mode s ON p.Hardware_Model_name = s.Hardware_Model_name
+sp1277 game_injury | err: OperationalError: no such column: stadium | sql: SELECT      MAX(Home_Games) AS max_home_games,     MIN(Home_Games) AS min_home_games,     AVG(Home_Games) AS avg_home_games FROM stadium GROUP BY stad
+sp1963 products_for_hire | err: OperationalError: no such column: p.amount_of_refund | sql: SELECT      p.booking_id,     p.amount_of_refund FROM      Payments p JOIN      Products_for_Hire pf ON p.booking_id = pf.booking_id JOIN      Booking
+sp5086 device | err: OperationalError: no such column: s.Carrier | sql: SELECT DISTINCT s.Carrier FROM shop s JOIN stock st ON s.Shop_ID = st.Shop_ID WHERE st.Device_ID IS NULL
+sp6908 tracking_orders | err: OperationalError: no such column: o.order_date_placed | sql: SELECT DISTINCT p.product_id FROM Products p JOIN Order_Items oi ON p.product_id = oi.product_id JOIN Orders o ON oi.order_id = o.order_id WHERE o.ord
+sp3555 music_1 | err: OperationalError: no such column: s.id | sql: SELECT s.id FROM song s JOIN files f ON s.f_id = f.f_id JOIN artist a ON s.artist_name = a.artist_name WHERE s.resolution < 1000   AND s.format = 'mp4
+===== other_error
+sp3990 hospital_1 | err: OperationalError: incomplete input | sql: SELECT DISTINCT P.Name FROM Patient P JOIN Procedures P2 ON P2.Code = P2.Code JOIN Prescribes P3 ON P3.Physician = P.Physician JOIN Medication M ON M.
+sp6291 city_record | err: OperationalError: incomplete input | sql: SELECT DISTINCT m.City FROM match m JOIN hosting_city h ON m.Match_ID = h.Match_ID JOIN city c ON h.Host_City = c.City_ID WHERE m.Date = 'March'   AND
+sp4349 tracking_grants_for_research | err: OperationalError: incomplete input | sql: SELECT DISTINCT p.project_id, p.organisation_id, p.project_details, p.grant_id, p.sent_date, p.response_received_date, p.other_details, p.grant_amount
+sp4862 school_player | err: OperationalError: unrecognized token: "'Class" | sql: SELECT s.Location, s.Enrollment FROM school s JOIN school_details sd ON s.School_ID = sd.School_ID WHERE sd.Class = 'Class' AND sd.Denomination = 'Cla
+sp5601 products_gen_characteristics | err: OperationalError: incomplete input | sql: SELECT COUNT(*)  FROM Ref_Colors  WHERE color_code NOT IN (     SELECT DISTINCT color_code      FROM Ref_Product_Categories      JOIN Products ON Ref_
+sp2873 icfp_1 | err: OperationalError: incomplete input | sql: SELECT inst.name FROM Inst JOIN Authorship AS a ON a.authID = instinstID JOIN Authors AS a2 ON a2.authID = instinstID JOIN Papers AS p ON p.paperID = 
+===== ambiguous
+sp3213 college_1 | err: OperationalError: ambiguous column name: DEPT_CODE | sql: SELECT DEPT_CODE, COUNT(*) AS PROFESSOR_COUNT FROM PROFESSOR JOIN DEPARTMENT ON PROFESSOR.DEP_T_CODE = DEPARTMENT.DEP_T_CODE GROUP BY DEPT_CODE ORDER 
+sp2460 movie_1 | err: OperationalError: ambiguous column name: r.rID | sql: SELECT DISTINCT r.name FROM Reviewer r JOIN Rating r ON r.rID = rID WHERE r.ratingDate IS NULL
+sp3246 college_1 | err: OperationalError: ambiguous column name: STU_NUM | sql: SELECT DISTINCT STU_LNAME FROM STUDENT JOIN ENROLL ON STU_NUM = ENROLL.STU_NUM JOIN CLASS ON ENROLL.CLASS_CODE = CLASS.CLASS_CODE JOIN COURSE ON ENROL
+===== syntax
+sp6204 roller_coaster | err: OperationalError: near "ASC": syntax error | sql: SELECT "Roller_Coaster_ID", "Name", "Length" FROM "roller_coaster" WHERE "Length" ASC ORDER BY "Length" ASC
+sp1491 college_2 | err: OperationalError: near "higher": syntax error | sql: with a higher salary than any of the instructors in the Biology department, we need to:
+===== misuse
+sp3860 insurance_policies | err: OperationalError: misuse of aggregate function AVG() | sql: SELECT      c.Claim_ID,     c.Date_Claim_Made,     c.Date_Claim_Settled,     AVG(CASE WHEN c.Amount_Claimed > AVG(CASE WHEN c.Amount_Settled THEN c.Am
+
+[0.0 s]

@@ -1,0 +1,5 @@
+setC n 128 diff 0.062 se 0.036 w->r 15 r->w 7
+combined n 244 diff 0.061 se 0.026 z 2.37
+['model.language_model.layers.16.mlp.down_proj.weight', 'model.language_model.layers.18.mlp.down_proj.weight']
+
+[0.2 s]

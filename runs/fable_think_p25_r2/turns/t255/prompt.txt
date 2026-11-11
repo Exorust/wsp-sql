@@ -1,0 +1,13 @@
+<class 'dict'> ['pool', 'INSTR1', 'INSTR2']
+{'pool': ['sp2275', 'sp1149', 'sp6220', 'sp749', 'sp5684', 'sp386', 'sp6351', 'sp4615', 'sp4546', 'sp4112', 'sp4462', 'sp959', 'sp664', 'sp3027', 'sp1150', 'sp5040', 'sp513', 'sp2527', 'sp2535', 'sp5338', 'sp6948', 'sp1177', 'sp5818', 'sp215', 'sp4064', 'sp6767', 'sp6601', 'sp1791', 'sp6494', 'sp2816', 'sp2409', 'sp1666'], 'INSTR1': 'Keep the query as simple as possible: use only the tables and columns that are needed to answer the question, do not join other tables, and do not add DISTINCT, aliases, extra columns or extra conditions that the question does not ask for.', 'INSTR2': 'Make sure the query is valid SQLite and uses the exact table and column names from the schema.'}
+['type', 'model', 'texts', 'return'] {'token_logprobs': True, 'topk': 10, 'hidden_states': [10, 12, 14, 16, 18]}
+<|im_start|>user
+Database schema (SQLite):
+CREATE TABLE "entrepreneur" ( "Entrepreneur_ID" int, "People_ID" int, "Company" text, "Money_Requested" real, "Investor" text, PRIMARY KEY ("Entrepreneur_ID"), FOREIGN KEY ("People_ID") REFERENCES "people"("People_ID") )
+
+CREATE TABLE "people" ( "People_ID" int, "Name" text, "Height" real, "Weight" real, "Date_of_Birth" text, PRIMARY KEY ("People_ID") )
+Question: What are the names of entrepreneurs whose investor is not "Rachel Elnaugh"?
+Write one SQLite query that answers the question. Reply with the query in a ```sql code block.<|im_end|>
+<|im_start
+
+[0.0 s]

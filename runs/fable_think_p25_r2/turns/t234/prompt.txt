@@ -1,0 +1,7 @@
+prompt0 ntok 42 </think>\n\nˋˋˋsql\nSELECT \n    SUM(AMOUNT_CLAIMED) AS TOTAL_AMOUNT,\n    AVG(AMOUNT_CLAIMED) AS AVERAGE_AMOUNT\nFROM Claim_Headers;\nˋˋˋ
+prompt1 ntok 60 </think>\n\nˋˋˋsql\nSELECT DISTINCT\n    c.customer_id,\n    c.first_name,\n    c.last_name,\n    c.date_became_customer\nFROM Customers c\nWHERE c.first_name = 'Carole'\n  AND c.last_name = 'Bernhard';\nˋˋˋ
+PROMPT: ID INTEGER NOT NULL, Staff_ID INTEGER, PRIMARY KEY (Claim_Processing_ID), FOREIGN KEY (Claim_ID) REFERENCES Claim_Headers (Claim_Header_ID), FOREIGN KEY (Staff_ID) REFERENCES Staff (Staff_ID) )\nQuestion: What are the total amount and average amount paid in claim headers?\nHint: use the claim_headers table\nWrite one SQLite query that answers the question. Reply with the query in a ˋˋˋsql code block.
+PROMPT: cle_idˋ ) REFERENCES ˋVehiclesˋ(ˋvehicle_idˋ ), FOREIGN KEY (ˋstaff_idˋ ) REFERENCES ˋStaffˋ(ˋstaff_idˋ ), FOREIGN KEY (ˋcustomer_idˋ ) REFERENCES ˋCustomersˋ(ˋcustomer_idˋ ) )\nQuestion: When did customer with first name as Carole and last name as Bernhard became a customer?\nHint: use the Customers table\nWrite one SQLite query that answers the question. Reply with the query in a ˋˋˋsql code block.
+164
+
+[0.0 s]

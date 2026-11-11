@@ -1,0 +1,6 @@
+in-context INSTR1 gold lp gain 0.1049 se 0.0226
+divergence at 485 'es of entrepreneurs whose investor is not "Rachel Elnaugh"?\nWrite one SQLite query that answers the '
+'es of entrepreneurs whose investor is not "Rachel Elnaugh"?\nKeep the query as simple as possible: use only the tables and columns that are needed to answer the question, do not join other tables, and do not add DISTINCT, aliases, extra columns or extra conditi'
+neuron 643 L16 mean -0.092 std 0.11 frac<0 0.879
+
+[0.1 s]

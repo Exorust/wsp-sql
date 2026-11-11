@@ -1,0 +1,7 @@
+cands 2669 dbs 80
+n 110 total tokens 25108 max 288 chars 95463
+gold join share 0.2636363636363636 distinct 0.05454545454545454 where 0.39090909090909093
+105870
+est bytes 4.35 GB
+
+[0.0 s]

@@ -1,0 +1,7 @@
+input_layernorm mean 0.384 std 0.160 min -0.198 max 0.699
+post_attention_layernorm mean 0.182 std 0.039 min -0.096 max 0.340
+norm mean 3.309 std 0.669 min -0.777 max 5.312
+['model.language_model.layers.14.input_layernorm.weight', 'model.language_model.layers.14.linear_attn.A_log', 'model.language_model.layers.14.linear_attn.conv1d.weight', 'model.language_model.layers.14.linear_attn.dt_bias', 'model.language_model.layers.14.linear_attn.in_proj_a.weight', 'model.language_model.layers.14.linear_attn.in_proj_b.weight', 'model.language_model.layers.14.linear_attn.in_proj_qkv.weight', 'model.language_model.layers.14.linear_attn.in_proj_z.weight', 'model.language_model.layers.14.linear_attn.norm.weight', 'model.language_model.layers.14.linear_attn.out_proj.weight', 'model.language_model.layers.14.mlp.down_proj.weight', 'model.language_model.layers.14.mlp.gate_proj.weight', 'model.language_model.layers.14.mlp.up_proj.weight', 'model.language_model.layers.14.post_attention_layernorm.weight']
+
+[0.0 s]
+[code runs used: 220/300]

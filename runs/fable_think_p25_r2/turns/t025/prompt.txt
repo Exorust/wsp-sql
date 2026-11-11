@@ -1,0 +1,14 @@
+sp2265 prompt toks 155 total 8347
+ token period 89
+ loop start token (604, 693) answer tok 449
+sp5802 prompt toks 440 total 8632
+ token period 35
+ loop start token (1016, 1051) answer tok 576
+sp1037 prompt toks 264 total 8456
+ token period 86
+ loop start token (353, 454) answer tok 89
+sp5385 prompt toks 538 total 8730
+ token period 120
+ loop start token (910, 1144) answer tok 372
+
+[0.3 s]

@@ -8,7 +8,7 @@
 \newcommand{\think}{\texttt{</think>}}
 \newcommand{\Qwen}{Qwen3.5-0.8B}
 
-\title{A Bypass, Not a Repair:\\An Independent Test of Weight-Space Programming on a Text-to-SQL Loop}
+\title{When AI Debugs AI: Repair or Bypass?\\Separating Two Outcomes of Weight-Space Programming}
 \author{Chandrahas Aroori\\\small\texttt{chandrahas.aroori@gmail.com}}
 \date{November 2026 \quad (draft v0.1)}
 
@@ -16,17 +16,17 @@
 \maketitle
 
 \begin{abstract}
-``Weight-space programming'' is the claim that a frontier language model, given a small model's weights and a budget of forward passes, can locate the cause of a behaviour and remove it by writing a direct weight edit, with no training.
-The only published success is a loop fix in \Qwen{} on math.
-We test the claim in a new domain the editor had never seen: text-to-SQL, where the same model with thinking enabled loops on 91\% of questions.
-A Claude Fable 5.1 editor, given 25 forward passes and 300 code runs, produced three edits.
-The first two were built from measured, specific mechanistic hypotheses (induction heads; digit-suppressing neurons in the last layer) and failed on 40 and 48 fresh practice problems: the loop rate stayed at 100\%.
-The third succeeded: four neurons that fire only at the first thinking token, nudged by 4,083 weight entries toward the \think{} read-out direction, make the model close its thinking at once.
-On 150 held-out BIRD Mini-Dev questions the edit cuts the loop rate from 90.7\% to 26.0\% and raises execution accuracy from 0.7\% to 6.0\%; five random-location edits of the same size do nothing, and gradient descent restricted to the same 4,083 entries reaches the same behaviour by a different direction.
-But the same model with thinking disabled through its chat template scores 7.3\% with half as many cut answers.
-We argue that the method produced a bypass: an edit that stops the model entering the looping mode, not a repair of what sustains the loop. The two attempts at a repair, each stated with specific components and predicted effects, did not produce the predicted effects.
-We release the edit, all 328 turns, the harness and the evaluation.
-\todo{update when the second Fable run, the GPT-6 Astra runs and the ablation map are in}
+``Weight-space programming'' is the claim that a frontier language model, given a small model's weights and a budget of forward passes, can debug the small model: locate the cause of a behaviour and remove it by writing a direct weight edit, with no training.
+The only published success is a loop fix in \Qwen{} on math, and public replications agree that its gain comes from answers that now finish, not from new ability.
+We show that ``the loop is gone'' covers two different outcomes. In a \emph{repair} the model still reasons and its reasoning now ends. In a \emph{bypass} the model closes its thinking block before any reasoning, which the chat template already offers as a flag.
+One measurement separates them: the amount of text before the \think{} tag.
+We test the method on text-to-SQL, where the same model with thinking enabled loops on 91\% of questions, with Claude Fable 5.1 as the editor in two independent sessions of 25 forward passes and 300 code runs each.
+Both sessions removed the loop on 150 held-out BIRD Mini-Dev questions (loop rate 90.7\% to 26.0\% and 24.0\%; accuracy 0.7\% to 6.0\% and 5.3\%) by edits of 4,083 and 2,048 weight entries on different neurons. Random-location edits of the same size do nothing.
+Both edits are bypasses: 150 of 150 answers close thinking with zero reasoning, and neither beats the template flag (7.3\%). Gradient descent restricted to each footprint finds the same bypass.
+The first session's two attempts at a repair, each built from a measured mechanistic hypothesis, failed.
+The published math edit, applied to the same questions, is a repair: where it closes thinking, it does so after a median of 5,768 characters of reasoning.
+We release the edits, all turn logs, the harness and the evaluation.
+\todo{GPT-6 Astra runs and the ablation map}
 \end{abstract}
 
 \section{Introduction}
@@ -116,11 +116,15 @@ Fable edit C (this work), thinking on & 4,083 & 150 & \textbf{6.0} & 27.3 & 26.0
 Random location, same footprint, 5 draws & 4,083 & 5$\times$50 & 0.0 to 2.0 & 100 & 90 to 98 & \\
 Gradient descent on the same 4,083 entries & 4,083 & 150 & 4.7 & 30.7 & 29.3 & 7 / 1 \\
 \midrule
+Fable run 2 edit, thinking on & 2,048 & 150 & 5.3 & 25.3 & 24.0 & 8 / 1 \\
+Random location, run 2 footprint, 5 draws & 2,048 & 5$\times$50 & 0.0 to 4.0 & 94 to 100 & 86 to 96 & \\
+Gradient descent on the run 2 footprint & 2,048 & 150 & 7.3 & 29.3 & 29.3 & 11 / 1 \\
+\midrule
 Fable edit A (induction heads), practice & \todo{} & 40 & 0.0 & 100 & 100 & \\
 Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
 \bottomrule
 \end{tabular}}
-\caption{BIRD Mini-Dev, greedy, 8,192 new tokens unless stated, the same 150 evenly spaced questions in every 150-question row. ``Cut'' is the share of answers that hit the token limit; ``Loop'' the share with a visible repetition. The last column is the paired count of questions that changed outcome against the base model on the same questions. Edits A and B were only evaluated on practice questions inside the session. \todo{second Fable run and two Astra runs as further rows}}
+\caption{BIRD Mini-Dev, greedy, 8,192 new tokens unless stated, the same 150 evenly spaced questions in every 150-question row. ``Cut'' is the share of answers that hit the token limit; ``Loop'' the share with a visible repetition. The last column is the paired count of questions that changed outcome against the base model on the same questions. Edits A and B were only evaluated on practice questions inside the session. \todo{two Astra runs as further rows}}
 \label{tab:main}
 \end{table}
 
@@ -146,23 +150,51 @@ Fable edit B (digit neurons), practice & \todo{} & 48 & 2.1 & 100 & 100 & \\
 
 \section{Related work}
 
-Weight-space programming \cite{wsp} is the direct subject. Model editing with ROME and MEMIT \cite{rome} locates and rewrites factual associations with a closed-form update; activation steering \cite{steering} adds a direction to the residual stream at inference time rather than in the weights. Edit C is a weight-space form of steering at a single position, gated by neurons that detect that position. The induction-head hypothesis the editor tried first follows \cite{induction}; direct logit attribution follows the logit lens \cite{lens}. The evaluation of thinking-mode loops in small reasoning models, and the finding that ``no-think'' modes often match or beat them on small models, is documented in \cite{qwen35} and \todo{cite}.
+Weight-space programming \cite{wsp} is the direct subject. Model editing with ROME and MEMIT \cite{rome} locates and rewrites factual associations with a closed-form update; activation steering \cite{steering} adds a direction to the residual stream at inference time rather than in the weights. Edit C is a weight-space form of steering at a single position, gated by neurons that detect that position. The induction-head hypothesis the editor tried first follows \cite{induction}; direct logit attribution follows the logit lens \cite{lens}. The evaluation of thinking-mode loops in small reasoning models, and the finding that ``no-think'' modes often match or beat them on small models, is documented in \cite{qwen35}. Public replications of the report \cite{hedwig,coletti,shapor,chalmers} show that the base model with thinking off recovers most of the math gain, and one blind attempt with a Claude editor on math found no working edit \cite{chalmers}.
 
 \section{Limitations}
 
-One editor, one run, one domain, one model size. \todo{update after the repeat runs.} The held-out set is 150 questions, so accuracy differences of a few points are within noise; the loop and cut rates are not. The random-location rows use 50 questions each. Practice is Spider and the test is BIRD, a shift that explains part of the gap between the 28\% practice accuracy and the 6\% test accuracy. The harness is a re-implementation from the report's released prompts and logs, not the authors' code. Greedy decoding differs from the report's sampling protocol; we chose it so that paired comparisons are exact. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the session; the trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
+One editor, two runs, one domain, one model size. The repair reading of the math edit rests on 22 SQL answers here and on other groups' math numbers; we have not rerun it on math. The held-out set is 150 questions, so accuracy differences of a few points are within noise; the loop and cut rates are not. The random-location rows use 50 questions each. Practice is Spider and the test is BIRD, a shift that explains part of the gap between the 28\% practice accuracy and the 6\% test accuracy. The harness is a re-implementation from the report's released prompts and logs, not the authors' code. Greedy decoding differs from the report's sampling protocol; we chose it so that paired comparisons are exact. The editor is a Claude model and this paper was drafted with help from the same model family; the harness, controls and numbers are released so that the reader does not need to trust either. The editor may know the report, which was public before the session; the trace shows it rediscovered layer 15 head 7 from attention data and that this did not help, but we cannot exclude that prior knowledge shaped its search.
+
+\paragraph{A second session converges on the bypass, not on the neurons.} A second Fable session, with a fresh conversation and no shared notes, also concluded that the loop could not be removed at one site and also went for the entry into thinking. It replaced the output column of one neuron, layer 18 neuron 2800, which fires only at the first thinking position, with a direction that drives \think{}, and wrote a constant steering direction (the residual-stream difference induced by an in-context instruction to keep the query simple) into layer 16 neuron 3, which fires on every token. On 192 fresh practice problems: 1.6\% to 28.1\%, 51 wrong to right, 0 right to wrong. On BIRD: 5.3\% correct, 25.3\% cut, 24.0\% looping. None of its neurons is one of the first session's four. Random-location draws do nothing, and gradient descent on its 2,048 entries again produces the bypass (7.3\%, every answer opening with \think{}).
+
+\subsection{Separating repair from bypass}\label{sec:sep}
+
+\begin{table}[tbp]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Condition (thinking on, 150 questions) & Closes thinking & With zero reasoning & Median chars before \think{} \\
+\midrule
+Base & 2 & 0 & 3,092 \\
+Authors' math edit \cite{wsp} & 22 & 0 & 5,768 \\
+Fable run 1 edit & 150 & 150 & 0 \\
+Fable run 2 edit & 150 & 150 & 0 \\
+Gradient descent, run 1 footprint & 150 & 150 & 0 \\
+Gradient descent, run 2 footprint & 150 & 150 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{How each edit makes the loop go away. ``Closes thinking'' counts answers that contain \think{}; the median is over those answers.}
+\label{tab:sep}
+\end{table}
+
+Table~\ref{tab:sep} is the measurement the title refers to. An edit that repairs the loop leaves reasoning in place and lets it end; an edit that bypasses it removes the reasoning. The count of characters before \think{} tells them apart at no extra cost, from outputs every evaluation already has. The authors' math edit, which was not written for SQL and helps little here, is nonetheless of the first kind: all 22 answers that close thinking do so after real reasoning. All four edits found on SQL, two by a frontier editor and two by gradient descent, are of the second kind. A second signature follows from the definition: a bypass cannot beat the template flag it imitates, while a repair can. Independent evaluations of the math edit report exactly that on MATH-500, 50.2\% edited with thinking on against 45.8\% for the base model with thinking off \cite{coletti}, and the same evaluations and others \cite{hedwig,shapor,chalmers} establish that the gain over the thinking-on baseline comes from answers that finish. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
 
 \section{Conclusion}
 
-A frontier editor given weights, activations and 25 forward passes removed a thinking loop in \Qwen{} on text-to-SQL by editing 4,083 entries, and the edit transfers to a held-out benchmark. Its two attempts at a mechanistic repair, each stated with specifics and tested, failed. What succeeded is a bypass equal in effect to disabling thinking in the chat template. The method finds levers; whether it finds mechanisms is, on this evidence, not yet shown. Next: a second Fable session and two GPT-6 Astra sessions, to measure whether editors converge on the same lever; an ablation map over every attention head and every 64-column MLP block, to test whether any single site repairs the loop; and the three controls of this paper applied to the report's own math edit.
+When one model debugs another by editing its weights, a loop that disappears can mean two things, and the difference is measurable from the outputs alone. On text-to-SQL, two independent frontier-editor sessions and two gradient baselines all produced a bypass, equal in effect to disabling thinking in the chat template; two attempts at a mechanistic repair failed. The published math edit is a repair by the same measurement. Whether the difference comes from the editor or from the task is open. Next: two GPT-6 Astra sessions on SQL, which hold the task fixed and change the editor; an ablation map over every attention head and every 64-column MLP block, to test whether any single site repairs the SQL loop; and the controls of this paper applied to the math edit on math.
 
 \section*{Reproduction}
 
-Edit files, the 328 turn logs, the editor's notes, the harness and the evaluation scripts are at \todo{repository URL}. The edit is four \texttt{.npy} files totalling 16~KB; applying it to the public checkpoint and running \texttt{eval\_sql.py} on BIRD Mini-Dev reproduces Table~\ref{tab:main} in about 20 minutes on an Apple M-series laptop.
+Edit files, the 328 turn logs, the editor's notes, the harness and the evaluation scripts are at \url{https://github.com/Exorust/wsp-sql}. The edit is four \texttt{.npy} files totalling 16~KB; applying it to the public checkpoint and running \texttt{eval\_sql.py} on BIRD Mini-Dev reproduces Table~\ref{tab:main} in about 20 minutes on an Apple M-series laptop.
 
 \begin{thebibliography}{9}
 \bibitem{wsp} R.\ Takehi, J.\ Teoh, Y.\ Zhang, O.\ Khattab. Sparks of Weight-Space Programming: LLMs can understand and write neural network weights. MIT CSAIL, 2 November 2026. \todo{URL}
 \bibitem{qwen35} Qwen Team. Qwen3.5 technical report, 2026. \todo{exact reference}
+\bibitem{hedwig} Hedwig AI. Does a weight edit teach Qwen3.5-0.8B math, or stop it looping? November 2026. \url{https://www.hedwigai.com/blog/weight-edit-math-or-loops}
+\bibitem{coletti} JonathanColetti (Hugging Face user). Qwen3.5-0.8B-Astra-WeightEdit, model card with independent benchmark. Hugging Face, November 2026.
+\bibitem{shapor} shapor (GitHub user). weight-space-experiments. GitHub, November 2026. \url{https://github.com/shapor/weight-space-experiments}
+\bibitem{chalmers} kyle-chalmers (GitHub user). weight-space-programming. GitHub, November 2026. \url{https://github.com/kyle-chalmers/weight-space-programming}
 \bibitem{bird} J.\ Li et al. Can LLM already serve as a database interface? A big bench for large-scale database grounded text-to-SQLs. NeurIPS 2023.
 \bibitem{spider} T.\ Yu et al. Spider: a large-scale human-labeled dataset for complex and cross-domain semantic parsing and text-to-SQL task. EMNLP 2018.
 \bibitem{induction} C.\ Olsson et al. In-context learning and induction heads. Transformer Circuits Thread, 2022.

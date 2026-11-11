@@ -1,0 +1,38 @@
+{
+ "pass_id": 2,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 2,
+ "lengths": [
+  900,
+  1250
+ ],
+ "max_len": 1250,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L0.npy [N,T,1024] float16",
+  "hidden_L3.npy [N,T,1024] float16",
+  "hidden_L7.npy [N,T,1024] float16",
+  "hidden_L11.npy [N,T,1024] float16",
+  "hidden_L15.npy [N,T,1024] float16",
+  "hidden_L19.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "hidden_L24.npy [N,T,1024] float16",
+  "attn_L3_text0.npy [heads,T,T]",
+  "attn_L3_text1.npy [heads,T,T]",
+  "attn_L7_text0.npy [heads,T,T]",
+  "attn_L7_text1.npy [heads,T,T]",
+  "attn_L11_text0.npy [heads,T,T]",
+  "attn_L11_text1.npy [heads,T,T]",
+  "attn_L15_text0.npy [heads,T,T]",
+  "attn_L15_text1.npy [heads,T,T]",
+  "attn_L19_text0.npy [heads,T,T]",
+  "attn_L19_text1.npy [heads,T,T]",
+  "attn_L23_text0.npy [heads,T,T]",
+  "attn_L23_text1.npy [heads,T,T]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_2",
+ "seconds": 4
+}

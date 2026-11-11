@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 45, in _run
+  File "<cell>", line 10, in <module>
+  File "<cell>", line 6, in my_sql_span
+StopIteration
+
+[0.0 s]

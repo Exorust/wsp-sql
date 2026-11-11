@@ -1,0 +1,21 @@
+n 113
+join      pred mean 0.80 gold mean 0.44 | pred>gold  39  pred<gold  13 | among wrong: pred>gold  33 pred<gold  11
+distinct  pred mean 0.31 gold mean 0.10 | pred>gold  25  pred<gold   1 | among wrong: pred>gold  22 pred<gold   1
+group     pred mean 0.25 gold mean 0.23 | pred>gold   7  pred<gold   5 | among wrong: pred>gold   7 pred<gold   5
+where     pred mean 0.71 gold mean 0.49 | pred>gold  27  pred<gold   2 | among wrong: pred>gold  24 pred<gold   1
+notnull   pred mean 0.09 gold mean 0.00 | pred>gold  10  pred<gold   0 | among wrong: pred>gold  10 pred<gold   0
+ncols     pred mean 1.85 gold mean 1.42 | pred>gold  16  pred<gold   6 | among wrong: pred>gold  16 pred<gold   6
+star      pred mean 0.02 gold mean 0.03 | pred>gold   1  pred<gold   2 | among wrong: pred>gold   1 pred<gold   2
+limit     pred mean 0.09 gold mean 0.12 | pred>gold   0  pred<gold   3 | among wrong: pred>gold   0 pred<gold   3
+order     pred mean 0.27 gold mean 0.23 | pred>gold   7  pred<gold   2 | among wrong: pred>gold   6 pred<gold   2
+sub       pred mean 0.11 gold mean 0.06 | pred>gold   9  pred<gold   4 | among wrong: pred>gold   9 pred<gold   4
+having    pred mean 0.08 gold mean 0.06 | pred>gold   5  pred<gold   3 | among wrong: pred>gold   5 pred<gold   3
+setop     pred mean 0.00 gold mean 0.07 | pred>gold   0  pred<gold   8 | among wrong: pred>gold   0 pred<gold   7
+eq1       pred mean 0.08 gold mean 0.01 | pred>gold   8  pred<gold   0 | among wrong: pred>gold   6 pred<gold   0
+            mean  count
+join_g                 
+0       0.386667     75
+1       0.192308     26
+2       0.000000     12
+
+[0.0 s]

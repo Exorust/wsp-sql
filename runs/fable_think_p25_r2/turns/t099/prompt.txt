@@ -1,0 +1,6 @@
+<class 'list'> (12, {'pid': 'sp5345', 'pl': 154, 'start': 355, 'P': 23, 'n': 424})
+['type', 'model', 'texts', 'return'] None
+(12, 706, 10)
+
+[0.0 s]
+[code runs used: 90/300]

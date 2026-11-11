@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Bypass, Not a Repair</title>
+<title>When AI Debugs AI</title>
 <meta name="description" content="A frontier model was asked to fix a small model's weights by hand. It found a bypass. An independent test of weight-space programming on a text-to-SQL loop.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -90,8 +90,8 @@ tr.hl td{background:var(--escapesoft)}
 <body>
 
 <header class="hero"><div class="wrap">
-  <h1>A bypass, not a repair.</h1>
-  <p class="lede">I gave a frontier model the raw weights of a small model and 25 forward passes, and asked it to fix a bug the small model has. It fixed the bug. It did not fix it the way the method claims.</p>
+  <h1>When AI debugs AI: repair or bypass?</h1>
+  <p class="lede">I gave a frontier model the raw weights of a small model and 25 forward passes, and asked it to fix a bug the small model has. The bug went away. But a bug can go away in two different ways, and one measurement tells them apart.</p>
   <div class="termwrap"><div class="term" id="term" aria-live="off"><span id="termtext"></span><span class="cursor"></span></div><div class="fade"></div></div>
   <div class="controls">
     <button id="btnOrig" aria-pressed="true">Original weights</button>
@@ -158,16 +158,31 @@ tr.hl td{background:var(--escapesoft)}
 </div></section>
 
 <section><div class="wrap reveal">
+  <h2>Two ways a bug can go away</h2>
+  <p>The model writes its reasoning between a <code>&lt;think&gt;</code> tag and a <code>&lt;/think&gt;</code> tag. An edit can stop the loop by fixing the reasoning so that it ends, which is a repair. Or it can make the model write <code>&lt;/think&gt;</code> at once and skip reasoning, which is a bypass. One count tells them apart: how much text comes before the closing tag.</p>
+  <table style="width:100%;border-collapse:collapse;font-family:var(--mono,monospace);font-size:.92rem;margin:18px 0">
+    <tr style="text-align:left;border-bottom:1px solid currentColor"><th style="padding:6px 8px 6px 0">Same 150 questions</th><th style="padding:6px 8px">Closes thinking</th><th style="padding:6px 8px">With zero reasoning</th><th style="padding:6px 0 6px 8px">Median characters of reasoning</th></tr>
+    <tr><td style="padding:6px 8px 6px 0">Original model</td><td style="padding:6px 8px">2</td><td style="padding:6px 8px">0</td><td style="padding:6px 0 6px 8px">3,092</td></tr>
+    <tr><td style="padding:6px 8px 6px 0">MIT report's math edit</td><td style="padding:6px 8px">22</td><td style="padding:6px 8px">0</td><td style="padding:6px 0 6px 8px">5,768</td></tr>
+    <tr><td style="padding:6px 8px 6px 0">Fable session 1 edit</td><td style="padding:6px 8px">150</td><td style="padding:6px 8px">150</td><td style="padding:6px 0 6px 8px">0</td></tr>
+    <tr><td style="padding:6px 8px 6px 0">Fable session 2 edit</td><td style="padding:6px 8px">150</td><td style="padding:6px 8px">150</td><td style="padding:6px 0 6px 8px">0</td></tr>
+    <tr><td style="padding:6px 8px 6px 0">Gradient descent, either footprint</td><td style="padding:6px 8px">150</td><td style="padding:6px 8px">150</td><td style="padding:6px 0 6px 8px">0</td></tr>
+  </table>
+  <p>The report's math edit was not written for SQL and helps little here, but where it works the model still reasons. That is a repair. Every edit found on SQL skips reasoning. Those are bypasses, and none of them beats the template flag that does the same thing.</p>
+  <p><strong>A second session agreed.</strong> A second Fable session, with no shared notes, reached the same strategy through different neurons: one neuron in layer 18 that fires only at the first thinking position, plus a steering direction written into layer 16. On the held-out questions: 5.3% correct, 24.0% looping. Session 1 gave 6.0% and 26.0%.</p>
+</div></section>
+
+<section><div class="wrap reveal">
   <h2>What this says</h2>
   <p>The method works in the sense that matters for the report: the editor read activations, found a handle, and wrote a change that fixed the behaviour on held-out data, with 4,083 entries and no gradient. The random-location control says it was not luck.</p>
   <p>But twice the editor produced a specific, measured, mechanistic explanation of the loop, with heads, neurons and effect sizes, and a precise edit that followed from it. Twice the edit did nothing. The explanation that worked was not about the loop; it was about the gate into the mode that loops. The editor did not repair the loop. It routed around it, and said so: "skip the degenerate Thinking Process loop and answer directly".</p>
-  <p>So "a frontier model can understand why a small model misbehaves and fix the cause" is not shown here. "A frontier model can find a small lever that changes the behaviour" is. The same question applies to the report's math result, and the controls that answer it are cheap.</p>
+  <p>So "a frontier model can understand why a small model misbehaves and fix the cause" is not shown here. "A frontier model can find a small lever that changes the behaviour" is. The report's math edit, by the measurement above, is a repair. So the open question is what made the difference: the editor, or the task.</p>
   <h3 style="margin-top:28px">Next</h3>
-  <p>A second Fable run. Two runs with GPT-6 Astra, the report's own editor. And an ablation map, switching off every attention head and every block of MLP neurons one at a time, to learn whether a single-site repair exists at all.</p>
+  <p>Two runs with GPT-6 Astra, the report's own editor, on the same SQL task. And an ablation map, switching off every attention head and every block of MLP neurons one at a time, to learn whether a single-site repair exists at all.</p>
 </div></section>
 
 <footer class="foot"><div class="wrap">
-  <p>Everything is released: the 19 KB edit file, all 328 turns, the editor's notes, the harness, and the evaluation scripts. Applying the edit and rerunning the BIRD numbers takes about 20 minutes on a laptop.</p>
+  <p>Everything is released: both edit files, 19 KB and 10 KB, every turn of both sessions, the editor's notes, the harness, and the evaluation scripts. Applying the edit and rerunning the BIRD numbers takes about 20 minutes on a laptop.</p>
   <p><a id="repo" href="https://github.com/Exorust/wsp-sql">Code and logs on GitHub</a> · <a id="arxiv" href="#">Paper (arXiv, pending)</a> · Chandrahas Aroori, November 2026.</p>
 </div></footer>
 

@@ -1,0 +1,4 @@
+rel err of final-norm reconstruction: median 0.0034 max 0.0047
+w-only convention err 0.2375
+
+[0.0 s]

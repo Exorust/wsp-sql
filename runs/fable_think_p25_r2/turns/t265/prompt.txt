@@ -1,0 +1,39 @@
+Counter({'join_extra': 20, 'distinct_extra': 17, 'more_cols': 11, 'join_missing': 5, 'groupby_extra': 5, 'orderby_extra': 5, 'fewer_cols': 5, 'groupby_missing': 4, 'limit_missing': 3, 'sub_missing': 3, 'orderby_missing': 2, 'distinct_missing': 1, 'sub_extra': 1, 'limit_extra': 0})
+--- sp2265 entrepreneur
+ SQL : SELECT e.Company, e.Money_Requested FROM "entrepreneur" e JOIN "people" p ON e.People_ID = p.People_ID ORDER BY e.Money_Requested DESC
+ GOLD: SELECT Company FROM entrepreneur ORDER BY Money_Requested DESC
+--- sp5385 tracking_software_problems
+ SQL : SELECT DISTINCT p.problem_id FROM Problems p JOIN Staff s ON p.reported_by_staff_id = s.staff_id WHERE s.staff_first_name = 'Dameon' OR s.staff_last_name = 'Frami'   OR s.staff_first_name = 'Jolie' OR
+ GOLD: SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last_name = "Frami" UNION SELECT product_id FROM probl
+--- sp5802 customer_complaints
+ SQL : SELECT last_name FROM Staff WHERE staff_id = (     SELECT staff_id     FROM Complaints     WHERE complaint_outcome_code = 'FIRST'     AND complaint_status_code = 'FIRST'     AND complaint_type_code = 
+ GOLD: SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id ORDER BY t2.date_complaint_raised LIMIT 1
+--- sp6007 game_1
+ SQL : SELECT COUNT(*)  FROM Plays_Games  WHERE GameID NOT IN (SELECT GameID FROM Video_Games)
+ GOLD: SELECT sum(gamesplayed) FROM Sportsinfo
+--- sp2042 party_people
+ SQL : SELECT DISTINCT r.Region_name FROM region r JOIN party p ON r.Region_ID = p.Region_ID JOIN member m ON p.Party_ID = m.Party_ID WHERE r.Region_name IS NOT NULL ORDER BY r.Region_name
+ GOLD: SELECT DISTINCT region_name FROM region ORDER BY Label
+--- sp205 bike_1
+ SQL : SELECT DISTINCT trip.zip_code FROM trip WHERE trip.duration > 0   AND trip.start_station_name IS NOT NULL   AND trip.end_station_name IS NOT NULL   AND trip.start_date IS NOT NULL   AND trip.end_date 
+ GOLD: SELECT zip_code FROM weather GROUP BY zip_code HAVING avg(mean_humidity)  <  70 INTERSECT SELECT zip_code FROM trip GROUP BY zip_code HAVING count(*)  >=  100
+--- sp6700 driving_school
+ SQL : SELECT DISTINCT l.lesson_id FROM Lessons l JOIN Staff s ON l.staff_id = s.staff_id JOIN Customers c ON l.customer_id = c.customer_id WHERE s.nickname LIKE '%s'   AND s.first_name = 'Janessa'   AND s.l
+ GOLD: SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LIKE "%s%";
+--- sp3302 college_1
+ SQL : SELECT      s.STU_LNAME,     s.STU_GPA,     AVG(s.STU_GPA) AS AVG_GPA FROM STUDENT s WHERE s.STU_GPA < (SELECT AVG(s2.STU_GPA) FROM STUDENT s2) GROUP BY s.STU_LNAME, s.STU_GPA HAVING s.STU_GPA < (SELE
+ GOLD: SELECT stu_fname ,  stu_gpa FROM student WHERE stu_gpa  <  (SELECT avg(stu_gpa) FROM student)
+--- sp1120 climbing
+ SQL : SELECT DISTINCT m.Name FROM "mountain" m JOIN "climber" c ON m.Mountain_ID = c.Mountain_ID ORDER BY m.Name ASC
+ GOLD: SELECT Name FROM mountain ORDER BY Name ASC
+--- sp6480 scientist_1
+ SQL : SELECT * FROM Projects GROUP BY Code ORDER BY Hours DESC LIMIT 1
+ GOLD: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+--- sp4545 company_office
+ SQL : SELECT c.name FROM Companies c JOIN Office_locations ol ON c.id = ol.company_id JOIN Buildings b ON ol.building_id = b.id WHERE c.market_value_billion IS NOT NULL ORDER BY c.market_value_billion DESC
+ GOLD: SELECT name FROM Companies ORDER BY Market_Value_billion DESC
+--- sp6151 music_4
+ SQL : SELECT DISTINCT "Famous_Release_date" FROM "music_festival" WHERE "Volume" IS NOT NULL AND "Result" = 'Success'
+ GOLD: SELECT distinct(Famous_Release_date) FROM artist
+
+[0.0 s]

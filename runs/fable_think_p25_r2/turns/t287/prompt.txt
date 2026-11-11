@@ -1,0 +1,10 @@
+plain sql -27.10  sel_gold -4.87 sel_dist -4.71 from_gold -2.06 think -0.000 first_sql -0.03  DISTINCT-top1 7  alias-top1 11
+instr1 sql -57.74  sel_gold -2.07 sel_dist -15.00 from_gold -3.64 think -2.108 first_sql -10.05  DISTINCT-top1 0  alias-top1 10
+steer3 sql -26.26  sel_gold -4.59 sel_dist -5.27 from_gold -2.01 think -0.000 first_sql -0.03  DISTINCT-top1 5  alias-top1 8
+per-problem sql delta steer3-plain: [-0.3  1.8  0.4  0.5  0.7  1.8  0.5 -0.2  1.7  0.8  0.3  1.3  0.5  0.4  0.9  0.9  0.7  1.6  2.4  0.7  1.7  1.1  1.4  1.6 -0.2  0.9  0.4 -1.   0.3
+  1.2  1.   1.3]
+from_top plain : ['T', 'm', 'WHERE', '', 'WHERE', '', 'T', '_en', 'WHERE', '', '', 'm', '', '', 'WHERE', 'T', 'T', 'ORDER', 'WHERE', 'WHERE', '']
+from_top steer3: ['T', 'm', 'WHERE', 'ORDER', 'WHERE', '', 'T', 'WHERE', 'WHERE', '', '', 'm', 'WHERE', ';', 'WHERE', 'T', 'T', 'ORDER', 'WHERE', 'WHERE', 'WHERE']
+sel_top steer3: ['"', 'm', 'COUNT', '"', 'COUNT', 'fl', '"', 'DISTINCT', 'c', 'COUNT', 'p', 'COUNT', 'DISTINCT', 'COUNT', 'COUNT', 'c', 'All', 'm', '"', 'p', 'AVG', 'MIN', 'DISTINCT', '"', '"', 'COUNT', 'DISTINCT', '*', 'Name', 'DISTINCT', 'AVG', 'e']
+
+[0.1 s]

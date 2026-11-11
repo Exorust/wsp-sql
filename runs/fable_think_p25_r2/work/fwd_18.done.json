@@ -1,0 +1,26 @@
+{
+ "pass_id": 18,
+ "type": "generate",
+ "model": "edited",
+ "max_tokens": 2048,
+ "summary": {
+  "n": 128,
+  "accuracy": 0.2812,
+  "mean_tokens": 224.3,
+  "cut_at_max_tokens": 0.0938,
+  "looping": 0.0859,
+  "failures": {
+   "wrong_result": 52,
+   "no_such_column": 26,
+   "other_error": 8,
+   "syntax": 2,
+   "ambiguous": 2,
+   "no_such_table": 1,
+   "misuse": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_18.jsonl"
+ ],
+ "seconds": 256
+}

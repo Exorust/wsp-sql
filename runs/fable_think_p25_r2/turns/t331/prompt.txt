@@ -1,0 +1,48 @@
+{
+ "pass_id": 24,
+ "type": "generate",
+ "model": "both",
+ "max_tokens": 8192,
+ "original": {
+  "n": 64,
+  "accuracy": 0.0156,
+  "mean_tokens": 8084.0,
+  "cut_at_max_tokens": 0.9844,
+  "looping": 0.9531,
+  "failures": {
+   "syntax": 61,
+   "cut_no_sql": 1,
+   "other_error": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_24_original.jsonl",
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_24_edited.jsonl"
+ ],
+ "edited": {
+  "n": 64,
+  "accuracy": 0.3281,
+  "mean_tokens": 551.7,
+  "cut_at_max_tokens": 0.0625,
+  "looping": 0.0469,
+  "failures": {
+   "wrong_result": 27,
+   "no_such_column": 11,
+   "other_error": 3,
+   "no_such_table": 2
+  }
+ },
+ "paired": {
+  "n": 64,
+  "acc_diff_edited_minus_original": 0.3125,
+  "standard_error": 0.0584,
+  "wrong_to_right": 20,
+  "right_to_wrong": 0
+ },
+ "edited_tensors": [
+  "model.language_model.layers.16.mlp.down_proj.weight",
+  "model.language_model.layers.18.mlp.down_proj.weight"
+ ],
+ "seconds": 1533
+}
+[forward passes used: 24/25]

@@ -1,0 +1,19 @@
+</think> ids [248069] think ids [248068] NL [198] [271]
+0 pos 209 edited lp(</think>)=-0.00 orig lp(</think>)=-7.057893 | mean lp after: ed -0.903 orig -0.881
+   edited top5 ids [271, 198, 1358, 4558, 71093] [-0.0, -8.75, -12.4399995803833, -13.130000114440918, -13.380000114440918]
+1 pos 199 edited lp(</think>)=-0.00 orig lp(</think>)=-6.6758466 | mean lp after: ed -1.908 orig -1.856
+   edited top5 ids [271, 198, 1358, 71093, 4558] [-0.0, -10.0, -13.0, -13.5, -13.75]
+2 pos 166 edited lp(</think>)=-0.00 orig lp(</think>)=-6.3015594 | mean lp after: ed -0.903 orig -0.888
+   edited top5 ids [271, 198, 1358, 71093, 4558] [-0.0, -10.0, -12.6899995803833, -12.6899995803833, -13.0600004196167]
+3 pos 190 edited lp(</think>)=-0.00 orig lp(</think>)=-7.038284 | mean lp after: ed -2.359 orig -2.286
+   edited top5 ids [271, 198, 1358, 4558, 71093] [-0.0, -9.630000114440918, -12.5600004196167, -13.380000114440918, -14.1899995803833]
+4 pos 718 edited lp(</think>)=-0.00 orig lp(</think>)=NA | mean lp after: ed -0.766 orig nan
+   edited top5 ids [271, 198, 1358, 4558, 71093] [-0.0, -9.130000114440918, -12.4399995803833, -13.0600004196167, -13.3100004196167]
+5 pos 642 edited lp(</think>)=-0.00 orig lp(</think>)=NA | mean lp after: ed -1.585 orig nan
+   edited top5 ids [271, 198, 1358, 4558, 71093] [-0.0, -9.5, -12.3100004196167, -12.9399995803833, -13.6899995803833]
+6 pos 459 edited lp(</think>)=-0.00 orig lp(</think>)=NA | mean lp after: ed -1.755 orig nan
+   edited top5 ids [271, 198, 1358, 4558, 71093] [-0.0, -10.630000114440918, -12.6899995803833, -13.380000114440918, -13.5]
+7 pos 347 edited lp(</think>)=-0.00 orig lp(</think>)=NA | mean lp after: ed -1.212 orig nan
+   edited top5 ids [271, 198, 1358, 4558, 71093] [-0.0, -9.880000114440918, -13.0, -13.5600004196167, -14.0]
+
+[0.0 s]

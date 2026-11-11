@@ -1,0 +1,8 @@
+{10: (64, 304, 1024), 12: (64, 304, 1024), 14: (64, 304, 1024), 16: (64, 304, 1024), 18: (64, 304, 1024)}
+L10: resid RMS 0.062 | |mean dsel| 0.250 |mean dall| 0.096 |mean dpre| 0.114 | cos(sel,all) 0.59 cos(sel,pre) 0.29 | per-problem cos to mean 0.94
+L12: resid RMS 0.063 | |mean dsel| 0.235 |mean dall| 0.112 |mean dpre| 0.189 | cos(sel,all) 0.69 cos(sel,pre) 0.44 | per-problem cos to mean 0.91
+L14: resid RMS 0.082 | |mean dsel| 0.457 |mean dall| 0.202 |mean dpre| 0.259 | cos(sel,all) 0.72 cos(sel,pre) 0.48 | per-problem cos to mean 0.92
+L16: resid RMS 0.115 | |mean dsel| 0.491 |mean dall| 0.228 |mean dpre| 0.331 | cos(sel,all) 0.66 cos(sel,pre) 0.38 | per-problem cos to mean 0.86
+L18: resid RMS 0.159 | |mean dsel| 0.598 |mean dall| 0.282 |mean dpre| 0.421 | cos(sel,all) 0.63 cos(sel,pre) 0.31 | per-problem cos to mean 0.83
+
+[0.5 s]

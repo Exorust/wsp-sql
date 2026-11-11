@@ -1,0 +1,7 @@
+['resid_last_prompt.npy', 'resid_answer_mean.npy', 'index.json', 'mlp_down_in_answer_mean.npy']
+{'layers': (25, [0, 1, 2]), 'files': (3, ['mlp_down_in_answer_mean.npy', 'resid_answer_mean.npy', 'resid_last_prompt.npy']), 'shape_note': '[n_items, n_layers, dim]; layers index 0 = embeddings', 'samples': (128, [{'id': 'sp1037', 'cls': 'syntax', 'correct': False, 'n_answer_tokens': 2048}, {'id': 'sp2265', 'cls': 'syntax', 'correct': False, 'n_answer_tokens': 2048}, {'id': 'sp5385', 'cls': 'syntax', 'correct': False, 'n_answer_tokens': 2048}])}
+resid_last_prompt.npy (128, 25, 1024) float16
+resid_answer_mean.npy (128, 25, 1024) float16
+mlp_down_in_answer_mean.npy (128, 25, 3584) float16
+
+[0.0 s]

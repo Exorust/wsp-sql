@@ -1,0 +1,8 @@
+{10: (64, 304, 1024), 12: (64, 304, 1024), 14: (64, 304, 1024), 16: (64, 304, 1024), 18: (64, 304, 1024)}
+L10: resid norm 2.03, mean diff norm 0.100, per-problem diff norm 0.119, cos(problem diff, mean) 0.84 min 0.69
+L12: resid norm 2.04, mean diff norm 0.112, per-problem diff norm 0.135, cos(problem diff, mean) 0.83 min 0.72
+L14: resid norm 2.66, mean diff norm 0.206, per-problem diff norm 0.236, cos(problem diff, mean) 0.87 min 0.82
+L16: resid norm 3.69, mean diff norm 0.229, per-problem diff norm 0.273, cos(problem diff, mean) 0.84 min 0.78
+L18: resid norm 5.09, mean diff norm 0.282, per-problem diff norm 0.342, cos(problem diff, mean) 0.83 min 0.75
+
+[0.1 s]

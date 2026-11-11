@@ -1,0 +1,7 @@
+L16 A (fwd_14): gain +0.0591 se 0.0113
+L16 B (fwd_15): gain +0.0987 se 0.0242
+L14 steer (fwd_22): gain +0.0530 se 0.0398
+INSTR1 in-context: gain +0.0749 se 0.0309
+len check [161, 172, 158] [161, 172, 158]
+
+[0.0 s]

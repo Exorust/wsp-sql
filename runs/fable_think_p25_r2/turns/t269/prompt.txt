@@ -1,0 +1,4 @@
+correct n 34 distinct_extra 3 join_extra 4 distinct_only_diff 2
+wrong_result n 50 distinct_extra 17 join_extra 20 distinct_only_diff 6
+
+[0.0 s]

@@ -1,0 +1,3 @@
+end|>\n<|im_start|>assistant\n<think>\n</think>\n\n\u0060\u0060\u0060sql\nSELECT theme ,  YEAR FROM exhibition WHERE ticket_price  <  15\n\u0060\u0060\u0060<|im_end|>"], "return": {"token_logprobs": true, "topk": 10}}
+
+[0.0 s]

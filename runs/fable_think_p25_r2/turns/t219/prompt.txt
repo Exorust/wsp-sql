@@ -1,0 +1,7 @@
+{'pass_id': 12, 'type': 'teacher_forced', 'model': 'edited', 'n_texts': 36, 'lengths': '[252, 189, 248, 329, 295, 222, 284, 255, 214, 289, 309, 303, 279, 281, 190, 307, 256, 271, 233, 211, 247, 290, 217, 209, 208, 208, 251, 145, 301, 275, 188, 234, 330, 194, 259, 241]', 'max_len': 330, 'files': "['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]', 'hidden_L0.npy [N,T,1024] float16', 'hidden_L1.npy [N,T,1024] float16', 'hidden_L2.npy [", 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_12', 'seconds': 13}
+(36, 330) (36, 330, 20)
+36
+252 252
+
+[0.0 s]
+[code runs used: 200/300]

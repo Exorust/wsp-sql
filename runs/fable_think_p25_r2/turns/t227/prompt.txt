@@ -1,0 +1,10 @@
+['T1', 'sp2548'] SQLtoks 7 mean lp -0.709 sum -4.96  first-SQL-token lp -0.14
+['T2', 'sp2548'] SQLtoks 7 mean lp -0.496 sum -3.47  first-SQL-token lp -0.16
+['T1', 'sp5827'] SQLtoks 6 mean lp -0.662 sum -3.97  first-SQL-token lp -1.54
+['T2', 'sp5827'] SQLtoks 6 mean lp -0.623 sum -3.74  first-SQL-token lp -1.71
+['T1', 'sp4000'] SQLtoks 5 mean lp -0.992 sum -4.96  first-SQL-token lp -0.02
+['T2', 'sp4000'] SQLtoks 5 mean lp -0.719 sum -3.60  first-SQL-token lp -0.01
+['T1', 'sp5818'] SQLtoks 3 mean lp -1.349 sum -4.05  first-SQL-token lp -2.07
+['T2', 'sp5818'] SQLtoks 3 mean lp -1.264 sum -3.79  first-SQL-token lp -2.04
+
+[0.0 s]

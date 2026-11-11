@@ -1,0 +1,13 @@
+gen11_req.json 0.005 MB
+gen7_req.json 0.001 MB
+tf10_req.json 0.013 MB
+tf12_req.json 0.036 MB
+tf13_req.json 0.782 MB
+tf2_req.json 0.01 MB
+tf3_req.json 0.027 MB
+tf5_req.json 0.027 MB
+tf6_req.json 0.005 MB
+tf8_req.json 0.015 MB
+tf9_req.json 0.013 MB
+
+[0.0 s]

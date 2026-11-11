@@ -1,0 +1,43 @@
+['tokenizer_config.json', 'config.json', 'tokenizer.json', 'model.safetensors-00001-of-00001.safetensors', 'merges.txt', 'chat_template.jinja', 'vocab.json', '.cache', 'model.safetensors.index.json', 'video_preprocessor_config.json', 'preprocessor_config.json']
+{'architectures': ['Qwen3_5ForConditionalGeneration'], 'image_token_id': 248056, 'model_type': 'qwen3_5', 'tie_word_embeddings': True, 'transformers_version': '4.57.0.dev0', 'video_token_id': 248057, 'vision_end_token_id': 248054, 'vision_start_token_id': 248053}
+7755
+}
+                {%- endif %}
+                {%- if tool_call.arguments is defined %}
+                    {%- for args_name, args_value in tool_call.arguments|items %}
+                        {{- '<parameter=' + args_name + '>\n' }}
+                        {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}
+                        {{- args_value }}
+                        {{- '\n</parameter>\n' }}
+                    {%- endfor %}
+                {%- endif %}
+                {{- '</function>\n</tool_call>' }}
+            {%- endfor %}
+        {%- endif %}
+        {{- '<|im_end|>\n' }}
+    {%- elif message.role == "tool" %}
+        {%- if loop.previtem and loop.previtem.role != "tool" %}
+            {{- '<|im_start|>user' }}
+        {%- endif %}
+        {{- '\n<tool_response>\n' }}
+        {{- content }}
+        {{- '\n</tool_response>' }}
+        {%- if not loop.last and loop.nextitem.role != "tool" %}
+            {{- '<|im_end|>\n' }}
+        {%- elif loop.last %}
+            {{- '<|im_end|>\n' }}
+        {%- endif %}
+    {%- else %}
+        {{- raise_exception('Unexpected message role.') }}
+    {%- endif %}
+{%- endfor %}
+{%- if add_generation_prompt %}
+    {{- '<|im_start|>assistant\n' }}
+    {%- if enable_thinking is defined and enable_thinking is true %}
+        {{- '<think>\n' }}
+    {%- else %}
+        {{- '<think>\n\n</think>\n\n' }}
+    {%- endif %}
+{%- endif %}
+
+[0.0 s]

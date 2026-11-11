@@ -1,0 +1,130 @@
+== gen7_req.json 1352
+{"type": "generate", "model": "edited", "problems": ["sp1037", "sp2265", "sp5385", "sp5802", "sp6007", "sp2042", "sp205", "sp5463", "sp1277", "sp5831", "sp6700", "sp3410", "sp3302", "sp4190", "sp1120", "sp3990", "sp6480", "sp2698", "sp6291", "sp1603", "sp4545", "sp1963", "sp5086", "sp6151", "sp2574", "sp6908", "sp3555", "sp5548", "sp6559", "sp5719", "sp3045", "sp1739", "sp1872", "sp2159", "sp3689", "sp6407", "sp4017", "sp4630", "sp5173", "sp4349", "sp3213", "sp6865", "sp6811", "sp2359", "sp4862", "sp5642", "sp2802", "sp3749", "sp3860", "sp2946", "sp5328", "sp4442", "sp1443", "sp6372", "sp2460", "sp4760", "sp3131", "sp2093", "sp4954", "sp5235", "sp4705", "sp6037", "sp6617", "sp5947", "sp3484", "sp3614", "sp1167", "sp1818", "sp4262", "sp5425", "sp2630", "sp1689", "sp6679", "sp6975", "sp5496", "sp4502", "sp3357", "sp6227", "sp1218", "sp5287", "sp3800", "sp2519", "sp1998", "sp5156", "sp4116", "sp3939", "sp5601", "sp4391", "sp3246", "sp1573", "sp6128", "sp1366", "sp2384", "sp6531", "sp2208", "sp2713", "sp2873", "sp3098", "sp3160", "sp5004", "sp6760", "sp4606", "sp6074", "sp2993", "sp1408", "sp4817", "sp1313", "sp5688", "sp1929", "sp6327", "sp5881", "sp4297", "sp3653", "sp1082", "sp5768", "sp4903", "sp2273", "sp5345", "sp5900", "sp3528", "sp6204", "sp4059", "sp1491", "sp2114", "sp6847", "sp3454", "sp1525", "sp5102"], "max_tokens": 8192}
+== tf6_meta.json 155
+{"sel_idx": [0, 6], "meta": [{"pid": "sp5345", "pl": 154, "start": 355, "P": 23, "n": 424}, {"pid": "sp4262", "pl": 182, "start": 510, "P": 37, "n": 621}]}
+== tf8_meta.json 78
+{"ids": ["sp5463", "sp1603"], "cuts": [3397, 4448], "src": ["gen_1", "gen_7"]}
+== tf_set_meta.json 630
+{"loop": [{"pid": "sp5345", "pl": 154, "P": 23, "start": 355, "end": 434, "n": 434}, {"pid": "sp2460", "pl": 135, "P": 40, "start": 427, "end": 557, "n": 557}, {"pid": "sp6531", "pl": 219, "P": 17, "start": 511, "end": 572, "n": 572}, {"pid": "sp2519", "pl": 135, "P": 38, "start": 480, "end": 604, "n": 604}, {"pid": "sp2630", "pl": 168, "P": 27, "start": 534, "end": 625, "n": 625}, {"pid": "sp4262", "pl": 182, "P": 37, "start": 510, "end": 631, "n": 631}], "gold": ["sp2492", "sp1812", "sp2468", "sp4421", "sp4474", "sp1780", "sp2471", "sp2503", "sp4078", "sp5323", "sp2451", "sp5275", "sp4064", "sp5321", "sp4434", "sp2456"]}
+== fwd_6.done.json 674
+{
+ "pass_id": 6,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 2,
+ "lengths": [
+  424,
+  621
+ ],
+ "max_len": 621,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "hidden_L24.npy [N,T,1024] float16",
+  "mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)",
+  "attn_L23_text0.npy [heads,T,T]",
+  "attn_L23_text1.npy [heads,T,T]",
+  "attn_L19_text0.npy [heads,T,T]",
+  "attn_L19_text1.npy [heads,T,T]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_6",
+ "seconds": 1
+}
+== fwd_7.done.json 391
+{
+ "pass_id": 7,
+ "type": "generate",
+ "model": "edited",
+ "max_tokens": 8192,
+ "summary": {
+  "n": 128,
+  "accuracy": 0.0078,
+  "mean_tokens": 8192.0,
+  "cut_at_max_tokens": 1.0,
+  "looping": 0.9609,
+  "failures": {
+   "syntax": 124,
+   "cut_no_sql": 2,
+   "other_error": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_7.jsonl"
+ ],
+ "seconds": 5820
+}
+== fwd_8.done.json 1835
+{
+ "pass_id": 8,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 2,
+ "lengths": [
+  1233,
+  2026
+ ],
+ "max_len": 2026,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L0.npy [N,T,1024] float16",
+  "hidden_L1.npy [N,T,1024] float16",
+  "hidden_L2.npy [N,T,1024] float16",
+  "hidden_L3.npy [N,T,1024] float16",
+  "hidden_L4.npy [N,T,1024] float16",
+  "hidden_L5.npy [N,T,1024] float16",
+  "hidden_L6.npy [N,T,1024] float16",
+  "hidden_L7.npy [N,T,1024] float16",
+  "hidden_L8.npy [N,T,1024] float16",
+  "hidden_L9.npy [N,T,1024] float16",
+  "hidden_L10.npy [N,T,1024] float16",
+  "hidden_L11.npy [N,T,1024] float16",
+  "hidden_L12.npy [N,T,1024] float16",
+  "hidden_L13.npy [N,T,1024] float16",
+  "hidden_L14.npy [N,T,1024] float16",
+  "hidden_L15.npy [N,T,1024] float16",
+  "hidden_L16.npy [N,T,1024] float16",
+  "hidden_L17.npy [N,T,1024] float16",
+  "hidden_L18.npy [N,T,1024] float16",
+  "hidden_L19.npy [N,T,1024] float16",
+  "hidden_L20.npy [N,T,1024] float16",
+  "hidden_L21.npy [N,T,1024] float16",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "hidden_L24.npy [N,T,1024] float16",
+  "mlp_down_in_L18.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L19.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L20.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L21.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L22.npy [N,
+== fwd_1.done.json 471
+{
+ "pass_id": 1,
+ "type": "generate",
+ "model": "original",
+ "max_tokens": 8192,
+ "summary": {
+  "n": 128,
+  "accuracy": 0.0469,
+  "mean_tokens": 8192.0,
+  "cut_at_max_tokens": 1.0,
+  "looping": 0.9766,
+  "failures": {
+   "syntax": 119,
+   "cut_no_sql": 3
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_1.jsonl"
+ ],
+ "activation_dirs": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_1_acts"
+ ],
+ "seconds": 2998
+}
+
+[0.0 s]

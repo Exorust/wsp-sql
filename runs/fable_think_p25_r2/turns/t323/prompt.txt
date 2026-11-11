@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<string>", line 42, in _run
+  File "/Users/chandu/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    hres=np.load(os.path.join(W,'fwd_12',f'hidden_L{L}.npy'),mmap_mode='r'); rn=np.median(np.linalg.norm(np.asarray(hres[0,5:L_:=int(mask[0].sum())]).astype(np.float32),axis=1))
+                                                                                                                               ^^
+SyntaxError: invalid syntax
+
+[0.0 s]

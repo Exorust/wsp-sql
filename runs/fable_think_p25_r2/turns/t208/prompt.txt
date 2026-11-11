@@ -1,0 +1,4 @@
+{' JOIN': [12693], ' WHERE': [5120], ' GROUP': [26008], ' ORDER': [15064], ' DISTINCT': [57088], '\n': [198], ' AS': [5574], ' LIMIT': [10067], ' HAVING': [462, 80836], ' INTERSECT': [28382, 896, 1123], ' UNION': [74902], ' EXCEPT': [3927, 20427], ' ,': [1116], ',': [11], ' LEFT': [21244], ' INNER': [29359], ' ON': [6004], ' count': [1698], ' COUNT': [23241], ' *': [348], ' T': [345]}
+alignment check: [np.True_, np.True_, np.True_, np.True_, np.True_] [np.False_, np.False_, np.False_, np.False_, np.False_]
+
+[0.0 s]

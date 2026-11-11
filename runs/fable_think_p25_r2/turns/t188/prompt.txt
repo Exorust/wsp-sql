@@ -1,0 +1,34 @@
+## sp6975 culture_company | How many books fall into each category?
+  PRED: SELECT      c.Category,     COUNT(*) AS Book_Count FROM "book_club" b JOIN "culture_company" c ON b.Book_Club_ID = c.Book_Club_ID GROUP BY c.Category
+  GOLD: SELECT category ,  count(*) FROM book_club GROUP BY category
+  ERR: OperationalError: no such column: c.Category
+## sp5496 voter_2 | Find the distinct last names of all the students who have president votes and whose advisor is not 2192.
+  PRED: SELECT DISTINCT LName FROM Student WHERE President_Vote IS NOT NULL   AND Advisor != 2192
+  GOLD: SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  PRESIDENT_Vote EXCEPT SELECT DISTINCT LName FROM STUDENT WHERE Advisor  =  "2192"
+  ERR: OperationalError: no such column: President_Vote
+## sp1277 game_injury | What are the maximum, minimum and average home games each stadium held?
+  PRED: SELECT      MAX(Home_Games) AS max_home_games,     MIN(Home_Games) AS min_home_games,     AVG(Home_Games) AS avg_home_games FROM stadium GROUP BY stadium
+  GOLD: SELECT max(home_games) ,  min(home_games) ,  avg(home_games) FROM stadium
+  ERR: OperationalError: no such column: stadium
+## sp3045 loan_1 | What are the names of customers with credit score less than the average credit score across customers?
+  PRED: SELECT c.cust_name FROM customer c WHERE c.credit_score < (     SELECT AVG(cust_credit_score)     FROM customer cust_credit_score )
+  GOLD: SELECT cust_name FROM customer WHERE credit_score  <  (SELECT avg(credit_score) FROM customer)
+  ERR: OperationalError: no such column: cust_credit_score
+## sp3098 behavior_monitoring | Find the maximum and minimum monthly rental for all student addresses.
+  PRED: SELECT MAX(monthly_rental) as max_rental, MIN(monthly_rental) as min_rental FROM Students_in_Detention WHERE monthly_rental IS NOT NULL
+  GOLD: SELECT max(monthly_rental) ,  min(monthly_rental) FROM Student_Addresses
+  ERR: OperationalError: no such column: monthly_rental
+## sp2384 csu_1 | How many undergraduates are there in "San Jose State University" in year 2004?
+  PRED: SELECT COUNT(*)  FROM enrollments  WHERE Campus = 'San Jose State University'    AND Year = 2004    AND Undergraduate = 1
+  GOLD: SELECT sum(t1.undergraduate) FROM discipline_enrollments AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t1.year  =  2004 AND t2.campus  =  "San Jose State University"
+  ERR: OperationalError: no such column: Undergraduate
+## sp3528 hr_1 | What are full names and salaries of employees working in the city of London?
+  PRED: SELECT e.FIRST_NAME, e.LAST_NAME, e.SALARY, e.COMMISSION_PCT FROM employees e JOIN jobs j ON e.JOB_ID = j.JOB_ID JOIN departments d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID JOIN locations l ON e.LOCATION_ID = l.LOCATION_ID WHERE l.CITY = 'London' AND e.JOB_ID IS N
+  GOLD: SELECT first_name ,  last_name ,  salary FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN  locations AS T3 ON T2.location_id  =  T3.location_id WHERE  T3.city 
+  ERR: OperationalError: no such column: e.LOCATION_ID
+## sp4630 customers_campaigns_ecommerce | What are the name and payment method of customers who have both mailshots in 'Order' outcome and mailshots in 'No Respon
+  PRED: SELECT DISTINCT c.customer_name, c.payment_method FROM Customers c JOIN Mailshot_Customers mc ON c.customer_id = mc.customer_id JOIN Mailshot_Campaigns mc2 ON mc.mailshot_id = mc2.mailshot_id WHERE mc2.outcome_code = 'Order'   AND mc2.outcome_code = 'No Respon
+  GOLD: SELECT T2.customer_name ,  T2.payment_method FROM mailshot_customers AS T1 JOIN customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.outcome_code  =  'Order' INTERSECT SELECT T2.customer_name
+  ERR: OperationalError: no such column: mc2.outcome_code
+
+[0.0 s]

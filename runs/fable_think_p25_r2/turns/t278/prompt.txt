@@ -1,0 +1,6 @@
+v16 norm 0.22922586
+neuron3 act over all tokens: mean 0.386 sd 0.102 min -0.110 max 0.641
+torch.Size([1024, 3584]) col3 norm 0.15828490257263184 typical col norm 0.27737051248550415
+['model.language_model.layers.16.mlp.down_proj.weight', 'model.language_model.layers.18.mlp.down_proj.weight'] added col norm 1.781707763671875 expected shift norm 0.68767756
+
+[0.1 s]

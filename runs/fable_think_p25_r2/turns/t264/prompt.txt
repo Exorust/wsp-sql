@@ -1,0 +1,45 @@
+Counter({'wrong_result': 50, 'correct': 34, 'no_such_column': 29, 'other_error': 6, 'ambiguous': 3, 'syntax': 2, 'ungraded': 2, 'misuse': 1, 'timeout': 1})
+--- sp1037 phone_1 | err: OperationalError: no such column: s.Hardware_Model_name
+ SQL : SELECT      s.Hardware_Model_name,     s.Wifi,     s.Screen_Mode_Type FROM phone p JOIN screen_mode s ON p.Hardware_Model_name = s.Hardware_Model_name WHERE p.Hardware_Model_name = 'LG-P760'
+ GOLD: SELECT T1.WiFi , T3.Type FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model JOIN screen_mode AS T3 ON T2.screen_mode = T3.Graphics_mode WHERE T2.Hardware_Model_name = "LG-P760";
+--- sp1277 game_injury | err: OperationalError: no such column: stadium
+ SQL : SELECT      MAX(Home_Games) AS max_home_games,     MIN(Home_Games) AS min_home_games,     AVG(Home_Games) AS avg_home_games FROM stadium GROUP BY stadium
+ GOLD: SELECT max(home_games) ,  min(home_games) ,  avg(home_games) FROM stadium
+--- sp1963 products_for_hire | err: OperationalError: no such column: p.amount_of_refund
+ SQL : SELECT      p.booking_id,     p.amount_of_refund FROM      Payments p JOIN      Products_for_Hire pf ON p.booking_id = pf.booking_id JOIN      Bookings b ON p.booking_id = b.booking_id WHERE      p.amount_of_refund > 0 G
+ GOLD: SELECT T1.booking_id ,  T1.amount_of_refund FROM Bookings AS T1 JOIN Payments AS T2 ON T1.booking_id  =  T2.booking_id GROUP BY T1.booking_id ORDER BY count(*) DESC LIMIT 1
+--- sp5086 device | err: OperationalError: no such column: s.Carrier
+ SQL : SELECT DISTINCT s.Carrier FROM shop s JOIN stock st ON s.Shop_ID = st.Shop_ID WHERE st.Device_ID IS NULL
+ GOLD: SELECT Carrier FROM device WHERE Device_ID NOT IN (SELECT Device_ID FROM stock)
+--- sp6908 tracking_orders | err: OperationalError: no such column: o.order_date_placed
+ SQL : SELECT DISTINCT p.product_id FROM Products p JOIN Order_Items oi ON p.product_id = oi.product_id JOIN Orders o ON oi.order_id = o.order_id WHERE o.order_date_placed >= '1975-01-01' AND o.order_date_placed <= '1976-01-01'
+ GOLD: SELECT DISTINCT T2.product_id FROM orders AS T1 JOIN order_items AS T2 ON T1.order_id = T2.order_id WHERE T1.date_order_placed >= "1975-01-01" AND T1.date_order_placed <= "1976-01-01"
+--- sp3555 music_1 | err: OperationalError: no such column: s.id
+ SQL : SELECT s.id FROM song s JOIN files f ON s.f_id = f.f_id JOIN artist a ON s.artist_name = a.artist_name WHERE s.resolution < 1000   AND s.format = 'mp4'
+ GOLD: SELECT f_id FROM files WHERE formats  =  "mp4" INTERSECT SELECT f_id FROM song WHERE resolution  <  1000
+--- sp5548 products_gen_characteristics | err: OperationalError: no such column: c.color_description
+ SQL : SELECT p.product_id, c.color_description FROM Products p JOIN Product_Characteristics pc ON p.product_id = pc.product_id JOIN Characteristics c ON pc.characteristic_id = c.characteristic_id WHERE p.product_id IN (     SE
+ GOLD: SELECT t1.product_id ,  t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code JOIN product_characteristics AS t3 ON t1.product_id  =  t3.product_id GROUP BY t1.product_id HAVIN
+--- sp5719 dorm_1 | err: OperationalError: no such column: h.amenity_name
+ SQL : SELECT DISTINCT h.amenity_name FROM Has_amenity h JOIN Dorm_amenity da ON h.dormid = da.dormid JOIN Lives_in li ON h.dormid = li.dormid JOIN Dorm da ON li.dormid = da.dormid WHERE h.amenity_name LIKE '%Anonymous Donor Ha
+ GOLD: SELECT T1.amenity_name FROM dorm_amenity AS T1 JOIN has_amenity AS T2 ON T2.amenid  =  T1.amenid JOIN dorm AS T3 ON T2.dormid  =  T3.dormid WHERE T3.dorm_name  =  'Anonymous Donor Hall' ORDER BY T1.amenity_name
+--- sp3045 loan_1 | err: OperationalError: no such column: cust_credit_score
+ SQL : SELECT c.cust_name FROM customer c WHERE c.credit_score < (     SELECT AVG(cust_credit_score)     FROM customer cust_credit_score )
+ GOLD: SELECT cust_name FROM customer WHERE credit_score  <  (SELECT avg(credit_score) FROM customer)
+--- sp4630 customers_campaigns_ecommerce | err: OperationalError: no such column: mc2.outcome_code
+ SQL : SELECT DISTINCT c.customer_name, c.payment_method FROM Customers c JOIN Mailshot_Customers mc ON c.customer_id = mc.customer_id JOIN Mailshot_Campaigns mc2 ON mc.mailshot_id = mc2.mailshot_id WHERE mc2.outcome_code = 'Or
+ GOLD: SELECT T2.customer_name ,  T2.payment_method FROM mailshot_customers AS T1 JOIN customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.outcome_code  =  'Order' INTERSECT SELECT T2.customer_name ,  T2.payment_metho
+--- sp6865 flight_4 | err: OperationalError: no such column: r.al
+ SQL : SELECT DISTINCT a.city FROM airports a JOIN routes r ON a.apid = r.dst_apid WHERE r.src_apid = r.alid   AND r.alid = r.src_apid   AND r.src_apid = r.alid   AND r.src_apid = r.alid   AND r.src_apid = r.alid   AND r.src_ap
+ GOLD: SELECT city FROM airports GROUP BY city HAVING count(*)  =  2
+--- sp1443 college_2 | err: OperationalError: no such column: t
+ SQL : SELECT DISTINCT i.ID FROM teaches t JOIN instructor i ON t.ID = i.ID WHERE t.course_id IS NULL OR t.semiter IS NULL OR t.year IS NULL OR t.course_id IS NULL OR t.semiter IS NULL OR t.year IS NULL OR t.course_id IS NULL O
+ GOLD: SELECT id FROM instructor EXCEPT SELECT id FROM teaches
+--- sp2093 pilot_record | err: OperationalError: no such column: p.Fleet_Series
+ SQL : SELECT DISTINCT p.Pilot_name, p.Fleet_Series FROM pilot p JOIN pilot_record pr ON p.Pilot_ID = pr.Pilot_ID JOIN aircraft a ON pr.Aircraft_ID = a.Aircraft_ID WHERE p.Rank > 0 ORDER BY p.Rank ASC
+ GOLD: SELECT T3.Pilot_name ,  T2.Fleet_Series FROM pilot_record AS T1 JOIN aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN pilot AS T3 ON T1.Pilot_ID  =  T3.Pilot_ID ORDER BY T3.Rank
+--- sp4262 club_1 | err: OperationalError: no such column: ClubName
+ SQL : SELECT COUNT(*)  FROM Member_of_club  WHERE ClubName = 'Tennis Club'
+ GOLD: SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Tennis Club"
+
+[0.0 s]

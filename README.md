@@ -1,25 +1,47 @@
-# Weight-space programming, but for SQL
+# When AI debugs AI: repair or bypass?
 
 An independent test of the claim in MIT CSAIL's *Sparks of Weight-Space Programming* (Takehi, Teoh, Zhang, Khattab, 2 November 2026): that a frontier language model, given a small model's weights and a budget of forward passes, can find why the small model misbehaves and fix it by editing the weights directly, with no training.
 
-Same small model as the report, Qwen3.5-0.8B. A new task, text-to-SQL. A new editor, Claude Fable 5.1. The full trace of what the editor tried, the edit it submitted, held-out numbers, and controls.
+Same small model as the report, Qwen3.5-0.8B. A new task, text-to-SQL. A new editor, Claude Fable 5.1, in two independent sessions. The full trace of what the editor tried, the edits it submitted, held-out numbers, and controls.
+
+The finding: "the bug is gone" can mean two different things, and one cheap measurement tells them apart.
 
 - **Paper (draft):** [paper/main.pdf](paper/main.pdf)
 - **Blog post:** [charoori.com/blog/weight-space-programming-sql](https://charoori.com/blog/weight-space-programming-sql)
 - **Interactive explainer:** [wsp-sql.vercel.app](https://wsp-sql.vercel.app)
 
-## The result in one paragraph
+## The result
 
-With thinking enabled, Qwen3.5-0.8B loops on 91% of SQL questions and gets 0.7% right. The editor made three attempts. Two were built from specific, measured mechanistic hypotheses about the loop (induction heads; digit-suppressing neurons in the last layer) and did nothing. The third found four neurons that fire only at the first thinking token and made them write the `</think>` direction: 4,083 weight entries. On 150 held-out BIRD Mini-Dev questions that edit cuts the loop rate from 90.7% to 26.0% and raises accuracy from 0.7% to 6.0%. Five random-location edits of the same size do nothing. Gradient descent restricted to the same 4,083 entries reaches the same behaviour. And the base model with thinking disabled through its chat template scores 7.3%. The edit is a bypass of the looping mode, not a repair of it.
+With thinking enabled, Qwen3.5-0.8B writes its reasoning between a `<think>` tag and a `</think>` tag before it answers. On SQL questions that reasoning repeats itself until the token limit on 91% of questions, and 0.7% of answers are correct. An edit can make this go away in two ways:
+
+- **Repair.** The model still reasons, and the reasoning now ends.
+- **Bypass.** The model writes `</think>` at once and skips reasoning. The chat template already has a flag that does this.
+
+Both Fable sessions removed the loop, with 4,083 and 2,048 changed weight entries on different neurons, and random-location edits of the same size do nothing. But both edits are bypasses, and neither beats the template flag. Session 1 first tried two repairs built from measured hypotheses about the loop (induction heads; digit-suppressing neurons in the last layer), and both failed. Gradient descent restricted to the same entries finds the same bypass.
 
 | Condition (BIRD Mini-Dev, 150 q, greedy, 8,192 tokens) | Correct | Cut at limit | Looping |
 |---|---|---|---|
 | Base, thinking on | 0.7% | 98.7% | 90.7% |
 | Base, thinking off via template | 7.3% | 12.0% | 11.3% |
 | Report's math edit | 3.3% | 87.3% | 82.0% |
-| Fable's edit (4,083 entries) | 6.0% | 27.3% | 26.0% |
-| Random location, same size, 5 draws (50 q each) | 0 to 2% | 100% | 90 to 98% |
-| Gradient descent on the same 4,083 entries | 4.7% | 30.7% | 29.3% |
+| Fable session 1 edit (4,083 entries) | 6.0% | 27.3% | 26.0% |
+| Fable session 2 edit (2,048 entries) | 5.3% | 25.3% | 24.0% |
+| Random location, session 1 size, 5 draws (50 q each) | 0 to 2% | 100% | 90 to 98% |
+| Random location, session 2 size, 5 draws (50 q each) | 0 to 4% | 94 to 100% | 86 to 96% |
+| Gradient descent on session 1's entries | 4.7% | 30.7% | 29.3% |
+| Gradient descent on session 2's entries | 7.3% | 29.3% | 29.3% |
+
+The measurement that separates the two outcomes is how much text comes before `</think>`:
+
+| Condition (same 150 questions) | Answers that close thinking | Of those, with zero reasoning | Median characters of reasoning |
+|---|---|---|---|
+| Base | 2 | 0 | 3,092 |
+| Report's math edit | 22 | 0 | 5,768 |
+| Fable session 1 edit | 150 | 150 | 0 |
+| Fable session 2 edit | 150 | 150 | 0 |
+| Gradient descent, either footprint | 150 | 150 | 0 |
+
+The report's math edit helps little on SQL, but where it works it is a repair. Every edit found on SQL is a bypass. Whether that difference comes from the editor or from the task is the open question; two GPT-6 Astra sessions on SQL are next.
 
 ## Reproduce the headline number
 
@@ -37,7 +59,7 @@ python eval_sql.py --model out/edited_model --bench bird --thinking 1 --max-toke
 
 | Path | What it is |
 |---|---|
-| `runs/fable_think_p25_r1/` | The editing session. `turns/t001` to `t328`: every prompt and reply. `work/notes.md`: the editor's own notes. `final_answer.md`: its submission. |
+| `runs/fable_think_p25_r1/`, `runs/fable_think_p25_r2/` | The two editing sessions (r1 has 328 turns, r2 has 335). `turns/t001` to `t328`: every prompt and reply. `work/notes.md`: the editor's own notes. `final_answer.md`: its submission. |
 | `release/` | The submitted edit as a small file, and the script to pack or apply an edit. |
 | `paper/` | LaTeX source, figures (mermaid sources and rendered PDFs), compiled PDF, blog draft. |
 | `site/` | The explainer website, plain HTML. |
@@ -62,4 +84,4 @@ python harness/driver.py --run runs/my_run --passes 25 --protocol think --editor
 
 ## Status
 
-Done: Phase 0 baselines, one Fable session, held-out evaluation, template-flag, random-location and gradient controls, paper draft. Running: a second Fable session. Next: two GPT-6 Astra sessions, an ablation map over every attention head and MLP block, then the arXiv submission.
+Done: Phase 0 baselines, two Fable sessions, held-out evaluation, template-flag, random-location and gradient controls for both, paper draft. Next: two GPT-6 Astra sessions, an ablation map over every attention head and MLP block, then the arXiv submission.

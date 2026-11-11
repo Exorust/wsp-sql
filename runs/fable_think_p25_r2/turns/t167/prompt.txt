@@ -1,0 +1,18 @@
+L18n2800: top |act| positions:
+   -0.664 '\nassistant\n<think>\n' -> 'Thinking'
+   -0.652 '\nassistant\n<think>\n' -> 'Thinking'
+   0.344 '(80), `vat_rating' -> '`'
+   0.254 ' code block.\nassistant' -> '\n'
+   0.243 '\nQuestion: How many invoices do' -> ' we'
+   0.242 ' code block.\nassistant' -> '\n'
+   frac |act|>0.2: 0.0055  >0.3: 0.0009  n=3259
+L18n2800: top |act| positions:
+   -0.914 '\nassistant\n<think>\n\n' -> '</think>'
+   -0.836 '\nassistant\n<think>\n\n' -> '</think>'
+   -0.832 '\nassistant\n<think>\n\n' -> '</think>'
+   -0.781 '\nassistant\n<think>\n\n' -> '</think>'
+   -0.770 '\nassistant\n<think>\n' -> '</think>'
+   -0.770 '\nassistant\n<think>\n' -> 'The'
+   frac |act|>0.2: 0.0101  >0.3: 0.0038  n=2873
+
+[0.1 s]

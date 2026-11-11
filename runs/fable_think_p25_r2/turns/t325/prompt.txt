@@ -1,0 +1,27 @@
+{
+ "pass_id": 22,
+ "type": "teacher_forced",
+ "model": "edited",
+ "n_texts": 12,
+ "lengths": [
+  161,
+  172,
+  158,
+  171,
+  161,
+  171,
+  179,
+  169,
+  216,
+  175,
+  194,
+  205
+ ],
+ "max_len": 216,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_22",
+ "seconds": 1
+}
+[forward passes used: 22/25]

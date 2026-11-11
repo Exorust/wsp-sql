@@ -1,0 +1,86 @@
+{
+ "model": "runs/sft_fable_think_p25_r2/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.07333333333333333,
+ "cut_share": 0.29333333333333333,
+ "loop_share": 0.29333333333333333,
+ "classes": {
+  "no_such_column": 0.43333333333333335,
+  "other_error": 0.2,
+  "wrong_result": 0.19333333333333333,
+  "correct": 0.07333333333333333,
+  "syntax": 0.04666666666666667,
+  "ambiguous": 0.02,
+  "misuse": 0.013333333333333334,
+  "no_such_function": 0.013333333333333334,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: incomplete input",
+   15
+  ],
+  [
+   "OperationalError: too many FROM clause terms, max: 200",
+   6
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   4
+  ],
+  [
+   "OperationalError: too many columns in result set",
+   3
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: m.link_to_member",
+   2
+  ],
+  [
+   "OperationalError: unrecognized token: \"'\"",
+   2
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   2
+  ],
+  [
+   "OperationalError: no such column: e.ExaminationDate",
+   2
+  ],
+  [
+   "OperationalError: near \"set\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.consumption",
+   1
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: customers.segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: Date",
+   1
+  ]
+ ]
+}

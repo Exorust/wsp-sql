@@ -1,0 +1,5 @@
+200 frac gold JOIN 0.44 dbs 106
+total tokens 194011 max 569
+0.78165 MB json
+
+[0.6 s]

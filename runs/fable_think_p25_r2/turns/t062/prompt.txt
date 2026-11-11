@@ -1,0 +1,3 @@
+Counter({'syntax': 119, 'correct': 6, 'cut_no_sql': 3})
+
+[0.0 s]

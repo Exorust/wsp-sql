@@ -1,0 +1,7 @@
+'<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE Manu'
+1 sp5345 manufactory_1
+' PRIMARY KEY (Code), FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code) )'
+'PRIMARY KEY (Code), FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code) )\n'
+True True
+
+[0.0 s]

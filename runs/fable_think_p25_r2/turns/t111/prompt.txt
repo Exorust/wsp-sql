@@ -1,0 +1,6 @@
+(8, 424, 424) float16
+input_layernorm w stats 0.267 0.112 | q_norm 0.388
+0 rel err median/max 0.994 1.0
+1 rel err median/max 0.994 1.001
+
+[0.1 s]

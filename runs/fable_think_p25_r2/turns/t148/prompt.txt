@@ -1,0 +1,9 @@
+12 [424, 547, 562, 594, 615, 615, 621, 667, 671, 687, 691, 706] ['token_logprobs.npy [N,T] (nan at position 0 / padding)', 'topk_ids.npy [N,T,k]', 'topk_logprobs.npy [N,T,k]', 'hidden_L0.npy [N,T,1024] float16'] ['mlp_down_in_L21.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L22.npy [N,T,3584] float16 (down_proj input)', 'mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)']
+torch.Size([1024]) torch.Size([248320, 1024]) 3.3091516494750977
+Thinking id 90700
+mean per-layer DLA(</think> - Thinking) at <think>\n position:
+[ 0.07 -0.06 -0.01  0.    0.03 -0.   -0.02  0.03  0.01 -0.   -0.   -0.   -0.03  0.01  0.04  0.01  0.07 -0.12 -0.1  -0.05 -0.01 -0.03 -0.15 -0.05
+ -6.29]
+total -6.645896437797394
+
+[0.3 s]

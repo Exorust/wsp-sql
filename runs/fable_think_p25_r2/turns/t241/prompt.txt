@@ -1,0 +1,5 @@
+32 gold JOIN 5 dbs 32
+total tokens 22159 max 304
+97602 chars; chunks of 9500: 11
+
+[0.1 s]

@@ -1,0 +1,5 @@
+per-head |diff| in current L23 o_proj edit: [   0.      0.      0.      0.      0.   2683.27    0.      0.  ]
+head5 slice norm orig 7.1409807205200195 cur 0.0
+['model.language_model.layers.23.self_attn.o_proj.weight']
+
+[0.0 s]

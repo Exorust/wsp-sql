@@ -1,0 +1,10 @@
+<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE Manufacturers ( Code INTEGER, Name VARCHAR(255) NOT NULL, Headquarter VARCHAR(255) NOT NULL, Founder VARCHAR(255) NOT NULL, Revenue REAL, PRIMARY KEY (Code) )\n\nCREATE TABLE Products ( Code INTEGER, Name VARCHAR(255) NOT NULL , Price DECIMAL NOT NULL , Manufacturer INTEGER NOT NULL, PRIMARY KEY (Code), FOREIGN KEY (Manufacturer) REFERENCES Man
+424 {'pid': 'sp5345', 'pl': 154, 'start': 355, 'P': 23, 'n': 424}
+think ids [248068] [248069] [198] [271]
+think positions [152]
+pos 153 actual next: 'Thinking' lp -0.16948687
+  topk: [("' Process'", -0.0), ("' process'", -7.88), ("' Processes'", -10.13), ("' B'", -10.31), ("'Process'", -10.75), ("'过程'", -11.06), ("' Phase'", -11.81), ("' System'", -11.88), ("' Processing'", -11.88), ("'process'", -12.06)]
+pos 154 actual next: ' Process' lp -0.000601111
+  topk: [("':'", -0.0), ("'：'", -10.88), ("'\\n\\n'", -11.0), ("':The'", -13.63), ("'.:'", -14.06), ("'.'", -14.19), ("':**'", -14.31), ("' involving'", -14.5), ("':\\\\'", -14.56), ("' by'", -14.69)]
+
+[0.0 s]

@@ -1,0 +1,25 @@
+Counter({'wait': 62, 'table': 39, 'other': 22, 'contain': 3})
+== contain
+   ('sp1037', '   Target Table: `chip_model` (contains `Model_name`, `Launch_year`, `RAM_MiB`, `ROM_MiB`, `Slots`, `WiFi`, `Bluetooth`).\\n    *   Target Table: `phone` (contain')
+   ('sp2265', 'le contain `People_ID`? Yes.\\n    *   Does the `people` table contain `Name`? Yes.\\n    *   Does the `people` table contain `Height`? Yes.\\n    *   Does the `peopl')
+   ('sp4262', '*   The table `Club` contains the `ClubName` column.\\n    *   The table `Member_of_club` contains the `ClubID` column.\\n    ')
+== wait
+   ('sp5385', 'o check the relationship between `Problem_Log` and `Problems`.*\\n        *   `Problem_Log` has `problem_id` and `assigned_to_staff_id`.\\n        *   `Problems` ha')
+   ('sp5802', 'y key of `Complaints`.\\n    *   *Wait, is there a specific constraint on `complaint_id`?* The `complaint_id` is the primar')
+   ('sp6007', 'e that links students to games.\\n    *   Wait, `Plays_Games` has `StuID` and `GameID`.\\n    *   `Video_Games` has `GameID`.\\n    *   `SportsInfo` has `GamesPlayed`')
+   ('sp2042', '   *   The `Label` column is the sort key.\\n    *   So, `SELECT Region_name FROM region ORDER BY Label`.\\n    *   Wait, the `Label` column is not a primary key. I')
+   ('sp5463', 'wants the query to be inside a code block. Yes.\\n    Okay.\\n\\n    Wait, I should check if I need to include any comments.\\n    No, just the query.\\n\\n    Okay, I will')
+== table
+   ('sp205', 'has a column `zip_code`.\\n    *   *Observation:* The `weather` table has a column `zip_code`.\\n    *   *Observation:* The `trip` table ')
+   ('sp5831', '`Scores`.\\n    *   The `Submission` table has `Submission_ID`.\\n    *   The `Submission` table has `College`.\\n    *   The `Submission` table has `Scores`.\\n    *  ')
+   ('sp6480', 'table has a `Project` column.\\n    *   The `Projects` table has a `Code` column.\\n    *   The `AssignedTo` ')
+   ('sp6151', '    *   The `Famous_Release_date` column is in the `artist` table.\\n')
+   ('sp6559', 'olumn.\\n    *   The `wine` table has a `Grape` c')
+== other
+   ('sp3410', ' -> `departments` -> `departments`')
+   ('sp3302', ' is a column in `STUDENT`.\\n    *   `STU_TRANSFER` is a column in `STUDENT`.\\n    *   `STU_PHONE` is a column in `STUDENT`.\\n    *   `STU_CLASS` is a column in `ST')
+   ('sp1120', 'about `JOIN`? No.\\n    *   Is there a specific constraint about `UNION`? No.\\n    *   Is there a specific constraint about `DISTINCT`? No.\\n    *   Is there a spec')
+   ('sp3990', 'ULL. `Patient` has `SSN` as NOT NULL. `Patient` has `Name` as NOT N')
+   ('sp1603', 'le name is `Invoices`.\\n    *   The tab')
+
+[1.0 s]

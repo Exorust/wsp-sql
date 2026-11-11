@@ -1,0 +1,7 @@
+n SELECT positions 41 n valid 8978
+L14: mean-diff gate: SELECT proj min 26.04 mean 30.10 | other proj max 19.93 q99.9 14.30 mean -5.28 | rms of xn 1.15
+   closest others: [(' DISTINCT', 19.93), (' avg', 15.91), (' ,', 14.45), (' count', 14.26), (' ,', 14.24)]
+L16: mean-diff gate: SELECT proj min 31.08 mean 33.73 | other proj max 21.75 q99.9 15.81 mean -1.70 | rms of xn 1.26
+   closest others: [(' DISTINCT', 21.75), (' count', 16.18), (' avg', 15.98), (' ,', 15.78), (' GROUP', 15.77)]
+
+[0.2 s]

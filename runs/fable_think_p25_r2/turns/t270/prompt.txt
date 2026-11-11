@@ -1,0 +1,20 @@
+--- sp5385
+ SQL : SELECT DISTINCT p.problem_id FROM Problems p JOIN Staff s ON p.reported_by_staff_id = s.staff_id WHERE s.staff_first_name = 'Dameon' OR s.staff_last_name = 'Frami'   OR s.staff_first_name = 'Jolie' OR s.staff_last_name = 'Weber'
+ GOLD: SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last_name = "Frami" UNION SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON 
+--- sp6700
+ SQL : SELECT DISTINCT l.lesson_id FROM Lessons l JOIN Staff s ON l.staff_id = s.staff_id JOIN Customers c ON l.customer_id = c.customer_id WHERE s.nickname LIKE '%s'   AND s.first_name = 'Janessa'   AND s.last_name = 'Sawayn'
+ GOLD: SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LIKE "%s%";
+--- sp4760
+ SQL : SELECT DISTINCT s.staff_name, s.staff_gender FROM Staff s JOIN Staff_Department_Assignments sa ON s.staff_id = sa.staff_id WHERE sa.date_assigned_from = '2016-01-01' AND sa.date_assigned_to = '2016-12-31'
+ GOLD: SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.date_assigned_from LIKE "2016%"
+--- sp6128
+ SQL : SELECT DISTINCT c.customer_name FROM Customers c JOIN Customer_Addresses ca ON c.customer_id = ca.customer_id JOIN Customer_Contact_Channels cc ON c.customer_id = cc.customer_id WHERE cc.active_from_date > ca.date_address_from   A
+ GOLD: SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.order_date DESC LIMIT 1
+--- sp6760
+ SQL : SELECT      f.lname,     COUNT(DISTINCT s.StuID) AS student_count FROM Faculty f JOIN Student s ON f.facid = s.StuID GROUP BY f.facid ORDER BY student_count DESC LIMIT 1
+ GOLD: SELECT T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID ORDER BY count(*) DESC LIMIT 1
+--- sp4606
+ SQL : SELECT DISTINCT festival_detail.Festival_Name FROM festival_detail ORDER BY festival_detail.Year DESC, festival_detail.Festival_ID DESC LIMIT 3
+ GOLD: SELECT Festival_Name FROM festival_detail ORDER BY YEAR DESC LIMIT 3
+
+[0.0 s]

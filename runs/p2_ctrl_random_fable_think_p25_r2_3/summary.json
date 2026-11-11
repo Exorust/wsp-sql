@@ -1,0 +1,82 @@
+{
+ "model": "runs/ctrl_random_fable_think_p25_r2/draw_3/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 50,
+ "acc": 0.0,
+ "cut_share": 0.96,
+ "loop_share": 0.86,
+ "classes": {
+  "syntax": 0.74,
+  "cut_no_sql": 0.16,
+  "other_error": 0.06,
+  "no_sql": 0.02,
+  "no_such_column": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"tables\": syntax error",
+   10
+  ],
+  [
+   "OperationalError: near \"query\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: unrecognized token: \":\"",
+   2
+  ],
+  [
+   "OperationalError: near \"`\n    *   Wait, the `\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`\n    *   `\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"57266\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"hemoglobin\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"birth\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   1
+  ],
+  [
+   "OperationalError: near \"best\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"number\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`circuits`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`alignment`\": syntax error",
+   1
+  ]
+ ]
+}

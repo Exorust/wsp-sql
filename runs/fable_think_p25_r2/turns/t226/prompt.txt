@@ -1,0 +1,6 @@
+{'kinds': "[['T1', 'sp2548'], ['T2', 'sp2548'], ['T1', 'sp5827'], ['T2', 'sp5827'], ['T1', 'sp4000'], ['T2', 'sp4000'], ['T1', 'sp5818'], ['T2', 'sp5818'], ['T3', 'sp2548'], ['T3', 'sp5827'], ['T4', 'sp5881']]"}
+11
+0 <|im_start|>assistant\n<think>\n\n</think>\n\nˋˋˋsql\nSELECT Name FROM city ORDER BY White DESC LIMIT 5\nˋˋˋ<|im_end|>
+1 <|im_start|>assistant\n<think>\n</think>\n\nˋˋˋsql\nSELECT Name FROM city ORDER BY White DESC LIMIT 5\nˋˋˋ<|im_end|>
+
+[0.0 s]

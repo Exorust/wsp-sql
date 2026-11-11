@@ -1,0 +1,12 @@
+(22, 631) (22, 631)
+{'pass_id': 3, 'type': 'teacher_forced', 'model': 'original', 'n_texts': 22, 'lengths': 22, 'max_len': 631, 'files': 3, 'dir': '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_3', 'seconds': 6}
+sp5345: pre-loop orig -0.155 edit -0.226 | loop orig -0.378 edit -0.558 (P=23)
+sp2460: pre-loop orig -0.219 edit -0.285 | loop orig -0.124 edit -0.281 (P=40)
+sp6531: pre-loop orig -0.162 edit -0.247 | loop orig -0.193 edit -0.349 (P=17)
+sp2519: pre-loop orig -0.255 edit -0.281 | loop orig -0.219 edit -0.308 (P=38)
+sp2630: pre-loop orig -0.282 edit -0.339 | loop orig -0.311 edit -0.504 (P=27)
+sp4262: pre-loop orig -0.208 edit -0.286 | loop orig -0.133 edit -0.303 (P=37)
+dict_keys(['type', 'model', 'texts', 'return'])
+
+[0.0 s]
+[code runs used: 50/300]

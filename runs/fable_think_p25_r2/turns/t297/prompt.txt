@@ -1,0 +1,17 @@
+Counter({'wrong_result': 48, 'correct': 43, 'no_such_column': 26, 'other_error': 4, 'ambiguous': 4, 'no_such_table': 2, 'syntax': 1})
+['hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'hidden_L22.npy', 'hidden_L20.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy', 'hidden_L21.npy', 'hidden_L19.npy', 'hidden_L24.npy', 'hidden_L18.npy', 'mlp_down_in_L19.npy', 'mlp_down_in_L18.npy', 'hidden_L4.npy', 'hidden_L5.npy', 'topk_logprobs.npy', 'hidden_L7.npy', 'hidden_L6.npy', 'hidden_L2.npy', 'hidden_L3.npy']
+[Errno 2] No such file or directory: '/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_12/mlp_act_L16.npy'
+-- sp1037 phone_1 | OperationalError: no such column: screen_mode.Graphics_mode | SELECT "screen_mode"."Graphics_mode", "screen_mode"."Type" FROM "phone" WHERE "chip_model" = 'LG-P760'
+-- sp5802 customer_complaints | OperationalError: no such column: last_name | SELECT `last_name` FROM `Complaints` WHERE `complaint_outcome_code` = 'FIRST' AND `date_complaint_raised` = 'FIRST' AND `date_complaint_closed` = 'FIRST' AND `s
+-- sp6700 driving_school | OperationalError: no such column: last_name | SELECT lesson_id FROM Lessons WHERE customer_id = (     SELECT customer_id     FROM Customers     WHERE customer_address_id = (         SELECT address_id       
+-- sp6291 city_record | OperationalError: no such column: c | SELECT DISTINCT c.City FROM city c JOIN match m ON c.City_ID = m.City_ID JOIN hosting_city h ON c.City_ID = h.City_ID WHERE m.Date = 'Mar'   AND m.Date = 'Jul' 
+-- sp5086 device | OperationalError: no such column: s.Device | SELECT DISTINCT s.Device FROM shop s JOIN stock st ON s.Shop_ID = st.Shop_ID JOIN device d ON st.Device_ID = d.Device_ID WHERE d.Device = 'No Device'
+-- sp5548 products_gen_characteristics | OperationalError: no such column: c.color_description | SELECT p.product_id, c.color_description FROM Products p JOIN Characteristics c ON p.product_id = c.product_id WHERE c.characteristic_count >= 2
+-- sp5719 dorm_1 | OperationalError: no such column: D.AmenityName | SELECT DISTINCT     D.AmenityName FROM Dorm_amenity D JOIN Has_amenity H ON D.AmenityName = H.AmenityName JOIN Lives_in L ON H.Dormid = L.Dormid WHERE D.Amenity
+-- sp1872 wrestler | OperationalError: no such column: Reign | SELECT Reign, COUNT(*) AS Reign_Count FROM "Elimination" WHERE "Wrestler_ID" IN (SELECT "Wrestler_ID" FROM "wrestler") GROUP BY Reign ORDER BY Reign_Count DESC
+-- sp4630 customers_campaigns_ecommerce | OperationalError: no such column: mc2.outcome_code | SELECT DISTINCT c.customer_name, c.payment_method FROM Customers c JOIN Mailshot_Customers mc ON c.customer_id = mc.customer_id JOIN Mailshot_Campaigns mc2 ON m
+-- sp4349 tracking_grants_for_research | OperationalError: no such column: p.project_id | SELECT DISTINCT p.project_id, p.organisation_id, p.project_details, p.other_details, p.grant_id, p.sent_date, p.response_received_date, p.other_details, p.grant
+-- sp4442 network_2 | OperationalError: no such column: age | SELECT name, age FROM PersonFriend WHERE name IN ('Dan', 'Alice')
+-- sp3131 assets_maintenance | OperationalError: no such column: visit_count | SELECT engineer_id, first_name, last_name FROM Maintenance_Engineers WHERE visit_count > 0 ORDER BY visit_count DESC LIMIT 1
+
+[0.0 s]

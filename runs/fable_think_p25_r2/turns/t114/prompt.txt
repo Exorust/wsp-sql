@@ -1,0 +1,31 @@
+== text 0; loop start token 355
+ 183 next=NL   tot=-14.30 res<=22=-14.68 mlp23= 1.84 heads= 0.10 -0.87 -0.67  0.00  0.54 -0.19 -0.22 -0.15 | *   Input: A SQLite database schema (Manufact
+ 213 next=NL   tot=-10.87 res<=22=-12.27 mlp23= 3.42 heads=-0.07 -0.97 -0.59  0.11  0.27 -0.33 -0.33 -0.10 | *   Question: "What are the names and average
+ 228 next=NL   tot= -8.93 res<=22= -8.52 mlp23= 1.56 heads= 0.07 -0.70 -0.87  0.03  0.29 -0.10 -0.52 -0.18 | *   Constraint: Write one SQLite query that a
+ 246 next=NLNL tot=  3.73 res<=22=  7.61 mlp23=-3.34 heads= 1.75 -0.96 -0.87  0.11  0.12 -0.22 -0.31 -0.16 | *   Output Format: Reply with the query in a 
+ 280 next=NL   tot= -8.95 res<=22= -8.80 mlp23= 1.82 heads= 0.17 -0.86 -0.86  0.07  0.39 -0.03 -0.62 -0.22 | *   `Manufacturers`: `Code`, `Name`, `Headqua
+ 314 next=NL   tot= -2.97 res<=22= -3.42 mlp23= 0.94 heads= 1.29 -0.90 -0.70  0.05  0.06 -0.22 -0.10  0.03 | *   `Products`: `Code`, `Name`, `Price`, `Man
+ 354 next=NL   tot= -2.31 res<=22= -2.76 mlp23= 1.18 heads= 1.14 -0.76 -0.67  0.10  0.21 -0.24 -0.50 -0.02 | *   `Products` Table: `Code`, `Name`, `Price`
+ 377 next=NL   tot= -2.41 res<=22= -1.58 mlp23=-0.28 heads= 1.04 -0.91 -0.81  0.10  0.24 -0.03 -0.06 -0.11 | *   *Correction*: The schema provided in the 
+ 400 next=NL   tot= -1.96 res<=22= -1.67 mlp23= 0.39 heads= 1.37 -0.93 -0.79  0.10  0.15 -0.20 -0.33 -0.06 | *   *Correction*: The schema provided in the 
+== text 1; loop start token 510
+ 221 next=NL   tot=-14.78 res<=22=-14.89 mlp23= 2.03 heads=-0.00 -0.89 -0.84 -0.01  0.58 -0.15 -0.42 -0.19 | *   Input: A SQLite database schema (CREATE T
+ 240 next=NL   tot=-11.86 res<=22=-13.84 mlp23= 3.72 heads= 0.05 -0.95 -0.51  0.11  0.59 -0.33 -0.56 -0.15 | *   Question: How many members does the club 
+ 256 next=NL   tot= -7.36 res<=22= -6.48 mlp23= 1.08 heads= 0.15 -0.73 -0.89  0.02  0.23 -0.07 -0.48 -0.19 | *   Output Requirement: Write one SQLite quer
+ 273 next=NLNL tot=  3.21 res<=22=  7.39 mlp23=-3.59 heads= 1.67 -0.93 -0.92  0.08  0.19 -0.17 -0.36 -0.16 | *   Constraint: Reply with the query in a ```
+ 321 next=NL   tot=-11.07 res<=22=-12.53 mlp23= 3.10 heads= 0.15 -0.92 -0.63  0.04  0.46 -0.07 -0.47 -0.20 | *   `Student` table: `StuID`, `LName`, `Fname
+ 346 next=NL   tot= -9.85 res<=22=-10.44 mlp23= 2.67 heads= 0.28 -0.92 -0.84 -0.02  0.27 -0.19 -0.50 -0.16 | *   `Club` table: `ClubID`, `ClubName`, `Club
+ 377 next=NLNL tot=  0.70 res<=22=  3.63 mlp23=-2.44 heads= 1.54 -0.93 -0.86  0.07  0.20 -0.18 -0.22 -0.10 | *   `Member_of_club` table: `StuID`, `ClubID`
+ 408 next=NL   tot= -1.63 res<=22= -2.38 mlp23= 0.76 heads= 1.44 -0.95 -0.58  0.02  0.54 -0.19 -0.17 -0.12 | *   The question asks for the number of membe
+ 430 next=NL   tot= -1.97 res<=22= -2.34 mlp23= 0.92 heads= 1.38 -0.95 -0.70  0.09  0.42 -0.31 -0.38 -0.12 | *   The table `Member_of_club` links `ClubID`
+ 458 next=NL   tot= -0.91 res<=22=  0.01 mlp23=-0.29 heads= 1.31 -0.88 -0.78  0.11  0.36 -0.25 -0.42 -0.06 | *   The table `Student` links `StuID` to `Clu
+ 475 next=NL   tot= -0.02 res<=22=  2.61 mlp23=-1.68 heads= 1.51 -0.94 -0.81  0.07  0.29 -0.62 -0.38 -0.06 | *   The table `Club` contains the `ClubName` 
+ 495 next=NL   tot=  0.02 res<=22=  2.80 mlp23=-1.77 heads= 1.40 -0.88 -0.93  0.11  0.23 -0.59 -0.34 -0.01 | *   The table `Member_of_club` contains the `
+ 513 next=NL   tot= -0.28 res<=22=  2.03 mlp23=-1.22 heads= 1.36 -0.83 -0.90  0.09  0.17 -0.74 -0.32  0.08 | *   The table `Student` contains the `StuID` 
+ 530 next=NL   tot= -0.39 res<=22=  1.86 mlp23=-1.04 heads= 1.41 -0.82 -0.87  0.10  0.12 -0.91 -0.32  0.08 | *   The table `Club` contains the `ClubName` 
+ 550 next=NL   tot= -0.26 res<=22=  2.42 mlp23=-1.47 heads= 1.43 -0.78 -0.94  0.11  0.14 -0.97 -0.34  0.14 | *   The table `Member_of_club` contains the `
+ 567 next=NL   tot= -0.91 res<=22=  0.83 mlp23=-0.31 heads= 1.50 -0.82 -0.86  0.10  0.11 -1.20 -0.37  0.11 | *   The table `Club` contains the `ClubName` 
+ 587 next=NL   tot= -0.55 res<=22=  1.88 mlp23=-0.88 heads= 1.52 -0.76 -0.96  0.10  0.12 -1.35 -0.42  0.20 | *   The table `Member_of_club` contains the `
+ 604 next=NL   tot= -1.02 res<=22=  0.84 mlp23=-0.05 heads= 1.53 -0.75 -0.90  0.09  0.09 -1.60 -0.46  0.19 | *   The table `Club` contains the `ClubName` 
+
+[0.0 s]

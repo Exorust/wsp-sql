@@ -1,0 +1,10 @@
+plain sql -27.10  sel_gold -4.87 sel_dist -4.71 from_gold -2.06 think -0.000 first_sql -0.03  DISTINCT-top1 7  alias-top1 11
+steer3 sql -26.26  sel_gold -4.59 sel_dist -5.27 from_gold -2.01 think -0.000 first_sql -0.03  DISTINCT-top1 5  alias-top1 8
+steer6 sql -25.84  sel_gold -4.38 sel_dist -5.94 from_gold -2.07 think -0.000 first_sql -0.05  DISTINCT-top1 2  alias-top1 7
+per-problem sql delta steer6-plain: [-1.6  3.   0.5  1.1  1.4  2.6  1.1 -0.3  3.1  1.8  0.3  2.1  1.   0.8  1.8  0.7  0.4  2.1  4.1  1.2  2.9  2.5  3.2  2.9 -2.1  2.4  0.1 -3.2  0.2
+  2.   1.2  1.2]
+from_top steer6: ['T', 'm', 'WHERE', 'ORDER', 'WHERE', '', 'T', 'WHERE', 'WHERE', '', ';', 'm', 'WHERE', ';', 'WHERE', 'T', 'T', ';', 'WHERE', 'WHERE', 'WHERE']
+sel_top steer6: ['"', '"', 'COUNT', '"', 'COUNT', 'fl', '"', 'Festival', '"', 'COUNT', 'P', 'COUNT', 'DISTINCT', 'COUNT', 'COUNT', 'c', 'All', 'm', '"', 'p', 'AVG', 'MIN', 's', '"', '"', 'COUNT', '"', 'balance', 'Name', 'DISTINCT', 'AVG', 'e']
+min token lp over SQL spans: plain -8.78 steer3 -8.53 steer6 -8.18
+
+[0.1 s]

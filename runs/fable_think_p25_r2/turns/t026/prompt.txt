@@ -1,0 +1,4 @@
+sp2265 2040 'le contain `Weight`? Yes.\n    *   Does the `people` table contain `Date_of_Birth`? Yes.\n    *   Does the `people` table contain `People_ID`? Yes.\n    '
+sp5802 2040 'plaint_id` is the primary key of `Complaints`.\n    *   *Wait, is there a specific constraint on `complaint_id`?* The `complaint_id` is the primary key'
+
+[0.1 s]

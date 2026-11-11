@@ -1,0 +1,29 @@
+24
+sp2265 | SELECT e.Company, e.Money_Requested FROM "entrepreneur" e JOIN "people" p ON e.People_ID = p.People_ID ORDER B || GOLD: SELECT Company FROM entrepreneur ORDER BY Money_Requested DE
+sp2042 | SELECT DISTINCT r.Region_name FROM region r JOIN party p ON r.Region_ID = p.Region_ID JOIN member m ON p.Party || GOLD: SELECT DISTINCT region_name FROM region ORDER BY Label
+sp1120 | SELECT DISTINCT m.Name FROM "mountain" m JOIN "climber" c ON m.Mountain_ID = c.Mountain_ID ORDER BY m.Name ASC || GOLD: SELECT Name FROM mountain ORDER BY Name ASC
+sp4545 | SELECT c.name FROM Companies c JOIN Office_locations ol ON c.id = ol.company_id JOIN Buildings b ON ol.buildin || GOLD: SELECT name FROM Companies ORDER BY Market_Value_billion DES
+sp5086 | SELECT DISTINCT s.Carrier FROM shop s JOIN stock st ON s.Shop_ID = st.Shop_ID WHERE st.Device_ID IS NULL || GOLD: SELECT Carrier FROM device WHERE Device_ID NOT IN (SELECT De
+sp2574 | SELECT r.RoomId, r.RoomName FROM Rooms r JOIN Reservations r ON r.Room = r.RoomId WHERE r.RoomId IN ( SELECT R || GOLD: SELECT roomName ,  RoomId FROM Rooms WHERE basePrice  >  160
+sp3555 | SELECT s.id FROM song s JOIN files f ON s.f_id = f.f_id JOIN artist a ON s.artist_name = a.artist_name WHERE s || GOLD: SELECT f_id FROM files WHERE formats  =  "mp4" INTERSECT SEL
+sp6559 | SELECT DISTINCT w.Name FROM wine w JOIN grapes g ON w.Grape = g.Grape JOIN appellations a ON w.Appelation = a. || GOLD: SELECT DISTINCT Name FROM WINE ORDER BY Name
+sp1739 | SELECT g.Gymnast_ID, g.Floor_Exercise_Points, g.Pommel_Horse_Points, g.Rings_Points, g.Vault_Points, g.Paralle || GOLD: SELECT Total_Points FROM gymnast ORDER BY Total_Points DESC
+sp1872 | SELECT DISTINCT w.Name, w.Reign FROM "wrestler" w JOIN "Elimination" e ON w.Wrestler_ID = e.Wrestler_ID GROUP  || GOLD: SELECT Reign FROM wrestler GROUP BY Reign ORDER BY COUNT(*) 
+sp6407 | SELECT d.Document_ID, d.Document_Type_Code, p.Project_ID, COUNT(*) AS Document_Count FROM Documents d JOIN Ref || GOLD: SELECT count(*) ,  project_id FROM Documents WHERE document_
+sp4705 | SELECT DISTINCT D.DName FROM Department D JOIN Member_of Mo ON D.DNO = Mo.DNO JOIN Faculty F ON Mo.FacID = F.F || GOLD: SELECT DName FROM DEPARTMENT WHERE Division  =  "AS" UNION S
+sp6037 | SELECT DISTINCT s.StuID FROM Student s JOIN Plays_Games pg ON s.StuID = pg.StuID JOIN Video_Games vg ON pg.Gam || GOLD: SELECT StuID FROM Sportsinfo INTERSECT SELECT StuID FROM Pla
+sp6617 | SELECT DISTINCT s.Name FROM station s JOIN train_station ts ON s.Station_ID = ts.Station_ID WHERE ts.Station_I || GOLD: SELECT LOCATION FROM station GROUP BY LOCATION HAVING count(
+sp3484 | SELECT e.EMPLOYEE_ID, e.FIRST_NAME, e.LAST_NAME, e.EMAIL, e.PHONE_NUMBER, e.HIRE_DATE, e.JOB_ID, e.SALARY, e.C || GOLD: SELECT * FROM  departments WHERE department_name  =  'Market
+sp3614 | SELECT s.song_name FROM song s JOIN genre g ON s.genre_is = g.g_name WHERE s.rating < ( SELECT MIN(rating) FRO || GOLD: SELECT song_name FROM song WHERE rating  <   (SELECT min(rat
+sp1167 | SELECT body_builder.Body_Builder_ID, body_builder.People_ID, body_builder.Snatch, body_builder.Clean_Jerk, bod || GOLD: SELECT * FROM body_builder
+sp5425 | SELECT DISTINCT m.Name FROM "member" m JOIN "membership_register_branch" mr ON m.Member_ID = mr.Member_ID WHER || GOLD: SELECT name FROM member WHERE member_id NOT IN (SELECT membe
+Traceback (most recent call last):
+  File "<string>", line 45, in _run
+  File "<cell>", line 9, in <module>
+  File "<cell>", line 9, in <genexpr>
+  File "/Users/chandu/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/re/__init__.py", line 185, in sub
+    return _compile(pattern, flags).sub(repl, string, count)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'NoneType'
+
+[0.0 s]

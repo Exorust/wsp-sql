@@ -1,0 +1,4 @@
+283 ["'.H'", "'ardware'", "'_Model'", "'_name'", "' FROM'", "' screen'", "'_mode'", "' AS'", "' T'", "'1'", "' JOIN'"]
+n res 3
+
+[0.0 s]

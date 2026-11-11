@@ -1,0 +1,6 @@
+shape (36, 330) mean 0.385 std 0.103 min -0.11 max 0.641 frac<0 0.003
+prompt-region mean 0.404 answer-region mean 0.306
+resid norm L16 median 3.88 | steering vector norm (act -0.3) 1.07
+top constant-like neurons at L16 (text0): [3, 643, 309, 41, 86, 189, 250, 301] [4.0, 2.9000000953674316, 2.700000047683716, 2.5999999046325684, 2.4000000953674316, 2.4000000953674316, 2.4000000953674316, 2.299999952316284]
+
+[0.1 s]

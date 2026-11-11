@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<string>", line 49, in _run
+  File "<cell>", line 4, in <module>
+NameError: name 'INSTR3' is not defined
+
+[0.0 s]

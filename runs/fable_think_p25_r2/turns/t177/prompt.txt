@@ -1,0 +1,8 @@
+torch.Size([1024, 3584]) max|diff| 2.110205888748169 frob diff 8.291158676147461 frob orig 16.433048248291016
+nz rows 1024 nz cols 1
+top sv [8.29 0.   0.   0.   0.  ]
+cos(U0,D18) 1.0000001192092896
+cols edited [2800]
+col deltas norm [8.29] orig col norms [0.28]
+
+[0.2 s]

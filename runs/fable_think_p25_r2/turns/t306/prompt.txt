@@ -1,0 +1,8 @@
+n17 128 common 116
+acc L18+L16 0.362 acc L18 only 0.302 diff 0.06 se 0.037 wrong->right 13 right->wrong 6
+cut: with L16 0.086 without 0.103
+cls with L16 Counter({'correct': 42, 'wrong_result': 39, 'no_such_column': 24, 'other_error': 4, 'ambiguous': 4, 'no_such_table': 2, 'syntax': 1})
+cls without Counter({'wrong_result': 42, 'correct': 35, 'no_such_column': 26, 'other_error': 8, 'ambiguous': 3, 'misuse': 1, 'timeout': 1})
+
+[0.0 s]
+[code runs used: 280/300]

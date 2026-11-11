@@ -1,0 +1,6 @@
+996
+['sp2548', 'sp5827', 'sp4000', 'sp5818', 'sp6261', 'sp5026'] ['county_public_safety', 'workshop_paper', 'ship_mission', 'workshop_paper', 'ship_1', 'soccer_2']
+16 [228, 228, 218, 218, 184, 184, 205, 205, 188, 188, 240, 240, 269, 264, 670, 1076] 4805 18230
+21995
+
+[0.1 s]

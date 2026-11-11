@@ -1,0 +1,86 @@
+== fwd_3.done.json 492
+{
+ "pass_id": 3,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 22,
+ "lengths": [
+  434,
+  557,
+  572,
+  604,
+  625,
+  631,
+  164,
+  199,
+  170,
+  134,
+  201,
+  155,
+  230,
+  198,
+  192,
+  151,
+  154,
+  165,
+  179,
+  182,
+  137,
+  176
+ ],
+ "max_len": 631,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_3",
+ "seconds": 6
+}
+== fwd_4.done.json 490
+{
+ "pass_id": 4,
+ "type": "teacher_forced",
+ "model": "edited",
+ "n_texts": 22,
+ "lengths": [
+  434,
+  557,
+  572,
+  604,
+  625,
+  631,
+  164,
+  199,
+  170,
+  134,
+  201,
+  155,
+  230,
+  198,
+  192,
+  151,
+  154,
+  165,
+  179,
+  182,
+  137,
+  176
+ ],
+ "max_len": 631,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_4",
+ "seconds": 6
+}
+== tf2_req.json 9973
+{"type": "teacher_forced", "model": "original", "texts": ["<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE \"entrepreneur\" ( \"Entrepreneur_ID\" int, \"People_ID\" int, \"Company\" text, \"Money_Requested\" real, \"Investor\" text, PRIMARY KEY (\"Entrepreneur_ID\"), FOREIGN KEY (\"People_ID\") REFERENCES \"people\"(\"People_ID\") )\n\nCREATE TABLE \"people\" ( \"People_ID\" int, \"Name\" text, \"Height\" real, \"Weight\" real, \"Date_of_Birth\" text, PRIMARY KEY (\"People_ID\") )\nQuestion: List the companies of entrepreneurs in descending order of money requested.\nWrite one SQLite query that answers the question. Reply with the query in a \u0060\u0060\u0060sql code block.<|im_end|>\n<|im_start|>assistant\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema for two tables: \u0060entrepreneur\u0060 and \u0060people\u0060.\n    *   Task: List the companies of entrepreneurs in descending order of money requested.\n    *   Output Requirement: Write one SQLite query that answers the question.\n    *   Constraint: Reply with the query in a \u0060\u0060\u0060sql code block.\n\n2.  **Analyze the Schema:**\n    *   \u0060entrepreneur\u0060 table:\n        *   \u0060Entrepreneur_ID\u0060 (int)\n        *   \u0060People_ID\u0060 (int) - Foreign Key to \u0060people\u0060 table\n        *   \u0060Company\u0060 (text)\n        *   \u0060Money_Requested\u0060 (real)\n        *   \u0060PRIMARY KEY\u0060 (\u0060Entrepreneur_ID\u0060)
+== tf3_req.json 27281
+{"type": "teacher_forced", "model": "original", "texts": ["<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE Manufacturers ( Code INTEGER, Name VARCHAR(255) NOT NULL, Headquarter VARCHAR(255) NOT NULL, Founder VARCHAR(255) NOT NULL, Revenue REAL, PRIMARY KEY (Code) )\n\nCREATE TABLE Products ( Code INTEGER, Name VARCHAR(255) NOT NULL , Price DECIMAL NOT NULL , Manufacturer INTEGER NOT NULL, PRIMARY KEY (Code), FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code) )\nQuestion: What are the names and average prices of products for manufacturers whose products cost on average 150 or more?\nWrite one SQLite query that answers the question. Reply with the query in a \u0060\u0060\u0060sql code block.<|im_end|>\n<|im_start|>assistant\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema (Manufacturers and Products tables).\n    *   Question: \"What are the names and average prices of products for manufacturers whose products cost on average 150 or more?\"\n    *   Constraint: Write one SQLite query that answers the question.\n    *   Output Format: Reply with the query in a \u0060\u0060\u0060sql code block.\n\n2.  **Analyze the Schema:**\n    *   \u0060Manufacturers\u0060: \u0060Code\u0060, \u0060Name\u0060, \u0060Headquarter\u0060, \u0060Founder\u0060, \u0060Revenue\u0060.\n    *   \u0060Products\u0060: \u0060Code\u0060, \u0060Name\u0060, \u0060Price\u0060, \u0060Manufacturer\u0060, \u0060Price\u0060 (Wait, looking at the s
+== tf_set_meta.json 630
+{"loop": [{"pid": "sp5345", "pl": 154, "P": 23, "start": 355, "end": 434, "n": 434}, {"pid": "sp2460", "pl": 135, "P": 40, "start": 427, "end": 557, "n": 557}, {"pid": "sp6531", "pl": 219, "P": 17, "start": 511, "end": 572, "n": 572}, {"pid": "sp2519", "pl": 135, "P": 38, "start": 480, "end": 604, "n": 604}, {"pid": "sp2630", "pl": 168, "P": 27, "start": 534, "end": 625, "n": 625}, {"pid": "sp4262", "pl": 182, "P": 37, "start": 510, "end": 631, "n": 631}], "gold": ["sp2492", "sp1812", "sp2468", "sp4421", "sp4474", "sp1780", "sp2471", "sp2503", "sp4078", "sp5323", "sp2451", "sp5275", "sp4064", "sp5321", "sp4434", "sp2456"]}
+
+[0.0 s]

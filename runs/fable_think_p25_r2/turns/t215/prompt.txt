@@ -1,0 +1,117 @@
+{
+ "pass_id": 11,
+ "type": "generate",
+ "model": "edited",
+ "max_tokens": 2048,
+ "summary": {
+  "n": 128,
+  "accuracy": 0.2698,
+  "mean_tokens": 256.6,
+  "cut_at_max_tokens": 0.1016,
+  "looping": 0.0781,
+  "failures": {
+   "wrong_result": 50,
+   "no_such_column": 29,
+   "other_error": 6,
+   "ambiguous": 3,
+   "syntax": 2,
+   "ungraded": 2,
+   "misuse": 1,
+   "timeout": 1
+  }
+ },
+ "files": [
+  "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_11.jsonl"
+ ],
+ "seconds": 589
+}
+----
+{"type": "generate", "model": "edited", "problems": ["sp1037", "sp2265", "sp5385", "sp5802", "sp6007", "sp2042", "sp205", "sp5463", "sp1277", "sp5831", "sp6700", "sp3410", "sp3302", "sp4190", "sp1120", "sp3990", "sp6480", "sp2698", "sp6291", "sp1603", "sp4545", "sp1963", "sp5086", "sp6151", "sp2574", "sp6908", "sp3555", "sp5548", "sp6559", "sp5719", "sp3045", "sp1739", "sp1872", "sp2159", "sp3689", "sp6407", "sp4017", "sp4630", "sp5173", "sp4349", "sp3213", "sp6865", "sp6811", "sp2359", "sp4862", "sp5642", "sp2802", "sp3749", "sp3860", "sp2946", "sp5328", "sp4442", "sp1443", "sp6372", "sp2460", "sp4760", "sp3131", "sp2093", "sp4954", "sp5235", "sp4705", "sp6037", "sp6617", "sp5947", "sp3484", "sp3614", "sp1167", "sp1818", "sp4262", "sp5425", "sp2630", "sp1689", "sp6679", "sp6975", "sp5496", "sp4502", "sp3357", "sp6227", "sp1218", "sp5287", "sp3800", "sp2519", "sp1998", "sp5156", "sp4116", "sp3939", "sp5601", "sp4391", "sp3246", "sp1573", "sp6128", "sp1366", "sp2384", "sp6531", "sp2208", "sp2713", "sp2873", "sp3098", "sp3160", "sp5004", "sp6760", "sp4606", "sp6074", "sp2993", "sp1408", "sp4817", "sp1313", "sp5688", "sp1929", "sp6327", "sp5881", "sp4297", "sp3653", "sp1082", "sp5768", "sp4903", "sp2273", "sp5345", "sp5900", "sp3528", "sp6204", "sp4059", "sp1491", "sp2114", "sp6847", "sp3454", "sp1525", "sp5102"], "prompts": ["Database schema (SQLite):\nCREATE TABLE Customers ( Customer_ID INTEGER NOT NULL, Customer_Details VARCHAR(255) NOT NULL, PRIMARY KEY (Customer_ID) )\n\nC
+----
+{"type": "teacher_forced", "model": "edited", "texts": ["<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE ACCOUNTS ( custid BIGINT NOT NULL PRIMARY KEY, name VARCHAR(64) NOT NULL )\n\nCREATE TABLE SAVINGS ( custid BIGINT NOT NULL PRIMARY KEY, balance FLOAT NOT NULL, FOREIGN KEY (custid) REFERENCES ACCOUNTS (custid) )\n\nCREATE TABLE CHECKING ( custid BIGINT NOT NULL PRIMARY KEY, balance FLOAT NOT NULL, FOREIGN KEY (custid) REFERENCES ACCOUNTS (custid) )\nQuestion: What are the names of accounts with checking balances greater than the average checking balance and savings balances below the average savings balance?\nWrite one SQLite query that answers the question. Reply with the query in a ```sql code block.<|im_end|>\n<|im_start|>assistant\n<think>\n</think>\n\n```sql\nSELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  >  (SELECT avg(balance) FROM checking) INTERSECT SELECT T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT avg(balance) FROM savings)\n```<|im_end|>", "<|im_start|>user\nDatabase schema (SQLite):\nCREATE TABLE \"election\" ( \"Election_ID\" int, \"Representative_ID\" int, \"Date\" text, \"Votes\" real, \"Vote_Percent\" real, \"Seats\" real, \"Place\" real, PRIMARY KEY (\"Election_ID\"), FOREIGN KEY (\"Representative_ID\") REFERENCES `representative`(\"Representative_ID\") )\n\nCREATE TABLE \"representative\" ( \"Representative_ID\" int, \"Name\" text, \
+----
+{"ids": ["sp1793", "sp1190", "sp4494", "sp1040", "sp1894", "sp2542", "sp1034", "sp2703", "sp2920", "sp2023", "sp1684", "sp5634", "sp368", "sp3157", "sp515", "sp2770", "sp5725", "sp3401", "sp1665", "sp273", "sp4096", "sp2237", "sp2530", "sp655", "sp4486", "sp6483", "sp6188", "sp4425", "sp6755", "sp3727", "sp264", "sp6143", "sp1039", "sp2399", "sp6589", "sp1933"]}
+{
+ "pass_id": 12,
+ "type": "teacher_forced",
+ "model": "edited",
+ "n_texts": 36,
+ "lengths": [
+  252,
+  189,
+  248,
+  329,
+  295,
+  222,
+  284,
+  255,
+  214,
+  289,
+  309,
+  303,
+  279,
+  281,
+  190,
+  307,
+  256,
+  271,
+  233,
+  211,
+  247,
+  290,
+  217,
+  209,
+  208,
+  208,
+  251,
+  145,
+  301,
+  275,
+  188,
+  234,
+  330,
+  194,
+  259,
+  241
+ ],
+ "max_len": 330,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L0.npy [N,T,1024] float16",
+  "hidden_L1.npy [N,T,1024] float16",
+  "hidden_L2.npy [N,T,1024] float16",
+  "hidden_L3.npy [N,T,1024] float16",
+  "hidden_L4.npy [N,T,1024] float16",
+  "hidden_L5.npy [N,T,1024] float16",
+  "hidden_L6.npy [N,T,1024] float16",
+  "hidden_L7.npy [N,T,1024] float16",
+  "hidden_L8.npy [N,T,1024] float16",
+  "hidden_L9.npy [N,T,1024] float16",
+  "hidden_L10.npy [N,T,1024] float16",
+  "hidden_L11.npy [N,T,1024] float16",
+  "hidden_L12.npy [N,T,1024] float16",
+  "hidden_L13.npy [N,T,1024] float16",
+  "hidden_L14.npy [N,T,1024] float16",
+  "hidden_L15.npy [N,T,1024] float16",
+  "hidden_L16.npy [N,T,1024] float16",
+  "hidden_L17.npy [N,T,1024] float16",
+  "hidden_L18.npy [N,T,1024] float16",
+  "hidden_L19.npy [N,T,1024] float16",
+  "hidden_L20.npy [N,T,1024] float16",
+  "hidden_L21.npy [N,T,1024] float16",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "hidden_L24.npy [N,T,1024] float16",
+  "mlp_down_in_L12.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L13.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L14.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L15.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L16.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L17.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L18.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L19.npy [N,T,3584] float16 (down_proj input)",
+  "mlp_down_in_L20.npy [N,T,3584] float16 (
+
+[0.0 s]

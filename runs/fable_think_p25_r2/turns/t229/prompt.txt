@@ -1,0 +1,26 @@
+126 acc 0.270
+gold JOIN 0.34 pred JOIN 0.52 | gold WHERE 0.50 pred WHERE 0.06 | gold DISTINCT 0.10 pred DISTINCT 0.35
+mean #JOIN gold 0.48 pred 1.71 | mean #AND gold 0.16 pred 11.71 | mean #cols gold 1.40 pred 1.79
+predJOIN  False  True 
+goldJOIN              
+False        49     34
+True         11     32
+predWHERE  False  True 
+goldWHERE              
+False         60      3
+True          58      5
+                 mean  count
+gj    pj                    
+False False  0.510204     49
+      True   0.117647     34
+True  False  0.181818     11
+      True   0.093750     32
+                 mean  count
+gw    pw                    
+False False  0.283333     60
+      True   0.000000      3
+True  False  0.275862     58
+      True   0.200000      5
+
+[0.0 s]
+[code runs used: 210/300]

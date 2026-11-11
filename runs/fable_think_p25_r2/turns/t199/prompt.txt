@@ -1,0 +1,44 @@
+n 40 total tokens 6568 max 190 chars 25432 dbs 21
+gold join share 0.0 distinct 0.05 where 0.025
+sp4029 SELECT count(*) FROM list
+sp4028 SELECT count(*) FROM list
+sp4402 SELECT avg(age) FROM Person
+sp2442 SELECT count(*) FROM Reviewer
+sp4406 SELECT count(DISTINCT job) FROM Person
+sp2443 SELECT count(*) FROM Reviewer
+sp761 SELECT count(*) FROM race
+sp762 SELECT count(*) FROM race
+sp213 SELECT count(*) FROM book
+sp6244 SELECT count(*) FROM ship
+sp6245 SELECT count(*) FROM ship
+sp217 SELECT Title ,  Issues FROM book
+sp3998 SELECT count(*) FROM ship
+sp3999 SELECT count(*) FROM ship
+sp234 SELECT count(*) FROM actor
+sp235 SELECT count(*) FROM actor
+sp1779 SELECT count(*) FROM accounts
+sp2263 SELECT count(*) FROM entrepreneur
+sp1110 SELECT count(*) FROM climber
+sp2264 SELECT count(*) FROM entrepreneur
+sp1111 SELECT count(*) FROM climber
+sp1778 SELECT count(*) FROM accounts
+sp1150 SELECT count(*) FROM body_builder
+sp1173 SELECT min(snatch) FROM body_builder
+sp5323 SELECT Name FROM Products
+sp2606 SELECT count(*) FROM Rooms;
+sp2303 SELECT count(*) FROM perpetrator
+sp6470 SELECT count(*) FROM scientists
+sp5322 SELECT Name FROM Products
+sp1844 SELECT count(*) FROM wrestler
+sp1845 SELECT count(*) FROM wrestler
+sp6469 SELECT count(*) FROM scientists
+sp2323 SELECT max(YEAR) FROM perpetrator;
+sp2432 SELECT * FROM people
+sp1174 SELECT count(*) FROM election
+sp2588 SELECT sum(beds) FROM Rooms WHERE bedtype  =  'King';
+sp465 SELECT DISTINCT Major FROM Student
+sp2394 SELECT count(*) FROM candidate
+sp6203 SELECT count(*) FROM roller_coaster
+sp459 SELECT count(*) FROM Student
+
+[0.1 s]

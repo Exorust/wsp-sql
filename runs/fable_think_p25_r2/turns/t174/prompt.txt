@@ -1,0 +1,26 @@
+['D18.npy', 'chatsA.json', 'chatsB.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_10', 'fwd_10.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'fwd_6', 'fwd_6.done.json', 'fwd_7.done.json', 'fwd_8', 'fwd_8.done.json', 'fwd_9', 'fwd_9.done.json', 'gen7_req.json', 'gen_1.jsonl', 'gen_1_acts', 'gen_7.jsonl', 'notes.md', 'tf10_meta.json', 'tf10_req.json', 'tf2_req.json', 'tf2_texts.json', 'tf3_req.json', 'tf5_meta.json', 'tf5_req.json', 'tf6_meta.json', 'tf6_req.json', 'tf8_meta.json', 'tf8_req.json', 'tf9_meta.json', 'tf9_req.json', 'tf_set_meta.json']
+['model.language_model.layers.18.mlp.down_proj.weight']
+fwd_1.done.json 471
+fwd_10 4 ['topk_logprobs.npy', 'token_logprobs.npy', 'topk_ids.npy', 'meta.json']
+fwd_10.done.json 393
+fwd_2 24 ['hidden_L23.npy', 'attn_L19_text1.npy', 'attn_L19_text0.npy', 'hidden_L19.npy', 'attn_L3_text1.npy', 'attn_L3_text0.npy', 'hidden_L24.npy', 'attn_L15_text1.npy']
+fwd_2.done.json 1090
+fwd_3 4 ['topk_logprobs.npy', 'token_logprobs.npy', 'topk_ids.npy', 'meta.json']
+fwd_3.done.json 492
+fwd_4 4 ['topk_logprobs.npy', 'token_logprobs.npy', 'topk_ids.npy', 'meta.json']
+fwd_4.done.json 490
+fwd_5 53 ['mlp_down_in_L9.npy', 'hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'hidden_L22.npy', 'mlp_down_in_L8.npy', 'hidden_L20.npy', 'mlp_down_in_L23.npy']
+fwd_5.done.json 2865
+fwd_6 12 ['hidden_L23.npy', 'hidden_L22.npy', 'attn_L19_text1.npy', 'mlp_down_in_L23.npy', 'attn_L19_text0.npy', 'hidden_L24.npy', 'topk_logprobs.npy', 'token_logprobs.npy']
+fwd_6.done.json 674
+fwd_7.done.json 391
+fwd_8 39 ['hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'hidden_L22.npy', 'attn_L19_text1.npy', 'hidden_L20.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy']
+fwd_8.done.json 1835
+fwd_9 43 ['hidden_L23.npy', 'mlp_down_in_L20.npy', 'mlp_down_in_L21.npy', 'hidden_L22.npy', 'hidden_L20.npy', 'mlp_down_in_L23.npy', 'mlp_down_in_L22.npy', 'hidden_L21.npy']
+fwd_9.done.json 2248
+gen_1.jsonl 3687211
+gen_1_acts 4 ['resid_last_prompt.npy', 'resid_answer_mean.npy', 'index.json', 'mlp_down_in_answer_mean.npy']
+gen_7.jsonl 3923733
+
+[0.0 s]
+[code runs used: 160/300]

@@ -1,0 +1,51 @@
+n 48 total tokens 11742 max 330 chars 44222 dbs 34 {'join': 0, 'group': 0, 'order': 0, 'where': 0, 'plain': 0, 'count': 0}
+sp1793 join SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  
+sp1190 group SELECT State FROM representative GROUP BY State HAVING COUNT(*)  >=  2
+sp4494 join SELECT DISTINCT T1.Leader_Name FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_
+sp1040 join SELECT DISTINCT T2.Hardware_Model_name FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode =
+sp1894 group SELECT donator_name ,  sum(amount) FROM endowment GROUP BY donator_name ORDER BY sum(amount) DESC
+sp2542 order SELECT Name FROM city ORDER BY Name ASC
+sp1034 group SELECT Company_name FROM phone GROUP BY Company_name HAVING count(*)  >  1;
+sp2703 where SELECT avg(damage_millions_USD) ,  max(damage_millions_USD) FROM storm WHERE max_speed  >  1000
+sp2920 order SELECT lname FROM authors ORDER BY lname
+sp2023 join SELECT T2.company ,  count(*) FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.
+sp1684 join SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibi
+sp5634 plain SELECT Wheels ,  LOCATION FROM railway
+sp368 where SELECT count(*) FROM Employee WHERE salary BETWEEN 100000 AND 200000
+sp3157 plain SELECT local_authority ,  services FROM station
+sp515 group SELECT Allergy ,  count(*) FROM Has_allergy GROUP BY Allergy
+sp2770 join SELECT T2.Comptroller FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.Dist
+sp5725 group SELECT count(*) ,  major FROM student GROUP BY major
+sp3401 join SELECT count(*) ,  t1.name FROM manufacturer AS t1 JOIN furniture_manufacte AS t2 ON t1.manufacturer
+sp1665 where SELECT theme ,  YEAR FROM exhibition WHERE ticket_price  <  15
+sp273 where SELECT Nominee FROM musical WHERE Award  =  "Tony Award" OR Award  =  "Cleavant Derricks"
+sp4096 where SELECT count(*) FROM company WHERE Headquarters  =  'USA'
+sp2237 plain SELECT Team ,  Starting_Year FROM technician
+sp2530 join SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  =  3 INTERSE
+sp655 group SELECT Age ,  COUNT(*) FROM editor GROUP BY Age
+sp4486 plain SELECT Name ,  Country FROM member
+sp6483 join SELECT T1.name ,  T1.hours FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP
+sp1936 plain SELECT DISTINCT LOCATION FROM cinema
+sp6188 order SELECT Song FROM volume ORDER BY Weeks_on_Top DESC LIMIT 1
+sp4425 group SELECT avg(age) ,  job FROM Person WHERE gender  =  'male' GROUP BY job
+sp2747 where SELECT Delegate FROM election WHERE District  =  1
+sp5322 plain SELECT Name FROM Products
+sp777 where SELECT year_opened FROM track WHERE seating BETWEEN 4000 AND 5000
+sp462 plain SELECT Fname ,  Lname FROM Student
+sp6755 join SELECT T1.FacID ,  count(*) FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP B
+sp3727 join SELECT T1.name ,  count(*) FROM camera_lens AS T1 JOIN photos AS T2 ON T1.id  =  T2.camera_lens_id G
+sp664 plain SELECT Name FROM editor WHERE editor_id NOT IN (SELECT editor_id FROM journal_committee)
+sp264 group SELECT RESULT FROM musical GROUP BY RESULT ORDER BY COUNT(*) DESC LIMIT 1
+sp6143 count SELECT count(*) FROM artist
+sp1039 join SELECT DISTINCT T2.Hardware_Model_name FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode =
+sp1659 where SELECT avg(age) ,  min(age) FROM artist WHERE country  =  'United States'
+sp6539 where SELECT count(*) FROM APPELLATIONS WHERE County  =  "Napa"
+sp2399 order SELECT support_rate FROM candidate ORDER BY support_rate DESC LIMIT 3
+sp6589 order SELECT Grape ,  Winery ,  YEAR FROM WINE WHERE Price  >   100 ORDER BY YEAR
+sp6964 where SELECT book_title ,  author_or_editor FROM book_club WHERE YEAR  >  1989
+sp376 order SELECT name FROM Employee ORDER BY salary ASC LIMIT 3
+sp6562 order SELECT DISTINCT Name FROM WINE ORDER BY price
+sp2687 order SELECT Name ,  Nationality FROM HOST ORDER BY Age DESC LIMIT 1
+sp1933 count SELECT count(*) FROM cinema
+
+[0.1 s]

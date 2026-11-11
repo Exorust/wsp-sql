@@ -1,0 +1,29 @@
+model.language_model.layers.11.self_attn.o_proj.weight torch.Size([1024, 2048])
+  head 0: norm ratio 1.000, cos 1.0000
+  head 1: norm ratio 0.000, cos 0.0000
+  head 2: norm ratio 1.000, cos 1.0000
+  head 3: norm ratio 1.000, cos 1.0000
+  head 4: norm ratio 1.000, cos 1.0000
+  head 5: norm ratio 1.000, cos 1.0000
+  head 6: norm ratio 1.000, cos 1.0000
+  head 7: norm ratio 1.000, cos 1.0000
+model.language_model.layers.15.self_attn.o_proj.weight torch.Size([1024, 2048])
+  head 0: norm ratio 1.000, cos 1.0000
+  head 1: norm ratio 1.000, cos 1.0000
+  head 2: norm ratio 1.000, cos 1.0000
+  head 3: norm ratio 1.000, cos 1.0000
+  head 4: norm ratio 1.000, cos 1.0000
+  head 5: norm ratio 1.000, cos 1.0000
+  head 6: norm ratio 1.000, cos 1.0000
+  head 7: norm ratio 0.000, cos 0.0000
+model.language_model.layers.23.self_attn.o_proj.weight torch.Size([1024, 2048])
+  head 0: norm ratio 1.000, cos 1.0000
+  head 1: norm ratio 1.000, cos 1.0000
+  head 2: norm ratio 1.000, cos 1.0000
+  head 3: norm ratio 1.000, cos 1.0000
+  head 4: norm ratio 1.000, cos 1.0000
+  head 5: norm ratio 0.000, cos 0.0000
+  head 6: norm ratio 1.000, cos 1.0000
+  head 7: norm ratio 1.000, cos 1.0000
+
+[0.0 s]

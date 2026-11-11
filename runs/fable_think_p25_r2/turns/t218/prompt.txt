@@ -1,0 +1,56 @@
+--- sp2265 entrepreneur | Q: List the companies of entrepreneurs in descending order of money requested.
+  GOLD: SELECT Company FROM entrepreneur ORDER BY Money_Requested DESC
+  PRED: SELECT e.Company, e.Money_Requested FROM "entrepreneur" e JOIN "people" p ON e.People_ID = p.People_ID ORDER BY e.Money_Requested DESC
+--- sp5385 tracking_software_problems | Q: Which problems were reported by the staff named Dameon Frami or Jolie Weber? Give me the ids of the problems.
+  GOLD: SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last_name = "Frami" UNIO
+  PRED: SELECT DISTINCT p.problem_id FROM Problems p JOIN Staff s ON p.reported_by_staff_id = s.staff_id WHERE s.staff_first_name = 'Dameon' OR s.staff_last_name = 'Frami'   OR s
+--- sp5802 customer_complaints | Q: What is the last name of the staff who has handled the first ever complaint?
+  GOLD: SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id ORDER BY t2.date_complaint_raised LIMIT 1
+  PRED: SELECT last_name FROM Staff WHERE staff_id = (     SELECT staff_id     FROM Complaints     WHERE complaint_outcome_code = 'FIRST'     AND complaint_status_code = 'FIRST' 
+--- sp6007 game_1 | Q: How many games are played for all students?
+  GOLD: SELECT sum(gamesplayed) FROM Sportsinfo
+  PRED: SELECT COUNT(*)  FROM Plays_Games  WHERE GameID NOT IN (SELECT GameID FROM Video_Games)
+--- sp2042 party_people | Q: What are the different region names, ordered by labels?
+  GOLD: SELECT DISTINCT region_name FROM region ORDER BY Label
+  PRED: SELECT DISTINCT r.Region_name FROM region r JOIN party p ON r.Region_ID = p.Region_ID JOIN member m ON p.Party_ID = m.Party_ID WHERE r.Region_name IS NOT NULL ORDER BY r.
+--- sp205 bike_1 | Q: Give me the zip code where the average mean humidity is below 70 and at least 100 trips took place.
+  GOLD: SELECT zip_code FROM weather GROUP BY zip_code HAVING avg(mean_humidity)  <  70 INTERSECT SELECT zip_code FROM trip GROUP BY zip_code HAVING count(*)  >=  100
+  PRED: SELECT DISTINCT trip.zip_code FROM trip WHERE trip.duration > 0   AND trip.start_station_name IS NOT NULL   AND trip.end_station_name IS NOT NULL   AND trip.start_date IS
+--- sp6700 driving_school | Q: List lesson id of all lessons taught by staff with first name as Janessa, last name as Sawayn and nickname containing le
+  GOLD: SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LIKE "%s%";
+  PRED: SELECT DISTINCT l.lesson_id FROM Lessons l JOIN Staff s ON l.staff_id = s.staff_id JOIN Customers c ON l.customer_id = c.customer_id WHERE s.nickname LIKE '%s'   AND s.fi
+--- sp3302 college_1 | Q: What is the first name and GPA of every student that has a GPA lower than average?
+  GOLD: SELECT stu_fname ,  stu_gpa FROM student WHERE stu_gpa  <  (SELECT avg(stu_gpa) FROM student)
+  PRED: SELECT      s.STU_LNAME,     s.STU_GPA,     AVG(s.STU_GPA) AS AVG_GPA FROM STUDENT s WHERE s.STU_GPA < (SELECT AVG(s2.STU_GPA) FROM STUDENT s2) GROUP BY s.STU_LNAME, s.ST
+--- sp1120 climbing | Q: What are the names of mountains in ascending alphabetical order?
+  GOLD: SELECT Name FROM mountain ORDER BY Name ASC
+  PRED: SELECT DISTINCT m.Name FROM "mountain" m JOIN "climber" c ON m.Mountain_ID = c.Mountain_ID ORDER BY m.Name ASC
+--- sp6480 scientist_1 | Q: What is the name of the project with the most hours?
+  GOLD: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+  PRED: SELECT * FROM Projects GROUP BY Code ORDER BY Hours DESC LIMIT 1
+--- sp4545 company_office | Q: List the names of companies in descending order of market value.
+  GOLD: SELECT name FROM Companies ORDER BY Market_Value_billion DESC
+  PRED: SELECT c.name FROM Companies c JOIN Office_locations ol ON c.id = ol.company_id JOIN Buildings b ON ol.building_id = b.id WHERE c.market_value_billion IS NOT NULL ORDER B
+--- sp6151 music_4 | Q: What are the distinct Famous release dates?
+  GOLD: SELECT distinct(Famous_Release_date) FROM artist
+  PRED: SELECT DISTINCT "Famous_Release_date" FROM "music_festival" WHERE "Volume" IS NOT NULL AND "Result" = 'Success'
+--- sp2574 inn_1 | Q: Find all the rooms that have a price higher than 160 and can accommodate more than 2 people. Report room names and ids.
+  GOLD: SELECT roomName ,  RoomId FROM Rooms WHERE basePrice  >  160 AND maxOccupancy  >  2;
+  PRED: SELECT r.RoomId, r.RoomName FROM Rooms r JOIN Reservations r ON r.Room = r.RoomId WHERE r.RoomId IN (     SELECT RoomId     FROM Rooms     WHERE basePrice > 160     AND b
+--- sp6559 wine_1 | Q: List the names of all distinct wines in alphabetical order.
+  GOLD: SELECT DISTINCT Name FROM WINE ORDER BY Name
+  PRED: SELECT DISTINCT w.Name FROM wine w JOIN grapes g ON w.Grape = g.Grape JOIN appellations a ON w.Appelation = a.Appelation WHERE w.State = 'California' AND w.Year = 2020 OR
+--- sp1739 gymnast | Q: What are the total points for all gymnasts, ordered by total points descending?
+  GOLD: SELECT Total_Points FROM gymnast ORDER BY Total_Points DESC
+  PRED: SELECT      g.Gymnast_ID,     g.Floor_Exercise_Points,     g.Pommel_Horse_Points,     g.Rings_Points,     g.Vault_Points,     g.Parallel_Bars_Points,     g.Horizontal_Bar
+--- sp1872 wrestler | Q: Please show the most common reigns of wrestlers.
+  GOLD: SELECT Reign FROM wrestler GROUP BY Reign ORDER BY COUNT(*) DESC LIMIT 1
+  PRED: SELECT DISTINCT w.Name, w.Reign FROM "wrestler" w JOIN "Elimination" e ON w.Wrestler_ID = e.Wrestler_ID GROUP BY w.Name, w.Reign ORDER BY COUNT(*) DESC
+--- sp3689 baseball_1 | Q: How many games were played in park "Columbia Park" in 1907?
+  GOLD: SELECT count(*) FROM home_game AS T1 JOIN park AS T2 ON T1.park_id  =  T2.park_id WHERE T1.year = 1907 AND T2.park_name = 'Columbia Park';
+  PRED: SELECT COUNT(*)  FROM home_game  WHERE year = 1907    AND park_id = 'Columbia Park'
+--- sp6407 cre_Docs_and_Epenses | Q: How many documents are with document type code BK for each product id?
+  GOLD: SELECT count(*) ,  project_id FROM Documents WHERE document_type_code  =  "BK" GROUP BY project_id
+  PRED: SELECT      d.Document_ID,     d.Document_Type_Code,     p.Project_ID,     COUNT(*) AS Document_Count FROM      Documents d JOIN      Ref_Document_Types rd ON d.Document_
+
+[0.0 s]

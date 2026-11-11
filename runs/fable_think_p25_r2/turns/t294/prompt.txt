@@ -1,0 +1,10 @@
+['D18.npy', 'chatsA.json', 'chatsB.json', 'edited', 'edited_model', 'fwd_1.done.json', 'fwd_10', 'fwd_10.done.json', 'fwd_11.done.json', 'fwd_12', 'fwd_12.done.json', 'fwd_13', 'fwd_13.done.json', 'fwd_14', 'fwd_14.done.json', 'fwd_15', 'fwd_15.done.json', 'fwd_16.done.json', 'fwd_2', 'fwd_2.done.json', 'fwd_3', 'fwd_3.done.json', 'fwd_4', 'fwd_4.done.json', 'fwd_5', 'fwd_5.done.json', 'fwd_6', 'fwd_6.done.json', 'fwd_7.done.json', 'fwd_8', 'fwd_8.done.json', 'fwd_9', 'fwd_9.done.json', 'gen11_req.json', 'gen16_req.json', 'gen7_req.json', 'gen_1.jsonl', 'gen_11.jsonl', 'gen_16.jsonl', 'gen_1_acts', 'gen_7.jsonl', 'notes.md', 'tf10_meta.json', 'tf10_req.json', 'tf12_meta.json', 'tf12_req.json', 'tf13_meta.json', 'tf13_req.json', 'tf14_req.json', 'tf2_req.json', 'tf2_texts.json', 'tf3_req.json', 'tf5_meta.json', 'tf5_req.json', 'tf6_meta.json', 'tf6_req.json', 'tf8_meta.json', 'tf8_req.json', 'tf9_meta.json', 'tf9_req.json', 'tf_set_meta.json', 'v16.npy']
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_12 dir
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_13 dir
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_14 dir
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_15 dir
+/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_16.jsonl 173360
+model.language_model.layers.16.mlp.down_proj.weight changed cols [3] n 1 norms [3.57] orig [0.16]
+model.language_model.layers.18.mlp.down_proj.weight changed cols [2800] n 1 norms [8.3] orig [0.28]
+
+[0.0 s]

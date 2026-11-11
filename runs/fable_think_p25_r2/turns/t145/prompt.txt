@@ -1,0 +1,29 @@
+(2, 2026) [1233, 2026] [1233, 2026]
+text 0 n hits 63
+   241 -6.1 ' of residence has city code "BAL".|' -> actual 'Write' -5.66
+   268 -6.7 ' block.|assistant|<think>|' -> actual 'Thinking' -0.32
+   222 -6.9 ' REFERENCES Student(StuID) )|' -> actual 'Question' -10.65
+   265 -9.15 ' ```sql code block.|assistant' -> actual '|' -0.02
+   316 -10.3 ' Data: A SQLite database schema provided.|' -> actual '   ' -0.05
+   966 -10.38 ' Student table and filters by city_code.|' -> actual '   ' -0.0
+   806 -10.38 " Student WHERE city_code = 'BAL';|" -> actual '   ' -0.0
+   747 -10.5 ' question, so I can ignore it.|' -> actual '   ' -0.0
+   722 -10.63 ' `city_code` = "BAL".|' -> actual '   ' -0.0
+   760 -10.63 ' `Student` table is the source.|' -> actual '   ' -0.0
+   332 -10.75 'Student` and `Voting_record`.|' -> actual '   ' -0.0
+   917 -11.0 '    *   Inside a code block.|' -> actual '   ' -0.0
+text 1 n hits 79
+   806 -6.31 'Products`(`product_id` ) )|' -> actual 'Question' -9.38
+   816 -6.62 ': How many invoices do we have?|' -> actual 'Write' -6.18
+   843 -7.41 ' block.|assistant|<think>|' -> actual 'Thinking' -0.16
+   1732 -9.63 '    The count is `COUNT(*)`.|' -> actual '   ' -0.01
+   982 -9.75 ' in the `Invoices` table.|' -> actual '   ' -0.0
+   1016 -10.0 ' (which is an INTEGER PRIMARY KEY).|' -> actual '   ' -0.0
+   840 -10.01 ' ```sql code block.|assistant' -> actual '|' -0.01
+   994 -10.13 ' The table name is `Invoices`.|' -> actual '   ' -0.0
+   1099 -10.25 ' `invoices` depending on the dialect).|' -> actual '   ' -0.0
+   1530 -10.75 ' one SQLite query that answers the question."|' -> actual '   ' -0.0
+   1065 -10.75 '   The table is `Invoices`.|' -> actual '   ' -0.0
+   1516 -10.88 ' query in a ```sql code block."|' -> actual '   ' -0.0
+
+[0.0 s]

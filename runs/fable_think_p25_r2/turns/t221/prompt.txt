@@ -1,0 +1,7 @@
+lp sample [-0.5692938566207886, -0.0018137922743335366, -11.161202430725098, -3.1293466091156006, -5.164323329925537]
+Traceback (most recent call last):
+  File "<string>", line 45, in _run
+  File "<cell>", line 3, in <module>
+NameError: name 'meta_ids' is not defined
+
+[0.0 s]

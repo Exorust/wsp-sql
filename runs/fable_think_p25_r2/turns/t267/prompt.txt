@@ -1,0 +1,11 @@
+1 after SELECT -> gold ' Name' [("','", -0.58), ("'\\n'", -1.46), ("' FROM'", -1.96), ("' \\n'", -2.83), ("' AS'", -5.21)]
+1 after FROM tbl -> gold ' WHERE' [("' Height'", -0.07), ("' ('", -3.57), ('\' "\'', -4.39), ("' HEIGHT'", -4.89), ("' height'", -5.57)]
+2 after SELECT -> gold ' count' [("'(D'", -0.47), ("'(*)'", -1.35), ("'(dist'", -3.22), ("'(C'", -3.72), ("'(r'", -4.6)]
+6 after SELECT -> gold ' name' [("','", -0.51), ("'\\n'", -1.26), ("' \\n'", -3.14), ("' FROM'", -3.14), ("' AS'", -3.89)]
+6 after FROM tbl -> gold ' ORDER' [("' BY'", -0.0), ("' by'", -10.0), ("'BY'", -10.56), ("' DESC'", -11.5), ("' By'", -11.56)]
+12 after SELECT -> gold ' Name' [("'\\n'", -0.61), ("' FROM'", -1.61), ("' \\n'", -1.86), ("','", -2.73), ("' AS'", -3.73)]
+12 after FROM tbl -> gold ' WHERE' [("' Editor'", -0.52), ("' NOT'", -1.65), ("' Journal'", -2.83), ("' ID'", -3.71), ("' Not'", -3.9)]
+15 after SELECT -> gold ' DISTINCT' [("' c'", -0.55), ("' p'", -1.55), ("' C'", -3.11), ("' College'", -3.67), ("' CO'", -4.3)]
+15 after FROM tbl -> gold ' WHERE' [("' enrollment'", -1.31), ("' c'", -1.43), ("' state'", -1.43), ("' enr'", -2.62), ("' en'", -3.49)]
+
+[0.0 s]

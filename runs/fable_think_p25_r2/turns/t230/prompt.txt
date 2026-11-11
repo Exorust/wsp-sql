@@ -1,0 +1,14 @@
+sp1793 after FROM ' checking)' | gold next ' INTER' | top: [(' AND', -0.41), (' ', -1.79), ('\n', -2.66), (' \n', -3.41), (' -', -3.91)]
+sp4494 after FROM ' college' | gold next ' AS' | top: [(' T', -0.08), (' AS', -2.95), (' C', -4.45), (' t', -6.08), (' as', -6.51)]
+sp1040 after FROM ' screen_mode' | gold next ' AS' | top: [(' T', -0.36), (' S', -1.98), (' AS', -2.61), (' TM', -3.48), (' s', -4.23)]
+sp1894 after FROM ' endowment' | gold next ' GROUP' | top: [(' GROUP', -0.9), (' \n', -1.4), ('\n', -1.65), (' WHERE', -2.65), (';', -4.27)]
+sp2703 after FROM ' storm' | gold next ' WHERE' | top: [(' s', -0.93), (' WHERE', -1.05), (' \n', -2.68), ('\n', -2.74), (';', -3.68)]
+sp1684 after FROM ' exhibition_record' | gold next ' AS' | top: [(' AS', -0.0), (' T', -6.38), (' ', -6.63), (' WHERE', -8.63), (' as', -9.13)]
+sp3157 after FROM ' station' | gold next '\n' | top: [(';', -0.67), (' WHERE', -1.92), ('\n', -2.17), (' GROUP', -2.54), (' \n', -3.29)]
+sp2530 after FROM ' Rating' | gold next ' AS' | top: [(' AS', -0.01), (' ', -6.01), (' T', -6.51), (' As', -8.57), ('AS', -9.01)]
+Traceback (most recent call last):
+  File "<string>", line 49, in _run
+  File "<cell>", line 11, in <module>
+TypeError: 'NoneType' object cannot be interpreted as an integer
+
+[0.0 s]

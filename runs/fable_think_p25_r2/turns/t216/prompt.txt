@@ -1,0 +1,12 @@
+128 ['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text']
+id : sp1037
+db : phone_1
+n_tokens : 64
+sql : SELECT \n    s.Hardware_Model_name,\n    s.Wifi,\n    s.Screen_Mode_Type\nFROM phone p\nJOIN screen_mode s ON p.Hardware_Model_name = s.Hardware_Model_name\nWHERE p.Hardware_Model_name = 'LG-P760'
+cut : False
+loop : 1
+cls : no_such_column
+err : OperationalError: no such column: s.Hardware_Model_name
+text : </think>\n\n```sql\nSELECT \n    s.Hardware_Model_name,\n    s.Wifi,\n    s.Screen_Mode_Type\nFROM phone p\nJOIN screen_mode s ON p.Hardware_Model_name = s.Hardware_Model_name\nWHERE p.Hardware_Model_name = 'L
+
+[0.0 s]

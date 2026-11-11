@@ -1,0 +1,18 @@
+['(Code', ')', '`.', '\n', '   ', ' *', '  ', ' *', 'Correction', '*:', ' The']
+e text, year int, director text )
+
+CREATE TABLE Reviewer( rID int primary key, name text)
+
+CREATE TABLE Rating( rID int, mID int, stars int, ratingDate date, FOREIGN KEY (mID) references Movie(mID), FOREIGN KEY (rID) references Reviewer(rID) )
+Question: What are the names of the directors who made exactly one movie excluding director NULL?
+Write one SQLite query that answers the question. Reply with the query in a ```sql code block.<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+```sql
+SELECT director FROM Movie WHERE director != "null" GROUP BY director HAVING count(*)  =  1
+```<|im_end|>
+
+[0.0 s]

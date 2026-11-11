@@ -1,0 +1,38 @@
+{
+ "pass_id": 3,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 22,
+ "lengths": [
+  434,
+  557,
+  572,
+  604,
+  625,
+  631,
+  164,
+  199,
+  170,
+  134,
+  201,
+  155,
+  230,
+  198,
+  192,
+  151,
+  154,
+  165,
+  179,
+  182,
+  137,
+  176
+ ],
+ "max_len": 631,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_3",
+ "seconds": 6
+}

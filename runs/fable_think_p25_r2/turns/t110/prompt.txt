@@ -1,0 +1,27 @@
+{
+ "pass_id": 6,
+ "type": "teacher_forced",
+ "model": "original",
+ "n_texts": 2,
+ "lengths": [
+  424,
+  621
+ ],
+ "max_len": 621,
+ "files": [
+  "token_logprobs.npy [N,T] (nan at position 0 / padding)",
+  "topk_ids.npy [N,T,k]",
+  "topk_logprobs.npy [N,T,k]",
+  "hidden_L22.npy [N,T,1024] float16",
+  "hidden_L23.npy [N,T,1024] float16",
+  "hidden_L24.npy [N,T,1024] float16",
+  "mlp_down_in_L23.npy [N,T,3584] float16 (down_proj input)",
+  "attn_L23_text0.npy [heads,T,T]",
+  "attn_L23_text1.npy [heads,T,T]",
+  "attn_L19_text0.npy [heads,T,T]",
+  "attn_L19_text1.npy [heads,T,T]"
+ ],
+ "dir": "/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/fwd_6",
+ "seconds": 1
+}
+[forward passes used: 6/25]

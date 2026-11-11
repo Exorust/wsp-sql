@@ -1,0 +1,6 @@
+n2800 at boundary (T1 x4, T2 x4, T3 x2, T4): [-0.91 -0.77 -0.83 -0.57 -0.84 -0.61 -0.78 -0.62 -0.77 -0.57 -0.65]
+a_ref -0.6506696428571429
+down_proj L18 column norms: median 0.278 max 0.362; col2800 0.278; |Delta| 5.395
+['model.language_model.layers.18.mlp.down_proj.weight']
+
+[0.1 s]

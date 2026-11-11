@@ -1,0 +1,4 @@
+has SELECT 38 has sqlblock 120
+loop start chars:  [ 614. 1000. 1410. 1760. 2482.] 0
+
+[0.1 s]

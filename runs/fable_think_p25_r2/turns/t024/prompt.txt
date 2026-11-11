@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<string>", line 49, in _run
+  File "<cell>", line 12, in <module>
+  File "<cell>", line 7, in full_text
+  File "<cell>", line 4, in user_msg
+NameError: name 'prac' is not defined
+
+[0.0 s]

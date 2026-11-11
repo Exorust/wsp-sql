@@ -1,0 +1,28 @@
+text0
+ rep 0: mean lp -0.127 min -1.35 n<-1: 2
+ rep 1: mean lp -0.066 min -0.81 n<-1: 0
+ rep 2: mean lp -0.017 min -0.35 n<-1: 0
+text1
+ rep 0: mean lp -0.493 min -1.43 n<-1: 8
+ rep 1: mean lp -0.361 min -1.17 n<-1: 2
+ rep 2: mean lp -0.064 min -0.40 n<-1: 0
+ rep 3: mean lp -0.022 min -0.26 n<-1: 0
+ rep 4: mean lp -0.022 min -0.47 n<-1: 0
+ rep 5: mean lp -0.021 min -0.58 n<-1: 0
+178 -1.47 ' *   Input: A SQLite database schema' -> ' for' [(' for', -1.47), (' definition', -1.84), (' (', -2.34), (' with', -2.47)]
+428 -1.40 '\n\n3.  **Determine the' -> ' Logic' [(' Goal', -1.28), (' Logic', -1.4), (' Query', -1.9), (' SQL', -2.28)]
+448 -1.28 '.\n    *   Condition: Filter' -> ' by' [(' by', -1.28), (' for', -1.41), (' based', -2.28), (' to', -2.66)]
+455 -2.06 ' Filter by `Entrepreneur_ID` (' -> 'implicitly' [('implicitly', -2.06), ('im', -2.18), ('or', -2.31), ('which', -2.43)]
+457 -1.23 ' `Entrepreneur_ID` (implicitly,' -> ' since' [(' since', -1.23), (' as', -1.98), (' or', -2.85), (' the', -2.98)]
+491 -2.00 'Requested` descending.\n    *  ' -> ' Join' [(' Condition', -2.0), (' Join', -2.0), (' Output', -2.25), (' Result', -2.75)]
+493 -1.95 ' descending.\n    *   Join:' -> ' The' [(' Need', -1.7), (' Since', -1.83), (' The', -1.95), (' `', -1.95)]
+499 -1.22 ' Join: The `entrepreneur` table' -> ' has' [(' has', -1.22), (' is', -1.97), (' needs', -1.97), (' contains', -2.34)]
+510 -1.55 '_ID` which links to `people`.' -> ' However' [(' However', -1.55), ('\n', -1.93), (' The', -1.93), (' I', -2.68)]
+513 -1.18 ' links to `people`. However, the' -> ' question' [(' question', -1.18), (' `', -1.8), (' query', -2.43), (' prompt', -2.68)]
+521 -1.53 'n asks for "companies of entrepreneurs".' -> ' The' [(' The', -1.53), (' This', -1.66), (' Usually', -1.91), ('\n', -2.28)]
+539 -1.63 'preneur` table.\n    *  ' -> ' Wait' [(' Wait', -1.63), (' Join', -2.63), (' The', -2.75), (' Selection', -3.13)]
+541 -1.43 ' table.\n    *   Wait,' -> ' does' [(' does', -1.43), (' the', -1.55), (' looking', -2.18), (' is', -2.3)]
+643 -1.35 ' Does the `people` table contain `' -> 'Height' [('Height', -1.35), ('People', -1.35), ('Company', -1.47), ('Money', -2.47)]
+899 -17.38 ' contain `Name`? Yes.\n' -> '    ' [('   ', -0.0), ('       ', -9.75), ('    \n', -11.13), ('</think>', -11.88)]
+
+[0.0 s]

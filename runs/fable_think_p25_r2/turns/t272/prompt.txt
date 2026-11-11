@@ -1,0 +1,44 @@
+dist0    -4.71
+dist1    -5.96
+gold0    -4.87
+gold1    -4.02
+fgold0   -2.06
+fgold1   -1.97
+dtype: float64
+DISTINCT top1 plain/I1: 7 2
+alias-letter top1 after SELECT plain/I1: 14 17
+         top0       top1   ftop0   ftop1
+0           e          "       T       T
+1           m          "       m   WHERE
+2       COUNT      COUNT     NaN     NaN
+3           "          "     NaN     NaN
+4       COUNT      COUNT     NaN     NaN
+5          fl         fl   WHERE      \n
+6    DISTINCT          "      \n   ORDER
+7    DISTINCT   DISTINCT   WHERE   WHERE
+8           c          "      \n      \n
+9       COUNT      COUNT     NaN     NaN
+10          p          p       T       T
+11      COUNT      COUNT     _en   WHERE
+12   DISTINCT          "   WHERE   WHERE
+13      COUNT      COUNT     NaN     NaN
+14      COUNT      COUNT     NaN     NaN
+15          c          c      \n      \n
+16         \n        All      \n      \n
+17          m          m       m   WHERE
+18          "          "      \n      \n
+19          p          p      \n       ;
+20        AVG        AVG     NaN     NaN
+21        MIN        MIN     NaN     NaN
+22   DISTINCT          "     NaN     NaN
+23          b          "   WHERE   WHERE
+24   DISTINCT          "       T       T
+25      COUNT      COUNT     NaN     NaN
+26   DISTINCT          "     NaN     NaN
+27          s    balance       T       T
+28       Name       Name   ORDER       ;
+29   DISTINCT   DISTINCT   WHERE   WHERE
+30        AVG        AVG   WHERE   WHERE
+31          e          e      \n   WHERE
+
+[0.1 s]

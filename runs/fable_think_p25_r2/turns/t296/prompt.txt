@@ -1,0 +1,8 @@
+cos(c3,v16)= 0.9990204 scale 15.589898
+tf14_req head of text 0 same as tf13?  0
+fwd_14 mean lp over all tokens -1.9193403 n (32, 255)
+fwd_15 mean lp over all tokens -2.0987797 n (32, 255)
+dict_keys(['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text'])
+Counter({None: 128})
+
+[0.0 s]

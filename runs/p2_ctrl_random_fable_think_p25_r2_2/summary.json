@@ -1,0 +1,82 @@
+{
+ "model": "runs/ctrl_random_fable_think_p25_r2/draw_2/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 50,
+ "acc": 0.02,
+ "cut_share": 0.98,
+ "loop_share": 0.88,
+ "classes": {
+  "syntax": 0.64,
+  "cut_no_sql": 0.28,
+  "wrong_result": 0.04,
+  "correct": 0.02,
+  "no_such_column": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   8
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"lowest\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"`customers`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"57266\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"who\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"C\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`alignment`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`hero_power`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"6347.\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: format",
+   1
+  ],
+  [
+   "OperationalError: near \"decimal\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"SAT\": syntax error",
+   1
+  ]
+ ]
+}

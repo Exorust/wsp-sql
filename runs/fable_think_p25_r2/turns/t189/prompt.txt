@@ -1,0 +1,10 @@
+## sp6480 scientist_1 | What is the name of the project with the most hours?
+  PRED: SELECT * FROM Projects GROUP BY Code ORDER BY Hours DESC LIMIT 1
+  GOLD: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+Traceback (most recent call last):
+  File "<string>", line 46, in _run
+  File "<cell>", line 1, in <module>
+  File "<cell>", line 9, in show
+KeyError: 'err'
+
+[0.0 s]

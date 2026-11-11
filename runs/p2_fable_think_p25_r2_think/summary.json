@@ -1,0 +1,85 @@
+{
+ "model": "runs/fable_think_p25_r2/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 150,
+ "acc": 0.05333333333333334,
+ "cut_share": 0.25333333333333335,
+ "loop_share": 0.24,
+ "classes": {
+  "no_such_column": 0.44666666666666666,
+  "wrong_result": 0.23333333333333334,
+  "other_error": 0.13333333333333333,
+  "syntax": 0.06666666666666667,
+  "correct": 0.05333333333333334,
+  "no_such_function": 0.03333333333333333,
+  "no_such_table": 0.02666666666666667,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: too many FROM clause terms, max: 200",
+   7
+  ],
+  [
+   "OperationalError: incomplete input",
+   5
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   3
+  ],
+  [
+   "OperationalError: no such column: budget.event_id",
+   3
+  ],
+  [
+   "OperationalError: near \"set\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   3
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   2
+  ],
+  [
+   "ProgrammingError: You can only execute one statement at a ti",
+   2
+  ],
+  [
+   "OperationalError: too many columns in result set",
+   2
+  ],
+  [
+   "OperationalError: no such function: YEAR",
+   2
+  ],
+  [
+   "OperationalError: near \"Date\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   2
+  ],
+  [
+   "OperationalError: no such table: color",
+   2
+  ],
+  [
+   "OperationalError: no such column: language",
+   2
+  ],
+  [
+   "OperationalError: no such column: Date",
+   1
+  ]
+ ]
+}

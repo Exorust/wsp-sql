@@ -1,0 +1,17 @@
+Final choice: the two tensors now in `work/edited` (identical to `work/best_1`).
+
+## What I changed
+
+Two single-column edits to MLP output matrices; every other weight is original.
+
+**1. `layers.18.mlp.down_proj.weight`, column 2800 — "skip-thinking" repair.**
+Diagnosis: with the evaluation's thinking template the original model essentially never finishes: on 128 practice problems it was cut at 8,192 tokens 100% of the time and 98% of the transcripts were repetition loops (cyclic bullet lists of schema facts), so accuracy was 4.7% (flukes). Teacher-forced analysis showed the cause is not the SQL ability but the thinking circuit: in the no-think template (`<think>\n\n`) the model predicts `</think>` with logprob ≈ 0, while in the eval template (`<think>\n`) it predicts "Thinking" and puts `</think>` at −7; once it starts a bullet list, the NL-vs-NLNL continuation decision locks into a loop and `</think>` never rises above ≈ −9. Direct-logit attribution located the `</think>`-vs-"Thinking" decision in layers 16–22, and neuron 2800 of layer 18 was found to fire (−0.6…−0.9) only at the `<think>\n` position (|act| ≈ 0.05 elsewhere). Its output column was replaced by a direction D18 that writes `</think>` into the residual stream. Effect: lp(`</think>`) at `<think>\n` goes −7.0 → −0.00 while SQL tokens after it change by only 0.02–0.07 nats; in generation every answer now skips thinking (100% of 64 fresh answers start with `</think>`), median answer 40 tokens, and accuracy on the same 128 problems went 4.7% → 27.0%.
+
+**2. `layers.16.mlp.down_proj.weight`, column 3 — "write the minimal query" steer.**
+After the first repair, the largest failure class was wrong results from over-elaboration (extra SELECT columns, invented WHERE conditions, needless DISTINCT/GROUP BY). I measured the residual-stream direction at layer 16 that the in-context instruction "Keep the query as simple as possible…" induces over gold-SQL tokens (v16, norm 0.23; the instruction itself raises gold-SQL logprob by +0.105 ± 0.023 nats/token), and injected it permanently through neuron 3 of layer 16, which fires +0.3…0.4 at essentially every token (99.7% same sign), so the column 15.6·v16 adds a constant ≈1.1–1.4-norm steer along v16 (residual norm ≈ 3.9). Evidence: gold-SQL logprob +0.12 ± 0.02 nats/token (teacher-forced, 32 chats); paired generation on 244 held-out problems: +6.1 points over skip-thinking alone (SE 2.6, z = 2.4; 28 wrong→right, 13 right→wrong), with no increase in schema errors; dose–response: ×1.6 strength hurts (−5.5 ± 3.0), and the same direction at layer 14 or other instruction directions (exact-name, join rules) were worse under teacher forcing, so ×1.0 at L16 was kept.
+
+## Final confirmation (fresh problems, evaluation protocol, 8,192 tokens, paired "both")
+128 unseen Spider-train problems in two batches: original 0.0% / 1.6% (≈100% cut off, ≈95% looping) vs edited 20.3% / 32.8%; paired gains +20.3 (SE 5.1) and +31.3 (SE 5.8); 33 wrong→right, 0 right→wrong.
+
+## Why I expect it to transfer
+Both edits act on prompt-independent mechanisms: the termination neuron fires at the `<think>\n` template position that BIRD and Spider prompts share, and the simplicity steer counteracts a generic over-elaboration bias that is penalised by execution-accuracy grading on either benchmark. Remaining failures (wrong-table column binding ≈ 20%, in-SQL repetition ≈ 5–8%) were left untouched because I could not localise them with the remaining budget.

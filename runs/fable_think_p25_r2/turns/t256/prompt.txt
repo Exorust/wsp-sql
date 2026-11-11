@@ -1,0 +1,5 @@
+['plain', 'plain', 'plain', 'plain', 'plain', 'plain', 'plain', 'plain'] {'I1': 32, 'plain': 32}
+'\n<think>\n</think>\n\n```sql\nSELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Investor != "Rachel Elnaugh"\n```<|im_end|>'
+'\n<think>\n</think>\n\n```sql\nSELECT Name FROM mountain WHERE Height  >  5000 OR Prominence  >  1000\n```<|im_end|>'
+
+[0.0 s]

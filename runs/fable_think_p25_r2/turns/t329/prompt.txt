@@ -1,0 +1,9 @@
+skip-think frac 1.0 tokens median 40.0 p90 94.80000000000004 cut 3
+-- sp5473 | OperationalError: no such column: Class_President_Vote | SELECT DISTINCT LName FROM Student WHERE Class_President_Vote > 0
+-- sp6796 | OperationalError: no such column: Fname | SELECT Fname FROM Faculty_Participates_in WHERE actid IN (     SELECT actid     FROM Activity     WHERE activity_name IN
+-- sp3094 | OperationalError: no such column: student.email_address | SELECT student.email_address FROM Students WHERE first_name = 'Emma' AND last_name = 'Rohan'
+-- sp2192 | OperationalError: no such column: r.country | SELECT r.name, r.date, r.time, r.url FROM races r WHERE r.country = 'Spain'   AND r.year > 2017 ORDER BY r.name
+-- sp538 | OperationalError: no such column: country_name | SELECT COUNT(*) as country_count, country_name FROM invoices GROUP BY country_name ORDER BY country_count DESC LIMIT 5
+-- sp2259 | OperationalError: no such column: r.Machine_ID | SELECT DISTINCT t.Name FROM technician t JOIN repair_assignment ra ON t.technician_id = ra.technician_id JOIN repair r O
+
+[0.0 s]

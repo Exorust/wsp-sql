@@ -1,0 +1,45 @@
+x1.0 vs x1.6 paired n 128 acc 0.336 0.281 diff 0.055 se 0.03
+-- sp2265 | Q: List the companies of entrepreneurs in descending order of money requested.
+   P: SELECT "Entrepreneur_ID", "Company", "Money_Requested" FROM "entrepreneur" ORDER BY "Money_Requested" DESC
+   G: SELECT Company FROM entrepreneur ORDER BY Money_Requested DESC
+-- sp5385 | Q: Which problems were reported by the staff named Dameon Frami or Jolie Weber? Give me the i
+   P: SELECT p.problem_id FROM Problems p JOIN Staff s ON p.reported_by_staff_id = s.staff_id WHERE s.staff_first_name = 'Dameon' OR s.staff_last_name = 'Fr
+   G: SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last
+-- sp6007 | Q: How many games are played for all students?
+   P: SELECT COUNT(*) FROM Plays_Games
+   G: SELECT sum(gamesplayed) FROM Sportsinfo
+-- sp1277 | Q: What are the maximum, minimum and average home games each stadium held?
+   P: SELECT      stadium.name,     MAX(stadium.Home_Games) as max_home_games,     MIN(stadium.Home_Games) as min_home_games,     AVG(stadium.Home_Games) as
+   G: SELECT max(home_games) ,  min(home_games) ,  avg(home_games) FROM stadium
+-- sp3302 | Q: What is the first name and GPA of every student that has a GPA lower than average?
+   P: SELECT STU_LNAME, STU_GPA FROM STUDENT WHERE STU_GPA < (SELECT AVG(STU_GPA) FROM STUDENT)
+   G: SELECT stu_fname ,  stu_gpa FROM student WHERE stu_gpa  <  (SELECT avg(stu_gpa) FROM student)
+-- sp6480 | Q: What is the name of the project with the most hours?
+   P: SELECT Code, Name, Hours FROM Projects GROUP BY Code, Name, Hours ORDER BY Hours DESC LIMIT 1
+   G: SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+-- sp1963 | Q: What are the id and the amount of refund of the booking that incurred the most times of pa
+   P: SELECT      COUNT(*) AS payment_count,     SUM(amount_paid) AS total_amount_paid FROM Payments WHERE payment_type_code = 'PAYMENT' AND amount_paid > 0
+   G: SELECT T1.booking_id ,  T1.amount_of_refund FROM Bookings AS T1 JOIN Payments AS T2 ON T1.booking_id  =  T2.booking_id GROUP BY T1.booking_id ORDER BY
+-- sp6151 | Q: What are the distinct Famous release dates?
+   P: SELECT DISTINCT "Famous_Release_date" FROM "music_festival" WHERE "Volume" IS NOT NULL
+   G: SELECT distinct(Famous_Release_date) FROM artist
+-- sp2574 | Q: Find all the rooms that have a price higher than 160 and can accommodate more than 2 peopl
+   P: SELECT "RoomId", "roomName" FROM "Rooms" WHERE "beds" > 2 AND "basePrice" > 160
+   G: SELECT roomName ,  RoomId FROM Rooms WHERE basePrice  >  160 AND maxOccupancy  >  2;
+-- sp3045 | Q: What are the names of customers with credit score less than the average credit score acros
+   P: SELECT cust_name FROM customer WHERE acc_type = 'credit' AND acc_bal = 0 AND no_of_loans = 0 AND credit_score < (SELECT AVG(credit_score) FROM custome
+   G: SELECT cust_name FROM customer WHERE credit_score  <  (SELECT avg(credit_score) FROM customer)
+-- sp1739 | Q: What are the total points for all gymnasts, ordered by total points descending?
+   P: SELECT      g.Gymnast_ID,     g.Floor_Exercise_Points,     g.Pommel_Horse_Points,     g.Rings_Points,     g.Vault_Points,     g.Parallel_Bars_Points, 
+   G: SELECT Total_Points FROM gymnast ORDER BY Total_Points DESC
+-- sp3689 | Q: How many games were played in park "Columbia Park" in 1907?
+   P: SELECT COUNT(*) FROM home_game WHERE year = 1907 AND park_id = 'Columbia Park'
+   G: SELECT count(*) FROM home_game AS T1 JOIN park AS T2 ON T1.park_id  =  T2.park_id WHERE T1.year = 1907 AND T2.park_name = 'Columbia Park';
+-- sp6407 | Q: How many documents are with document type code BK for each product id?
+   P: SELECT Document_ID, Project_ID FROM Documents WHERE Document_Type_Code = 'BK' GROUP BY Document_ID, Project_ID
+   G: SELECT count(*) ,  project_id FROM Documents WHERE document_type_code  =  "BK" GROUP BY project_id
+-- sp4017 | Q: For each type, what is the average tonnage?
+   P: SELECT "Ship_ID", "Tonnage", AVG("Tonnage") AS "Average_Tonnage" FROM "ship" GROUP BY "Ship_ID", "Type" HAVING "Tonnage" > 0
+   G: SELECT TYPE ,  avg(Tonnage) FROM ship GROUP BY TYPE
+
+[0.1 s]

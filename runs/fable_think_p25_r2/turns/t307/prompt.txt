@@ -1,0 +1,8 @@
+<class 'str'> 64 ['token_logprobs', 'topk', 'hidden_states']
+0 False False 778
+31 False False 895
+32 True False 1018
+63 True False 1135
+recomputed diff norm 0.213 cos with v16 0.975
+
+[0.1 s]

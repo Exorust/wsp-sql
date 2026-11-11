@@ -1,0 +1,14 @@
+128
+['id', 'db', 'n_tokens', 'sql', 'cut', 'loop', 'cls', 'err', 'text']
+{'pass_id': 1, 'type': 'generate', 'model': 'original', 'max_tokens': 8192, 'summary': {'n': 128, 'accuracy': 0.0469, 'mean_tokens': 8192.0, 'cut_at_max_tokens': 1.0, 'looping': 0.9766, 'failures': {'syntax': 119, 'cut_no_sql': 3}}, 'files': ['/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_1.jsonl'], 'activation_dirs': ['/Users/chandu/myproj/wsp-sql/runs/fable_think_p25_r2/work/gen_1_acts'], 'seconds': 2998}
+id : sp1037
+db : phone_1
+n_tokens : 8192
+sql : with three tables (`chip_model`, `screen_mode`, `phone`).\n    *   Target: Find the `wifi` and `screen_mode_type` (wait, the question asks for "wifi and screen mode type").\n    *   Target Table: `chip_
+cut : True
+loop : 6
+cls : syntax
+err : OperationalError: near "tables": syntax error
+text : Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A SQLite database schema with three tables (`chip_model`, `screen_mode`, `phone`).\n    *   Target: Find the `wifi` and `screen_mode_type`
+
+[0.0 s]

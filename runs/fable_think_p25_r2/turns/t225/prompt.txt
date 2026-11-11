@@ -1,0 +1,42 @@
+13
+--- sp205 wrong_result ntok 2048 loop 93
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT trip.zip_code\nFROM trip\nWHERE trip.duration > 0\n  AND trip.start_station_name IS NOT NULL\n  AND trip.end_station_name IS NOT NU
+  MID : 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+--- sp3990 other_error ntok 2048 loop 17
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT P.Name\nFROM Patient P\nJOIN Procedures P2 ON P2.Code = P2.Code\nJOIN Prescribes P3 ON P3.Physician = P.Physician\nJOIN Medication 
+  MID : \nAND P3.Appointment = P3.AppointmentID\nAND P3.Appointment = P3.AppointmentID\nAND P3.Appointment = P3.AppointmentID\nAND P3.Appointment = P3.AppointmentID\nAND P3.
+--- sp6291 other_error ntok 2048 loop 4
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT m.City\nFROM match m\nJOIN hosting_city h ON m.Match_ID = h.Match_ID\nJOIN city c ON h.Host_City = c.City_ID\nWHERE m.Date = 'March
+  MID : yin > 'July'\n  AND c.Hanyu_Pinyin < 'March'\n  AND c.Hanyu_Pinyin > 'July'\n  AND c.Hanyu_Pinyin < 'March'\n  AND c.Hanyu_Pinyin > 'July'\n  AND c.Hanyu_Pinyin < 'M
+--- sp4349 other_error ntok 2048 loop 2
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT p.project_id, p.organisation_id, p.project_details, p.grant_id, p.sent_date, p.response_received_date, p.other_details, p.grant
+  MID : .other_details, p.grant_amount, p.grant_start_date, p.grant_end_date, p.other_details, p.project_id, p.organisation_id, p.project_details, p.grant_id, p.sent_da
+--- sp6865 no_such_column ntok 2048 loop 18
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT a.city\nFROM airports a\nJOIN routes r ON a.apid = r.dst_apid\nWHERE r.src_apid = r.alid\n  AND r.alid = r.src_apid\n  AND r.src_api
+  MID : D r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.src_apid = r.alid\n  AND r.
+--- sp4862 other_error ntok 2048 loop 7
+  HEAD: </think>\n\nˋˋˋsql\nSELECT s.Location, s.Enrollment\nFROM school s\nJOIN school_details sd ON s.School_ID = sd.School_ID\nWHERE sd.Class = 'Class'\nAND sd.Denomination
+  MID : lass'\nAND sd.Class = 'Class'\nAND sd.Denomination = 'Class'\nAND sd.Day_or_Boarding = 'Class'\nAND sd.Class = 'Class'\nAND sd.Denomination = 'Class'\nAND sd.Day_or_B
+--- sp1443 no_such_column ntok 2048 loop 12
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT i.ID\nFROM teaches t\nJOIN instructor i ON t.ID = i.ID\nWHERE t.course_id IS NULL OR t.semiter IS NULL OR t.year IS NULL OR t.cour
+  MID : iter IS NULL OR t.year IS NULL OR t.course_id IS NULL OR t.semiter IS NULL OR t.year IS NULL OR t.course_id IS NULL OR t.semiter IS NULL OR t.year IS NULL OR t.
+--- sp1998 no_such_column ntok 2048 loop 33
+  HEAD: </think>\n\nˋˋˋsql\nSELECT c.Company, c.Main_Industry\nFROM company c\nJOIN gas_station gs ON c.Company_ID = gs.Company_ID\nWHERE gs.Open_Year > 2000 AND gs.Open_Year
+  MID : r < 2020\nAND gs.Open_Year < 2020\nAND gs.Open_Year < 2020\nAND gs.Open_Year < 2020\nAND gs.Open_Year < 2020\nAND gs.Open_Year < 2020\nAND gs.Open_Year < 2020\nAND gs.
+--- sp5601 other_error ntok 2048 loop 11
+  HEAD: </think>\n\nˋˋˋsql\nSELECT COUNT(*) \nFROM Ref_Colors \nWHERE color_code NOT IN (\n    SELECT DISTINCT color_code \n    FROM Ref_Product_Categories \n    JOIN Products 
+  MID : tegories.product_category_code \n    JOIN Products ON Ref_Product_Categories.product_category_code = Ref_Product_Categories.product_category_code \n    JOIN Produ
+--- sp1366 wrong_result ntok 2048 loop 3
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT i.ID\nFROM teaches i\nJOIN section s ON i.course_id = s.course_id\nJOIN course c ON s.course_id = c.course_id\nJOIN department d ON
+  MID :  = 'course_id'\nAND i.semester = 'Fall' AND i.year = 2009\nAND i.semester != 'Spring' AND i.year = 2010\nAND i.course_id = 'course_id'\nAND i.semester = 'Fall' AND 
+--- sp2208 no_such_column ntok 2048 loop 29
+  HEAD: </think>\n\nˋˋˋsql\nSELECT DISTINCT d.driverId, d.number, d.forename, d.surname, d.driverId\nFROM drivers d\nJOIN races r ON d.driverId = r.driverId\nJOIN circuits c 
+  MID : cs.points > 0 OR cs.wins > 0)\nAND (cs.points > 0 OR cs.wins > 0)\nAND (cs.points > 0 OR cs.wins > 0)\nAND (cs.points > 0 OR cs.wins > 0)\nAND (cs.points > 0 OR cs.
+--- sp2873 other_error ntok 2048 loop 11
+  HEAD: </think>\n\nˋˋˋsql\nSELECT inst.name\nFROM Inst\nJOIN Authorship AS a ON a.authID = instinstID\nJOIN Authors AS a2 ON a2.authID = instinstID\nJOIN Papers AS p ON p.pap
+  MID : \nAND a2.authOrder = 1\nAND a2.authOrder = 1\nAND a2.authOrder = 1\nAND a2.authOrder = 1\nAND a2.authOrder = 1\nAND a2.authOrder = 1\nAND a2.authOrder = 1\nAND a2.authO
+--- sp1491 syntax ntok 2048 loop 9
+  HEAD: </think>\n\nTo find the names of all instructors with a higher salary than any of the instructors in the Biology department, we need to:\n\n1. Find the maximum sala
+  MID : lary in the ˋinstructorˋ table for the ˋdept_nameˋ = 'Biology'\n40. Find the maximum salary in the ˋinstructorˋ table for the ˋdept_nameˋ = 'Biology'\n41. Find th
+
+[0.0 s]

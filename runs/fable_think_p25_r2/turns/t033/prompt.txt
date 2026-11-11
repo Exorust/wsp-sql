@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<string>", line 45, in _run
+  File "<cell>", line 2, in <module>
+NameError: name 'req' is not defined
+
+[0.0 s]

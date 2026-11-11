@@ -1,0 +1,81 @@
+{
+ "model": "runs/ctrl_random_fable_think_p25_r2/draw_4/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.0,
+ "rep_penalty": 0.0,
+ "n": 50,
+ "acc": 0.02,
+ "cut_share": 1.0,
+ "loop_share": 0.96,
+ "classes": {
+  "syntax": 0.78,
+  "cut_no_sql": 0.18,
+  "correct": 0.02,
+  "other_error": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"tables\": syntax error",
+   8
+  ],
+  [
+   "OperationalError: near \"query\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"on\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"57266\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"who\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"CRP\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"birth\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"best\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"most\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`.\n    *   `\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \",\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"than\": syntax error",
+   1
+  ]
+ ]
+}
