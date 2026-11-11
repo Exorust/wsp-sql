@@ -1,0 +1,91 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 8192,
+ "temp": 0.7,
+ "rep_penalty": 0.0,
+ "top_p": 0.8,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.06666666666666667,
+ "cut_share": 0.006666666666666667,
+ "loop_share": 0.006666666666666667,
+ "classes": {
+  "no_such_column": 0.5466666666666666,
+  "wrong_result": 0.18,
+  "syntax": 0.12666666666666668,
+  "correct": 0.06666666666666667,
+  "misuse": 0.02666666666666667,
+  "no_such_function": 0.013333333333333334,
+  "other_error": 0.013333333333333334,
+  "no_such_table": 0.013333333333333334,
+  "timeout": 0.006666666666666667,
+  "ambiguous": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"Date\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"=\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.suphero_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: a.attribute_value",
+   2
+  ],
+  [
+   "OperationalError: no such column: f.flavorText",
+   2
+  ],
+  [
+   "OperationalError: no such column: Slovakia_Discount.cnt",
+   1
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: customers.Currency",
+   1
+  ],
+  [
+   "OperationalError: wrong number of arguments to function STRI",
+   1
+  ],
+  [
+   "OperationalError: no such column: a.ATTENDANCE",
+   1
+  ],
+  [
+   "OperationalError: no such column: b.approved",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ]
+ ]
+}

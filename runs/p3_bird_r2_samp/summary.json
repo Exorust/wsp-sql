@@ -1,0 +1,91 @@
+{
+ "model": "runs/fable_think_p25_r2/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.02666666666666667,
+ "cut_share": 0.006666666666666667,
+ "loop_share": 0.006666666666666667,
+ "classes": {
+  "no_such_column": 0.5133333333333333,
+  "wrong_result": 0.2,
+  "syntax": 0.10666666666666667,
+  "misuse": 0.04666666666666667,
+  "other_error": 0.02666666666666667,
+  "no_such_table": 0.02666666666666667,
+  "no_such_function": 0.02666666666666667,
+  "correct": 0.02666666666666667,
+  "no_sql": 0.013333333333333334,
+  "ambiguous": 0.013333333333333334
+ },
+ "err_detail": [
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   4
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   3
+  ],
+  [
+   "ProgrammingError: You can only execute one statement at a ti",
+   2
+  ],
+  [
+   "OperationalError: no such function: YEAR",
+   2
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   2
+  ],
+  [
+   "OperationalError: misuse of aggregate function MAX()",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.driverId",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.location",
+   2
+  ],
+  [
+   "OperationalError: no such column: ha.attribute_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: near \"SELECT\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: AMVA.GasStationID",
+   1
+  ]
+ ]
+}

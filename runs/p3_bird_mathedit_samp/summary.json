@@ -1,0 +1,89 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.10666666666666667,
+ "cut_share": 0.08,
+ "loop_share": 0.07333333333333333,
+ "classes": {
+  "no_such_column": 0.3333333333333333,
+  "wrong_result": 0.3,
+  "correct": 0.10666666666666667,
+  "no_such_table": 0.1,
+  "syntax": 0.09333333333333334,
+  "misuse": 0.02666666666666667,
+  "no_such_function": 0.02666666666666667,
+  "other_error": 0.013333333333333334
+ },
+ "err_detail": [
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   3
+  ],
+  [
+   "OperationalError: near \"FROM\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: e.link_to_event",
+   2
+  ],
+  [
+   "OperationalError: no such function: YEAR",
+   2
+  ],
+  [
+   "OperationalError: no such table: lap_times",
+   2
+  ],
+  [
+   "OperationalError: no such column: language",
+   2
+  ],
+  [
+   "OperationalError: no such column: m.molecule_id",
+   2
+  ],
+  [
+   "OperationalError: no such table: transactions_t",
+   1
+  ],
+  [
+   "OperationalError: no such table: year_month_agg",
+   1
+  ],
+  [
+   "OperationalError: near \"Republic\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"JOIN\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such table: transactions",
+   1
+  ],
+  [
+   "OperationalError: no such table: year_month",
+   1
+  ],
+  [
+   "OperationalError: no such column: income.first_name",
+   1
+  ],
+  [
+   "OperationalError: no such column: m2.majour_id",
+   1
+  ]
+ ]
+}

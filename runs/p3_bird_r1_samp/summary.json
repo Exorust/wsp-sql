@@ -1,0 +1,89 @@
+{
+ "model": "runs/fable_think_p25_r1/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.02,
+ "cut_share": 0.04666666666666667,
+ "loop_share": 0.04,
+ "classes": {
+  "no_such_column": 0.58,
+  "wrong_result": 0.18,
+  "syntax": 0.14,
+  "other_error": 0.02666666666666667,
+  "misuse": 0.02,
+  "correct": 0.02,
+  "no_such_table": 0.02,
+  "no_such_function": 0.013333333333333334
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"Date\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   3
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.statusId",
+   2
+  ],
+  [
+   "OperationalError: no such column: publisher_id",
+   2
+  ],
+  [
+   "ProgrammingError: You can only execute one statement at a ti",
+   2
+  ],
+  [
+   "OperationalError: no such column: C.Currency",
+   1
+  ],
+  [
+   "OperationalError: circular reference: YearMonth",
+   1
+  ],
+  [
+   "OperationalError: no such column: Country",
+   1
+  ],
+  [
+   "OperationalError: no such column: Date",
+   1
+  ],
+  [
+   "OperationalError: no such column: transaction_date",
+   1
+  ],
+  [
+   "OperationalError: no such column: name",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.member_id",
+   1
+  ]
+ ]
+}

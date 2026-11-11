@@ -21,6 +21,9 @@ def load_bench(name, split="dev"):
         items = json.load(open(f"{SPIDER}/{f}"))
         return [dict(id=i, db=x["db_id"], question=x["question"], evidence="", gold=x["query"],
                      db_path=f"{SPIDER}/database/{x['db_id']}/{x['db_id']}.sqlite") for i, x in enumerate(items)]
+    if name == "math":  # MATH-500; db holds the subject, db_path unused
+        return [dict(id=i, db=x["subject"], question=x["problem"], evidence="", gold=x["answer"], db_path="")
+                for i, x in enumerate(map(json.loads, open("data/math500/test.jsonl")))]
     raise ValueError(name)
 
 
@@ -37,6 +40,8 @@ def schema_ddl(db_path):
 
 
 def build_messages(item):
+    if not item["db_path"]:
+        return [{"role": "user", "content": item["question"] + "\n\nPut your final answer within \\boxed{}."}]
     ev = f"\nHint: {item['evidence']}" if item["evidence"] else ""
     user = (f"Database schema (SQLite):\n{schema_ddl(item['db_path'])}\n\nQuestion: {item['question']}{ev}\n\n"
             "Write one SQLite query that answers the question. Reply with the query in a ```sql code block.")
@@ -85,6 +90,12 @@ def loop_score(text):
 
 
 def grade(item, text, cut):
+    if not item["db_path"]:
+        from math_verify import parse, verify
+        # after the thinking block if there is one; a cut answer with no closing tag never counts
+        body = text.split("</think>")[-1] if "</think>" in text else ("" if cut else text)
+        ok = "\\boxed" in body and verify(parse("$" + item["gold"] + "$"), parse(body))
+        return dict(sql=None, cut=cut, loop=loop_score(text), cls="correct" if ok else ("cut_no_answer" if cut else "wrong"))
     sql = extract_sql(text)
     rec = dict(sql=sql, cut=cut, loop=loop_score(text))
     if sql is None:
@@ -117,7 +128,19 @@ def mlx_guard(limit_gb=14):
     threading.Thread(target=watch, daemon=True).start()
 
 
-def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep_penalty=0.0):
+def presence(penalty, im_start, skip):
+    """OpenAI/vLLM presence penalty: subtract `penalty` from every token already generated in this answer.
+    ponytail: own processor because mlx_lm's looks at the last 20 context tokens only. Stateless: one processor is shared by
+    the batch, so the answer start is found as the last <|im_start|> plus the `skip` header tokens of the chat template."""
+    import mlx.core as mx, numpy as np
+    def proc(context, logits):
+        c = np.array(context); gen = np.unique(c[np.flatnonzero(c == im_start)[-1] + 1 + skip:])
+        if len(gen): idx = mx.array(gen); logits[:, idx] = logits[:, idx] - penalty
+        return logits
+    return proc
+
+
+def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep_penalty=0.0, top_p=0.95, top_k=20, pres=0.0):
     import mlx.core as mx
     from mlx_lm import load, batch_generate
     from mlx_lm.sample_utils import make_sampler, make_logits_processors
@@ -126,7 +149,10 @@ def generate_all(model_path, items, thinking, max_tokens, batch, temp, seed, rep
     extra = dict(logits_processors=make_logits_processors(repetition_penalty=rep_penalty)) if rep_penalty else {}
     prompts = [tok.encode(tok.apply_chat_template(build_messages(it), add_generation_prompt=True, tokenize=False,
                                                   enable_thinking=bool(thinking))) for it in items]
-    sampler = make_sampler(temp=temp, top_p=0.95 if temp else 0.0, top_k=20 if temp else 0)
+    sampler = make_sampler(temp=temp, top_p=top_p if temp else 0.0, top_k=top_k if temp else 0)
+    if pres:
+        im = tok.convert_tokens_to_ids("<|im_start|>"); last = len(prompts[0]) - 1 - prompts[0][::-1].index(im)
+        extra = dict(logits_processors=[presence(pres, im, len(prompts[0]) - 1 - last)])
     order = sorted(range(len(items)), key=lambda i: len(prompts[i]))  # similar lengths together
     texts, cut = [None] * len(items), [None] * len(items)
     t0 = time.time()
@@ -153,13 +179,15 @@ def main():
     ap.add_argument("--temp", type=float, default=0.0, help="0 = greedy")
     ap.add_argument("--n", type=int, default=0); ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--rep-penalty", type=float, default=0.0, help="decoding-only control, e.g. 1.2")
+    ap.add_argument("--top-p", type=float, default=0.95); ap.add_argument("--top-k", type=int, default=20)
+    ap.add_argument("--presence", type=float, default=0.0, help="presence penalty over the whole answer; the report uses 1.5")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     items = load_bench(a.bench, a.split)
     if a.n:
         items = items[::max(1, len(items) // a.n)][:a.n]  # evenly spaced, so every database is represented
     os.makedirs(a.out, exist_ok=True)
-    texts, cut = generate_all(a.model, items, a.thinking, a.max_tokens, a.batch, a.temp, a.seed, a.rep_penalty)
+    texts, cut = generate_all(a.model, items, a.thinking, a.max_tokens, a.batch, a.temp, a.seed, a.rep_penalty, a.top_p, a.top_k, a.presence)
     recs = []
     with open(f"{a.out}/results.jsonl", "w") as f:
         for it, tx, c in zip(items, texts, cut):
@@ -167,7 +195,7 @@ def main():
             recs.append(rec); f.write(json.dumps(rec) + "\n")
     n = len(recs)
     cls = Counter(r["cls"] for r in recs)
-    summ = dict(model=a.model, bench=a.bench, split=a.split, thinking=a.thinking, max_tokens=a.max_tokens, temp=a.temp, rep_penalty=a.rep_penalty,
+    summ = dict(model=a.model, bench=a.bench, split=a.split, thinking=a.thinking, max_tokens=a.max_tokens, temp=a.temp, rep_penalty=a.rep_penalty, top_p=a.top_p, top_k=a.top_k, presence=a.presence, seed=a.seed,
                 n=n, acc=cls["correct"] / n, cut_share=sum(r["cut"] for r in recs) / n,
                 loop_share=sum(r["loop"] >= 5 for r in recs) / n, classes={k: v / n for k, v in cls.most_common()},
                 err_detail=Counter(r.get("err", "")[:60] for r in recs if "err" in r).most_common(15))

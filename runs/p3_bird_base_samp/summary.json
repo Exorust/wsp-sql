@@ -1,0 +1,91 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 150,
+ "acc": 0.05333333333333334,
+ "cut_share": 0.7533333333333333,
+ "loop_share": 0.6466666666666666,
+ "classes": {
+  "syntax": 0.5466666666666666,
+  "no_such_column": 0.18,
+  "wrong_result": 0.11333333333333333,
+  "no_such_table": 0.05333333333333334,
+  "correct": 0.05333333333333334,
+  "misuse": 0.013333333333333334,
+  "other_error": 0.013333333333333334,
+  "no_such_function": 0.013333333333333334,
+  "ambiguous": 0.006666666666666667,
+  "cut_no_sql": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   18
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   10
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"And\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such table: laps",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.publisher_name",
+   2
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"average\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"No\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such table: transactions",
+   1
+  ],
+  [
+   "OperationalError: near \"taken\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: t.customer_id",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "model": "runs/fable_think_p25_r1/work/edited_model",
+ "bench": "math",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 16384,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 100,
+ "acc": 0.09,
+ "cut_share": 0.91,
+ "loop_share": 0.79,
+ "classes": {
+  "cut_no_answer": 0.91,
+  "correct": 0.09
+ },
+ "err_detail": []
+}

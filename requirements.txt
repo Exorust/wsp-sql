@@ -3,3 +3,4 @@ torch==2.15.0
 transformers==5.22.1
 numpy==2.4.6
 safetensors==0.8.0
+math-verify

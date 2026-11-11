@@ -1,0 +1,23 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "math",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 16384,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 100,
+ "acc": 0.21,
+ "cut_share": 0.72,
+ "loop_share": 0.23,
+ "classes": {
+  "cut_no_answer": 0.72,
+  "correct": 0.21,
+  "wrong": 0.07
+ },
+ "err_detail": []
+}

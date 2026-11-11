@@ -41,7 +41,35 @@ The measurement that separates the two outcomes is how much text comes before `<
 | Fable session 2 edit | 150 | 150 | 0 |
 | Gradient descent, either footprint | 150 | 150 | 0 |
 
-The report's math edit helps little on SQL, but where it works it is a repair. Every edit found on SQL is a bypass. Whether that difference comes from the editor or from the task is the open question; two GPT-6 Astra sessions on SQL are next.
+Under greedy decoding the report's math edit helps little on SQL, but where it works it is a repair. Every edit found on SQL is a bypass.
+
+### The same edits under the report's sampling settings, and on math
+
+The tables above use greedy decoding. The report samples: temperature 0.6, top-p 0.95, top-k 20, presence penalty 1.5. With those settings, on the same 150 SQL questions (`run_phase3.sh`):
+
+| Condition (BIRD, sampled, 8,192 tokens) | Correct | Cut at limit | Close thinking | Of those, zero reasoning | Median characters of reasoning |
+|---|---|---|---|---|---|
+| Base, thinking on | 5.3% | 75.3% | 37 | 0 | 9,851 |
+| Base, thinking off via template | 6.7% | 0.7% | n/a | n/a | n/a |
+| Report's math edit | 10.7% | 8.0% | 139 | 0 | 16,146 |
+| Fable session 1 edit | 2.0% | 4.7% | 144 | 140 | 0 |
+| Fable session 2 edit | 2.7% | 0.7% | 150 | 150 | 0 |
+
+This corrects the greedy picture: with its own sampling settings the math edit removes most of the SQL loop, and it does so as a repair, after a median of 16,146 characters of reasoning. Greedy decoding hid that. The accuracy gaps are 16, 10 and 8 correct answers of 150 and are not significant.
+
+On 100 MATH-500 problems (thinking on: sampled as above, 16,384 tokens; thinking off: model-card settings, 8,192 tokens):
+
+| Condition (MATH-500, 100 problems) | Correct | Cut at limit | Close thinking | Of those, zero reasoning |
+|---|---|---|---|---|
+| Base, thinking on | 8% | 92% | 8 | 0 |
+| Base, thinking off via template | 42% | 33% | n/a | n/a |
+| Report's math edit | 21% | 72% | 28 | 0 |
+| Fable session 1 edit | 9% | 91% | 9 | 0 |
+| Fable session 2 edit | 9% | 89% | 13 | 0 |
+
+The Fable edits do nothing on math: no answer closes thinking at once and the loop stays. The bypass is tied to the SQL prompt; the repair carries over from math to SQL. The math edit's 21% is below the published 48% because our limit is 16,384 tokens, not 32,768, and 72 of 100 answers still hit it.
+
+Whether an editor can find a repair on SQL directly is the open question; two GPT-6 Astra sessions on SQL are next.
 
 ## Reproduce the headline number
 

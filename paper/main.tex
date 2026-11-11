@@ -178,7 +178,31 @@ Gradient descent, run 2 footprint & 150 & 150 & 0 \\
 \label{tab:sep}
 \end{table}
 
-Table~\ref{tab:sep} is the measurement the title refers to. An edit that repairs the loop leaves reasoning in place and lets it end; an edit that bypasses it removes the reasoning. The count of characters before \think{} tells them apart at no extra cost, from outputs every evaluation already has. The authors' math edit, which was not written for SQL and helps little here, is nonetheless of the first kind: all 22 answers that close thinking do so after real reasoning. All four edits found on SQL, two by a frontier editor and two by gradient descent, are of the second kind. A second signature follows from the definition: a bypass cannot beat the template flag it imitates, while a repair can. Independent evaluations of the math edit report exactly that on MATH-500, 50.2\% edited with thinking on against 45.8\% for the base model with thinking off \cite{coletti}, and the same evaluations and others \cite{hedwig,shapor,chalmers} establish that the gain over the thinking-on baseline comes from answers that finish. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
+Table~\ref{tab:sep} is the measurement the title refers to. An edit that repairs the loop leaves reasoning in place and lets it end; an edit that bypasses it removes the reasoning. The count of characters before \think{} tells them apart at no extra cost, from outputs every evaluation already has. The authors' math edit, which was not written for SQL and under greedy decoding helps little here, is nonetheless of the first kind: all 22 answers that close thinking do so after real reasoning. All four edits found on SQL, two by a frontier editor and two by gradient descent, are of the second kind. A second signature follows from the definition: a bypass cannot beat the template flag it imitates, while a repair can. Independent evaluations of the math edit report exactly that on MATH-500, 50.2\% edited with thinking on against 45.8\% for the base model with thinking off \cite{coletti}, and the same evaluations and others \cite{hedwig,shapor,chalmers} establish that the gain over the thinking-on baseline comes from answers that finish. Those analyses ask whether the edit adds ability; none asks which of the two outcomes it is.
+
+\paragraph{Sampling, and transfer to math.} All results above use greedy decoding. The report samples (temperature 0.6, top-$p$ 0.95, top-$k$ 20, presence penalty 1.5), so we reran the 150 held-out questions with those settings, and ran every edit on 100 MATH-500 problems (Table~\ref{tab:samp}). Two things change. First, with its own sampling settings the authors' math edit removes most of the SQL loop: cut answers fall from 75.3\% to 8.0\%, and 139 of 150 answers close thinking, none at once, after a median of 16,146 characters of reasoning. Greedy decoding hid this effect. Second, the Fable edits do not act on math: no answer closes thinking at once, and about 90\% of answers are cut, the same as the base model. So the bypass is specific to the SQL prompt, and the repair transfers across tasks. The accuracy differences on SQL (16, 10 and 8 correct of 150) are not significant. The math edit's 21\% is below the published 48\% because our limit is 16,384 tokens and 72 of 100 answers still reach it.
+
+\begin{table}[h]\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+Task & Condition & Correct \% & Cut \% & Close thinking & At once \\
+\midrule
+BIRD, $n{=}150$ & Base, thinking on & 5.3 & 75.3 & 37 & 0 \\
+ & Base, thinking off & 6.7 & 0.7 & -- & -- \\
+ & Authors' math edit & 10.7 & 8.0 & 139 & 0 \\
+ & Fable run 1 edit & 2.0 & 4.7 & 144 & 140 \\
+ & Fable run 2 edit & 2.7 & 0.7 & 150 & 150 \\
+\midrule
+MATH-500, $n{=}100$ & Base, thinking on & 8 & 92 & 8 & 0 \\
+ & Base, thinking off & 42 & 33 & -- & -- \\
+ & Authors' math edit & 21 & 72 & 28 & 0 \\
+ & Fable run 1 edit & 9 & 91 & 9 & 0 \\
+ & Fable run 2 edit & 9 & 89 & 13 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{The report's sampling protocol. BIRD at 8,192 tokens; MATH-500 at 16,384 tokens with thinking on and 8,192 with thinking off (model-card sampling).}
+\label{tab:samp}
+\end{table}
 
 \section{Conclusion}
 
