@@ -63,12 +63,13 @@ button{font:12px var(--mono);color:var(--ink);background:none;border:1px solid v
 button:focus-visible{outline:2px solid var(--neuron);outline-offset:2px}
 canvas{width:100%;height:min(72vh,640px);display:block;touch-action:none;cursor:grab;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 #state{min-width:9ch}
+.embed h1,.embed main>p{display:none}.embed main{padding:8px}.embed canvas{height:min(66vh,620px)}
 </style></head><body><main>
 <h1>Four neurons, one push</h1>
-<p>Each grey dot is one MLP neuron of Qwen3.5-0.8B (300 sampled per layer, 24 layers), placed by the direction it writes into the model. The Fable editor changed four of them, in layers 17 to 20. Each change adds the same direction, toward the <code>&lt;/think&gt;</code> token. Watch them leave the cloud. The paper's own released edit (blue, 128 neurons in layers 15 and 19) changes other directions, so on this axis it hardly moves.</p>
+<p>Each grey dot is one MLP neuron of Qwen3.5-0.8B (300 sampled per layer, 24 layers), placed by the direction it writes into the model. The Fable editor changed four of them, in layers 17 to 20. Each change adds the same direction, toward the <code>&lt;/think&gt;</code> token. Watch them leave the cloud. The MIT report's own released edit (blue, 128 neurons in layers 15 and 19) changes other directions, so on this axis it hardly moves.</p>
 <div class="bar">
 <span class="k"><span class="sw" style="background:var(--neuron)"></span>Fable edit, 4 neurons</span>
-<span class="k"><span class="sw" style="background:var(--other)"></span>paper edit, 128 neurons</span>
+<span class="k"><span class="sw" style="background:var(--other)"></span>MIT edit, 128 neurons</span>
 <span class="k"><span class="sw" style="background:var(--dot)"></span>unchanged neurons</span>
 <button id="play" aria-pressed="false">Pause</button><span id="state">before</span>
 </div>
@@ -77,6 +78,7 @@ canvas{width:100%;height:min(72vh,640px);display:block;touch-action:none;cursor:
 </main>
 <script>
 const D=__DATA__;
+if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');
 const cv=document.getElementById('c'),g=cv.getContext('2d'),btn=document.getElementById('play'),st=document.getElementById('state');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let yaw=-0.6,pitch=0.28,playing=!reduce,clock=0,last=performance.now(),drag=null;
@@ -104,11 +106,12 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;
  g.fillText('toward </think>',e[0]+6,e[1]+4);
  g.fillStyle=css('--dot');
  for(const[l,x,z]of D.cloud){const q=proj(x*S,Y(l),z*S);g.fillRect(q[0]-1,q[1]-1,2,2)}
- const draw=(arr,col,r,label)=>{g.fillStyle=col;for(const n of arr){
+ const draw=(arr,col,r,label)=>{g.fillStyle=col;const marks=[];for(const n of arr){
   const x=n.b[0]+(n.a[0]-n.b[0])*p,z=n.b[1]+(n.a[1]-n.b[1])*p,q=proj(x*S,Y(n.l),z*S);
-  if(label){const q0=proj(n.b[0]*S,Y(n.l),n.b[1]*S);g.strokeStyle=col;g.globalAlpha=.5;g.beginPath();g.moveTo(q0[0],q0[1]);g.lineTo(q[0],q[1]);g.stroke();g.globalAlpha=1}
-  g.fillRect(q[0]-r,q[1]-r,2*r,2*r);
-  if(label)g.fillText('L'+n.l+' #'+n.c+(p>.98?'  cos '+n.a[0].toFixed(2):''),q[0]+r+5,q[1]+4)}};
+  if(label){const q0=proj(n.b[0]*S,Y(n.l),n.b[1]*S);g.strokeStyle=col;g.globalAlpha=.5;g.beginPath();g.moveTo(q0[0],q0[1]);g.lineTo(q[0],q[1]);g.stroke();g.globalAlpha=1;
+   marks.push([q,'L'+n.l+' #'+n.c+(p>.98?'  cos '+n.a[0].toFixed(2):'')])}
+  g.fillRect(q[0]-r,q[1]-r,2*r,2*r)}
+  let ly=-1e9;for(const[q,t]of marks.sort((a,b)=>a[0][1]-b[0][1])){ly=Math.max(q[1]+4,ly+15);g.fillText(t,q[0]+r+5,ly)}}; // labels at least 15 px apart
  draw(D.paper,css('--other'),2,false);draw(D.ours,css('--neuron'),5,true);
  requestAnimationFrame(frame)}
 requestAnimationFrame(frame);

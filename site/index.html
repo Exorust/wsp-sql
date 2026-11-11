@@ -173,12 +173,21 @@ tr.hl td{background:var(--escapesoft)}
 </div></section>
 
 <section><div class="wrap reveal">
+  <h2>The two edits, inside the model</h2>
+  <p>Each MLP neuron writes a fixed vector into the model's running state when it fires. Here every neuron is placed by that direction: height is the layer, the horizontal axis is the cosine with the vector session 1 added. Drag to turn it.</p>
+  <iframe src="neurons.html?embed" title="Turning 3D cloud of the model's neurons, with the edited neurons moving" loading="lazy" style="width:100%;height:min(80vh,720px);border:1px solid var(--line);border-radius:10px;background:var(--paper)"></iframe>
+  <p style="margin-top:18px"><span class="tag neuron">Fable</span> The four changes are one vector, cosine 1.0 between any two, a push toward <code>&lt;/think&gt;</code>. The four neurons go from a cosine of about 0 to 0.44 to 0.69, while 98% of unchanged neurons stay between -0.07 and 0.07.</p>
+  <p><span class="tag escape">MIT</span> The report's math edit changes 128 neurons in layers 15 and 19. They turn by a median cosine of 0.86 and 0.91, but not toward <code>&lt;/think&gt;</code> (median below 0.006). The bypass is one push toward one token; the repair is not. One picture of two edits, not a test.</p>
+  <p style="font-size:.95rem;color:var(--mute)">View inspired by Levi Foster's <a href="https://x.com/cybermynd/status/2119238247633096978">circuit-graft video</a>, where new neurons added to SmolLM2-135M took held-out multiplication from 21.3% to 83.1%.</p>
+</div></section>
+
+<section><div class="wrap reveal">
   <h2>What this says</h2>
   <p>The method works in the sense that matters for the report: the editor read activations, found a handle, and wrote a change that fixed the behaviour on held-out data, with 4,083 entries and no gradient. The random-location control says it was not luck.</p>
   <p>But twice the editor produced a specific, measured, mechanistic explanation of the loop, with heads, neurons and effect sizes, and a precise edit that followed from it. Twice the edit did nothing. The explanation that worked was not about the loop; it was about the gate into the mode that loops. The editor did not repair the loop. It routed around it, and said so: "skip the degenerate Thinking Process loop and answer directly".</p>
   <p>So "a frontier model can understand why a small model misbehaves and fix the cause" is not shown here. "A frontier model can find a small lever that changes the behaviour" is. The report's math edit, by the measurement above, is a repair. So the open question is what made the difference: the editor, or the task.</p>
   <h3 style="margin-top:28px">Next</h3>
-  <p>Two runs with GPT-6 Astra, the report's own editor, on the same SQL task. And an ablation map, switching off every attention head and every block of MLP neurons one at a time, to learn whether a single-site repair exists at all.</p>
+  <p>Two runs with GPT-6 Astra, the report's own editor, on the same SQL task. And an ablation map, switching off every attention head and every block of MLP neurons one at a time, to learn whether a single-site repair exists at all. And a robustness check borrowed from MaxxBench: run the edits on Dr.Spider, which pairs Spider questions with minimally changed versions. A bypass should do no better there than the template flag. A repair might.</p>
 </div></section>
 
 <footer class="foot"><div class="wrap">
