@@ -1,0 +1,89 @@
+{
+ "model": "runs/fable_think_p25_r2/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 2,
+ "n": 150,
+ "acc": 0.05333333333333334,
+ "cut_share": 0.013333333333333334,
+ "loop_share": 0.006666666666666667,
+ "classes": {
+  "no_such_column": 0.5266666666666666,
+  "wrong_result": 0.18666666666666668,
+  "syntax": 0.13333333333333333,
+  "correct": 0.05333333333333334,
+  "no_such_table": 0.04,
+  "no_such_function": 0.02666666666666667,
+  "misuse": 0.02,
+  "ambiguous": 0.013333333333333334
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   3
+  ],
+  [
+   "OperationalError: no such column: language",
+   3
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   2
+  ],
+  [
+   "OperationalError: no such column: event_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: p.PostId",
+   2
+  ],
+  [
+   "OperationalError: no such column: c.artisticName",
+   2
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such column: CASUALIZATION_CONSUMPTION",
+   1
+  ],
+  [
+   "OperationalError: no such column: t.Country",
+   1
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: b.approved",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   1
+  ]
+ ]
+}

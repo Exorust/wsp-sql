@@ -1,0 +1,91 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 0,
+ "max_tokens": 8192,
+ "temp": 0.7,
+ "rep_penalty": 0.0,
+ "top_p": 0.8,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 1,
+ "n": 150,
+ "acc": 0.04666666666666667,
+ "cut_share": 0.0,
+ "loop_share": 0.0,
+ "classes": {
+  "no_such_column": 0.5066666666666667,
+  "wrong_result": 0.22666666666666666,
+  "syntax": 0.09333333333333334,
+  "correct": 0.04666666666666667,
+  "no_such_table": 0.03333333333333333,
+  "no_such_function": 0.03333333333333333,
+  "misuse": 0.02666666666666667,
+  "other_error": 0.013333333333333334,
+  "ambiguous": 0.013333333333333334,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"AS\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   2
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   2
+  ],
+  [
+   "OperationalError: near \"FROM\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such function: YEAR",
+   2
+  ],
+  [
+   "OperationalError: no such function: year",
+   2
+  ],
+  [
+   "OperationalError: near \"OVER\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: p.overall_rating",
+   2
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.driverId",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.suphero_name",
+   2
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   2
+  ],
+  [
+   "OperationalError: no such column: cs.Country",
+   1
+  ],
+  [
+   "OperationalError: interrupted",
+   1
+  ]
+ ]
+}

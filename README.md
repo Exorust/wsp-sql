@@ -57,6 +57,18 @@ The tables above use greedy decoding. The report samples: temperature 0.6, top-p
 
 This corrects the greedy picture: with its own sampling settings the math edit removes most of the SQL loop, and it does so as a repair, after a median of 16,146 characters of reasoning. Greedy decoding hid that. The accuracy gaps are 16, 10 and 8 correct answers of 150 and are not significant.
 
+Two more seeds of the same five conditions (`run_phase4.sh`, runs `p4_bird_*_samp_s1` and `_s2`) give these counts of 150, seeds 0, 1, 2:
+
+| Condition | Correct | Close thinking | Close at once |
+|---|---|---|---|
+| Base, thinking on | 8, 11, 10 | 37, 41, 35 | 0, 0, 0 |
+| Base, thinking off | 10, 7, 2 | n/a | n/a |
+| Authors' math edit | 16, 28, 13 | 139, 134, 135 | 0, 0, 0 |
+| Fable run 1 edit | 3, 6, 10 | 144, 147, 149 | 140, 147, 144 |
+| Fable run 2 edit | 4, 5, 8 | 150, 150, 150 | 150, 150, 150 |
+
+The closing counts do not depend on the seed. Accuracy does: the math edit ranges from 8.7% to 18.7%, and in seed 2 its paired difference from every other condition is not significant.
+
 On 100 MATH-500 problems (thinking on: sampled as above, 16,384 tokens; thinking off: model-card settings, 8,192 tokens):
 
 | Condition (MATH-500, 100 problems) | Correct | Cut at limit | Close thinking | Of those, zero reasoning |

@@ -1,0 +1,89 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 2,
+ "n": 150,
+ "acc": 0.08666666666666667,
+ "cut_share": 0.11333333333333333,
+ "loop_share": 0.04666666666666667,
+ "classes": {
+  "no_such_column": 0.4066666666666667,
+  "wrong_result": 0.2866666666666667,
+  "syntax": 0.08666666666666667,
+  "no_such_table": 0.08666666666666667,
+  "correct": 0.08666666666666667,
+  "other_error": 0.02,
+  "no_such_function": 0.02,
+  "misuse": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: no such table: transactions",
+   4
+  ],
+  [
+   "OperationalError: no such function: YEAR",
+   3
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: p.player_id",
+   2
+  ],
+  [
+   "OperationalError: no such table: lap_times",
+   2
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.setCode",
+   2
+  ],
+  [
+   "OperationalError: near \")\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: t.customer_id",
+   1
+  ],
+  [
+   "OperationalError: no such column: TRANSACTIONS.AMOUNT",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.maj_name",
+   1
+  ],
+  [
+   "OperationalError: no such column: event_id",
+   1
+  ],
+  [
+   "OperationalError: no such column: e.expend_id",
+   1
+  ]
+ ]
+}

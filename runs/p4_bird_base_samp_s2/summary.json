@@ -1,0 +1,87 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 2,
+ "n": 150,
+ "acc": 0.06666666666666667,
+ "cut_share": 0.78,
+ "loop_share": 0.6733333333333333,
+ "classes": {
+  "syntax": 0.6666666666666666,
+  "no_such_column": 0.11333333333333333,
+  "wrong_result": 0.08666666666666667,
+  "correct": 0.06666666666666667,
+  "other_error": 0.06,
+  "timeout": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   17
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   11
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   8
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   8
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"highest\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \",\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"?\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"FROM\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"from\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"single\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: incomplete input",
+   1
+  ],
+  [
+   "OperationalError: near \"type\": syntax error",
+   1
+  ]
+ ]
+}

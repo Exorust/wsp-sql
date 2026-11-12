@@ -1,0 +1,90 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 1,
+ "n": 150,
+ "acc": 0.07333333333333333,
+ "cut_share": 0.7333333333333333,
+ "loop_share": 0.66,
+ "classes": {
+  "syntax": 0.54,
+  "no_such_column": 0.18666666666666668,
+  "wrong_result": 0.12666666666666668,
+  "correct": 0.07333333333333333,
+  "other_error": 0.04666666666666667,
+  "no_such_function": 0.006666666666666667,
+  "ambiguous": 0.006666666666666667,
+  "misuse": 0.006666666666666667,
+  "no_such_table": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"query\": syntax error",
+   15
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   12
+  ],
+  [
+   "OperationalError: near \"code\": syntax error",
+   7
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \"or\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"(\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"for\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: table posts already exists",
+   2
+  ],
+  [
+   "OperationalError: near \"to\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"main\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"`customers`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such function: TIME_DATE",
+   1
+  ],
+  [
+   "OperationalError: no such column: Consumption",
+   1
+  ]
+ ]
+}

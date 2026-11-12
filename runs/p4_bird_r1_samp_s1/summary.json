@@ -1,0 +1,90 @@
+{
+ "model": "runs/fable_think_p25_r1/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 1,
+ "n": 150,
+ "acc": 0.04,
+ "cut_share": 0.02,
+ "loop_share": 0.013333333333333334,
+ "classes": {
+  "no_such_column": 0.62,
+  "wrong_result": 0.14,
+  "syntax": 0.12,
+  "correct": 0.04,
+  "misuse": 0.03333333333333333,
+  "no_such_table": 0.02666666666666667,
+  "no_such_function": 0.006666666666666667,
+  "ambiguous": 0.006666666666666667,
+  "other_error": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   4
+  ],
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: language",
+   3
+  ],
+  [
+   "OperationalError: no such column: m.major_name",
+   2
+  ],
+  [
+   "OperationalError: no such column: b.event_id",
+   2
+  ],
+  [
+   "OperationalError: no such column: p.overall_rating",
+   2
+  ],
+  [
+   "OperationalError: misuse of aggregate: MAX()",
+   2
+  ],
+  [
+   "OperationalError: misuse of aggregate function MAX()",
+   2
+  ],
+  [
+   "OperationalError: no such table: color",
+   2
+  ],
+  [
+   "OperationalError: no such column: atom.element",
+   2
+  ],
+  [
+   "OperationalError: no such column: bond_type",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: near \"ELSE\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"least\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: YearMonthDate",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "model": "runs/fable_think_p25_r2/work/edited_model",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 1,
+ "n": 150,
+ "acc": 0.03333333333333333,
+ "cut_share": 0.006666666666666667,
+ "loop_share": 0.006666666666666667,
+ "classes": {
+  "no_such_column": 0.52,
+  "wrong_result": 0.24666666666666667,
+  "syntax": 0.09333333333333334,
+  "no_such_table": 0.03333333333333333,
+  "correct": 0.03333333333333333,
+  "misuse": 0.02666666666666667,
+  "other_error": 0.02,
+  "no_such_function": 0.013333333333333334,
+  "timeout": 0.013333333333333334
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"AS\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: no such column: player_name",
+   3
+  ],
+  [
+   "OperationalError: no such column: first_name",
+   2
+  ],
+  [
+   "OperationalError: misuse of aggregate function COUNT()",
+   2
+  ],
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: p.player_name",
+   2
+  ],
+  [
+   "OperationalError: interrupted",
+   2
+  ],
+  [
+   "OperationalError: no such table: color",
+   2
+  ],
+  [
+   "OperationalError: wrong number of arguments to function COAL",
+   1
+  ],
+  [
+   "OperationalError: no such column: Total_Czech",
+   1
+  ],
+  [
+   "OperationalError: no such column: Transactions.Date",
+   1
+  ],
+  [
+   "OperationalError: no such column: ChainID",
+   1
+  ],
+  [
+   "OperationalError: no such column: Segment",
+   1
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: no such table: date_received",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 1,
+ "n": 150,
+ "acc": 0.18666666666666668,
+ "cut_share": 0.12,
+ "loop_share": 0.02,
+ "classes": {
+  "no_such_column": 0.32666666666666666,
+  "wrong_result": 0.19333333333333333,
+  "correct": 0.18666666666666668,
+  "syntax": 0.15333333333333332,
+  "no_such_table": 0.1,
+  "other_error": 0.02666666666666667,
+  "ambiguous": 0.006666666666666667,
+  "no_such_function": 0.006666666666666667
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"AS\": syntax error",
+   5
+  ],
+  [
+   "OperationalError: no such table: transactions",
+   3
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   3
+  ],
+  [
+   "OperationalError: near \",\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: p.overall_rating",
+   2
+  ],
+  [
+   "OperationalError: no such column: r.id",
+   2
+  ],
+  [
+   "OperationalError: no such column: s.publisher_name",
+   2
+  ],
+  [
+   "OperationalError: no such table: transactions_t1k",
+   1
+  ],
+  [
+   "OperationalError: table yearmonth already exists",
+   1
+  ],
+  [
+   "OperationalError: no such column: C.CustID",
+   1
+  ],
+  [
+   "OperationalError: no such column: customer.currency",
+   1
+  ],
+  [
+   "OperationalError: no such table: year_months",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.link_to_member",
+   1
+  ],
+  [
+   "OperationalError: no such column: a.event_id",
+   1
+  ]
+ ]
+}
