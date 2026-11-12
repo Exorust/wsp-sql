@@ -1,0 +1,88 @@
+{
+ "model": "models/Qwen3.5-0.8B-weight-space-programming",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 50,
+ "acc": 0.1,
+ "cut_share": 0.14,
+ "loop_share": 0.06,
+ "classes": {
+  "no_such_column": 0.38,
+  "wrong_result": 0.24,
+  "no_such_table": 0.12,
+  "syntax": 0.12,
+  "correct": 0.1,
+  "ambiguous": 0.02,
+  "other_error": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: no such table: transactions",
+   2
+  ],
+  [
+   "OperationalError: near \"*\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"WHERE\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: no such column: Currency",
+   1
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"s\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: m.majour_name",
+   1
+  ],
+  [
+   "OperationalError: no such column: Admission",
+   1
+  ],
+  [
+   "OperationalError: no such column: e.EXAMINATION_DATE",
+   1
+  ],
+  [
+   "OperationalError: no such column: l.AUA",
+   1
+  ],
+  [
+   "OperationalError: no such column: p.HGB",
+   1
+  ],
+  [
+   "OperationalError: no such column: buildUpPlaySpeed",
+   1
+  ],
+  [
+   "OperationalError: no such column: t.buildUpPlayPlaySpeedClas",
+   1
+  ],
+  [
+   "OperationalError: ambiguous column name: id",
+   1
+  ],
+  [
+   "OperationalError: no such table: qualifiers",
+   1
+  ]
+ ]
+}

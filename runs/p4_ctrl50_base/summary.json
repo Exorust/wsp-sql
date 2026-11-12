@@ -1,0 +1,86 @@
+{
+ "model": "models/Qwen3.5-0.8B",
+ "bench": "bird",
+ "split": "dev",
+ "thinking": 1,
+ "max_tokens": 8192,
+ "temp": 0.6,
+ "rep_penalty": 0.0,
+ "top_p": 0.95,
+ "top_k": 20,
+ "presence": 1.5,
+ "seed": 0,
+ "n": 50,
+ "acc": 0.04,
+ "cut_share": 0.8,
+ "loop_share": 0.74,
+ "classes": {
+  "syntax": 0.7,
+  "no_such_column": 0.16,
+  "wrong_result": 0.08,
+  "correct": 0.04,
+  "other_error": 0.02
+ },
+ "err_detail": [
+  [
+   "OperationalError: near \"code\": syntax error",
+   9
+  ],
+  [
+   "OperationalError: near \"query\": syntax error",
+   6
+  ],
+  [
+   "OperationalError: near \"=\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \".\": syntax error",
+   2
+  ],
+  [
+   "OperationalError: near \"on\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"Wait\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: l.Examination_date",
+   1
+  ],
+  [
+   "OperationalError: near \"`Examination`\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"\". This implies a join between `Diag",
+   1
+  ],
+  [
+   "OperationalError: near \"CRP\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"This\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: near \"birthyear\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: t.name",
+   1
+  ],
+  [
+   "OperationalError: near \"tables\": syntax error",
+   1
+  ],
+  [
+   "OperationalError: no such column: c.id",
+   1
+  ]
+ ]
+}

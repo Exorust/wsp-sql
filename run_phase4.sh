@@ -32,4 +32,7 @@ ev p4_bird_nothink_samp_s$s  --model $BASE $B --thinking 0 $C --seed $s
 ev p4_bird_r1_samp_s$s       --model $R1   $B --thinking 1 $S --seed $s
 ev p4_bird_r2_samp_s$s       --model $R2   $B --thinking 1 $S --seed $s
 done
+# F. unedited model and math edit on the same 50 questions as the random-location control
+ev p4_ctrl50_base     --model $BASE --bench bird --n 50 --max-tokens 8192 --thinking 1 $S
+ev p4_ctrl50_mathedit --model $ME   --bench bird --n 50 --max-tokens 8192 --thinking 1 $S
 echo PHASE4_DONE
